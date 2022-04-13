@@ -7,7 +7,6 @@ import 'package:wigootaxidriver/presentation/home/help/send_message_page.dart';
 import 'package:wigootaxidriver/presentation/home/home_page.dart';
 import 'package:wigootaxidriver/presentation/home/pick_location/activate_location_page.dart';
 import 'package:wigootaxidriver/presentation/intro/intro_page.dart';
-import 'package:wigootaxidriver/presentation/onboarding/onboarding_page.dart';
 import 'package:wigootaxidriver/presentation/splash/splash_page.dart';
 
 @MaterialAutoRouter(routes: <AutoRoute>[
@@ -19,7 +18,6 @@ import 'package:wigootaxidriver/presentation/splash/splash_page.dart';
   AutoRoute(page: SignUpPage),
   AutoRoute(page: HomePage),
   AutoRoute(page: ActivateLocationPage),
-  AutoRoute(page: OnBoardingPage),
   AutoRoute(page: SendMessagePage),
 ])
 class $AppRouter {}

@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wigootaxidriver/presentation/intro/intro_button.dart';
 import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/shared/logo.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
@@ -51,11 +53,11 @@ class _IntroPageState extends State<IntroPage> {
                   horizontal: 28.w,
                 ),
                 child: Text(
-                  "Find a Best Taxi Drive",
+                  "Il est facile de ganger l`argent",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 36.sp,
+                    fontSize: 28.sp,
                     fontWeight: FontWeight.w900,
                   ),
                 ),
@@ -73,23 +75,52 @@ class _IntroPageState extends State<IntroPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    SizedBox(
-                      width: double.maxFinite,
-                      child: SubmitButton(
-                        onPressed: () =>
-                            AutoRouter.of(context).push(LoginPageRoute()),
-                        text: "CONNEXION",
+                    buildIntroButton(
+                      text: 'Connectez avec numéro de téléphone',
+                      icon: Icon(Icons.phone),
+                      bgColor: kPrimaryColor,
+                      textColor: Colors.white,
+                      onPressed: () {},
+                    ),
+                    20.verticalSpace,
+                    Text(
+                      'Ou',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     20.verticalSpace,
-                    SizedBox(
-                      width: double.maxFinite,
-                      child: SubmitButton(
-                        onPressed: () =>
-                            AutoRouter.of(context).push(SignUpPageRoute()),
-                        text: "CRÉER UN COMPTE",
-                        textColor: kPrimaryColor,
-                        color: Colors.white,
+                    buildIntroButton(
+                      text: 'Connecter avec adresse e-mail',
+                      icon: Icon(
+                        Icons.email,
+                        color: Colors.black,
+                      ),
+                      bgColor: Colors.white,
+                      textColor: Colors.black,
+                      onPressed: () {},
+                    ),
+                    20.verticalSpace,
+                    RichText(
+                      text: TextSpan(
+                        text: "Vous avez déjà un compte ? ",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.sp,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "Devenir un chauffeur",
+                            style: TextStyle(
+                              color: Colors.deepOrange,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => AutoRouter.of(context)
+                                  .replace(LoginPageRoute()),
+                          )
+                        ],
                       ),
                     ),
                   ],

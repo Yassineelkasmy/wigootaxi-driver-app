@@ -558,6 +558,8 @@ abstract class $PickupChoosenCopyWith<$Res> {
           PickupChoosen value, $Res Function(PickupChoosen) then) =
       _$PickupChoosenCopyWithImpl<$Res>;
   $Res call({NearbySearch pickup});
+
+  $NearbySearchCopyWith<$Res> get pickup;
 }
 
 /// @nodoc
@@ -580,6 +582,13 @@ class _$PickupChoosenCopyWithImpl<$Res> extends _$PickUpEventCopyWithImpl<$Res>
           : pickup // ignore: cast_nullable_to_non_nullable
               as NearbySearch,
     ));
+  }
+
+  @override
+  $NearbySearchCopyWith<$Res> get pickup {
+    return $NearbySearchCopyWith<$Res>(_value.pickup, (value) {
+      return _then(_value.copyWith(pickup: value));
+    });
   }
 }
 
@@ -718,6 +727,8 @@ abstract class $DropoffChoosenCopyWith<$Res> {
           DropoffChoosen value, $Res Function(DropoffChoosen) then) =
       _$DropoffChoosenCopyWithImpl<$Res>;
   $Res call({NearbySearch dropoff});
+
+  $NearbySearchCopyWith<$Res> get dropoff;
 }
 
 /// @nodoc
@@ -740,6 +751,13 @@ class _$DropoffChoosenCopyWithImpl<$Res> extends _$PickUpEventCopyWithImpl<$Res>
           : dropoff // ignore: cast_nullable_to_non_nullable
               as NearbySearch,
     ));
+  }
+
+  @override
+  $NearbySearchCopyWith<$Res> get dropoff {
+    return $NearbySearchCopyWith<$Res>(_value.dropoff, (value) {
+      return _then(_value.copyWith(dropoff: value));
+    });
   }
 }
 

@@ -21,11 +21,7 @@ class SplashPage extends HookConsumerWidget {
             initial: (_) {},
             authenticated: (_) => AutoRouter.of(context).push(HomePageRoute()),
             unauthenticated: (unAuth) {
-              if (unAuth.isNewUser) {
-                AutoRouter.of(context).push(OnBoardingPageRoute());
-              } else {
-                AutoRouter.of(context).push(IntroPageRoute());
-              }
+              AutoRouter.of(context).push(IntroPageRoute());
             });
       });
     });
@@ -60,8 +56,8 @@ class SplashPage extends HookConsumerWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    CircularProgressIndicator(
-                      color: Colors.white,
+                    CircularProgressIndicator.adaptive(
+                      backgroundColor: Colors.white,
                     ),
                   ],
                 ),
