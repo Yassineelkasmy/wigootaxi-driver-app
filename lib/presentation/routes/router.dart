@@ -8,9 +8,11 @@ import 'package:wigootaxidriver/presentation/home/home_page.dart';
 import 'package:wigootaxidriver/presentation/home/pick_location/activate_location_page.dart';
 import 'package:wigootaxidriver/presentation/intro/intro_page.dart';
 import 'package:wigootaxidriver/presentation/splash/splash_page.dart';
+import 'package:wigootaxidriver/presentation/submission/submission_page.dart';
 
 @MaterialAutoRouter(routes: <AutoRoute>[
-  AutoRoute(page: SplashPage, initial: true),
+  AutoRoute(page: SplashPage),
+  AutoRoute(page: SubmissionPage, initial: true),
   AutoRoute(page: PhoneVerificationPage),
   AutoRoute(page: PhoneAuthPage),
   AutoRoute(page: LoginPage),
