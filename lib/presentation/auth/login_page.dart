@@ -40,116 +40,114 @@ class LoginPage extends HookConsumerWidget {
           color: Colors.black,
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 28.w,
-          ),
-          child: SizedBox(
-            width: double.maxFinite,
-            child: Column(
-              children: [
-                buildLogo(white: false),
-                ReactiveForm(
-                  formGroup: loginForm,
-                  child: Column(
+      body: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 28.w,
+        ),
+        child: SizedBox(
+          width: double.maxFinite,
+          child: Column(
+            children: [
+              buildLogo(white: false),
+              ReactiveForm(
+                formGroup: loginForm,
+                child: Column(
+                  children: [
+                    ReactiveTextField(
+                      decoration: InputDecoration(
+                        contentPadding: kInputContentPadding,
+                        hintStyle: kHintStyle,
+                        hintText: "Nom d'utilisateur",
+                        prefixIcon: Icon(Icons.person),
+                        border: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.r),
+                        ),
+                      ),
+                      formControlName: 'email',
+                      validationMessages: (control) => {
+                        'required': "L'e-mail ne doit pas être vide",
+                        'email': 'Email invalide'
+                      },
+                    ),
+                    10.verticalSpace,
+                    ReactiveTextField(
+                      decoration: InputDecoration(
+                        contentPadding: kInputContentPadding,
+                        hintStyle: kHintStyle,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.r),
+                        ),
+                        hintText: "Mot de passe",
+                        prefixIcon: Icon(Icons.lock),
+                      ),
+                      formControlName: 'password',
+                      obscureText: true,
+                      validationMessages: (control) => {
+                        'required': 'Le mot de passe ne doit pas être vide',
+                        'minLenght':
+                            'Le mot de passe doit comporter au moins 8 caractères'
+                      },
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: TextButton(
+                        child: Text(
+                          "Mot de passe oublié ?",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.sp,
+                          ),
+                        ),
+                        onPressed: () => {},
+                      ),
+                    ),
+                    10.verticalSpace,
+                    SizedBox(
+                      width: double.maxFinite,
+                      child: SubmitButton(
+                        onPressed: () =>
+                            AutoRouter.of(context).replace(HomePageRoute()),
+                        text: "CONNEXION",
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              20.verticalSpace,
+              SocialMedia(
+                onFacebookPressed: () {},
+                onGooglePressed: () {
+                  authFormController.mapEventToState(
+                      const AuthFormEvent.signInWithGooglePresseed());
+                },
+                text: "SE CONNECTER AVEC",
+              ),
+              Expanded(child: SizedBox()),
+              Padding(
+                padding: EdgeInsets.only(bottom: 20.h),
+                child: RichText(
+                  text: TextSpan(
+                    text: "Vous n'a avez pas de compte ? ",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16.sp,
+                    ),
                     children: [
-                      ReactiveTextField(
-                        decoration: InputDecoration(
-                          contentPadding: kInputContentPadding,
-                          hintStyle: kHintStyle,
-                          hintText: "Nom d'utilisateur",
-                          prefixIcon: Icon(Icons.person),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.r),
-                          ),
+                      TextSpan(
+                        text: "S'inscrire",
+                        style: TextStyle(
+                          color: kPrimaryColor,
+                          fontWeight: FontWeight.bold,
                         ),
-                        formControlName: 'email',
-                        validationMessages: (control) => {
-                          'required': "L'e-mail ne doit pas être vide",
-                          'email': 'Email invalide'
-                        },
-                      ),
-                      10.verticalSpace,
-                      ReactiveTextField(
-                        decoration: InputDecoration(
-                          contentPadding: kInputContentPadding,
-                          hintStyle: kHintStyle,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.r),
-                          ),
-                          hintText: "Mot de passe",
-                          prefixIcon: Icon(Icons.lock),
-                        ),
-                        formControlName: 'password',
-                        obscureText: true,
-                        validationMessages: (control) => {
-                          'required': 'Le mot de passe ne doit pas être vide',
-                          'minLenght':
-                              'Le mot de passe doit comporter au moins 8 caractères'
-                        },
-                      ),
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: TextButton(
-                          child: Text(
-                            "Mot de passe oublié ?",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14.sp,
-                            ),
-                          ),
-                          onPressed: () => {},
-                        ),
-                      ),
-                      10.verticalSpace,
-                      SizedBox(
-                        width: double.maxFinite,
-                        child: SubmitButton(
-                          onPressed: () =>
-                              AutoRouter.of(context).replace(HomePageRoute()),
-                          text: "CONNEXION",
-                        ),
-                      ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () =>
+                              AutoRouter.of(context).replace(SignUpPageRoute()),
+                      )
                     ],
                   ),
                 ),
-                20.verticalSpace,
-                SocialMedia(
-                  onFacebookPressed: () {},
-                  onGooglePressed: () {
-                    authFormController.mapEventToState(
-                        const AuthFormEvent.signInWithGooglePresseed());
-                  },
-                  text: "SE CONNECTER AVEC",
-                ),
-                20.verticalSpace,
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10.h),
-                  child: RichText(
-                    text: TextSpan(
-                      text: "Vous n'a avez pas de compte ? ",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16.sp,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: "S'inscrire",
-                          style: TextStyle(
-                            color: kPrimaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () => AutoRouter.of(context)
-                                .replace(SignUpPageRoute()),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

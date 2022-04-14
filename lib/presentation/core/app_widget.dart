@@ -22,8 +22,8 @@ class AppWidget extends HookConsumerWidget {
             child: child!,
           );
         },
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
+        // localizationsDelegates: context.localizationDelegates,
+        // supportedLocales: context.supportedLocales,
         scrollBehavior: MyCustomScrollBehavior(),
         useInheritedMediaQuery: true,
         routeInformationParser: _appRouter.defaultRouteParser(),

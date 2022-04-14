@@ -11,8 +11,8 @@ import 'package:wigootaxidriver/presentation/splash/splash_page.dart';
 import 'package:wigootaxidriver/presentation/submission/submission_page.dart';
 
 @MaterialAutoRouter(routes: <AutoRoute>[
-  AutoRoute(page: SplashPage),
-  AutoRoute(page: SubmissionPage, initial: true),
+  AutoRoute(page: SplashPage, initial: true),
+  AutoRoute(page: SubmissionPage),
   AutoRoute(page: PhoneVerificationPage),
   AutoRoute(page: PhoneAuthPage),
   AutoRoute(page: LoginPage),

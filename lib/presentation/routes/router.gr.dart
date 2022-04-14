@@ -82,8 +82,8 @@ class AppRouter extends _i11.RootStackRouter {
 
   @override
   List<_i11.RouteConfig> get routes => [
-        _i11.RouteConfig(SplashPageRoute.name, path: '/splash-page'),
-        _i11.RouteConfig(SubmissionPageRoute.name, path: '/'),
+        _i11.RouteConfig(SplashPageRoute.name, path: '/'),
+        _i11.RouteConfig(SubmissionPageRoute.name, path: '/submission-page'),
         _i11.RouteConfig(PhoneVerificationPageRoute.name,
             path: '/phone-verification-page'),
         _i11.RouteConfig(PhoneAuthPageRoute.name, path: '/phone-auth-page'),
@@ -100,7 +100,7 @@ class AppRouter extends _i11.RootStackRouter {
 /// generated route for
 /// [_i1.SplashPage]
 class SplashPageRoute extends _i11.PageRouteInfo<void> {
-  const SplashPageRoute() : super(SplashPageRoute.name, path: '/splash-page');
+  const SplashPageRoute() : super(SplashPageRoute.name, path: '/');
 
   static const String name = 'SplashPageRoute';
 }
@@ -108,7 +108,8 @@ class SplashPageRoute extends _i11.PageRouteInfo<void> {
 /// generated route for
 /// [_i2.SubmissionPage]
 class SubmissionPageRoute extends _i11.PageRouteInfo<void> {
-  const SubmissionPageRoute() : super(SubmissionPageRoute.name, path: '/');
+  const SubmissionPageRoute()
+      : super(SubmissionPageRoute.name, path: '/submission-page');
 
   static const String name = 'SubmissionPageRoute';
 }

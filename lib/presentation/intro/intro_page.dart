@@ -75,54 +75,46 @@ class _IntroPageState extends State<IntroPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    buildIntroButton(
-                      text: 'Connectez avec numéro de téléphone',
-                      icon: Icon(Icons.phone),
-                      bgColor: kPrimaryColor,
-                      textColor: Colors.white,
-                      onPressed: () {},
+                    SizedBox(
+                      width: double.maxFinite,
+                      child: SubmitButton(
+                        onPressed: () =>
+                            AutoRouter.of(context).push(LoginPageRoute()),
+                        text: "CONNEXION",
+                      ),
                     ),
                     20.verticalSpace,
-                    Text(
-                      'Ou',
-                      style: TextStyle(
+                    SizedBox(
+                      width: double.maxFinite,
+                      child: SubmitButton(
+                        onPressed: () =>
+                            AutoRouter.of(context).push(SubmissionPageRoute()),
+                        text: "CRÉER UN COMPTE",
+                        textColor: kPrimaryColor,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    20.verticalSpace,
-                    buildIntroButton(
-                      text: 'Connecter avec adresse e-mail',
-                      icon: Icon(
-                        Icons.email,
-                        color: Colors.black,
-                      ),
-                      bgColor: Colors.white,
-                      textColor: Colors.black,
-                      onPressed: () {},
-                    ),
-                    20.verticalSpace,
-                    RichText(
-                      text: TextSpan(
-                        text: "Vous avez déjà un compte ? ",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.sp,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: "Devenir un chauffeur",
-                            style: TextStyle(
-                              color: Colors.deepOrange,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () => AutoRouter.of(context)
-                                  .replace(LoginPageRoute()),
-                          )
-                        ],
-                      ),
-                    ),
+                    // RichText(
+                    //   textAlign: TextAlign.center,
+                    //   text: TextSpan(
+                    //     text: "Vous avez déjà un compte ? ",
+                    //     style: TextStyle(
+                    //       color: Colors.white,
+                    //     ),
+                    //     children: [
+                    //       TextSpan(
+                    //         text: "Devenir un chauffeur",
+                    //         style: TextStyle(
+                    //           color: Colors.deepOrange,
+                    //           fontWeight: FontWeight.bold,
+                    //         ),
+                    //         recognizer: TapGestureRecognizer()
+                    //           ..onTap = () => AutoRouter.of(context)
+                    //               .replace(LoginPageRoute()),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

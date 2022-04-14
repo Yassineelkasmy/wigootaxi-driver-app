@@ -18,7 +18,7 @@ final lightTheme = FlexThemeData.light(
   useSubThemes: true,
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
   fontFamily: GoogleFonts.notoSans().fontFamily,
-  subThemesData: const FlexSubThemesData(
+  subThemesData: FlexSubThemesData(
     useTextTheme: true,
     fabUseShape: true,
     interactionEffects: true,
@@ -29,7 +29,7 @@ final lightTheme = FlexThemeData.light(
     navigationBarMutedUnselectedIcon: true,
     inputDecoratorIsFilled: true,
     inputDecoratorBorderType: FlexInputBorderType.outline,
-    inputDecoratorFillColor: Colors.white,
+    inputDecoratorFillColor: Colors.grey.shade100,
     elevatedButtonElevation: 2,
     inputDecoratorUnfocusedHasBorder: true,
     blendOnColors: true,

@@ -37,30 +37,31 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyD0hG0syxKlf0jnFAXjNvpw2khkkXdrhsk',
-    appId: '1:525418813811:web:dcea9aeabfadea8eaa4d06',
-    messagingSenderId: '525418813811',
-    projectId: 'taxdriver-51edd',
-    authDomain: 'taxdriver-51edd.firebaseapp.com',
-    storageBucket: 'taxdriver-51edd.appspot.com',
-    measurementId: 'G-SJXH1LXTNY',
+    apiKey: 'AIzaSyBcUiq4ME8Hc3N7nsoDs0YYC2e4nWwyghU',
+    appId: '1:1010420009793:web:7cda7afe785a3d61af2fc0',
+    messagingSenderId: '1010420009793',
+    projectId: 'taxi-app-user-4800a',
+    authDomain: 'taxi-app-user-4800a.firebaseapp.com',
+    storageBucket: 'taxi-app-user-4800a.appspot.com',
+    measurementId: 'G-FB7HH2MCY4',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCcPDwtoAxLQvL_3MDxGJy9QfhVlUh0K5o',
-    appId: '1:525418813811:android:15928775532f971baa4d06',
-    messagingSenderId: '525418813811',
-    projectId: 'taxdriver-51edd',
-    storageBucket: 'taxdriver-51edd.appspot.com',
+    apiKey: 'AIzaSyB7R0DmIqK5uefoFXhMG9PM0XSyUk7Z8sc',
+    appId: '1:1010420009793:android:19145049e7f96baeaf2fc0',
+    messagingSenderId: '1010420009793',
+    projectId: 'taxi-app-user-4800a',
+    storageBucket: 'taxi-app-user-4800a.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDzWK4Ti6OXVWKJkjsk5AGrkG5m76a66mc',
-    appId: '1:525418813811:ios:fce249ca7747999aaa4d06',
-    messagingSenderId: '525418813811',
-    projectId: 'taxdriver-51edd',
-    storageBucket: 'taxdriver-51edd.appspot.com',
-    iosClientId: '525418813811-3vf7neqrrpggcc0oouaumqp5bgtuc0ie.apps.googleusercontent.com',
+    apiKey: 'AIzaSyB0gp6JLrfczDndptY0k2g5IrtNDhDO60c',
+    appId: '1:1010420009793:ios:ff3fe66acba13742af2fc0',
+    messagingSenderId: '1010420009793',
+    projectId: 'taxi-app-user-4800a',
+    storageBucket: 'taxi-app-user-4800a.appspot.com',
+    androidClientId: '1010420009793-ic7djdcuk8ijujdrdcovq9hkhlqcs3r8.apps.googleusercontent.com',
+    iosClientId: '1010420009793-namf81io44i8gdlqa1l1q10nu1sge2o0.apps.googleusercontent.com',
     iosBundleId: 'com.example.wigootaxidriver',
   );
 }
