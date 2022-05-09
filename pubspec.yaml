@@ -38,6 +38,7 @@ dependencies:
   firebase_core: ^1.14.0
   firebase_auth:
   firebase_analytics:
+  firebase_storage: ^10.2.13
   google_sign_in:
   flutter_hooks:
   hooks_riverpod:
@@ -61,6 +62,7 @@ dependencies:
   in_app_notification: ^1.1.0
   easy_localization: ^3.0.0
   flutter_screenutil: ^5.3.1
+  image_picker: ^0.8.5
   dio: ^4.0.6
 dev_dependencies:
   flutter_test:

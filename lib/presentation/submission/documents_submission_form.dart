@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wigootaxidriver/presentation/shared/logo.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/step_indicator.dart';
+import 'package:wigootaxidriver/presentation/submission/widgets/upload_field.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 
 class DocumentSubmissionForm extends StatelessWidget {
@@ -41,6 +42,35 @@ class DocumentSubmissionForm extends StatelessWidget {
               ),
             ],
           ),
+          20.h.verticalSpace,
+          Column(
+            children: [
+              UploadFeild(text: 'Photo de profil*', url: 'url', name: 'name'),
+              UploadFeild(
+                  text: "Carte d'identité nationale (Devant)*",
+                  url: 'url',
+                  name: 'name'),
+              UploadFeild(
+                  text: "Carte d'identité nationale (Arrière)*",
+                  url: 'url',
+                  name: 'name'),
+              UploadFeild(
+                  text: 'Permis de conduite (Devant)*',
+                  url: 'url',
+                  name: 'name'),
+              UploadFeild(
+                  text: 'Permis de conduite (Arrière)*',
+                  url: 'url',
+                  name: 'name'),
+              UploadFeild(
+                  text: 'Carte grisse (Devant)*', url: 'url', name: 'name'),
+              UploadFeild(
+                text: 'Carte grisse (Arrière)*',
+                url: 'url',
+                name: 'name',
+              ),
+            ],
+          )
         ],
       ),
     );
