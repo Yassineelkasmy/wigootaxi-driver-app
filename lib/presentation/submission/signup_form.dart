@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:wigootaxidriver/application/auth/auth_event.dart';
+import 'package:wigootaxidriver/application/auth/auth_form/auth_form_event.dart';
+import 'package:wigootaxidriver/application/auth/auth_state.dart';
+import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
+import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/shared/logo.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
-import 'package:wigootaxidriver/presentation/submission/widgets/driver_type_card.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/step_indicator.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 
-class SignUpForm extends StatelessWidget {
-  SignUpForm({Key? key}) : super(key: key);
+class SignUpForm extends HookConsumerWidget {
+  SignUpForm({
+    Key? key,
+    required this.pageController,
+  }) : super(key: key);
+  final PageController pageController;
+
   final signUpForm = FormGroup(
     {
       'password': FormControl<String>(
@@ -19,7 +29,10 @@ class SignUpForm extends StatelessWidget {
         ],
       ),
       'confirmation': FormControl<String>(
-        validators: [Validators.required, Validators.equals('password')],
+        validators: [
+          Validators.required,
+          Validators.equals('password'),
+        ],
       ),
       'email': FormControl<String>(
         validators: [
@@ -43,7 +56,11 @@ class SignUpForm extends StatelessWidget {
   );
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authFormController = ref.watch(authFormProvider.notifier);
+    final authFormState = ref.watch(authFormProvider);
+    final authController = ref.watch(authtProvider.notifier);
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -175,10 +192,31 @@ class SignUpForm extends StatelessWidget {
                   20.verticalSpace,
                   SizedBox(
                     width: double.maxFinite,
-                    child: SubmitButton(
-                      onPressed: () {},
-                      text: "SUIVANT",
-                    ),
+                    child: authFormState.isSubmitting
+                        ? CircularProgressIndicator(
+                            color: kPrimaryColor,
+                          )
+                        : SubmitButton(
+                            onPressed: () {
+                              final email = signUpForm
+                                  .findControl('email')!
+                                  .value as String;
+                              final password = signUpForm
+                                  .findControl('password')!
+                                  .value as String;
+
+                              authFormController.mapEventToState(
+                                AuthFormEvent
+                                    .registerWithEmailAndPasswordPressed(
+                                  email,
+                                  password,
+                                  "",
+                                  "username",
+                                ),
+                              );
+                            },
+                            text: "SUIVANT",
+                          ),
                   ),
                 ],
               ))

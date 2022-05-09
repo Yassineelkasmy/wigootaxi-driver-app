@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/presentation/shared/logo.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/step_indicator.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/upload_field.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 
-class DocumentSubmissionForm extends StatelessWidget {
+class DocumentSubmissionForm extends HookConsumerWidget {
   const DocumentSubmissionForm({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SingleChildScrollView(
       child: Column(
         children: [

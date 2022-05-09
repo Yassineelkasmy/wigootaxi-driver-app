@@ -27,8 +27,8 @@ class FireBaseAuthFacade implements IAuthFacade {
         User(
           uid: user.uid,
           email: user.email!,
-          displayName: user.displayName!,
-          photoURL: user.photoURL!,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
         ),
       );
     }

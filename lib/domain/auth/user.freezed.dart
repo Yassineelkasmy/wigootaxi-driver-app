@@ -21,8 +21,8 @@ class _$UserTearOff {
   _User call(
       {required String uid,
       required String email,
-      required String displayName,
-      required String photoURL}) {
+      String? displayName,
+      String? photoURL}) {
     return _User(
       uid: uid,
       email: email,
@@ -39,8 +39,8 @@ const $User = _$UserTearOff();
 mixin _$User {
   String get uid => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get displayName => throw _privateConstructorUsedError;
-  String get photoURL => throw _privateConstructorUsedError;
+  String? get displayName => throw _privateConstructorUsedError;
+  String? get photoURL => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String uid, String email, String displayName, String photoURL});
+  $Res call({String uid, String email, String? displayName, String? photoURL});
 }
 
 /// @nodoc
@@ -80,11 +80,11 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       photoURL: photoURL == freezed
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -94,7 +94,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({String uid, String email, String displayName, String photoURL});
+  $Res call({String uid, String email, String? displayName, String? photoURL});
 }
 
 /// @nodoc
@@ -125,11 +125,11 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       photoURL: photoURL == freezed
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -140,17 +140,17 @@ class _$_User implements _User {
   const _$_User(
       {required this.uid,
       required this.email,
-      required this.displayName,
-      required this.photoURL});
+      this.displayName,
+      this.photoURL});
 
   @override
   final String uid;
   @override
   final String email;
   @override
-  final String displayName;
+  final String? displayName;
   @override
-  final String photoURL;
+  final String? photoURL;
 
   @override
   String toString() {
@@ -187,17 +187,17 @@ abstract class _User implements User {
   const factory _User(
       {required String uid,
       required String email,
-      required String displayName,
-      required String photoURL}) = _$_User;
+      String? displayName,
+      String? photoURL}) = _$_User;
 
   @override
   String get uid;
   @override
   String get email;
   @override
-  String get displayName;
+  String? get displayName;
   @override
-  String get photoURL;
+  String? get photoURL;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

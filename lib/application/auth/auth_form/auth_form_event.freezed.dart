@@ -26,6 +26,16 @@ class _$AuthFormEventTearOff {
     return const RegisterWithGooglePressed();
   }
 
+  RegisterWithEmailAndPasswordPressed registerWithEmailAndPasswordPressed(
+      String email, String password, String phone, String username) {
+    return RegisterWithEmailAndPasswordPressed(
+      email,
+      password,
+      phone,
+      username,
+    );
+  }
+
   SignInWithFaceboolPressed signInWithFacebookPressed() {
     return const SignInWithFaceboolPressed();
   }
@@ -48,6 +58,9 @@ mixin _$AuthFormEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() signInWithGooglePresseed,
     required TResult Function() registerWithGooglePressed,
+    required TResult Function(
+            String email, String password, String phone, String username)
+        registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithFacebookPressed,
     required TResult Function() registerWithFacebookPressed,
     required TResult Function() signOutPressed,
@@ -57,6 +70,9 @@ mixin _$AuthFormEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? signInWithGooglePresseed,
     TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithFacebookPressed,
     TResult Function()? registerWithFacebookPressed,
     TResult Function()? signOutPressed,
@@ -66,6 +82,9 @@ mixin _$AuthFormEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signInWithGooglePresseed,
     TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithFacebookPressed,
     TResult Function()? registerWithFacebookPressed,
     TResult Function()? signOutPressed,
@@ -78,6 +97,8 @@ mixin _$AuthFormEvent {
         signInWithGooglePresseed,
     required TResult Function(RegisterWithGooglePressed value)
         registerWithGooglePressed,
+    required TResult Function(RegisterWithEmailAndPasswordPressed value)
+        registerWithEmailAndPasswordPressed,
     required TResult Function(SignInWithFaceboolPressed value)
         signInWithFacebookPressed,
     required TResult Function(RegisterWithFaceboolPressed value)
@@ -90,6 +111,8 @@ mixin _$AuthFormEvent {
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
     TResult Function(RegisterWithGooglePressed value)?
         registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
     TResult Function(SignInWithFaceboolPressed value)?
         signInWithFacebookPressed,
     TResult Function(RegisterWithFaceboolPressed value)?
@@ -102,6 +125,8 @@ mixin _$AuthFormEvent {
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
     TResult Function(RegisterWithGooglePressed value)?
         registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
     TResult Function(SignInWithFaceboolPressed value)?
         signInWithFacebookPressed,
     TResult Function(RegisterWithFaceboolPressed value)?
@@ -172,6 +197,9 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   TResult when<TResult extends Object?>({
     required TResult Function() signInWithGooglePresseed,
     required TResult Function() registerWithGooglePressed,
+    required TResult Function(
+            String email, String password, String phone, String username)
+        registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithFacebookPressed,
     required TResult Function() registerWithFacebookPressed,
     required TResult Function() signOutPressed,
@@ -184,6 +212,9 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? signInWithGooglePresseed,
     TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithFacebookPressed,
     TResult Function()? registerWithFacebookPressed,
     TResult Function()? signOutPressed,
@@ -196,6 +227,9 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signInWithGooglePresseed,
     TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithFacebookPressed,
     TResult Function()? registerWithFacebookPressed,
     TResult Function()? signOutPressed,
@@ -214,6 +248,8 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
         signInWithGooglePresseed,
     required TResult Function(RegisterWithGooglePressed value)
         registerWithGooglePressed,
+    required TResult Function(RegisterWithEmailAndPasswordPressed value)
+        registerWithEmailAndPasswordPressed,
     required TResult Function(SignInWithFaceboolPressed value)
         signInWithFacebookPressed,
     required TResult Function(RegisterWithFaceboolPressed value)
@@ -229,6 +265,8 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
     TResult Function(RegisterWithGooglePressed value)?
         registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
     TResult Function(SignInWithFaceboolPressed value)?
         signInWithFacebookPressed,
     TResult Function(RegisterWithFaceboolPressed value)?
@@ -244,6 +282,8 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
     TResult Function(RegisterWithGooglePressed value)?
         registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
     TResult Function(SignInWithFaceboolPressed value)?
         signInWithFacebookPressed,
     TResult Function(RegisterWithFaceboolPressed value)?
@@ -307,6 +347,9 @@ class _$RegisterWithGooglePressed implements RegisterWithGooglePressed {
   TResult when<TResult extends Object?>({
     required TResult Function() signInWithGooglePresseed,
     required TResult Function() registerWithGooglePressed,
+    required TResult Function(
+            String email, String password, String phone, String username)
+        registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithFacebookPressed,
     required TResult Function() registerWithFacebookPressed,
     required TResult Function() signOutPressed,
@@ -319,6 +362,9 @@ class _$RegisterWithGooglePressed implements RegisterWithGooglePressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? signInWithGooglePresseed,
     TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithFacebookPressed,
     TResult Function()? registerWithFacebookPressed,
     TResult Function()? signOutPressed,
@@ -331,6 +377,9 @@ class _$RegisterWithGooglePressed implements RegisterWithGooglePressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signInWithGooglePresseed,
     TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithFacebookPressed,
     TResult Function()? registerWithFacebookPressed,
     TResult Function()? signOutPressed,
@@ -349,6 +398,8 @@ class _$RegisterWithGooglePressed implements RegisterWithGooglePressed {
         signInWithGooglePresseed,
     required TResult Function(RegisterWithGooglePressed value)
         registerWithGooglePressed,
+    required TResult Function(RegisterWithEmailAndPasswordPressed value)
+        registerWithEmailAndPasswordPressed,
     required TResult Function(SignInWithFaceboolPressed value)
         signInWithFacebookPressed,
     required TResult Function(RegisterWithFaceboolPressed value)
@@ -364,6 +415,8 @@ class _$RegisterWithGooglePressed implements RegisterWithGooglePressed {
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
     TResult Function(RegisterWithGooglePressed value)?
         registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
     TResult Function(SignInWithFaceboolPressed value)?
         signInWithFacebookPressed,
     TResult Function(RegisterWithFaceboolPressed value)?
@@ -379,6 +432,8 @@ class _$RegisterWithGooglePressed implements RegisterWithGooglePressed {
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
     TResult Function(RegisterWithGooglePressed value)?
         registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
     TResult Function(SignInWithFaceboolPressed value)?
         signInWithFacebookPressed,
     TResult Function(RegisterWithFaceboolPressed value)?
@@ -395,6 +450,227 @@ class _$RegisterWithGooglePressed implements RegisterWithGooglePressed {
 
 abstract class RegisterWithGooglePressed implements AuthFormEvent {
   const factory RegisterWithGooglePressed() = _$RegisterWithGooglePressed;
+}
+
+/// @nodoc
+abstract class $RegisterWithEmailAndPasswordPressedCopyWith<$Res> {
+  factory $RegisterWithEmailAndPasswordPressedCopyWith(
+          RegisterWithEmailAndPasswordPressed value,
+          $Res Function(RegisterWithEmailAndPasswordPressed) then) =
+      _$RegisterWithEmailAndPasswordPressedCopyWithImpl<$Res>;
+  $Res call({String email, String password, String phone, String username});
+}
+
+/// @nodoc
+class _$RegisterWithEmailAndPasswordPressedCopyWithImpl<$Res>
+    extends _$AuthFormEventCopyWithImpl<$Res>
+    implements $RegisterWithEmailAndPasswordPressedCopyWith<$Res> {
+  _$RegisterWithEmailAndPasswordPressedCopyWithImpl(
+      RegisterWithEmailAndPasswordPressed _value,
+      $Res Function(RegisterWithEmailAndPasswordPressed) _then)
+      : super(_value, (v) => _then(v as RegisterWithEmailAndPasswordPressed));
+
+  @override
+  RegisterWithEmailAndPasswordPressed get _value =>
+      super._value as RegisterWithEmailAndPasswordPressed;
+
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? phone = freezed,
+    Object? username = freezed,
+  }) {
+    return _then(RegisterWithEmailAndPasswordPressed(
+      email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RegisterWithEmailAndPasswordPressed
+    implements RegisterWithEmailAndPasswordPressed {
+  const _$RegisterWithEmailAndPasswordPressed(
+      this.email, this.password, this.phone, this.username);
+
+  @override
+  final String email;
+  @override
+  final String password;
+  @override
+  final String phone;
+  @override
+  final String username;
+
+  @override
+  String toString() {
+    return 'AuthFormEvent.registerWithEmailAndPasswordPressed(email: $email, password: $password, phone: $phone, username: $username)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is RegisterWithEmailAndPasswordPressed &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.password, password) &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
+            const DeepCollectionEquality().equals(other.username, username));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(password),
+      const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(username));
+
+  @JsonKey(ignore: true)
+  @override
+  $RegisterWithEmailAndPasswordPressedCopyWith<
+          RegisterWithEmailAndPasswordPressed>
+      get copyWith => _$RegisterWithEmailAndPasswordPressedCopyWithImpl<
+          RegisterWithEmailAndPasswordPressed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() signInWithGooglePresseed,
+    required TResult Function() registerWithGooglePressed,
+    required TResult Function(
+            String email, String password, String phone, String username)
+        registerWithEmailAndPasswordPressed,
+    required TResult Function() signInWithFacebookPressed,
+    required TResult Function() registerWithFacebookPressed,
+    required TResult Function() signOutPressed,
+  }) {
+    return registerWithEmailAndPasswordPressed(
+        email, password, phone, username);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? signInWithGooglePresseed,
+    TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithFacebookPressed,
+    TResult Function()? registerWithFacebookPressed,
+    TResult Function()? signOutPressed,
+  }) {
+    return registerWithEmailAndPasswordPressed?.call(
+        email, password, phone, username);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? signInWithGooglePresseed,
+    TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithFacebookPressed,
+    TResult Function()? registerWithFacebookPressed,
+    TResult Function()? signOutPressed,
+    required TResult orElse(),
+  }) {
+    if (registerWithEmailAndPasswordPressed != null) {
+      return registerWithEmailAndPasswordPressed(
+          email, password, phone, username);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SignInWithGooglePressed value)
+        signInWithGooglePresseed,
+    required TResult Function(RegisterWithGooglePressed value)
+        registerWithGooglePressed,
+    required TResult Function(RegisterWithEmailAndPasswordPressed value)
+        registerWithEmailAndPasswordPressed,
+    required TResult Function(SignInWithFaceboolPressed value)
+        signInWithFacebookPressed,
+    required TResult Function(RegisterWithFaceboolPressed value)
+        registerWithFacebookPressed,
+    required TResult Function(SignOutPressed value) signOutPressed,
+  }) {
+    return registerWithEmailAndPasswordPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
+    TResult Function(RegisterWithGooglePressed value)?
+        registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
+    TResult Function(SignInWithFaceboolPressed value)?
+        signInWithFacebookPressed,
+    TResult Function(RegisterWithFaceboolPressed value)?
+        registerWithFacebookPressed,
+    TResult Function(SignOutPressed value)? signOutPressed,
+  }) {
+    return registerWithEmailAndPasswordPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
+    TResult Function(RegisterWithGooglePressed value)?
+        registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
+    TResult Function(SignInWithFaceboolPressed value)?
+        signInWithFacebookPressed,
+    TResult Function(RegisterWithFaceboolPressed value)?
+        registerWithFacebookPressed,
+    TResult Function(SignOutPressed value)? signOutPressed,
+    required TResult orElse(),
+  }) {
+    if (registerWithEmailAndPasswordPressed != null) {
+      return registerWithEmailAndPasswordPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RegisterWithEmailAndPasswordPressed implements AuthFormEvent {
+  const factory RegisterWithEmailAndPasswordPressed(
+          String email, String password, String phone, String username) =
+      _$RegisterWithEmailAndPasswordPressed;
+
+  String get email;
+  String get password;
+  String get phone;
+  String get username;
+  @JsonKey(ignore: true)
+  $RegisterWithEmailAndPasswordPressedCopyWith<
+          RegisterWithEmailAndPasswordPressed>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -442,6 +718,9 @@ class _$SignInWithFaceboolPressed implements SignInWithFaceboolPressed {
   TResult when<TResult extends Object?>({
     required TResult Function() signInWithGooglePresseed,
     required TResult Function() registerWithGooglePressed,
+    required TResult Function(
+            String email, String password, String phone, String username)
+        registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithFacebookPressed,
     required TResult Function() registerWithFacebookPressed,
     required TResult Function() signOutPressed,
@@ -454,6 +733,9 @@ class _$SignInWithFaceboolPressed implements SignInWithFaceboolPressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? signInWithGooglePresseed,
     TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithFacebookPressed,
     TResult Function()? registerWithFacebookPressed,
     TResult Function()? signOutPressed,
@@ -466,6 +748,9 @@ class _$SignInWithFaceboolPressed implements SignInWithFaceboolPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signInWithGooglePresseed,
     TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithFacebookPressed,
     TResult Function()? registerWithFacebookPressed,
     TResult Function()? signOutPressed,
@@ -484,6 +769,8 @@ class _$SignInWithFaceboolPressed implements SignInWithFaceboolPressed {
         signInWithGooglePresseed,
     required TResult Function(RegisterWithGooglePressed value)
         registerWithGooglePressed,
+    required TResult Function(RegisterWithEmailAndPasswordPressed value)
+        registerWithEmailAndPasswordPressed,
     required TResult Function(SignInWithFaceboolPressed value)
         signInWithFacebookPressed,
     required TResult Function(RegisterWithFaceboolPressed value)
@@ -499,6 +786,8 @@ class _$SignInWithFaceboolPressed implements SignInWithFaceboolPressed {
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
     TResult Function(RegisterWithGooglePressed value)?
         registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
     TResult Function(SignInWithFaceboolPressed value)?
         signInWithFacebookPressed,
     TResult Function(RegisterWithFaceboolPressed value)?
@@ -514,6 +803,8 @@ class _$SignInWithFaceboolPressed implements SignInWithFaceboolPressed {
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
     TResult Function(RegisterWithGooglePressed value)?
         registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
     TResult Function(SignInWithFaceboolPressed value)?
         signInWithFacebookPressed,
     TResult Function(RegisterWithFaceboolPressed value)?
@@ -578,6 +869,9 @@ class _$RegisterWithFaceboolPressed implements RegisterWithFaceboolPressed {
   TResult when<TResult extends Object?>({
     required TResult Function() signInWithGooglePresseed,
     required TResult Function() registerWithGooglePressed,
+    required TResult Function(
+            String email, String password, String phone, String username)
+        registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithFacebookPressed,
     required TResult Function() registerWithFacebookPressed,
     required TResult Function() signOutPressed,
@@ -590,6 +884,9 @@ class _$RegisterWithFaceboolPressed implements RegisterWithFaceboolPressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? signInWithGooglePresseed,
     TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithFacebookPressed,
     TResult Function()? registerWithFacebookPressed,
     TResult Function()? signOutPressed,
@@ -602,6 +899,9 @@ class _$RegisterWithFaceboolPressed implements RegisterWithFaceboolPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signInWithGooglePresseed,
     TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithFacebookPressed,
     TResult Function()? registerWithFacebookPressed,
     TResult Function()? signOutPressed,
@@ -620,6 +920,8 @@ class _$RegisterWithFaceboolPressed implements RegisterWithFaceboolPressed {
         signInWithGooglePresseed,
     required TResult Function(RegisterWithGooglePressed value)
         registerWithGooglePressed,
+    required TResult Function(RegisterWithEmailAndPasswordPressed value)
+        registerWithEmailAndPasswordPressed,
     required TResult Function(SignInWithFaceboolPressed value)
         signInWithFacebookPressed,
     required TResult Function(RegisterWithFaceboolPressed value)
@@ -635,6 +937,8 @@ class _$RegisterWithFaceboolPressed implements RegisterWithFaceboolPressed {
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
     TResult Function(RegisterWithGooglePressed value)?
         registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
     TResult Function(SignInWithFaceboolPressed value)?
         signInWithFacebookPressed,
     TResult Function(RegisterWithFaceboolPressed value)?
@@ -650,6 +954,8 @@ class _$RegisterWithFaceboolPressed implements RegisterWithFaceboolPressed {
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
     TResult Function(RegisterWithGooglePressed value)?
         registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
     TResult Function(SignInWithFaceboolPressed value)?
         signInWithFacebookPressed,
     TResult Function(RegisterWithFaceboolPressed value)?
@@ -711,6 +1017,9 @@ class _$SignOutPressed implements SignOutPressed {
   TResult when<TResult extends Object?>({
     required TResult Function() signInWithGooglePresseed,
     required TResult Function() registerWithGooglePressed,
+    required TResult Function(
+            String email, String password, String phone, String username)
+        registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithFacebookPressed,
     required TResult Function() registerWithFacebookPressed,
     required TResult Function() signOutPressed,
@@ -723,6 +1032,9 @@ class _$SignOutPressed implements SignOutPressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? signInWithGooglePresseed,
     TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithFacebookPressed,
     TResult Function()? registerWithFacebookPressed,
     TResult Function()? signOutPressed,
@@ -735,6 +1047,9 @@ class _$SignOutPressed implements SignOutPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signInWithGooglePresseed,
     TResult Function()? registerWithGooglePressed,
+    TResult Function(
+            String email, String password, String phone, String username)?
+        registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithFacebookPressed,
     TResult Function()? registerWithFacebookPressed,
     TResult Function()? signOutPressed,
@@ -753,6 +1068,8 @@ class _$SignOutPressed implements SignOutPressed {
         signInWithGooglePresseed,
     required TResult Function(RegisterWithGooglePressed value)
         registerWithGooglePressed,
+    required TResult Function(RegisterWithEmailAndPasswordPressed value)
+        registerWithEmailAndPasswordPressed,
     required TResult Function(SignInWithFaceboolPressed value)
         signInWithFacebookPressed,
     required TResult Function(RegisterWithFaceboolPressed value)
@@ -768,6 +1085,8 @@ class _$SignOutPressed implements SignOutPressed {
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
     TResult Function(RegisterWithGooglePressed value)?
         registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
     TResult Function(SignInWithFaceboolPressed value)?
         signInWithFacebookPressed,
     TResult Function(RegisterWithFaceboolPressed value)?
@@ -783,6 +1102,8 @@ class _$SignOutPressed implements SignOutPressed {
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePresseed,
     TResult Function(RegisterWithGooglePressed value)?
         registerWithGooglePressed,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
     TResult Function(SignInWithFaceboolPressed value)?
         signInWithFacebookPressed,
     TResult Function(RegisterWithFaceboolPressed value)?

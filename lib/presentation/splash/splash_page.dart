@@ -15,14 +15,12 @@ class SplashPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
     ref.listen<AuthState>(authtProvider, (_, nextAuthState) {
-      Timer(Duration(seconds: 2), () {
-        nextAuthState.map(
-            initial: (_) {},
-            authenticated: (_) => AutoRouter.of(context).push(HomePageRoute()),
-            unauthenticated: (unAuth) {
-              AutoRouter.of(context).push(IntroPageRoute());
-            });
-      });
+      nextAuthState.map(
+          initial: (_) {},
+          authenticated: (_) => AutoRouter.of(context).push(IntroPageRoute()),
+          unauthenticated: (unAuth) {
+            AutoRouter.of(context).replace(IntroPageRoute());
+          });
     });
 
     return Scaffold(

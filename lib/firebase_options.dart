@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -36,32 +39,21 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBcUiq4ME8Hc3N7nsoDs0YYC2e4nWwyghU',
-    appId: '1:1010420009793:web:7cda7afe785a3d61af2fc0',
-    messagingSenderId: '1010420009793',
-    projectId: 'taxi-app-user-4800a',
-    authDomain: 'taxi-app-user-4800a.firebaseapp.com',
-    storageBucket: 'taxi-app-user-4800a.appspot.com',
-    measurementId: 'G-FB7HH2MCY4',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB7R0DmIqK5uefoFXhMG9PM0XSyUk7Z8sc',
-    appId: '1:1010420009793:android:19145049e7f96baeaf2fc0',
-    messagingSenderId: '1010420009793',
-    projectId: 'taxi-app-user-4800a',
-    storageBucket: 'taxi-app-user-4800a.appspot.com',
+    apiKey: 'AIzaSyCYl-u_Z0fQDAGqz-lSQEQS0imdfuQUBIk',
+    appId: '1:114866143933:android:5fcc8f73b8c87b5299add4',
+    messagingSenderId: '114866143933',
+    projectId: 'taxi-app-driver-a27da',
+    storageBucket: 'taxi-app-driver-a27da.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB0gp6JLrfczDndptY0k2g5IrtNDhDO60c',
-    appId: '1:1010420009793:ios:ff3fe66acba13742af2fc0',
-    messagingSenderId: '1010420009793',
-    projectId: 'taxi-app-user-4800a',
-    storageBucket: 'taxi-app-user-4800a.appspot.com',
-    androidClientId: '1010420009793-ic7djdcuk8ijujdrdcovq9hkhlqcs3r8.apps.googleusercontent.com',
-    iosClientId: '1010420009793-namf81io44i8gdlqa1l1q10nu1sge2o0.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAttBAkygqVhuE9MU5-PAI6B2ied_848Sk',
+    appId: '1:114866143933:ios:8e0f1b0d27dde51399add4',
+    messagingSenderId: '114866143933',
+    projectId: 'taxi-app-driver-a27da',
+    storageBucket: 'taxi-app-driver-a27da.appspot.com',
+    iosClientId: '114866143933-1tkpnb9afi4kg0tuqa86lk98v0qsjqfv.apps.googleusercontent.com',
     iosBundleId: 'com.example.wigootaxidriver',
   );
 }

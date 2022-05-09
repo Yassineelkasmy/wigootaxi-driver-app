@@ -8,6 +8,12 @@ class AuthFormEvent with _$AuthFormEvent {
       SignInWithGooglePressed;
   const factory AuthFormEvent.registerWithGooglePressed() =
       RegisterWithGooglePressed;
+  const factory AuthFormEvent.registerWithEmailAndPasswordPressed(
+    String email,
+    String password,
+    String phone,
+    String username,
+  ) = RegisterWithEmailAndPasswordPressed;
   const factory AuthFormEvent.signInWithFacebookPressed() =
       SignInWithFaceboolPressed;
   const factory AuthFormEvent.registerWithFacebookPressed() =

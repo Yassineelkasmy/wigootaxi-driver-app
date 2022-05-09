@@ -32,7 +32,7 @@ SideDrawer buildSideDrawer(User user, WidgetRef ref, BuildContext context) {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    image: NetworkImage(user.photoURL),
+                    image: NetworkImage("user.photoURL"),
                     fit: BoxFit.fitWidth,
                   ),
                 ),
@@ -49,7 +49,7 @@ SideDrawer buildSideDrawer(User user, WidgetRef ref, BuildContext context) {
                     ),
                   ),
                   Text(
-                    user.displayName,
+                    "user.displayName",
                     style: const TextStyle(
                       color: Colors.white,
                     ),

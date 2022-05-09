@@ -35,8 +35,10 @@ class AppRouter extends _i11.RootStackRouter {
           routeData: routeData, child: const _i1.SplashPage());
     },
     SubmissionPageRoute.name: (routeData) {
+      final args = routeData.argsAs<SubmissionPageRouteArgs>(
+          orElse: () => const SubmissionPageRouteArgs());
       return _i11.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.SubmissionPage());
+          routeData: routeData, child: _i2.SubmissionPage(key: args.key));
     },
     PhoneVerificationPageRoute.name: (routeData) {
       return _i11.MaterialPageX<dynamic>(
@@ -107,11 +109,23 @@ class SplashPageRoute extends _i11.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.SubmissionPage]
-class SubmissionPageRoute extends _i11.PageRouteInfo<void> {
-  const SubmissionPageRoute()
-      : super(SubmissionPageRoute.name, path: '/submission-page');
+class SubmissionPageRoute extends _i11.PageRouteInfo<SubmissionPageRouteArgs> {
+  SubmissionPageRoute({_i12.Key? key})
+      : super(SubmissionPageRoute.name,
+            path: '/submission-page', args: SubmissionPageRouteArgs(key: key));
 
   static const String name = 'SubmissionPageRoute';
+}
+
+class SubmissionPageRouteArgs {
+  const SubmissionPageRouteArgs({this.key});
+
+  final _i12.Key? key;
+
+  @override
+  String toString() {
+    return 'SubmissionPageRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
