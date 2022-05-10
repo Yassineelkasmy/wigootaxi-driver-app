@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
+import 'package:wigootaxidriver/application/providers/submission_provider.dart';
+import 'package:wigootaxidriver/application/submission/submission_event.dart';
 import 'package:wigootaxidriver/presentation/shared/logo.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/step_indicator.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/upload_field.dart';
@@ -13,6 +15,11 @@ class DocumentSubmissionForm extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userProvider)!;
+    final submissionController = ref.watch(submissionProvider.notifier);
+
+    submissionController.mapEventToState(
+      SubmissionEvent.createUserSubmissionRequested(user.uid),
+    );
 
     return SingleChildScrollView(
       child: Column(

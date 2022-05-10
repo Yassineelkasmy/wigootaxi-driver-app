@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -9,6 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
 import 'package:wigootaxidriver/application/providers/submission_provider.dart';
 import 'package:wigootaxidriver/application/submission/submission_event.dart';
+import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 
 class UploadFeild extends HookConsumerWidget {
@@ -77,28 +79,84 @@ class UploadFeild extends HookConsumerWidget {
             child: Row(
               children: [
                 Icon(
-                  Icons.image,
+                  imageUrl.value == null ? Icons.image : Icons.edit_outlined,
                   color: kPrimaryColor,
                 ),
-                Expanded(
-                    child: Center(
-                  child: isLoading.value
-                      ? CircularProgressIndicator(
-                          color: kPrimaryColor,
-                        )
-                      : Text(
-                          'Ajouter $text',
-                          style: TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 12.sp,
+                imageUrl.value == null
+                    ? Expanded(
+                        child: Center(
+                          child: isLoading.value
+                              ? CircularProgressIndicator(
+                                  color: kPrimaryColor,
+                                )
+                              : Text(
+                                  'Ajouter $text',
+                                  style: TextStyle(
+                                    color: kPrimaryColor,
+                                    fontSize: 12.sp,
+                                  ),
+                                ),
+                        ),
+                      )
+                    : Expanded(
+                        child: GestureDetector(
+                          onTap: () {
+                            AutoRouter.of(context).push(
+                              DocumentImagePageRoute(image: imageUrl.value!),
+                            );
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Document téléchargé",
+                                style: TextStyle(
+                                  color: Colors.green,
+                                  fontSize: 12.sp,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  AutoRouter.of(context).push(
+                                    DocumentImagePageRoute(
+                                        image: imageUrl.value!),
+                                  );
+                                },
+                                color: Colors.green,
+                                icon: Icon(Icons.navigate_next),
+                              ),
+                            ],
                           ),
                         ),
-                ))
+                      ),
+                if (imageUrl.value != null)
+                  IconButton(
+                    color: kPrimaryColor,
+                    icon: Icon(Icons.cancel),
+                    onPressed: () async {
+                      await submissionController.mapEventToState(
+                        SubmissionEvent.documentRemoved(name),
+                      );
+                      imageUrl.value = null;
+                    },
+                  ),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+}
+
+class DocumentImagePage extends StatelessWidget {
+  const DocumentImagePage({
+    Key? key,
+    required this.image,
+  }) : super(key: key);
+  final String image;
+  @override
+  Widget build(BuildContext context) {
+    return Image.network(image);
   }
 }

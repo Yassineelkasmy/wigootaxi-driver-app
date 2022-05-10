@@ -18,10 +18,14 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SubmissionStateTearOff {
   const _$SubmissionStateTearOff();
 
-  _SubmissionState call({required bool isSubmitting, required String type}) {
+  _SubmissionState call(
+      {required bool isSubmitting,
+      required String type,
+      required Map<String, String> docs}) {
     return _SubmissionState(
       isSubmitting: isSubmitting,
       type: type,
+      docs: docs,
     );
   }
 }
@@ -33,6 +37,7 @@ const $SubmissionState = _$SubmissionStateTearOff();
 mixin _$SubmissionState {
   bool get isSubmitting => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
+  Map<String, String> get docs => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SubmissionStateCopyWith<SubmissionState> get copyWith =>
@@ -44,7 +49,7 @@ abstract class $SubmissionStateCopyWith<$Res> {
   factory $SubmissionStateCopyWith(
           SubmissionState value, $Res Function(SubmissionState) then) =
       _$SubmissionStateCopyWithImpl<$Res>;
-  $Res call({bool isSubmitting, String type});
+  $Res call({bool isSubmitting, String type, Map<String, String> docs});
 }
 
 /// @nodoc
@@ -60,6 +65,7 @@ class _$SubmissionStateCopyWithImpl<$Res>
   $Res call({
     Object? isSubmitting = freezed,
     Object? type = freezed,
+    Object? docs = freezed,
   }) {
     return _then(_value.copyWith(
       isSubmitting: isSubmitting == freezed
@@ -70,6 +76,10 @@ class _$SubmissionStateCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      docs: docs == freezed
+          ? _value.docs
+          : docs // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
     ));
   }
 }
@@ -81,7 +91,7 @@ abstract class _$SubmissionStateCopyWith<$Res>
           _SubmissionState value, $Res Function(_SubmissionState) then) =
       __$SubmissionStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isSubmitting, String type});
+  $Res call({bool isSubmitting, String type, Map<String, String> docs});
 }
 
 /// @nodoc
@@ -99,6 +109,7 @@ class __$SubmissionStateCopyWithImpl<$Res>
   $Res call({
     Object? isSubmitting = freezed,
     Object? type = freezed,
+    Object? docs = freezed,
   }) {
     return _then(_SubmissionState(
       isSubmitting: isSubmitting == freezed
@@ -109,6 +120,10 @@ class __$SubmissionStateCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      docs: docs == freezed
+          ? _value.docs
+          : docs // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
     ));
   }
 }
@@ -116,16 +131,19 @@ class __$SubmissionStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SubmissionState implements _SubmissionState {
-  const _$_SubmissionState({required this.isSubmitting, required this.type});
+  const _$_SubmissionState(
+      {required this.isSubmitting, required this.type, required this.docs});
 
   @override
   final bool isSubmitting;
   @override
   final String type;
+  @override
+  final Map<String, String> docs;
 
   @override
   String toString() {
-    return 'SubmissionState(isSubmitting: $isSubmitting, type: $type)';
+    return 'SubmissionState(isSubmitting: $isSubmitting, type: $type, docs: $docs)';
   }
 
   @override
@@ -135,14 +153,16 @@ class _$_SubmissionState implements _SubmissionState {
             other is _SubmissionState &&
             const DeepCollectionEquality()
                 .equals(other.isSubmitting, isSubmitting) &&
-            const DeepCollectionEquality().equals(other.type, type));
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.docs, docs));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isSubmitting),
-      const DeepCollectionEquality().hash(type));
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(docs));
 
   @JsonKey(ignore: true)
   @override
@@ -152,12 +172,16 @@ class _$_SubmissionState implements _SubmissionState {
 
 abstract class _SubmissionState implements SubmissionState {
   const factory _SubmissionState(
-      {required bool isSubmitting, required String type}) = _$_SubmissionState;
+      {required bool isSubmitting,
+      required String type,
+      required Map<String, String> docs}) = _$_SubmissionState;
 
   @override
   bool get isSubmitting;
   @override
   String get type;
+  @override
+  Map<String, String> get docs;
   @override
   @JsonKey(ignore: true)
   _$SubmissionStateCopyWith<_SubmissionState> get copyWith =>

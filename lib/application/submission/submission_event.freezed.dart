@@ -26,6 +26,12 @@ class _$SubmissionEventTearOff {
     );
   }
 
+  DocumentRemoved documentRemoved(String name) {
+    return DocumentRemoved(
+      name,
+    );
+  }
+
   FormSubmitted formSubmitted() {
     return const FormSubmitted();
   }
@@ -52,6 +58,7 @@ mixin _$SubmissionEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String url, String name, String userid)
         documentSubmitted,
+    required TResult Function(String name) documentRemoved,
     required TResult Function() formSubmitted,
     required TResult Function(String userId) createUserSubmissionRequested,
     required TResult Function(String type) typeChosen,
@@ -60,6 +67,7 @@ mixin _$SubmissionEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
+    TResult Function(String name)? documentRemoved,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     TResult Function(String type)? typeChosen,
@@ -68,6 +76,7 @@ mixin _$SubmissionEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
+    TResult Function(String name)? documentRemoved,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     TResult Function(String type)? typeChosen,
@@ -77,6 +86,7 @@ mixin _$SubmissionEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DocumentSubmitted value) documentSubmitted,
+    required TResult Function(DocumentRemoved value) documentRemoved,
     required TResult Function(FormSubmitted value) formSubmitted,
     required TResult Function(CreateUserSubmissionRequested value)
         createUserSubmissionRequested,
@@ -86,6 +96,7 @@ mixin _$SubmissionEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(DocumentSubmitted value)? documentSubmitted,
+    TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
     TResult Function(CreateUserSubmissionRequested value)?
         createUserSubmissionRequested,
@@ -95,6 +106,7 @@ mixin _$SubmissionEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DocumentSubmitted value)? documentSubmitted,
+    TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
     TResult Function(CreateUserSubmissionRequested value)?
         createUserSubmissionRequested,
@@ -207,6 +219,7 @@ class _$DocumentSubmitted implements DocumentSubmitted {
   TResult when<TResult extends Object?>({
     required TResult Function(String url, String name, String userid)
         documentSubmitted,
+    required TResult Function(String name) documentRemoved,
     required TResult Function() formSubmitted,
     required TResult Function(String userId) createUserSubmissionRequested,
     required TResult Function(String type) typeChosen,
@@ -218,6 +231,7 @@ class _$DocumentSubmitted implements DocumentSubmitted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
+    TResult Function(String name)? documentRemoved,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     TResult Function(String type)? typeChosen,
@@ -229,6 +243,7 @@ class _$DocumentSubmitted implements DocumentSubmitted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
+    TResult Function(String name)? documentRemoved,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     TResult Function(String type)? typeChosen,
@@ -244,6 +259,7 @@ class _$DocumentSubmitted implements DocumentSubmitted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DocumentSubmitted value) documentSubmitted,
+    required TResult Function(DocumentRemoved value) documentRemoved,
     required TResult Function(FormSubmitted value) formSubmitted,
     required TResult Function(CreateUserSubmissionRequested value)
         createUserSubmissionRequested,
@@ -256,6 +272,7 @@ class _$DocumentSubmitted implements DocumentSubmitted {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(DocumentSubmitted value)? documentSubmitted,
+    TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
     TResult Function(CreateUserSubmissionRequested value)?
         createUserSubmissionRequested,
@@ -268,6 +285,7 @@ class _$DocumentSubmitted implements DocumentSubmitted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DocumentSubmitted value)? documentSubmitted,
+    TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
     TResult Function(CreateUserSubmissionRequested value)?
         createUserSubmissionRequested,
@@ -290,6 +308,162 @@ abstract class DocumentSubmitted implements SubmissionEvent {
   String get userid;
   @JsonKey(ignore: true)
   $DocumentSubmittedCopyWith<DocumentSubmitted> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DocumentRemovedCopyWith<$Res> {
+  factory $DocumentRemovedCopyWith(
+          DocumentRemoved value, $Res Function(DocumentRemoved) then) =
+      _$DocumentRemovedCopyWithImpl<$Res>;
+  $Res call({String name});
+}
+
+/// @nodoc
+class _$DocumentRemovedCopyWithImpl<$Res>
+    extends _$SubmissionEventCopyWithImpl<$Res>
+    implements $DocumentRemovedCopyWith<$Res> {
+  _$DocumentRemovedCopyWithImpl(
+      DocumentRemoved _value, $Res Function(DocumentRemoved) _then)
+      : super(_value, (v) => _then(v as DocumentRemoved));
+
+  @override
+  DocumentRemoved get _value => super._value as DocumentRemoved;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+  }) {
+    return _then(DocumentRemoved(
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DocumentRemoved implements DocumentRemoved {
+  const _$DocumentRemoved(this.name);
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'SubmissionEvent.documentRemoved(name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is DocumentRemoved &&
+            const DeepCollectionEquality().equals(other.name, name));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+
+  @JsonKey(ignore: true)
+  @override
+  $DocumentRemovedCopyWith<DocumentRemoved> get copyWith =>
+      _$DocumentRemovedCopyWithImpl<DocumentRemoved>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String url, String name, String userid)
+        documentSubmitted,
+    required TResult Function(String name) documentRemoved,
+    required TResult Function() formSubmitted,
+    required TResult Function(String userId) createUserSubmissionRequested,
+    required TResult Function(String type) typeChosen,
+  }) {
+    return documentRemoved(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String url, String name, String userid)? documentSubmitted,
+    TResult Function(String name)? documentRemoved,
+    TResult Function()? formSubmitted,
+    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String type)? typeChosen,
+  }) {
+    return documentRemoved?.call(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String url, String name, String userid)? documentSubmitted,
+    TResult Function(String name)? documentRemoved,
+    TResult Function()? formSubmitted,
+    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String type)? typeChosen,
+    required TResult orElse(),
+  }) {
+    if (documentRemoved != null) {
+      return documentRemoved(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DocumentSubmitted value) documentSubmitted,
+    required TResult Function(DocumentRemoved value) documentRemoved,
+    required TResult Function(FormSubmitted value) formSubmitted,
+    required TResult Function(CreateUserSubmissionRequested value)
+        createUserSubmissionRequested,
+    required TResult Function(TypeChosen value) typeChosen,
+  }) {
+    return documentRemoved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DocumentSubmitted value)? documentSubmitted,
+    TResult Function(DocumentRemoved value)? documentRemoved,
+    TResult Function(FormSubmitted value)? formSubmitted,
+    TResult Function(CreateUserSubmissionRequested value)?
+        createUserSubmissionRequested,
+    TResult Function(TypeChosen value)? typeChosen,
+  }) {
+    return documentRemoved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DocumentSubmitted value)? documentSubmitted,
+    TResult Function(DocumentRemoved value)? documentRemoved,
+    TResult Function(FormSubmitted value)? formSubmitted,
+    TResult Function(CreateUserSubmissionRequested value)?
+        createUserSubmissionRequested,
+    TResult Function(TypeChosen value)? typeChosen,
+    required TResult orElse(),
+  }) {
+    if (documentRemoved != null) {
+      return documentRemoved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DocumentRemoved implements SubmissionEvent {
+  const factory DocumentRemoved(String name) = _$DocumentRemoved;
+
+  String get name;
+  @JsonKey(ignore: true)
+  $DocumentRemovedCopyWith<DocumentRemoved> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -336,6 +510,7 @@ class _$FormSubmitted implements FormSubmitted {
   TResult when<TResult extends Object?>({
     required TResult Function(String url, String name, String userid)
         documentSubmitted,
+    required TResult Function(String name) documentRemoved,
     required TResult Function() formSubmitted,
     required TResult Function(String userId) createUserSubmissionRequested,
     required TResult Function(String type) typeChosen,
@@ -347,6 +522,7 @@ class _$FormSubmitted implements FormSubmitted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
+    TResult Function(String name)? documentRemoved,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     TResult Function(String type)? typeChosen,
@@ -358,6 +534,7 @@ class _$FormSubmitted implements FormSubmitted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
+    TResult Function(String name)? documentRemoved,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     TResult Function(String type)? typeChosen,
@@ -373,6 +550,7 @@ class _$FormSubmitted implements FormSubmitted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DocumentSubmitted value) documentSubmitted,
+    required TResult Function(DocumentRemoved value) documentRemoved,
     required TResult Function(FormSubmitted value) formSubmitted,
     required TResult Function(CreateUserSubmissionRequested value)
         createUserSubmissionRequested,
@@ -385,6 +563,7 @@ class _$FormSubmitted implements FormSubmitted {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(DocumentSubmitted value)? documentSubmitted,
+    TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
     TResult Function(CreateUserSubmissionRequested value)?
         createUserSubmissionRequested,
@@ -397,6 +576,7 @@ class _$FormSubmitted implements FormSubmitted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DocumentSubmitted value)? documentSubmitted,
+    TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
     TResult Function(CreateUserSubmissionRequested value)?
         createUserSubmissionRequested,
@@ -485,6 +665,7 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
   TResult when<TResult extends Object?>({
     required TResult Function(String url, String name, String userid)
         documentSubmitted,
+    required TResult Function(String name) documentRemoved,
     required TResult Function() formSubmitted,
     required TResult Function(String userId) createUserSubmissionRequested,
     required TResult Function(String type) typeChosen,
@@ -496,6 +677,7 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
+    TResult Function(String name)? documentRemoved,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     TResult Function(String type)? typeChosen,
@@ -507,6 +689,7 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
+    TResult Function(String name)? documentRemoved,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     TResult Function(String type)? typeChosen,
@@ -522,6 +705,7 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DocumentSubmitted value) documentSubmitted,
+    required TResult Function(DocumentRemoved value) documentRemoved,
     required TResult Function(FormSubmitted value) formSubmitted,
     required TResult Function(CreateUserSubmissionRequested value)
         createUserSubmissionRequested,
@@ -534,6 +718,7 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(DocumentSubmitted value)? documentSubmitted,
+    TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
     TResult Function(CreateUserSubmissionRequested value)?
         createUserSubmissionRequested,
@@ -546,6 +731,7 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DocumentSubmitted value)? documentSubmitted,
+    TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
     TResult Function(CreateUserSubmissionRequested value)?
         createUserSubmissionRequested,
@@ -634,6 +820,7 @@ class _$TypeChosen implements TypeChosen {
   TResult when<TResult extends Object?>({
     required TResult Function(String url, String name, String userid)
         documentSubmitted,
+    required TResult Function(String name) documentRemoved,
     required TResult Function() formSubmitted,
     required TResult Function(String userId) createUserSubmissionRequested,
     required TResult Function(String type) typeChosen,
@@ -645,6 +832,7 @@ class _$TypeChosen implements TypeChosen {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
+    TResult Function(String name)? documentRemoved,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     TResult Function(String type)? typeChosen,
@@ -656,6 +844,7 @@ class _$TypeChosen implements TypeChosen {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
+    TResult Function(String name)? documentRemoved,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     TResult Function(String type)? typeChosen,
@@ -671,6 +860,7 @@ class _$TypeChosen implements TypeChosen {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DocumentSubmitted value) documentSubmitted,
+    required TResult Function(DocumentRemoved value) documentRemoved,
     required TResult Function(FormSubmitted value) formSubmitted,
     required TResult Function(CreateUserSubmissionRequested value)
         createUserSubmissionRequested,
@@ -683,6 +873,7 @@ class _$TypeChosen implements TypeChosen {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(DocumentSubmitted value)? documentSubmitted,
+    TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
     TResult Function(CreateUserSubmissionRequested value)?
         createUserSubmissionRequested,
@@ -695,6 +886,7 @@ class _$TypeChosen implements TypeChosen {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DocumentSubmitted value)? documentSubmitted,
+    TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
     TResult Function(CreateUserSubmissionRequested value)?
         createUserSubmissionRequested,

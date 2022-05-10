@@ -12,10 +12,13 @@ class SubmissionController extends StateNotifier<SubmissionState> {
     return event.map(
         documentSubmitted: (event) async {
           state = state.copyWith(isSubmitting: true);
-          await _userService.submitDocument(
-            event.userid,
-            event.name,
-            event.url,
+          // await _userService.submitDocument(
+          //   event.userid,
+          //   event.name,
+          //   event.url,
+          // );
+          state = state.copyWith(
+            docs: state.docs..update(event.name, (value) => event.url),
           );
           state = state.copyWith(isSubmitting: false);
         },
@@ -27,6 +30,9 @@ class SubmissionController extends StateNotifier<SubmissionState> {
         },
         typeChosen: (event) async {
           state = state.copyWith(type: event.type);
+        },
+        documentRemoved: (event) async {
+          state = state.copyWith(docs: state.docs..remove(event.name));
         });
   }
 }
