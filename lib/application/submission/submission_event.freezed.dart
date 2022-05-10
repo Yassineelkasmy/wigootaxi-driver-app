@@ -18,9 +18,11 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SubmissionEventTearOff {
   const _$SubmissionEventTearOff();
 
-  DocumentSubmitted documentSubmitted(String url) {
+  DocumentSubmitted documentSubmitted(String url, String name, String userid) {
     return DocumentSubmitted(
       url,
+      name,
+      userid,
     );
   }
 
@@ -42,21 +44,22 @@ const $SubmissionEvent = _$SubmissionEventTearOff();
 mixin _$SubmissionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String url) documentSubmitted,
+    required TResult Function(String url, String name, String userid)
+        documentSubmitted,
     required TResult Function() formSubmitted,
     required TResult Function(String userId) createUserSubmissionRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String url)? documentSubmitted,
+    TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String url)? documentSubmitted,
+    TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     required TResult orElse(),
@@ -111,7 +114,7 @@ abstract class $DocumentSubmittedCopyWith<$Res> {
   factory $DocumentSubmittedCopyWith(
           DocumentSubmitted value, $Res Function(DocumentSubmitted) then) =
       _$DocumentSubmittedCopyWithImpl<$Res>;
-  $Res call({String url});
+  $Res call({String url, String name, String userid});
 }
 
 /// @nodoc
@@ -128,11 +131,21 @@ class _$DocumentSubmittedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? url = freezed,
+    Object? name = freezed,
+    Object? userid = freezed,
   }) {
     return _then(DocumentSubmitted(
       url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
+              as String,
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      userid == freezed
+          ? _value.userid
+          : userid // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -141,14 +154,18 @@ class _$DocumentSubmittedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DocumentSubmitted implements DocumentSubmitted {
-  const _$DocumentSubmitted(this.url);
+  const _$DocumentSubmitted(this.url, this.name, this.userid);
 
   @override
   final String url;
+  @override
+  final String name;
+  @override
+  final String userid;
 
   @override
   String toString() {
-    return 'SubmissionEvent.documentSubmitted(url: $url)';
+    return 'SubmissionEvent.documentSubmitted(url: $url, name: $name, userid: $userid)';
   }
 
   @override
@@ -156,12 +173,17 @@ class _$DocumentSubmitted implements DocumentSubmitted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is DocumentSubmitted &&
-            const DeepCollectionEquality().equals(other.url, url));
+            const DeepCollectionEquality().equals(other.url, url) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.userid, userid));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(url));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(url),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(userid));
 
   @JsonKey(ignore: true)
   @override
@@ -171,33 +193,34 @@ class _$DocumentSubmitted implements DocumentSubmitted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String url) documentSubmitted,
+    required TResult Function(String url, String name, String userid)
+        documentSubmitted,
     required TResult Function() formSubmitted,
     required TResult Function(String userId) createUserSubmissionRequested,
   }) {
-    return documentSubmitted(url);
+    return documentSubmitted(url, name, userid);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String url)? documentSubmitted,
+    TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
   }) {
-    return documentSubmitted?.call(url);
+    return documentSubmitted?.call(url, name, userid);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String url)? documentSubmitted,
+    TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     required TResult orElse(),
   }) {
     if (documentSubmitted != null) {
-      return documentSubmitted(url);
+      return documentSubmitted(url, name, userid);
     }
     return orElse();
   }
@@ -241,9 +264,12 @@ class _$DocumentSubmitted implements DocumentSubmitted {
 }
 
 abstract class DocumentSubmitted implements SubmissionEvent {
-  const factory DocumentSubmitted(String url) = _$DocumentSubmitted;
+  const factory DocumentSubmitted(String url, String name, String userid) =
+      _$DocumentSubmitted;
 
   String get url;
+  String get name;
+  String get userid;
   @JsonKey(ignore: true)
   $DocumentSubmittedCopyWith<DocumentSubmitted> get copyWith =>
       throw _privateConstructorUsedError;
@@ -290,7 +316,8 @@ class _$FormSubmitted implements FormSubmitted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String url) documentSubmitted,
+    required TResult Function(String url, String name, String userid)
+        documentSubmitted,
     required TResult Function() formSubmitted,
     required TResult Function(String userId) createUserSubmissionRequested,
   }) {
@@ -300,7 +327,7 @@ class _$FormSubmitted implements FormSubmitted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String url)? documentSubmitted,
+    TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
   }) {
@@ -310,7 +337,7 @@ class _$FormSubmitted implements FormSubmitted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String url)? documentSubmitted,
+    TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     required TResult orElse(),
@@ -432,7 +459,8 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String url) documentSubmitted,
+    required TResult Function(String url, String name, String userid)
+        documentSubmitted,
     required TResult Function() formSubmitted,
     required TResult Function(String userId) createUserSubmissionRequested,
   }) {
@@ -442,7 +470,7 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String url)? documentSubmitted,
+    TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
   }) {
@@ -452,7 +480,7 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String url)? documentSubmitted,
+    TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function()? formSubmitted,
     TResult Function(String userId)? createUserSubmissionRequested,
     required TResult orElse(),

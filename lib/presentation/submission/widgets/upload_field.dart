@@ -4,10 +4,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:wigootaxidriver/application/providers/submission_provider.dart';
+import 'package:wigootaxidriver/application/submission/submission_event.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 
-class UploadFeild extends HookWidget {
+class UploadFeild extends HookConsumerWidget {
   UploadFeild({
     Key? key,
     required this.text,
@@ -20,7 +23,9 @@ class UploadFeild extends HookWidget {
   final ImagePicker _picker = ImagePicker();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final submissionController = ref.watch(submissionProvider.notifier);
+    final submissionState = ref.watch(submissionProvider);
     final imageUrl = useState<String?>(null);
     final isLoading = useState<bool>(false);
     return Padding(
@@ -53,10 +58,16 @@ class UploadFeild extends HookWidget {
                 isLoading.value = true;
                 final file = File(image.path);
                 final destination = 'files/userid/$name';
-                final reference = FirebaseStorage.instance.ref();
-                final ref = await reference.putFile(file);
-                final _url = await ref.ref.getDownloadURL();
-                imageUrl.value = _url;
+                final reference =
+                    FirebaseStorage.instance.ref().child(destination);
+                try {
+                  final ref = await reference.putFile(file);
+                  final _url = await ref.ref.getDownloadURL();
+                  imageUrl.value = _url;
+                  await submissionController.mapEventToState(
+                    SubmissionEvent.documentSubmitted(url, name, 'userid'),
+                  );
+                } catch (e) {}
               }
               isLoading.value = false;
             },
