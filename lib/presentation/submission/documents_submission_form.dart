@@ -46,29 +46,40 @@ class DocumentSubmissionForm extends HookConsumerWidget {
           20.h.verticalSpace,
           Column(
             children: [
-              UploadFeild(text: 'Photo de profil*', url: 'url', name: 'name'),
               UploadFeild(
-                  text: "Carte d'identité nationale (Devant)*",
-                  url: 'url',
-                  name: 'name'),
+                text: 'Photo de profil*',
+                url: 'url',
+                name: 'profil',
+              ),
               UploadFeild(
-                  text: "Carte d'identité nationale (Arrière)*",
-                  url: 'url',
-                  name: 'name'),
+                text: "Carte d'identité nationale (Devant)*",
+                url: 'url',
+                name: 'cin_devant',
+              ),
               UploadFeild(
-                  text: 'Permis de conduite (Devant)*',
-                  url: 'url',
-                  name: 'name'),
+                text: "Carte d'identité nationale (Arrière)*",
+                url: 'url',
+                name: 'cin_arriere',
+              ),
               UploadFeild(
-                  text: 'Permis de conduite (Arrière)*',
-                  url: 'url',
-                  name: 'name'),
+                text: 'Permis de conduite (Devant)*',
+                url: 'url',
+                name: 'permis_devant',
+              ),
               UploadFeild(
-                  text: 'Carte grisse (Devant)*', url: 'url', name: 'name'),
+                text: 'Permis de conduite (Arrière)*',
+                url: 'url',
+                name: 'permis_arriere',
+              ),
+              UploadFeild(
+                text: 'Carte grisse (Devant)*',
+                url: 'url',
+                name: 'cartegrisse_devant',
+              ),
               UploadFeild(
                 text: 'Carte grisse (Arrière)*',
                 url: 'url',
-                name: 'name',
+                name: 'cartegrisse_arriere',
               ),
             ],
           )
