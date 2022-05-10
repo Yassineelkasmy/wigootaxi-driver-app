@@ -6,6 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
 import 'package:wigootaxidriver/application/providers/submission_provider.dart';
 import 'package:wigootaxidriver/application/submission/submission_event.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
@@ -26,6 +27,8 @@ class UploadFeild extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final submissionController = ref.watch(submissionProvider.notifier);
     final submissionState = ref.watch(submissionProvider);
+    final user = ref.watch(userProvider)!;
+
     final imageUrl = useState<String?>(null);
     final isLoading = useState<bool>(false);
     return Padding(
@@ -57,7 +60,7 @@ class UploadFeild extends HookConsumerWidget {
               if (image != null) {
                 isLoading.value = true;
                 final file = File(image.path);
-                final destination = 'files/userid/$name';
+                final destination = 'files/${user.uid}/$name';
                 final reference =
                     FirebaseStorage.instance.ref().child(destination);
                 try {
@@ -65,7 +68,7 @@ class UploadFeild extends HookConsumerWidget {
                   final _url = await ref.ref.getDownloadURL();
                   imageUrl.value = _url;
                   await submissionController.mapEventToState(
-                    SubmissionEvent.documentSubmitted(url, name, 'userid'),
+                    SubmissionEvent.documentSubmitted(url, name, user.uid),
                   );
                 } catch (e) {}
               }

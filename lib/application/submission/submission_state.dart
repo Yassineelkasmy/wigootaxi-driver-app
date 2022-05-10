@@ -6,7 +6,11 @@ part 'submission_state.freezed.dart';
 class SubmissionState with _$SubmissionState {
   const factory SubmissionState({
     required bool isSubmitting,
+    required String type,
   }) = _SubmissionState;
 
-  factory SubmissionState.initial() => SubmissionState(isSubmitting: false);
+  factory SubmissionState.initial() => SubmissionState(
+        isSubmitting: false,
+        type: '',
+      );
 }

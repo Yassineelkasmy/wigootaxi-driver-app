@@ -10,21 +10,23 @@ class SubmissionController extends StateNotifier<SubmissionState> {
 
   Future mapEventToState(SubmissionEvent event) {
     return event.map(
-      documentSubmitted: (event) async {
-        state = state.copyWith(isSubmitting: true);
-        await _userService.submitDocument(
-          event.userid,
-          event.name,
-          event.url,
-        );
-        state = state.copyWith(isSubmitting: false);
-      },
-      formSubmitted: (event) async {},
-      createUserSubmissionRequested: (event) async {
-        state = state.copyWith(isSubmitting: true);
-        await _userService.createSubmission(event.userId);
-        state = state.copyWith(isSubmitting: false);
-      },
-    );
+        documentSubmitted: (event) async {
+          state = state.copyWith(isSubmitting: true);
+          await _userService.submitDocument(
+            event.userid,
+            event.name,
+            event.url,
+          );
+          state = state.copyWith(isSubmitting: false);
+        },
+        formSubmitted: (event) async {},
+        createUserSubmissionRequested: (event) async {
+          state = state.copyWith(isSubmitting: true);
+          await _userService.createSubmission(event.userId, state.type);
+          state = state.copyWith(isSubmitting: false);
+        },
+        typeChosen: (event) async {
+          state = state.copyWith(type: event.type);
+        });
   }
 }

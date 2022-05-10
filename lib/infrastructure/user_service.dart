@@ -10,9 +10,11 @@ class UserService {
   late CollectionReference collectionReference;
   Future<void> createSubmission(
     String userid,
+    String type,
   ) async {
     await collectionReference.doc(userid).set({
       "ts": Timestamp.now(),
+      "type": type,
     });
   }
 

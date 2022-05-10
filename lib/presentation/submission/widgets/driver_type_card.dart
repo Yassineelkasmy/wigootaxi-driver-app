@@ -7,49 +7,52 @@ Widget buildDriverTypeCard({
   required String description,
   required void Function() onPressed,
 }) {
-  return Container(
-    decoration: BoxDecoration(
-      border: Border.all(color: kPrimaryColor),
-      color: kPrimaryColor,
-    ),
-    child: Row(
-      children: [
-        Expanded(
-          child: Container(
-            color: Colors.white,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ),
-                  5.h.verticalSpace,
-                  Text(
-                    description,
-                    style: TextStyle(fontSize: 16.sp, color: Colors.grey),
-                  ),
-                ],
+  return GestureDetector(
+    onTap: onPressed,
+    child: Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: kPrimaryColor),
+        color: kPrimaryColor,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              color: Colors.white,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                    5.h.verticalSpace,
+                    Text(
+                      description,
+                      style: TextStyle(fontSize: 16.sp, color: Colors.grey),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        SizedBox(
-          width: 64.w,
-          child: Center(
-            child: Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.white,
-              size: 32,
+          SizedBox(
+            width: 64.w,
+            child: Center(
+              child: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.white,
+                size: 32,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     ),
   );
 }

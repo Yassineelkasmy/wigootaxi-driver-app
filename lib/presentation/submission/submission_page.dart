@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/application/auth/auth_event.dart';
 import 'package:wigootaxidriver/application/auth/auth_state.dart';
 import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
+import 'package:wigootaxidriver/domain/auth/user.dart';
 import 'package:wigootaxidriver/presentation/submission/documents_submission_form.dart';
 import 'package:wigootaxidriver/presentation/submission/driver_type_form.dart';
 import 'package:wigootaxidriver/presentation/submission/signup_form.dart';
@@ -12,16 +13,33 @@ import 'package:wigootaxidriver/presentation/submission/signup_form.dart';
 class SubmissionPage extends HookConsumerWidget {
   SubmissionPage({Key? key}) : super(key: key);
   final pageController = PageController();
+  User? user;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authState = ref.watch(authtProvider);
     final authController = ref.watch(authtProvider.notifier);
+
     final authenticated = useState<bool>(
       authState.maybeMap(
         orElse: () => false,
-        authenticated: (_) => true,
+        authenticated: (_) {
+          return true;
+        },
       ),
+    );
+
+    ref.listen<AuthState>(
+      authtProvider,
+      (_, nextAuthState) {
+        nextAuthState.map(
+          initial: (_) {},
+          authenticated: (_) => authenticated.value = true,
+          unauthenticated: (unAuth) {
+            null;
+          },
+        );
+      },
     );
 
     return Scaffold(
@@ -39,12 +57,14 @@ class SubmissionPage extends HookConsumerWidget {
             child: PageView(
               controller: pageController,
               children: [
-                DriverTypeForm(),
+                DriverTypeForm(
+                  pageController: pageController,
+                ),
                 if (!authenticated.value)
                   SignUpForm(
                     pageController: pageController,
                   ),
-                DocumentSubmissionForm(),
+                if (authenticated.value) DocumentSubmissionForm(),
               ],
             )),
       ),

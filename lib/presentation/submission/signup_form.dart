@@ -197,7 +197,7 @@ class SignUpForm extends HookConsumerWidget {
                             color: kPrimaryColor,
                           )
                         : SubmitButton(
-                            onPressed: () {
+                            onPressed: () async {
                               final email = signUpForm
                                   .findControl('email')!
                                   .value as String;
@@ -205,7 +205,7 @@ class SignUpForm extends HookConsumerWidget {
                                   .findControl('password')!
                                   .value as String;
 
-                              authFormController.mapEventToState(
+                              await authFormController.mapEventToState(
                                 AuthFormEvent
                                     .registerWithEmailAndPasswordPressed(
                                   email,
@@ -214,6 +214,9 @@ class SignUpForm extends HookConsumerWidget {
                                   "username",
                                 ),
                               );
+
+                              authController.mapEventToState(
+                                  AuthEvent.authCheckRequested());
                             },
                             text: "SUIVANT",
                           ),
