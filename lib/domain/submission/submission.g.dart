@@ -16,6 +16,9 @@ Submission _$SubmissionFromJson(Map<String, dynamic> json) => Submission(
       cartegrisse_devant: json['cartegrisse_devant'] as String,
       cartegrisse_arriere: json['cartegrisse_arriere'] as String,
       status: json['status'] as String,
+      username: json['username'] as String,
+      email: json['email'] as String,
+      phone: json['phone'] as String,
       type: json['type'] as String,
       ts: DateTime.parse(json['ts'] as String),
     );
@@ -31,6 +34,9 @@ Map<String, dynamic> _$SubmissionToJson(Submission instance) =>
       'cartegrisse_devant': instance.cartegrisse_devant,
       'cartegrisse_arriere': instance.cartegrisse_arriere,
       'status': instance.status,
+      'username': instance.username,
+      'email': instance.email,
+      'phone': instance.phone,
       'type': instance.type,
       'ts': instance.ts.toIso8601String(),
     };

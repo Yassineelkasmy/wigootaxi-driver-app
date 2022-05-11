@@ -28,6 +28,9 @@ class _$SubmissionTearOff {
       required String cartegrisse_devant,
       required String cartegrisse_arriere,
       required String status,
+      required String username,
+      required String email,
+      required String phone,
       required String type,
       required DateTime ts}) {
     return _Submission(
@@ -40,6 +43,9 @@ class _$SubmissionTearOff {
       cartegrisse_devant: cartegrisse_devant,
       cartegrisse_arriere: cartegrisse_arriere,
       status: status,
+      username: username,
+      email: email,
+      phone: phone,
       type: type,
       ts: ts,
     );
@@ -60,6 +66,9 @@ mixin _$Submission {
   String get cartegrisse_devant => throw _privateConstructorUsedError;
   String get cartegrisse_arriere => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   DateTime get ts => throw _privateConstructorUsedError;
 
@@ -83,6 +92,9 @@ abstract class $SubmissionCopyWith<$Res> {
       String cartegrisse_devant,
       String cartegrisse_arriere,
       String status,
+      String username,
+      String email,
+      String phone,
       String type,
       DateTime ts});
 }
@@ -106,6 +118,9 @@ class _$SubmissionCopyWithImpl<$Res> implements $SubmissionCopyWith<$Res> {
     Object? cartegrisse_devant = freezed,
     Object? cartegrisse_arriere = freezed,
     Object? status = freezed,
+    Object? username = freezed,
+    Object? email = freezed,
+    Object? phone = freezed,
     Object? type = freezed,
     Object? ts = freezed,
   }) {
@@ -146,6 +161,18 @@ class _$SubmissionCopyWithImpl<$Res> implements $SubmissionCopyWith<$Res> {
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -174,6 +201,9 @@ abstract class _$SubmissionCopyWith<$Res> implements $SubmissionCopyWith<$Res> {
       String cartegrisse_devant,
       String cartegrisse_arriere,
       String status,
+      String username,
+      String email,
+      String phone,
       String type,
       DateTime ts});
 }
@@ -199,6 +229,9 @@ class __$SubmissionCopyWithImpl<$Res> extends _$SubmissionCopyWithImpl<$Res>
     Object? cartegrisse_devant = freezed,
     Object? cartegrisse_arriere = freezed,
     Object? status = freezed,
+    Object? username = freezed,
+    Object? email = freezed,
+    Object? phone = freezed,
     Object? type = freezed,
     Object? ts = freezed,
   }) {
@@ -239,6 +272,18 @@ class __$SubmissionCopyWithImpl<$Res> extends _$SubmissionCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -264,6 +309,9 @@ class _$_Submission implements _Submission {
       required this.cartegrisse_devant,
       required this.cartegrisse_arriere,
       required this.status,
+      required this.username,
+      required this.email,
+      required this.phone,
       required this.type,
       required this.ts});
 
@@ -286,13 +334,19 @@ class _$_Submission implements _Submission {
   @override
   final String status;
   @override
+  final String username;
+  @override
+  final String email;
+  @override
+  final String phone;
+  @override
   final String type;
   @override
   final DateTime ts;
 
   @override
   String toString() {
-    return 'Submission(id: $id, profil: $profil, cin_devant: $cin_devant, cin_arriere: $cin_arriere, permis_devant: $permis_devant, permis_arriere: $permis_arriere, cartegrisse_devant: $cartegrisse_devant, cartegrisse_arriere: $cartegrisse_arriere, status: $status, type: $type, ts: $ts)';
+    return 'Submission(id: $id, profil: $profil, cin_devant: $cin_devant, cin_arriere: $cin_arriere, permis_devant: $permis_devant, permis_arriere: $permis_arriere, cartegrisse_devant: $cartegrisse_devant, cartegrisse_arriere: $cartegrisse_arriere, status: $status, username: $username, email: $email, phone: $phone, type: $type, ts: $ts)';
   }
 
   @override
@@ -315,6 +369,9 @@ class _$_Submission implements _Submission {
             const DeepCollectionEquality()
                 .equals(other.cartegrisse_arriere, cartegrisse_arriere) &&
             const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.ts, ts));
   }
@@ -331,6 +388,9 @@ class _$_Submission implements _Submission {
       const DeepCollectionEquality().hash(cartegrisse_devant),
       const DeepCollectionEquality().hash(cartegrisse_arriere),
       const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(username),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(phone),
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(ts));
 
@@ -351,6 +411,9 @@ abstract class _Submission implements Submission {
       required String cartegrisse_devant,
       required String cartegrisse_arriere,
       required String status,
+      required String username,
+      required String email,
+      required String phone,
       required String type,
       required DateTime ts}) = _$_Submission;
 
@@ -372,6 +435,12 @@ abstract class _Submission implements Submission {
   String get cartegrisse_arriere;
   @override
   String get status;
+  @override
+  String get username;
+  @override
+  String get email;
+  @override
+  String get phone;
   @override
   String get type;
   @override

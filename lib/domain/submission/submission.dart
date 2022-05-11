@@ -17,6 +17,9 @@ class Submission with _$Submission {
     required String cartegrisse_devant,
     required String cartegrisse_arriere,
     required String status,
+    required String username,
+    required String email,
+    required String phone,
     required String type,
     required DateTime ts,
   }) = _Submission;

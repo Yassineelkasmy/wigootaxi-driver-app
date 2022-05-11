@@ -114,7 +114,7 @@ class DocumentSubmissionForm extends HookConsumerWidget {
                     isLoading: submissionState.isSubmitting,
                     onPressed: () {
                       submissionController.mapEventToState(
-                        SubmissionEvent.formSubmitted(user.uid),
+                        SubmissionEvent.formSubmitted(user),
                         // SubmissionEvent.checkFormSubmissionRequested(user.uid),
                       );
                     },

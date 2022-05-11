@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:wigootaxidriver/domain/auth/user.dart';
 
 part 'submission_event.freezed.dart';
 
@@ -12,7 +13,7 @@ class SubmissionEvent with _$SubmissionEvent {
   const factory SubmissionEvent.documentRemoved(
     String name,
   ) = DocumentRemoved;
-  const factory SubmissionEvent.formSubmitted(String userid) = FormSubmitted;
+  const factory SubmissionEvent.formSubmitted(User user) = FormSubmitted;
   const factory SubmissionEvent.checkFormSubmissionRequested(String userid) =
       CheckFormSubmissionRequested;
 
