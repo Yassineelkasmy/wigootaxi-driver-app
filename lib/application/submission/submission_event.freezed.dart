@@ -32,13 +32,15 @@ class _$SubmissionEventTearOff {
     );
   }
 
-  FormSubmitted formSubmitted() {
-    return const FormSubmitted();
+  FormSubmitted formSubmitted(String userid) {
+    return FormSubmitted(
+      userid,
+    );
   }
 
-  CreateUserSubmissionRequested createUserSubmissionRequested(String userId) {
-    return CreateUserSubmissionRequested(
-      userId,
+  CheckFormSubmissionRequested checkFormSubmissionRequested(String userid) {
+    return CheckFormSubmissionRequested(
+      userid,
     );
   }
 
@@ -59,8 +61,8 @@ mixin _$SubmissionEvent {
     required TResult Function(String url, String name, String userid)
         documentSubmitted,
     required TResult Function(String name) documentRemoved,
-    required TResult Function() formSubmitted,
-    required TResult Function(String userId) createUserSubmissionRequested,
+    required TResult Function(String userid) formSubmitted,
+    required TResult Function(String userid) checkFormSubmissionRequested,
     required TResult Function(String type) typeChosen,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,8 +70,8 @@ mixin _$SubmissionEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function(String name)? documentRemoved,
-    TResult Function()? formSubmitted,
-    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String userid)? formSubmitted,
+    TResult Function(String userid)? checkFormSubmissionRequested,
     TResult Function(String type)? typeChosen,
   }) =>
       throw _privateConstructorUsedError;
@@ -77,8 +79,8 @@ mixin _$SubmissionEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function(String name)? documentRemoved,
-    TResult Function()? formSubmitted,
-    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String userid)? formSubmitted,
+    TResult Function(String userid)? checkFormSubmissionRequested,
     TResult Function(String type)? typeChosen,
     required TResult orElse(),
   }) =>
@@ -88,8 +90,8 @@ mixin _$SubmissionEvent {
     required TResult Function(DocumentSubmitted value) documentSubmitted,
     required TResult Function(DocumentRemoved value) documentRemoved,
     required TResult Function(FormSubmitted value) formSubmitted,
-    required TResult Function(CreateUserSubmissionRequested value)
-        createUserSubmissionRequested,
+    required TResult Function(CheckFormSubmissionRequested value)
+        checkFormSubmissionRequested,
     required TResult Function(TypeChosen value) typeChosen,
   }) =>
       throw _privateConstructorUsedError;
@@ -98,8 +100,8 @@ mixin _$SubmissionEvent {
     TResult Function(DocumentSubmitted value)? documentSubmitted,
     TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
-    TResult Function(CreateUserSubmissionRequested value)?
-        createUserSubmissionRequested,
+    TResult Function(CheckFormSubmissionRequested value)?
+        checkFormSubmissionRequested,
     TResult Function(TypeChosen value)? typeChosen,
   }) =>
       throw _privateConstructorUsedError;
@@ -108,8 +110,8 @@ mixin _$SubmissionEvent {
     TResult Function(DocumentSubmitted value)? documentSubmitted,
     TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
-    TResult Function(CreateUserSubmissionRequested value)?
-        createUserSubmissionRequested,
+    TResult Function(CheckFormSubmissionRequested value)?
+        checkFormSubmissionRequested,
     TResult Function(TypeChosen value)? typeChosen,
     required TResult orElse(),
   }) =>
@@ -220,8 +222,8 @@ class _$DocumentSubmitted implements DocumentSubmitted {
     required TResult Function(String url, String name, String userid)
         documentSubmitted,
     required TResult Function(String name) documentRemoved,
-    required TResult Function() formSubmitted,
-    required TResult Function(String userId) createUserSubmissionRequested,
+    required TResult Function(String userid) formSubmitted,
+    required TResult Function(String userid) checkFormSubmissionRequested,
     required TResult Function(String type) typeChosen,
   }) {
     return documentSubmitted(url, name, userid);
@@ -232,8 +234,8 @@ class _$DocumentSubmitted implements DocumentSubmitted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function(String name)? documentRemoved,
-    TResult Function()? formSubmitted,
-    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String userid)? formSubmitted,
+    TResult Function(String userid)? checkFormSubmissionRequested,
     TResult Function(String type)? typeChosen,
   }) {
     return documentSubmitted?.call(url, name, userid);
@@ -244,8 +246,8 @@ class _$DocumentSubmitted implements DocumentSubmitted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function(String name)? documentRemoved,
-    TResult Function()? formSubmitted,
-    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String userid)? formSubmitted,
+    TResult Function(String userid)? checkFormSubmissionRequested,
     TResult Function(String type)? typeChosen,
     required TResult orElse(),
   }) {
@@ -261,8 +263,8 @@ class _$DocumentSubmitted implements DocumentSubmitted {
     required TResult Function(DocumentSubmitted value) documentSubmitted,
     required TResult Function(DocumentRemoved value) documentRemoved,
     required TResult Function(FormSubmitted value) formSubmitted,
-    required TResult Function(CreateUserSubmissionRequested value)
-        createUserSubmissionRequested,
+    required TResult Function(CheckFormSubmissionRequested value)
+        checkFormSubmissionRequested,
     required TResult Function(TypeChosen value) typeChosen,
   }) {
     return documentSubmitted(this);
@@ -274,8 +276,8 @@ class _$DocumentSubmitted implements DocumentSubmitted {
     TResult Function(DocumentSubmitted value)? documentSubmitted,
     TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
-    TResult Function(CreateUserSubmissionRequested value)?
-        createUserSubmissionRequested,
+    TResult Function(CheckFormSubmissionRequested value)?
+        checkFormSubmissionRequested,
     TResult Function(TypeChosen value)? typeChosen,
   }) {
     return documentSubmitted?.call(this);
@@ -287,8 +289,8 @@ class _$DocumentSubmitted implements DocumentSubmitted {
     TResult Function(DocumentSubmitted value)? documentSubmitted,
     TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
-    TResult Function(CreateUserSubmissionRequested value)?
-        createUserSubmissionRequested,
+    TResult Function(CheckFormSubmissionRequested value)?
+        checkFormSubmissionRequested,
     TResult Function(TypeChosen value)? typeChosen,
     required TResult orElse(),
   }) {
@@ -379,8 +381,8 @@ class _$DocumentRemoved implements DocumentRemoved {
     required TResult Function(String url, String name, String userid)
         documentSubmitted,
     required TResult Function(String name) documentRemoved,
-    required TResult Function() formSubmitted,
-    required TResult Function(String userId) createUserSubmissionRequested,
+    required TResult Function(String userid) formSubmitted,
+    required TResult Function(String userid) checkFormSubmissionRequested,
     required TResult Function(String type) typeChosen,
   }) {
     return documentRemoved(name);
@@ -391,8 +393,8 @@ class _$DocumentRemoved implements DocumentRemoved {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function(String name)? documentRemoved,
-    TResult Function()? formSubmitted,
-    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String userid)? formSubmitted,
+    TResult Function(String userid)? checkFormSubmissionRequested,
     TResult Function(String type)? typeChosen,
   }) {
     return documentRemoved?.call(name);
@@ -403,8 +405,8 @@ class _$DocumentRemoved implements DocumentRemoved {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function(String name)? documentRemoved,
-    TResult Function()? formSubmitted,
-    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String userid)? formSubmitted,
+    TResult Function(String userid)? checkFormSubmissionRequested,
     TResult Function(String type)? typeChosen,
     required TResult orElse(),
   }) {
@@ -420,8 +422,8 @@ class _$DocumentRemoved implements DocumentRemoved {
     required TResult Function(DocumentSubmitted value) documentSubmitted,
     required TResult Function(DocumentRemoved value) documentRemoved,
     required TResult Function(FormSubmitted value) formSubmitted,
-    required TResult Function(CreateUserSubmissionRequested value)
-        createUserSubmissionRequested,
+    required TResult Function(CheckFormSubmissionRequested value)
+        checkFormSubmissionRequested,
     required TResult Function(TypeChosen value) typeChosen,
   }) {
     return documentRemoved(this);
@@ -433,8 +435,8 @@ class _$DocumentRemoved implements DocumentRemoved {
     TResult Function(DocumentSubmitted value)? documentSubmitted,
     TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
-    TResult Function(CreateUserSubmissionRequested value)?
-        createUserSubmissionRequested,
+    TResult Function(CheckFormSubmissionRequested value)?
+        checkFormSubmissionRequested,
     TResult Function(TypeChosen value)? typeChosen,
   }) {
     return documentRemoved?.call(this);
@@ -446,8 +448,8 @@ class _$DocumentRemoved implements DocumentRemoved {
     TResult Function(DocumentSubmitted value)? documentSubmitted,
     TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
-    TResult Function(CreateUserSubmissionRequested value)?
-        createUserSubmissionRequested,
+    TResult Function(CheckFormSubmissionRequested value)?
+        checkFormSubmissionRequested,
     TResult Function(TypeChosen value)? typeChosen,
     required TResult orElse(),
   }) {
@@ -472,6 +474,7 @@ abstract class $FormSubmittedCopyWith<$Res> {
   factory $FormSubmittedCopyWith(
           FormSubmitted value, $Res Function(FormSubmitted) then) =
       _$FormSubmittedCopyWithImpl<$Res>;
+  $Res call({String userid});
 }
 
 /// @nodoc
@@ -484,26 +487,49 @@ class _$FormSubmittedCopyWithImpl<$Res>
 
   @override
   FormSubmitted get _value => super._value as FormSubmitted;
+
+  @override
+  $Res call({
+    Object? userid = freezed,
+  }) {
+    return _then(FormSubmitted(
+      userid == freezed
+          ? _value.userid
+          : userid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$FormSubmitted implements FormSubmitted {
-  const _$FormSubmitted();
+  const _$FormSubmitted(this.userid);
+
+  @override
+  final String userid;
 
   @override
   String toString() {
-    return 'SubmissionEvent.formSubmitted()';
+    return 'SubmissionEvent.formSubmitted(userid: $userid)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is FormSubmitted);
+        (other.runtimeType == runtimeType &&
+            other is FormSubmitted &&
+            const DeepCollectionEquality().equals(other.userid, userid));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(userid));
+
+  @JsonKey(ignore: true)
+  @override
+  $FormSubmittedCopyWith<FormSubmitted> get copyWith =>
+      _$FormSubmittedCopyWithImpl<FormSubmitted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -511,11 +537,11 @@ class _$FormSubmitted implements FormSubmitted {
     required TResult Function(String url, String name, String userid)
         documentSubmitted,
     required TResult Function(String name) documentRemoved,
-    required TResult Function() formSubmitted,
-    required TResult Function(String userId) createUserSubmissionRequested,
+    required TResult Function(String userid) formSubmitted,
+    required TResult Function(String userid) checkFormSubmissionRequested,
     required TResult Function(String type) typeChosen,
   }) {
-    return formSubmitted();
+    return formSubmitted(userid);
   }
 
   @override
@@ -523,11 +549,11 @@ class _$FormSubmitted implements FormSubmitted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function(String name)? documentRemoved,
-    TResult Function()? formSubmitted,
-    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String userid)? formSubmitted,
+    TResult Function(String userid)? checkFormSubmissionRequested,
     TResult Function(String type)? typeChosen,
   }) {
-    return formSubmitted?.call();
+    return formSubmitted?.call(userid);
   }
 
   @override
@@ -535,13 +561,13 @@ class _$FormSubmitted implements FormSubmitted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function(String name)? documentRemoved,
-    TResult Function()? formSubmitted,
-    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String userid)? formSubmitted,
+    TResult Function(String userid)? checkFormSubmissionRequested,
     TResult Function(String type)? typeChosen,
     required TResult orElse(),
   }) {
     if (formSubmitted != null) {
-      return formSubmitted();
+      return formSubmitted(userid);
     }
     return orElse();
   }
@@ -552,8 +578,8 @@ class _$FormSubmitted implements FormSubmitted {
     required TResult Function(DocumentSubmitted value) documentSubmitted,
     required TResult Function(DocumentRemoved value) documentRemoved,
     required TResult Function(FormSubmitted value) formSubmitted,
-    required TResult Function(CreateUserSubmissionRequested value)
-        createUserSubmissionRequested,
+    required TResult Function(CheckFormSubmissionRequested value)
+        checkFormSubmissionRequested,
     required TResult Function(TypeChosen value) typeChosen,
   }) {
     return formSubmitted(this);
@@ -565,8 +591,8 @@ class _$FormSubmitted implements FormSubmitted {
     TResult Function(DocumentSubmitted value)? documentSubmitted,
     TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
-    TResult Function(CreateUserSubmissionRequested value)?
-        createUserSubmissionRequested,
+    TResult Function(CheckFormSubmissionRequested value)?
+        checkFormSubmissionRequested,
     TResult Function(TypeChosen value)? typeChosen,
   }) {
     return formSubmitted?.call(this);
@@ -578,8 +604,8 @@ class _$FormSubmitted implements FormSubmitted {
     TResult Function(DocumentSubmitted value)? documentSubmitted,
     TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
-    TResult Function(CreateUserSubmissionRequested value)?
-        createUserSubmissionRequested,
+    TResult Function(CheckFormSubmissionRequested value)?
+        checkFormSubmissionRequested,
     TResult Function(TypeChosen value)? typeChosen,
     required TResult orElse(),
   }) {
@@ -591,39 +617,44 @@ class _$FormSubmitted implements FormSubmitted {
 }
 
 abstract class FormSubmitted implements SubmissionEvent {
-  const factory FormSubmitted() = _$FormSubmitted;
+  const factory FormSubmitted(String userid) = _$FormSubmitted;
+
+  String get userid;
+  @JsonKey(ignore: true)
+  $FormSubmittedCopyWith<FormSubmitted> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CreateUserSubmissionRequestedCopyWith<$Res> {
-  factory $CreateUserSubmissionRequestedCopyWith(
-          CreateUserSubmissionRequested value,
-          $Res Function(CreateUserSubmissionRequested) then) =
-      _$CreateUserSubmissionRequestedCopyWithImpl<$Res>;
-  $Res call({String userId});
+abstract class $CheckFormSubmissionRequestedCopyWith<$Res> {
+  factory $CheckFormSubmissionRequestedCopyWith(
+          CheckFormSubmissionRequested value,
+          $Res Function(CheckFormSubmissionRequested) then) =
+      _$CheckFormSubmissionRequestedCopyWithImpl<$Res>;
+  $Res call({String userid});
 }
 
 /// @nodoc
-class _$CreateUserSubmissionRequestedCopyWithImpl<$Res>
+class _$CheckFormSubmissionRequestedCopyWithImpl<$Res>
     extends _$SubmissionEventCopyWithImpl<$Res>
-    implements $CreateUserSubmissionRequestedCopyWith<$Res> {
-  _$CreateUserSubmissionRequestedCopyWithImpl(
-      CreateUserSubmissionRequested _value,
-      $Res Function(CreateUserSubmissionRequested) _then)
-      : super(_value, (v) => _then(v as CreateUserSubmissionRequested));
+    implements $CheckFormSubmissionRequestedCopyWith<$Res> {
+  _$CheckFormSubmissionRequestedCopyWithImpl(
+      CheckFormSubmissionRequested _value,
+      $Res Function(CheckFormSubmissionRequested) _then)
+      : super(_value, (v) => _then(v as CheckFormSubmissionRequested));
 
   @override
-  CreateUserSubmissionRequested get _value =>
-      super._value as CreateUserSubmissionRequested;
+  CheckFormSubmissionRequested get _value =>
+      super._value as CheckFormSubmissionRequested;
 
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? userid = freezed,
   }) {
-    return _then(CreateUserSubmissionRequested(
-      userId == freezed
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+    return _then(CheckFormSubmissionRequested(
+      userid == freezed
+          ? _value.userid
+          : userid // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -631,34 +662,34 @@ class _$CreateUserSubmissionRequestedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
-  const _$CreateUserSubmissionRequested(this.userId);
+class _$CheckFormSubmissionRequested implements CheckFormSubmissionRequested {
+  const _$CheckFormSubmissionRequested(this.userid);
 
   @override
-  final String userId;
+  final String userid;
 
   @override
   String toString() {
-    return 'SubmissionEvent.createUserSubmissionRequested(userId: $userId)';
+    return 'SubmissionEvent.checkFormSubmissionRequested(userid: $userid)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CreateUserSubmissionRequested &&
-            const DeepCollectionEquality().equals(other.userId, userId));
+            other is CheckFormSubmissionRequested &&
+            const DeepCollectionEquality().equals(other.userid, userid));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(userId));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(userid));
 
   @JsonKey(ignore: true)
   @override
-  $CreateUserSubmissionRequestedCopyWith<CreateUserSubmissionRequested>
-      get copyWith => _$CreateUserSubmissionRequestedCopyWithImpl<
-          CreateUserSubmissionRequested>(this, _$identity);
+  $CheckFormSubmissionRequestedCopyWith<CheckFormSubmissionRequested>
+      get copyWith => _$CheckFormSubmissionRequestedCopyWithImpl<
+          CheckFormSubmissionRequested>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -666,11 +697,11 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
     required TResult Function(String url, String name, String userid)
         documentSubmitted,
     required TResult Function(String name) documentRemoved,
-    required TResult Function() formSubmitted,
-    required TResult Function(String userId) createUserSubmissionRequested,
+    required TResult Function(String userid) formSubmitted,
+    required TResult Function(String userid) checkFormSubmissionRequested,
     required TResult Function(String type) typeChosen,
   }) {
-    return createUserSubmissionRequested(userId);
+    return checkFormSubmissionRequested(userid);
   }
 
   @override
@@ -678,11 +709,11 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function(String name)? documentRemoved,
-    TResult Function()? formSubmitted,
-    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String userid)? formSubmitted,
+    TResult Function(String userid)? checkFormSubmissionRequested,
     TResult Function(String type)? typeChosen,
   }) {
-    return createUserSubmissionRequested?.call(userId);
+    return checkFormSubmissionRequested?.call(userid);
   }
 
   @override
@@ -690,13 +721,13 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function(String name)? documentRemoved,
-    TResult Function()? formSubmitted,
-    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String userid)? formSubmitted,
+    TResult Function(String userid)? checkFormSubmissionRequested,
     TResult Function(String type)? typeChosen,
     required TResult orElse(),
   }) {
-    if (createUserSubmissionRequested != null) {
-      return createUserSubmissionRequested(userId);
+    if (checkFormSubmissionRequested != null) {
+      return checkFormSubmissionRequested(userid);
     }
     return orElse();
   }
@@ -707,11 +738,11 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
     required TResult Function(DocumentSubmitted value) documentSubmitted,
     required TResult Function(DocumentRemoved value) documentRemoved,
     required TResult Function(FormSubmitted value) formSubmitted,
-    required TResult Function(CreateUserSubmissionRequested value)
-        createUserSubmissionRequested,
+    required TResult Function(CheckFormSubmissionRequested value)
+        checkFormSubmissionRequested,
     required TResult Function(TypeChosen value) typeChosen,
   }) {
-    return createUserSubmissionRequested(this);
+    return checkFormSubmissionRequested(this);
   }
 
   @override
@@ -720,11 +751,11 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
     TResult Function(DocumentSubmitted value)? documentSubmitted,
     TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
-    TResult Function(CreateUserSubmissionRequested value)?
-        createUserSubmissionRequested,
+    TResult Function(CheckFormSubmissionRequested value)?
+        checkFormSubmissionRequested,
     TResult Function(TypeChosen value)? typeChosen,
   }) {
-    return createUserSubmissionRequested?.call(this);
+    return checkFormSubmissionRequested?.call(this);
   }
 
   @override
@@ -733,25 +764,25 @@ class _$CreateUserSubmissionRequested implements CreateUserSubmissionRequested {
     TResult Function(DocumentSubmitted value)? documentSubmitted,
     TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
-    TResult Function(CreateUserSubmissionRequested value)?
-        createUserSubmissionRequested,
+    TResult Function(CheckFormSubmissionRequested value)?
+        checkFormSubmissionRequested,
     TResult Function(TypeChosen value)? typeChosen,
     required TResult orElse(),
   }) {
-    if (createUserSubmissionRequested != null) {
-      return createUserSubmissionRequested(this);
+    if (checkFormSubmissionRequested != null) {
+      return checkFormSubmissionRequested(this);
     }
     return orElse();
   }
 }
 
-abstract class CreateUserSubmissionRequested implements SubmissionEvent {
-  const factory CreateUserSubmissionRequested(String userId) =
-      _$CreateUserSubmissionRequested;
+abstract class CheckFormSubmissionRequested implements SubmissionEvent {
+  const factory CheckFormSubmissionRequested(String userid) =
+      _$CheckFormSubmissionRequested;
 
-  String get userId;
+  String get userid;
   @JsonKey(ignore: true)
-  $CreateUserSubmissionRequestedCopyWith<CreateUserSubmissionRequested>
+  $CheckFormSubmissionRequestedCopyWith<CheckFormSubmissionRequested>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -821,8 +852,8 @@ class _$TypeChosen implements TypeChosen {
     required TResult Function(String url, String name, String userid)
         documentSubmitted,
     required TResult Function(String name) documentRemoved,
-    required TResult Function() formSubmitted,
-    required TResult Function(String userId) createUserSubmissionRequested,
+    required TResult Function(String userid) formSubmitted,
+    required TResult Function(String userid) checkFormSubmissionRequested,
     required TResult Function(String type) typeChosen,
   }) {
     return typeChosen(type);
@@ -833,8 +864,8 @@ class _$TypeChosen implements TypeChosen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function(String name)? documentRemoved,
-    TResult Function()? formSubmitted,
-    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String userid)? formSubmitted,
+    TResult Function(String userid)? checkFormSubmissionRequested,
     TResult Function(String type)? typeChosen,
   }) {
     return typeChosen?.call(type);
@@ -845,8 +876,8 @@ class _$TypeChosen implements TypeChosen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, String name, String userid)? documentSubmitted,
     TResult Function(String name)? documentRemoved,
-    TResult Function()? formSubmitted,
-    TResult Function(String userId)? createUserSubmissionRequested,
+    TResult Function(String userid)? formSubmitted,
+    TResult Function(String userid)? checkFormSubmissionRequested,
     TResult Function(String type)? typeChosen,
     required TResult orElse(),
   }) {
@@ -862,8 +893,8 @@ class _$TypeChosen implements TypeChosen {
     required TResult Function(DocumentSubmitted value) documentSubmitted,
     required TResult Function(DocumentRemoved value) documentRemoved,
     required TResult Function(FormSubmitted value) formSubmitted,
-    required TResult Function(CreateUserSubmissionRequested value)
-        createUserSubmissionRequested,
+    required TResult Function(CheckFormSubmissionRequested value)
+        checkFormSubmissionRequested,
     required TResult Function(TypeChosen value) typeChosen,
   }) {
     return typeChosen(this);
@@ -875,8 +906,8 @@ class _$TypeChosen implements TypeChosen {
     TResult Function(DocumentSubmitted value)? documentSubmitted,
     TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
-    TResult Function(CreateUserSubmissionRequested value)?
-        createUserSubmissionRequested,
+    TResult Function(CheckFormSubmissionRequested value)?
+        checkFormSubmissionRequested,
     TResult Function(TypeChosen value)? typeChosen,
   }) {
     return typeChosen?.call(this);
@@ -888,8 +919,8 @@ class _$TypeChosen implements TypeChosen {
     TResult Function(DocumentSubmitted value)? documentSubmitted,
     TResult Function(DocumentRemoved value)? documentRemoved,
     TResult Function(FormSubmitted value)? formSubmitted,
-    TResult Function(CreateUserSubmissionRequested value)?
-        createUserSubmissionRequested,
+    TResult Function(CheckFormSubmissionRequested value)?
+        checkFormSubmissionRequested,
     TResult Function(TypeChosen value)? typeChosen,
     required TResult orElse(),
   }) {

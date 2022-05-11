@@ -21,11 +21,15 @@ class _$SubmissionStateTearOff {
   _SubmissionState call(
       {required bool isSubmitting,
       required String type,
-      required Map<String, String> docs}) {
+      required Map<String, dynamic> docs,
+      required Option<Either<SubmissionFailure, Unit>> failureOrSuccessOption,
+      Submission? submission}) {
     return _SubmissionState(
       isSubmitting: isSubmitting,
       type: type,
       docs: docs,
+      failureOrSuccessOption: failureOrSuccessOption,
+      submission: submission,
     );
   }
 }
@@ -37,7 +41,10 @@ const $SubmissionState = _$SubmissionStateTearOff();
 mixin _$SubmissionState {
   bool get isSubmitting => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
-  Map<String, String> get docs => throw _privateConstructorUsedError;
+  Map<String, dynamic> get docs => throw _privateConstructorUsedError;
+  Option<Either<SubmissionFailure, Unit>> get failureOrSuccessOption =>
+      throw _privateConstructorUsedError;
+  Submission? get submission => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SubmissionStateCopyWith<SubmissionState> get copyWith =>
@@ -49,7 +56,14 @@ abstract class $SubmissionStateCopyWith<$Res> {
   factory $SubmissionStateCopyWith(
           SubmissionState value, $Res Function(SubmissionState) then) =
       _$SubmissionStateCopyWithImpl<$Res>;
-  $Res call({bool isSubmitting, String type, Map<String, String> docs});
+  $Res call(
+      {bool isSubmitting,
+      String type,
+      Map<String, dynamic> docs,
+      Option<Either<SubmissionFailure, Unit>> failureOrSuccessOption,
+      Submission? submission});
+
+  $SubmissionCopyWith<$Res>? get submission;
 }
 
 /// @nodoc
@@ -66,6 +80,8 @@ class _$SubmissionStateCopyWithImpl<$Res>
     Object? isSubmitting = freezed,
     Object? type = freezed,
     Object? docs = freezed,
+    Object? failureOrSuccessOption = freezed,
+    Object? submission = freezed,
   }) {
     return _then(_value.copyWith(
       isSubmitting: isSubmitting == freezed
@@ -79,8 +95,27 @@ class _$SubmissionStateCopyWithImpl<$Res>
       docs: docs == freezed
           ? _value.docs
           : docs // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+              as Map<String, dynamic>,
+      failureOrSuccessOption: failureOrSuccessOption == freezed
+          ? _value.failureOrSuccessOption
+          : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<SubmissionFailure, Unit>>,
+      submission: submission == freezed
+          ? _value.submission
+          : submission // ignore: cast_nullable_to_non_nullable
+              as Submission?,
     ));
+  }
+
+  @override
+  $SubmissionCopyWith<$Res>? get submission {
+    if (_value.submission == null) {
+      return null;
+    }
+
+    return $SubmissionCopyWith<$Res>(_value.submission!, (value) {
+      return _then(_value.copyWith(submission: value));
+    });
   }
 }
 
@@ -91,7 +126,15 @@ abstract class _$SubmissionStateCopyWith<$Res>
           _SubmissionState value, $Res Function(_SubmissionState) then) =
       __$SubmissionStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isSubmitting, String type, Map<String, String> docs});
+  $Res call(
+      {bool isSubmitting,
+      String type,
+      Map<String, dynamic> docs,
+      Option<Either<SubmissionFailure, Unit>> failureOrSuccessOption,
+      Submission? submission});
+
+  @override
+  $SubmissionCopyWith<$Res>? get submission;
 }
 
 /// @nodoc
@@ -110,6 +153,8 @@ class __$SubmissionStateCopyWithImpl<$Res>
     Object? isSubmitting = freezed,
     Object? type = freezed,
     Object? docs = freezed,
+    Object? failureOrSuccessOption = freezed,
+    Object? submission = freezed,
   }) {
     return _then(_SubmissionState(
       isSubmitting: isSubmitting == freezed
@@ -123,7 +168,15 @@ class __$SubmissionStateCopyWithImpl<$Res>
       docs: docs == freezed
           ? _value.docs
           : docs // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+              as Map<String, dynamic>,
+      failureOrSuccessOption: failureOrSuccessOption == freezed
+          ? _value.failureOrSuccessOption
+          : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<SubmissionFailure, Unit>>,
+      submission: submission == freezed
+          ? _value.submission
+          : submission // ignore: cast_nullable_to_non_nullable
+              as Submission?,
     ));
   }
 }
@@ -132,18 +185,26 @@ class __$SubmissionStateCopyWithImpl<$Res>
 
 class _$_SubmissionState implements _SubmissionState {
   const _$_SubmissionState(
-      {required this.isSubmitting, required this.type, required this.docs});
+      {required this.isSubmitting,
+      required this.type,
+      required this.docs,
+      required this.failureOrSuccessOption,
+      this.submission});
 
   @override
   final bool isSubmitting;
   @override
   final String type;
   @override
-  final Map<String, String> docs;
+  final Map<String, dynamic> docs;
+  @override
+  final Option<Either<SubmissionFailure, Unit>> failureOrSuccessOption;
+  @override
+  final Submission? submission;
 
   @override
   String toString() {
-    return 'SubmissionState(isSubmitting: $isSubmitting, type: $type, docs: $docs)';
+    return 'SubmissionState(isSubmitting: $isSubmitting, type: $type, docs: $docs, failureOrSuccessOption: $failureOrSuccessOption, submission: $submission)';
   }
 
   @override
@@ -154,7 +215,11 @@ class _$_SubmissionState implements _SubmissionState {
             const DeepCollectionEquality()
                 .equals(other.isSubmitting, isSubmitting) &&
             const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.docs, docs));
+            const DeepCollectionEquality().equals(other.docs, docs) &&
+            const DeepCollectionEquality()
+                .equals(other.failureOrSuccessOption, failureOrSuccessOption) &&
+            const DeepCollectionEquality()
+                .equals(other.submission, submission));
   }
 
   @override
@@ -162,7 +227,9 @@ class _$_SubmissionState implements _SubmissionState {
       runtimeType,
       const DeepCollectionEquality().hash(isSubmitting),
       const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(docs));
+      const DeepCollectionEquality().hash(docs),
+      const DeepCollectionEquality().hash(failureOrSuccessOption),
+      const DeepCollectionEquality().hash(submission));
 
   @JsonKey(ignore: true)
   @override
@@ -174,14 +241,20 @@ abstract class _SubmissionState implements SubmissionState {
   const factory _SubmissionState(
       {required bool isSubmitting,
       required String type,
-      required Map<String, String> docs}) = _$_SubmissionState;
+      required Map<String, dynamic> docs,
+      required Option<Either<SubmissionFailure, Unit>> failureOrSuccessOption,
+      Submission? submission}) = _$_SubmissionState;
 
   @override
   bool get isSubmitting;
   @override
   String get type;
   @override
-  Map<String, String> get docs;
+  Map<String, dynamic> get docs;
+  @override
+  Option<Either<SubmissionFailure, Unit>> get failureOrSuccessOption;
+  @override
+  Submission? get submission;
   @override
   @JsonKey(ignore: true)
   _$SubmissionStateCopyWith<_SubmissionState> get copyWith =>

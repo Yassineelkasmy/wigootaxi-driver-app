@@ -1,12 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:wigootaxidriver/domain/auth/auth_failure.dart';
-import 'package:wigootaxidriver/domain/auth/i_auth_facade.dart';
 import 'package:wigootaxidriver/domain/auth/user.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
-class FireBaseAuthFacade implements IAuthFacade {
+class FireBaseAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final FacebookAuth _facebookAuth;
@@ -71,13 +71,31 @@ class FireBaseAuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
-      {required String email, required String password}) async {
+  Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
+    required String email,
+    required String password,
+    required String username,
+    required String phone,
+  }) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
+      final creds = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      if (creds.user != null) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(creds.user!.uid)
+            .set(
+          {
+            'username': username,
+            'email': email,
+            'phone': phone,
+            'isPhoneVerified': false,
+            'ts': Timestamp.now(),
+          },
+        );
+      }
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email_already_in_use') {

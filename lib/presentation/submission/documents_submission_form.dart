@@ -1,24 +1,39 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
 import 'package:wigootaxidriver/application/providers/submission_provider.dart';
 import 'package:wigootaxidriver/application/submission/submission_event.dart';
+import 'package:wigootaxidriver/application/submission/submission_state.dart';
+import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/shared/logo.dart';
+import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/step_indicator.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/upload_field.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 
 class DocumentSubmissionForm extends HookConsumerWidget {
-  const DocumentSubmissionForm({Key? key}) : super(key: key);
+  DocumentSubmissionForm({Key? key}) : super(key: key);
+  bool checked = false;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userProvider)!;
+    final submissionState = ref.watch(submissionProvider);
     final submissionController = ref.watch(submissionProvider.notifier);
-
-    submissionController.mapEventToState(
-      SubmissionEvent.createUserSubmissionRequested(user.uid),
+    if (!checked) {
+      submissionController.mapEventToState(
+          SubmissionEvent.checkFormSubmissionRequested(user.uid));
+      checked = true;
+    }
+    ref.listen<SubmissionState>(
+      submissionProvider,
+      (previous, next) {
+        if (next.submission != null) {
+          AutoRouter.of(context).replace(SubmissionSuccessPageRoute());
+        }
+      },
     );
 
     return SingleChildScrollView(
@@ -91,6 +106,21 @@ class DocumentSubmissionForm extends HookConsumerWidget {
                 url: 'url',
                 name: 'cartegrisse_arriere',
               ),
+              10.h.verticalSpace,
+              if (submissionState.docs.length == 7)
+                SizedBox(
+                  width: double.maxFinite,
+                  child: SubmitButton(
+                    isLoading: submissionState.isSubmitting,
+                    onPressed: () {
+                      submissionController.mapEventToState(
+                        SubmissionEvent.formSubmitted(user.uid),
+                        // SubmissionEvent.checkFormSubmissionRequested(user.uid),
+                      );
+                    },
+                    text: 'Déposer la demande',
+                  ),
+                ),
             ],
           )
         ],

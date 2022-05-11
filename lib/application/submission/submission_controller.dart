@@ -1,38 +1,77 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/application/submission/submission_event.dart';
 import 'package:wigootaxidriver/application/submission/submission_state.dart';
 import 'package:wigootaxidriver/infrastructure/user_service.dart';
 
 class SubmissionController extends StateNotifier<SubmissionState> {
-  SubmissionController(this._userService) : super(SubmissionState.initial());
+  SubmissionController(this._userService) : super(SubmissionState.initial()) {}
 
   final UserService _userService;
 
   Future mapEventToState(SubmissionEvent event) {
     return event.map(
-        documentSubmitted: (event) async {
-          state = state.copyWith(isSubmitting: true);
-          // await _userService.submitDocument(
-          //   event.userid,
-          //   event.name,
-          //   event.url,
-          // );
+      checkFormSubmissionRequested: (event) async {
+        final submissionOrFailure =
+            await _userService.getSubmission(event.userid);
+        submissionOrFailure.fold(
+          (l) => print('error'),
+          (submission) {
+            print(submission);
+            state = state.copyWith(submission: submission);
+          },
+        );
+      },
+      documentSubmitted: (event) async {
+        state = state.copyWith(
+          isSubmitting: true,
+          failureOrSuccessOption: none(),
+        );
+        print(event.url);
+        state = state.copyWith(
+          docs: state.docs
+            ..putIfAbsent(event.name, () => event.url)
+            ..update(event.name, (value) => event.url),
+        );
+        print(state.docs.length);
+        state = state.copyWith(isSubmitting: false);
+      },
+      formSubmitted: (event) async {
+        if (state.docs.length == 7) {
           state = state.copyWith(
-            docs: state.docs..update(event.name, (value) => event.url),
+            isSubmitting: true,
+            failureOrSuccessOption: none(),
           );
-          state = state.copyWith(isSubmitting: false);
-        },
-        formSubmitted: (event) async {},
-        createUserSubmissionRequested: (event) async {
-          state = state.copyWith(isSubmitting: true);
-          await _userService.createSubmission(event.userId, state.type);
-          state = state.copyWith(isSubmitting: false);
-        },
-        typeChosen: (event) async {
-          state = state.copyWith(type: event.type);
-        },
-        documentRemoved: (event) async {
-          state = state.copyWith(docs: state.docs..remove(event.name));
-        });
+          final failureOrSuccess = await _userService.submitDocument(
+            event.userid,
+            state.docs
+              ..putIfAbsent('status', () => 'pending')
+              ..putIfAbsent('ts', () => Timestamp.now())
+              ..putIfAbsent('type', () => state.type),
+          );
+          state = state.copyWith(
+            isSubmitting: false,
+            failureOrSuccessOption: optionOf(failureOrSuccess),
+          );
+          mapEventToState(
+            SubmissionEvent.checkFormSubmissionRequested(event.userid),
+          );
+        }
+      },
+      typeChosen: (event) async {
+        state = state.copyWith(
+          type: event.type,
+          failureOrSuccessOption: none(),
+        );
+      },
+      documentRemoved: (event) async {
+        state = state.copyWith(
+          docs: state.docs..remove(event.name),
+          failureOrSuccessOption: none(),
+        );
+        print(state.docs.length);
+      },
+    );
   }
 }

@@ -1,15 +1,15 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wigootaxidriver/application/auth/auth_event.dart';
 import 'package:wigootaxidriver/application/auth/auth_state.dart';
-import 'package:wigootaxidriver/domain/auth/i_auth_facade.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:wigootaxidriver/infrastructure/auth/firebase_auth.dart';
 
 class AuthController extends StateNotifier<AuthState> {
   AuthController(
     this._authFacade,
   ) : super(const AuthState.initial());
 
-  final IAuthFacade _authFacade;
+  final FireBaseAuthFacade _authFacade;
   static const newUserKey = 'newUser';
 
   Future mapEventToState(AuthEvent authEvent) {

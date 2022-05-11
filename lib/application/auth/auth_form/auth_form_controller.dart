@@ -3,13 +3,13 @@ import 'package:wigootaxidriver/application/auth/auth_event.dart';
 import 'package:wigootaxidriver/application/auth/auth_form/auth_form_event.dart';
 import 'package:wigootaxidriver/application/auth/auth_form/auth_form_state.dart';
 import 'package:wigootaxidriver/application/auth/auth_controller.dart';
-import 'package:wigootaxidriver/domain/auth/i_auth_facade.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:wigootaxidriver/infrastructure/auth/firebase_auth.dart';
 
 class AuthFormController extends StateNotifier<AuthFormState> {
   AuthFormController(this._authFacade, this._authStateController)
       : super(AuthFormState.initial());
-  final IAuthFacade _authFacade;
+  final FireBaseAuthFacade _authFacade;
   final AuthController _authStateController;
   void checkAuthState() {
     _authStateController.mapEventToState(const AuthEvent.authCheckRequested());
@@ -61,6 +61,8 @@ class AuthFormController extends StateNotifier<AuthFormState> {
             await _authFacade.registerWithEmailAndPassword(
           email: event.email,
           password: event.email,
+          username: event.username,
+          phone: event.phone,
         );
         state = state.copyWith(isSubmitting: false);
       },

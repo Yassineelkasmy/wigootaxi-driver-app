@@ -12,9 +12,9 @@ class SubmissionEvent with _$SubmissionEvent {
   const factory SubmissionEvent.documentRemoved(
     String name,
   ) = DocumentRemoved;
-  const factory SubmissionEvent.formSubmitted() = FormSubmitted;
-  const factory SubmissionEvent.createUserSubmissionRequested(
-    String userId,
-  ) = CreateUserSubmissionRequested;
+  const factory SubmissionEvent.formSubmitted(String userid) = FormSubmitted;
+  const factory SubmissionEvent.checkFormSubmissionRequested(String userid) =
+      CheckFormSubmissionRequested;
+
   const factory SubmissionEvent.typeChosen(String type) = TypeChosen;
 }

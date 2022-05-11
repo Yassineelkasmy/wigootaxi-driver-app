@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartz/dartz.dart';
+import 'package:wigootaxidriver/domain/submission/submission.dart';
+import 'package:wigootaxidriver/domain/submission/submission_failure.dart';
 
 class UserService {
   UserService(this.firestore) {
@@ -18,11 +21,32 @@ class UserService {
     });
   }
 
-  Future<void> submitDocument(
+  Future<Either<SubmissionFailure, Unit>> submitDocument(
     String userid,
-    String documentName,
-    String url,
+    Map<String, dynamic> data,
   ) async {
-    await collectionReference.doc(userid).update({documentName: url});
+    try {
+      await collectionReference.doc(userid).set(data);
+      return right(unit);
+    } catch (e) {
+      return left(SubmissionFailure.serverError());
+    }
+  }
+
+  Future<Either<SubmissionFailure, Submission>> getSubmission(
+    String userid,
+  ) async {
+    try {
+      final doc = await collectionReference.doc(userid).get();
+
+      final data = (doc.data() as Map<String, dynamic>)
+        ..putIfAbsent('id', () => doc.id);
+      print(data.keys.toList());
+      final submission = Submission.fromJson(data);
+      return right(submission);
+    } catch (e) {
+      print(e);
+      return left(SubmissionFailure.serverError());
+    }
   }
 }

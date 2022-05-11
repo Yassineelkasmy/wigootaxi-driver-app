@@ -6,11 +6,13 @@ class SubmitButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     required this.text,
+    this.isLoading = false,
     this.color,
     this.textColor,
   }) : super(key: key);
   final void Function() onPressed;
   final String text;
+  final bool isLoading;
   final Color? color;
   final Color? textColor;
   @override
@@ -24,12 +26,16 @@ class SubmitButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: Text(
-        text,
-        style: TextStyle(
-          color: textColor,
-        ),
-      ),
+      child: isLoading
+          ? CircularProgressIndicator(
+              color: Colors.white,
+            )
+          : Text(
+              text,
+              style: TextStyle(
+                color: textColor,
+              ),
+            ),
     );
   }
 }

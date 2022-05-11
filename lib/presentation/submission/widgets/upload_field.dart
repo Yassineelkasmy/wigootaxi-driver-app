@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +26,7 @@ class UploadFeild extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final submissionController = ref.watch(submissionProvider.notifier);
-    final submissionState = ref.watch(submissionProvider);
+    final submissionController = ref.read(submissionProvider.notifier);
     final user = ref.watch(userProvider)!;
 
     final imageUrl = useState<String?>(null);
@@ -49,8 +47,8 @@ class UploadFeild extends HookConsumerWidget {
             style: ElevatedButton.styleFrom(
               primary: Colors.grey.shade100,
               padding: EdgeInsets.symmetric(
-                vertical: 10.h,
                 horizontal: 20.w,
+                vertical: 2.h,
               ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
@@ -69,8 +67,8 @@ class UploadFeild extends HookConsumerWidget {
                   final ref = await reference.putFile(file);
                   final _url = await ref.ref.getDownloadURL();
                   imageUrl.value = _url;
-                  await submissionController.mapEventToState(
-                    SubmissionEvent.documentSubmitted(url, name, user.uid),
+                  submissionController.mapEventToState(
+                    SubmissionEvent.documentSubmitted(_url, name, user.uid),
                   );
                 } catch (e) {}
               }
@@ -133,8 +131,8 @@ class UploadFeild extends HookConsumerWidget {
                   IconButton(
                     color: kPrimaryColor,
                     icon: Icon(Icons.cancel),
-                    onPressed: () async {
-                      await submissionController.mapEventToState(
+                    onPressed: () {
+                      submissionController.mapEventToState(
                         SubmissionEvent.documentRemoved(name),
                       );
                       imageUrl.value = null;

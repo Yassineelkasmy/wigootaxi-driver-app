@@ -9,11 +9,13 @@ import 'package:wigootaxidriver/presentation/home/pick_location/activate_locatio
 import 'package:wigootaxidriver/presentation/intro/intro_page.dart';
 import 'package:wigootaxidriver/presentation/splash/splash_page.dart';
 import 'package:wigootaxidriver/presentation/submission/submission_page.dart';
+import 'package:wigootaxidriver/presentation/submission/submission_success_page.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/upload_field.dart';
 
 @MaterialAutoRouter(routes: <AutoRoute>[
   AutoRoute(page: SplashPage, initial: true),
   AutoRoute(page: SubmissionPage),
+  AutoRoute(page: SubmissionSuccessPage),
   AutoRoute(page: DocumentImagePage),
   AutoRoute(page: PhoneVerificationPage),
   AutoRoute(page: PhoneAuthPage),

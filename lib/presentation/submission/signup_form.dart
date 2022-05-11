@@ -4,9 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:wigootaxidriver/application/auth/auth_event.dart';
 import 'package:wigootaxidriver/application/auth/auth_form/auth_form_event.dart';
-import 'package:wigootaxidriver/application/auth/auth_state.dart';
 import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
-import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/shared/logo.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/step_indicator.dart';
@@ -192,34 +190,33 @@ class SignUpForm extends HookConsumerWidget {
                   20.verticalSpace,
                   SizedBox(
                     width: double.maxFinite,
-                    child: authFormState.isSubmitting
-                        ? CircularProgressIndicator(
-                            color: kPrimaryColor,
-                          )
-                        : SubmitButton(
-                            onPressed: () async {
-                              final email = signUpForm
-                                  .findControl('email')!
-                                  .value as String;
-                              final password = signUpForm
-                                  .findControl('password')!
-                                  .value as String;
+                    child: SubmitButton(
+                      isLoading: authFormState.isSubmitting,
+                      onPressed: () async {
+                        final username =
+                            signUpForm.findControl('username')!.value as String;
+                        final phone =
+                            signUpForm.findControl('phone')!.value as String;
+                        final email =
+                            signUpForm.findControl('email')!.value as String;
+                        final password =
+                            signUpForm.findControl('password')!.value as String;
 
-                              await authFormController.mapEventToState(
-                                AuthFormEvent
-                                    .registerWithEmailAndPasswordPressed(
-                                  email,
-                                  password,
-                                  "",
-                                  "username",
-                                ),
-                              );
-
-                              authController.mapEventToState(
-                                  AuthEvent.authCheckRequested());
-                            },
-                            text: "SUIVANT",
+                        await authFormController.mapEventToState(
+                          AuthFormEvent.registerWithEmailAndPasswordPressed(
+                            email,
+                            password,
+                            phone,
+                            username,
                           ),
+                        );
+
+                        authController.mapEventToState(
+                          AuthEvent.authCheckRequested(),
+                        );
+                      },
+                      text: "SUIVANT",
+                    ),
                   ),
                 ],
               ))
