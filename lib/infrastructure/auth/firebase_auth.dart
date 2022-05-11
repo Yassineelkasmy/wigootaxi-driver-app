@@ -84,7 +84,7 @@ class FireBaseAuthFacade {
       );
       if (creds.user != null) {
         await FirebaseFirestore.instance
-            .collection('users')
+            .collection('drivers')
             .doc(creds.user!.uid)
             .set(
           {
