@@ -53,12 +53,20 @@ class AppRouter extends _i13.RootStackRouter {
           child: _i4.DocumentImagePage(key: args.key, image: args.image));
     },
     PhoneVerificationPageRoute.name: (routeData) {
+      final args = routeData.argsAs<PhoneVerificationPageRouteArgs>();
       return _i13.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i5.PhoneVerificationPage());
+          routeData: routeData,
+          child: _i5.PhoneVerificationPage(
+              key: args.key,
+              phoneNumber: args.phoneNumber,
+              verificationId: args.verificationId));
     },
     PhoneAuthPageRoute.name: (routeData) {
+      final args = routeData.argsAs<PhoneAuthPageRouteArgs>();
       return _i13.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i6.PhoneAuthPage());
+          routeData: routeData,
+          child:
+              _i6.PhoneAuthPage(key: args.key, phoneNumber: args.phoneNumber));
     },
     LoginPageRoute.name: (routeData) {
       final args = routeData.argsAs<LoginPageRouteArgs>(
@@ -181,21 +189,60 @@ class DocumentImagePageRouteArgs {
 
 /// generated route for
 /// [_i5.PhoneVerificationPage]
-class PhoneVerificationPageRoute extends _i13.PageRouteInfo<void> {
-  const PhoneVerificationPageRoute()
+class PhoneVerificationPageRoute
+    extends _i13.PageRouteInfo<PhoneVerificationPageRouteArgs> {
+  PhoneVerificationPageRoute(
+      {_i14.Key? key,
+      required String phoneNumber,
+      required String verificationId})
       : super(PhoneVerificationPageRoute.name,
-            path: '/phone-verification-page');
+            path: '/phone-verification-page',
+            args: PhoneVerificationPageRouteArgs(
+                key: key,
+                phoneNumber: phoneNumber,
+                verificationId: verificationId));
 
   static const String name = 'PhoneVerificationPageRoute';
 }
 
+class PhoneVerificationPageRouteArgs {
+  const PhoneVerificationPageRouteArgs(
+      {this.key, required this.phoneNumber, required this.verificationId});
+
+  final _i14.Key? key;
+
+  final String phoneNumber;
+
+  final String verificationId;
+
+  @override
+  String toString() {
+    return 'PhoneVerificationPageRouteArgs{key: $key, phoneNumber: $phoneNumber, verificationId: $verificationId}';
+  }
+}
+
 /// generated route for
 /// [_i6.PhoneAuthPage]
-class PhoneAuthPageRoute extends _i13.PageRouteInfo<void> {
-  const PhoneAuthPageRoute()
-      : super(PhoneAuthPageRoute.name, path: '/phone-auth-page');
+class PhoneAuthPageRoute extends _i13.PageRouteInfo<PhoneAuthPageRouteArgs> {
+  PhoneAuthPageRoute({_i14.Key? key, required String phoneNumber})
+      : super(PhoneAuthPageRoute.name,
+            path: '/phone-auth-page',
+            args: PhoneAuthPageRouteArgs(key: key, phoneNumber: phoneNumber));
 
   static const String name = 'PhoneAuthPageRoute';
+}
+
+class PhoneAuthPageRouteArgs {
+  const PhoneAuthPageRouteArgs({this.key, required this.phoneNumber});
+
+  final _i14.Key? key;
+
+  final String phoneNumber;
+
+  @override
+  String toString() {
+    return 'PhoneAuthPageRouteArgs{key: $key, phoneNumber: $phoneNumber}';
+  }
 }
 
 /// generated route for

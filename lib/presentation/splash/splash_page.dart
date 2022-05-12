@@ -16,7 +16,21 @@ class SplashPage extends HookConsumerWidget {
     ref.listen<AuthState>(authtProvider, (_, nextAuthState) {
       nextAuthState.map(
           initial: (_) {},
-          authenticated: (_) => AutoRouter.of(context).push(IntroPageRoute()),
+          authenticated: (_) {
+            if (_.user.isPhoneVerified) {
+              if (_.user.status == 'accepted') {
+                AutoRouter.of(context).push(HomePageRoute());
+              } else {
+                AutoRouter.of(context).push(SubmissionPageRoute());
+              }
+            } else {
+              AutoRouter.of(context).push(
+                PhoneAuthPageRoute(
+                  phoneNumber: _.user.phone,
+                ),
+              );
+            }
+          },
           unauthenticated: (unAuth) {
             AutoRouter.of(context).replace(IntroPageRoute());
           });

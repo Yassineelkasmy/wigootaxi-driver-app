@@ -66,6 +66,16 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         );
         state = state.copyWith(isSubmitting: false);
       },
+      signInWithEmailAndPasswordPressed: (event) async {
+        state = state.copyWith(isSubmitting: true);
+        final successOrFailure = await _authFacade.signInWithEmailAndPassword(
+          email: event.email,
+          password: event.password,
+        );
+        successOrFailure.fold((l) => null, (success) => checkAuthState());
+
+        state = state.copyWith(isSubmitting: false);
+      },
     );
   }
 }

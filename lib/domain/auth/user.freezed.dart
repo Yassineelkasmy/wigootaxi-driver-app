@@ -21,11 +21,17 @@ class _$UserTearOff {
   _User call(
       {required String uid,
       required String email,
+      required bool isPhoneVerified,
+      required String status,
+      required String phone,
       String? displayName,
       String? photoURL}) {
     return _User(
       uid: uid,
       email: email,
+      isPhoneVerified: isPhoneVerified,
+      status: status,
+      phone: phone,
       displayName: displayName,
       photoURL: photoURL,
     );
@@ -39,6 +45,9 @@ const $User = _$UserTearOff();
 mixin _$User {
   String get uid => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  bool get isPhoneVerified => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
   String? get displayName => throw _privateConstructorUsedError;
   String? get photoURL => throw _privateConstructorUsedError;
 
@@ -50,7 +59,14 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String uid, String email, String? displayName, String? photoURL});
+  $Res call(
+      {String uid,
+      String email,
+      bool isPhoneVerified,
+      String status,
+      String phone,
+      String? displayName,
+      String? photoURL});
 }
 
 /// @nodoc
@@ -65,6 +81,9 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   $Res call({
     Object? uid = freezed,
     Object? email = freezed,
+    Object? isPhoneVerified = freezed,
+    Object? status = freezed,
+    Object? phone = freezed,
     Object? displayName = freezed,
     Object? photoURL = freezed,
   }) {
@@ -76,6 +95,18 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      isPhoneVerified: isPhoneVerified == freezed
+          ? _value.isPhoneVerified
+          : isPhoneVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
               as String,
       displayName: displayName == freezed
           ? _value.displayName
@@ -94,7 +125,14 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({String uid, String email, String? displayName, String? photoURL});
+  $Res call(
+      {String uid,
+      String email,
+      bool isPhoneVerified,
+      String status,
+      String phone,
+      String? displayName,
+      String? photoURL});
 }
 
 /// @nodoc
@@ -110,6 +148,9 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   $Res call({
     Object? uid = freezed,
     Object? email = freezed,
+    Object? isPhoneVerified = freezed,
+    Object? status = freezed,
+    Object? phone = freezed,
     Object? displayName = freezed,
     Object? photoURL = freezed,
   }) {
@@ -121,6 +162,18 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      isPhoneVerified: isPhoneVerified == freezed
+          ? _value.isPhoneVerified
+          : isPhoneVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
               as String,
       displayName: displayName == freezed
           ? _value.displayName
@@ -140,6 +193,9 @@ class _$_User implements _User {
   const _$_User(
       {required this.uid,
       required this.email,
+      required this.isPhoneVerified,
+      required this.status,
+      required this.phone,
       this.displayName,
       this.photoURL});
 
@@ -148,13 +204,19 @@ class _$_User implements _User {
   @override
   final String email;
   @override
+  final bool isPhoneVerified;
+  @override
+  final String status;
+  @override
+  final String phone;
+  @override
   final String? displayName;
   @override
   final String? photoURL;
 
   @override
   String toString() {
-    return 'User(uid: $uid, email: $email, displayName: $displayName, photoURL: $photoURL)';
+    return 'User(uid: $uid, email: $email, isPhoneVerified: $isPhoneVerified, status: $status, phone: $phone, displayName: $displayName, photoURL: $photoURL)';
   }
 
   @override
@@ -165,6 +227,10 @@ class _$_User implements _User {
             const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality()
+                .equals(other.isPhoneVerified, isPhoneVerified) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
+            const DeepCollectionEquality()
                 .equals(other.displayName, displayName) &&
             const DeepCollectionEquality().equals(other.photoURL, photoURL));
   }
@@ -174,6 +240,9 @@ class _$_User implements _User {
       runtimeType,
       const DeepCollectionEquality().hash(uid),
       const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(isPhoneVerified),
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(phone),
       const DeepCollectionEquality().hash(displayName),
       const DeepCollectionEquality().hash(photoURL));
 
@@ -187,6 +256,9 @@ abstract class _User implements User {
   const factory _User(
       {required String uid,
       required String email,
+      required bool isPhoneVerified,
+      required String status,
+      required String phone,
       String? displayName,
       String? photoURL}) = _$_User;
 
@@ -194,6 +266,12 @@ abstract class _User implements User {
   String get uid;
   @override
   String get email;
+  @override
+  bool get isPhoneVerified;
+  @override
+  String get status;
+  @override
+  String get phone;
   @override
   String? get displayName;
   @override

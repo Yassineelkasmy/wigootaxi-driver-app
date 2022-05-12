@@ -23,12 +23,30 @@ class FireBaseAuthFacade {
     if (user == null) {
       return none();
     } else {
+      final userDoc = await FirebaseFirestore.instance
+          .collection('drivers')
+          .doc(user.uid)
+          .get();
+      String status = 'unkown';
+      try {
+        final submissionDoc = await FirebaseFirestore.instance
+            .collection('submissions')
+            .doc(user.uid)
+            .get();
+
+        status = submissionDoc.data()!['status'] as String;
+      } catch (e) {
+        print(e);
+      }
       return optionOf(
         User(
           uid: user.uid,
           email: user.email!,
           displayName: user.displayName,
           photoURL: user.photoURL,
+          status: status,
+          isPhoneVerified: userDoc.data()!['isPhoneVerified'] as bool,
+          phone: userDoc.data()!['phone'] as String,
         ),
       );
     }
@@ -116,6 +134,7 @@ class FireBaseAuthFacade {
           email: email, password: password);
       return right(unit);
     } on FirebaseAuthException catch (e) {
+      print(e);
       if (e.code == 'wrong-password' || e.code == 'user-not-found') {
         return left(const AuthFailure.invalidCredentials());
       }

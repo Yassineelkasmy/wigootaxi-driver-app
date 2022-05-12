@@ -146,8 +146,7 @@ class SignUpPage extends HookConsumerWidget {
                       SizedBox(
                         width: double.maxFinite,
                         child: SubmitButton(
-                          onPressed: () => AutoRouter.of(context)
-                              .push(PhoneVerificationPageRoute()),
+                          onPressed: () {},
                           text: "SUIVANT",
                         ),
                       ),

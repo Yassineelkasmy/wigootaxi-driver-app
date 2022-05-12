@@ -31,6 +31,7 @@ class LoginPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authFormController = ref.watch(authFormProvider.notifier);
+    final authFormState = ref.watch(authFormProvider);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -105,8 +106,22 @@ class LoginPage extends HookConsumerWidget {
                     SizedBox(
                       width: double.maxFinite,
                       child: SubmitButton(
-                        onPressed: () =>
-                            AutoRouter.of(context).replace(HomePageRoute()),
+                        isLoading: authFormState.isSubmitting,
+                        onPressed: () {
+                          final email =
+                              loginForm.findControl('email')!.value as String;
+                          final password = loginForm
+                              .findControl('password')!
+                              .value as String;
+                          print(email);
+                          print(password);
+                          authFormController.mapEventToState(
+                            AuthFormEvent.signInWithEmailAndPasswordPressed(
+                              email,
+                              password,
+                            ),
+                          );
+                        },
                         text: "CONNEXION",
                       ),
                     ),
