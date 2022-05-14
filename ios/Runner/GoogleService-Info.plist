@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>114866143933-1tkpnb9afi4kg0tuqa86lk98v0qsjqfv.apps.googleusercontent.com</string>
+	<string>1010420009793-namf81io44i8gdlqa1l1q10nu1sge2o0.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.114866143933-1tkpnb9afi4kg0tuqa86lk98v0qsjqfv</string>
+	<string>com.googleusercontent.apps.1010420009793-namf81io44i8gdlqa1l1q10nu1sge2o0</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1010420009793-ic7djdcuk8ijujdrdcovq9hkhlqcs3r8.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAttBAkygqVhuE9MU5-PAI6B2ied_848Sk</string>
+	<string>AIzaSyB0gp6JLrfczDndptY0k2g5IrtNDhDO60c</string>
 	<key>GCM_SENDER_ID</key>
-	<string>114866143933</string>
+	<string>1010420009793</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.wigootaxidriver</string>
 	<key>PROJECT_ID</key>
-	<string>taxi-app-driver-a27da</string>
+	<string>taxi-app-user-4800a</string>
 	<key>STORAGE_BUCKET</key>
-	<string>taxi-app-driver-a27da.appspot.com</string>
+	<string>taxi-app-user-4800a.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:114866143933:ios:8e0f1b0d27dde51399add4</string>
+	<string>1:1010420009793:ios:ff3fe66acba13742af2fc0</string>
 </dict>
 </plist>

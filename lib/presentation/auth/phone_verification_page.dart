@@ -27,13 +27,14 @@ class PhoneVerificationPage extends HookConsumerWidget {
   Future<void> verifyPhone(String pin, AuthController authController) async {
     if (pin.length == 6) {
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
-          verificationId: verificationId, smsCode: pin);
+        verificationId: verificationId,
+        smsCode: pin,
+      );
 
       final userCreds = await FirebaseAuth.instance.currentUser!
           .linkWithCredential(credential);
       final user = userCreds.user;
       if (user != null) {
-        print(user.uid);
         await FirebaseFirestore.instance
             .collection('users')
             .doc(user.uid)

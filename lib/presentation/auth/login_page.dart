@@ -138,30 +138,6 @@ class LoginPage extends HookConsumerWidget {
                 text: "SE CONNECTER AVEC",
               ),
               Expanded(child: SizedBox()),
-              Padding(
-                padding: EdgeInsets.only(bottom: 20.h),
-                child: RichText(
-                  text: TextSpan(
-                    text: "Vous n'a avez pas de compte ? ",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.sp,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: "S'inscrire",
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () =>
-                              AutoRouter.of(context).replace(SignUpPageRoute()),
-                      )
-                    ],
-                  ),
-                ),
-              ),
             ],
           ),
         ),

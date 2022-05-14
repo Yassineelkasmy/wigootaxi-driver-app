@@ -26,8 +26,8 @@ class SplashPage extends HookConsumerWidget {
             } else {
               AutoRouter.of(context).push(
                 PhoneAuthPageRoute(
-                  phoneNumber: _.user.phone,
-                ),
+                    // phoneNumber: _.user.phone,
+                    ),
               );
             }
           },

@@ -11,11 +11,8 @@ import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 
 class PhoneAuthPage extends HookConsumerWidget {
-  PhoneAuthPage({
-    Key? key,
-    required this.phoneNumber,
-  }) : super(key: key);
-  final String phoneNumber;
+  PhoneAuthPage({Key? key}) : super(key: key);
+  final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,6 +30,7 @@ class PhoneAuthPage extends HookConsumerWidget {
     });
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         centerTitle: false,
         iconTheme: IconThemeData(color: Colors.black),
@@ -49,9 +47,9 @@ class PhoneAuthPage extends HookConsumerWidget {
             ReactiveForm(
               formGroup: phoneForm,
               child: ReactiveTextField(
-                readOnly: true,
+                controller: controller,
                 decoration: InputDecoration(
-                  hintText: phoneNumber,
+                  hintText: "Numéro de téléphone",
                   prefixIcon: Icon(Icons.phone),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30.r),
@@ -70,29 +68,32 @@ class PhoneAuthPage extends HookConsumerWidget {
               child: SubmitButton(
                 isLoading: isLoading.value,
                 onPressed: () async {
-                  isLoading.value = true;
-                  print(phoneNumber);
-                  try {
-                    await FirebaseAuth.instance.verifyPhoneNumber(
-                      phoneNumber: phoneNumber,
-                      verificationCompleted:
-                          (PhoneAuthCredential credential) {},
-                      verificationFailed: (FirebaseAuthException e) {},
-                      codeSent: (String verificationId, int? resendToken) {
-                        AutoRouter.of(context).push(
-                          PhoneVerificationPageRoute(
-                            phoneNumber: '+212${phoneNumber.substring(1)}',
-                            verificationId: verificationId,
-                          ),
-                        );
-                      },
-                      codeAutoRetrievalTimeout: (String verificationId) {},
-                    );
-                  } catch (e) {
-                    print(e);
+                  final phone = controller.text;
+                  if (phone.length >= 10) {
+                    isLoading.value = true;
+                    final phoneNumber = '+212${phone.substring(1)}';
+
+                    try {
+                      await FirebaseAuth.instance.verifyPhoneNumber(
+                        phoneNumber: phoneNumber,
+                        verificationCompleted:
+                            (PhoneAuthCredential credential) {},
+                        verificationFailed: (FirebaseAuthException e) {},
+                        codeSent: (String verificationId, int? resendToken) {
+                          AutoRouter.of(context).push(
+                            PhoneVerificationPageRoute(
+                              phoneNumber: phoneNumber,
+                              verificationId: verificationId,
+                            ),
+                          );
+                        },
+                        codeAutoRetrievalTimeout: (String verificationId) {},
+                      );
+                    } catch (e) {
+                      isLoading.value = false;
+                    }
                     isLoading.value = false;
                   }
-                  isLoading.value = false;
                 },
                 text: 'VERIFIER',
               ),
