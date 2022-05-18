@@ -18,6 +18,7 @@ class FireBaseAuthFacade {
 
   @override
   Future<Option<User>> getSignedUser() async {
+    // await signOut();
     final user = _firebaseAuth.currentUser;
     if (user == null) {
       return none();
@@ -45,7 +46,7 @@ class FireBaseAuthFacade {
           photoURL: user.photoURL,
           status: status,
           isPhoneVerified: userDoc.data()!['isPhoneVerified'] as bool,
-          phone: userDoc.data()!['phone'] as String,
+          phone: userDoc.data()?['phone'] as String?,
         ),
       );
     }
@@ -92,7 +93,6 @@ class FireBaseAuthFacade {
     required String email,
     required String password,
     required String username,
-    required String phone,
   }) async {
     try {
       final creds = await _firebaseAuth.createUserWithEmailAndPassword(
@@ -107,7 +107,6 @@ class FireBaseAuthFacade {
           {
             'username': username,
             'email': email,
-            'phone': phone,
             'isPhoneVerified': false,
             'ts': Timestamp.now(),
           },
@@ -115,6 +114,7 @@ class FireBaseAuthFacade {
       }
       return right(unit);
     } on FirebaseAuthException catch (e) {
+      print(e);
       if (e.code == 'email_already_in_use') {
         return left(const AuthFailure.emailAlreadyInUse());
       } else {

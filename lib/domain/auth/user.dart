@@ -9,7 +9,7 @@ class User with _$User {
     required String email,
     required bool isPhoneVerified,
     required String status,
-    required String phone,
+    String? phone,
     String? displayName,
     String? photoURL,
   }) = _User;

@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +10,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
 import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
+import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 
 class PhoneAuthPage extends HookConsumerWidget {
@@ -45,23 +48,38 @@ class PhoneAuthPage extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ReactiveForm(
-              formGroup: phoneForm,
-              child: ReactiveTextField(
-                controller: controller,
-                decoration: InputDecoration(
-                  hintText: "Numéro de téléphone",
-                  prefixIcon: Icon(Icons.phone),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.r),
+                formGroup: phoneForm,
+                child: Material(
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
                   ),
-                ),
-                formControlName: 'phone',
-                validationMessages: (control) => {
-                  'required': "Numéro de téléphone ne doit pas être vide",
-                  'email': 'Numéro de téléphone invalide'
-                },
-              ),
-            ),
+                  child: ReactiveTextField(
+                    formControlName: 'phone',
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(
+                        CupertinoIcons.phone,
+                        color: kPrimaryColor,
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: BorderSide.none,
+                      ),
+                      labelText: 'Numéro de téléphone',
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: BorderSide.none,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                )),
             20.verticalSpace,
             SizedBox(
               width: double.maxFinite,
@@ -72,26 +90,38 @@ class PhoneAuthPage extends HookConsumerWidget {
                   if (phone.length >= 10) {
                     isLoading.value = true;
                     final phoneNumber = '+212${phone.substring(1)}';
+                    final testDoc = await FirebaseFirestore.instance
+                        .collection('users')
+                        .where('phone', isEqualTo: phone)
+                        .get();
 
-                    try {
-                      await FirebaseAuth.instance.verifyPhoneNumber(
-                        phoneNumber: phoneNumber,
-                        verificationCompleted:
-                            (PhoneAuthCredential credential) {},
-                        verificationFailed: (FirebaseAuthException e) {},
-                        codeSent: (String verificationId, int? resendToken) {
-                          AutoRouter.of(context).push(
-                            PhoneVerificationPageRoute(
-                              phoneNumber: phoneNumber,
-                              verificationId: verificationId,
-                            ),
-                          );
-                        },
-                        codeAutoRetrievalTimeout: (String verificationId) {},
-                      );
-                    } catch (e) {
-                      isLoading.value = false;
+                    if (testDoc.docs.isEmpty) {
+                      try {
+                        await FirebaseAuth.instance.verifyPhoneNumber(
+                          phoneNumber: phoneNumber,
+                          verificationCompleted:
+                              (PhoneAuthCredential credential) {},
+                          verificationFailed: (FirebaseAuthException e) {},
+                          codeSent: (String verificationId, int? resendToken) {
+                            print(verificationId);
+                            AutoRouter.of(context).push(
+                              PhoneVerificationPageRoute(
+                                phoneNumber: phoneNumber,
+                                phone: phone,
+                                verificationId: verificationId,
+                              ),
+                            );
+                          },
+                          codeAutoRetrievalTimeout: (String verificationId) {},
+                        );
+                      } catch (e) {
+                        print(e);
+                        isLoading.value = false;
+                      }
+                    } else {
+                      print('already');
                     }
+
                     isLoading.value = false;
                   }
                 },

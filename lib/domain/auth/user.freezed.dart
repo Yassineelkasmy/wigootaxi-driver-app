@@ -23,7 +23,7 @@ class _$UserTearOff {
       required String email,
       required bool isPhoneVerified,
       required String status,
-      required String phone,
+      String? phone,
       String? displayName,
       String? photoURL}) {
     return _User(
@@ -47,7 +47,7 @@ mixin _$User {
   String get email => throw _privateConstructorUsedError;
   bool get isPhoneVerified => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
+  String? get phone => throw _privateConstructorUsedError;
   String? get displayName => throw _privateConstructorUsedError;
   String? get photoURL => throw _privateConstructorUsedError;
 
@@ -64,7 +64,7 @@ abstract class $UserCopyWith<$Res> {
       String email,
       bool isPhoneVerified,
       String status,
-      String phone,
+      String? phone,
       String? displayName,
       String? photoURL});
 }
@@ -107,7 +107,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       phone: phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -130,7 +130,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String email,
       bool isPhoneVerified,
       String status,
-      String phone,
+      String? phone,
       String? displayName,
       String? photoURL});
 }
@@ -174,7 +174,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       phone: phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -195,7 +195,7 @@ class _$_User implements _User {
       required this.email,
       required this.isPhoneVerified,
       required this.status,
-      required this.phone,
+      this.phone,
       this.displayName,
       this.photoURL});
 
@@ -208,7 +208,7 @@ class _$_User implements _User {
   @override
   final String status;
   @override
-  final String phone;
+  final String? phone;
   @override
   final String? displayName;
   @override
@@ -258,7 +258,7 @@ abstract class _User implements User {
       required String email,
       required bool isPhoneVerified,
       required String status,
-      required String phone,
+      String? phone,
       String? displayName,
       String? photoURL}) = _$_User;
 
@@ -271,7 +271,7 @@ abstract class _User implements User {
   @override
   String get status;
   @override
-  String get phone;
+  String? get phone;
   @override
   String? get displayName;
   @override

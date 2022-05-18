@@ -13,8 +13,8 @@
 import 'package:auto_route/auto_route.dart' as _i12;
 import 'package:flutter/material.dart' as _i13;
 
-import '../auth/login_page.dart' as _i7;
-import '../auth/phone_auth_page.dart' as _i6;
+import '../auth/login_page.dart' as _i6;
+import '../auth/phone_auth_page.dart' as _i7;
 import '../auth/phone_verification_page.dart' as _i5;
 import '../home/help/send_message_page.dart' as _i11;
 import '../home/home_page.dart' as _i9;
@@ -58,19 +58,20 @@ class AppRouter extends _i12.RootStackRouter {
           child: _i5.PhoneVerificationPage(
               key: args.key,
               phoneNumber: args.phoneNumber,
+              phone: args.phone,
               verificationId: args.verificationId));
-    },
-    PhoneAuthPageRoute.name: (routeData) {
-      final args = routeData.argsAs<PhoneAuthPageRouteArgs>(
-          orElse: () => const PhoneAuthPageRouteArgs());
-      return _i12.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i6.PhoneAuthPage(key: args.key));
     },
     LoginPageRoute.name: (routeData) {
       final args = routeData.argsAs<LoginPageRouteArgs>(
           orElse: () => const LoginPageRouteArgs());
       return _i12.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i7.LoginPage(key: args.key));
+          routeData: routeData, child: _i6.LoginPage(key: args.key));
+    },
+    PhoneAuthPageRoute.name: (routeData) {
+      final args = routeData.argsAs<PhoneAuthPageRouteArgs>(
+          orElse: () => const PhoneAuthPageRouteArgs());
+      return _i12.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i7.PhoneAuthPage(key: args.key));
     },
     IntroPageRoute.name: (routeData) {
       return _i12.MaterialPageX<dynamic>(
@@ -104,8 +105,8 @@ class AppRouter extends _i12.RootStackRouter {
             path: '/document-image-page'),
         _i12.RouteConfig(PhoneVerificationPageRoute.name,
             path: '/phone-verification-page'),
-        _i12.RouteConfig(PhoneAuthPageRoute.name, path: '/phone-auth-page'),
         _i12.RouteConfig(LoginPageRoute.name, path: '/login-page'),
+        _i12.RouteConfig(PhoneAuthPageRoute.name, path: '/phone-auth-page'),
         _i12.RouteConfig(IntroPageRoute.name, path: '/intro-page'),
         _i12.RouteConfig(HomePageRoute.name, path: '/home-page'),
         _i12.RouteConfig(ActivateLocationPageRoute.name,
@@ -185,12 +186,14 @@ class PhoneVerificationPageRoute
   PhoneVerificationPageRoute(
       {_i13.Key? key,
       required String phoneNumber,
+      required String phone,
       required String verificationId})
       : super(PhoneVerificationPageRoute.name,
             path: '/phone-verification-page',
             args: PhoneVerificationPageRouteArgs(
                 key: key,
                 phoneNumber: phoneNumber,
+                phone: phone,
                 verificationId: verificationId));
 
   static const String name = 'PhoneVerificationPageRoute';
@@ -198,43 +201,27 @@ class PhoneVerificationPageRoute
 
 class PhoneVerificationPageRouteArgs {
   const PhoneVerificationPageRouteArgs(
-      {this.key, required this.phoneNumber, required this.verificationId});
+      {this.key,
+      required this.phoneNumber,
+      required this.phone,
+      required this.verificationId});
 
   final _i13.Key? key;
 
   final String phoneNumber;
 
+  final String phone;
+
   final String verificationId;
 
   @override
   String toString() {
-    return 'PhoneVerificationPageRouteArgs{key: $key, phoneNumber: $phoneNumber, verificationId: $verificationId}';
+    return 'PhoneVerificationPageRouteArgs{key: $key, phoneNumber: $phoneNumber, phone: $phone, verificationId: $verificationId}';
   }
 }
 
 /// generated route for
-/// [_i6.PhoneAuthPage]
-class PhoneAuthPageRoute extends _i12.PageRouteInfo<PhoneAuthPageRouteArgs> {
-  PhoneAuthPageRoute({_i13.Key? key})
-      : super(PhoneAuthPageRoute.name,
-            path: '/phone-auth-page', args: PhoneAuthPageRouteArgs(key: key));
-
-  static const String name = 'PhoneAuthPageRoute';
-}
-
-class PhoneAuthPageRouteArgs {
-  const PhoneAuthPageRouteArgs({this.key});
-
-  final _i13.Key? key;
-
-  @override
-  String toString() {
-    return 'PhoneAuthPageRouteArgs{key: $key}';
-  }
-}
-
-/// generated route for
-/// [_i7.LoginPage]
+/// [_i6.LoginPage]
 class LoginPageRoute extends _i12.PageRouteInfo<LoginPageRouteArgs> {
   LoginPageRoute({_i13.Key? key})
       : super(LoginPageRoute.name,
@@ -251,6 +238,27 @@ class LoginPageRouteArgs {
   @override
   String toString() {
     return 'LoginPageRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i7.PhoneAuthPage]
+class PhoneAuthPageRoute extends _i12.PageRouteInfo<PhoneAuthPageRouteArgs> {
+  PhoneAuthPageRoute({_i13.Key? key})
+      : super(PhoneAuthPageRoute.name,
+            path: '/phone-auth-page', args: PhoneAuthPageRouteArgs(key: key));
+
+  static const String name = 'PhoneAuthPageRoute';
+}
+
+class PhoneAuthPageRouteArgs {
+  const PhoneAuthPageRouteArgs({this.key});
+
+  final _i13.Key? key;
+
+  @override
+  String toString() {
+    return 'PhoneAuthPageRouteArgs{key: $key}';
   }
 }
 

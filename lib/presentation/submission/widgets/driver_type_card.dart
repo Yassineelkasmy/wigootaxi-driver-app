@@ -7,7 +7,7 @@ Widget buildDriverTypeCard({
   required String description,
   required void Function() onPressed,
 }) {
-  return GestureDetector(
+  return InkWell(
     onTap: onPressed,
     child: Container(
       decoration: BoxDecoration(
@@ -41,13 +41,19 @@ Widget buildDriverTypeCard({
               ),
             ),
           ),
-          SizedBox(
-            width: 64.w,
-            child: Center(
-              child: Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.white,
-                size: 32,
+          Material(
+            child: InkWell(
+              onTap: () {},
+              child: SizedBox(
+                height: double.maxFinite,
+                width: 64.w,
+                child: Center(
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                    size: 32,
+                  ),
+                ),
               ),
             ),
           ),

@@ -18,9 +18,11 @@ class PhoneVerificationPage extends HookConsumerWidget {
   PhoneVerificationPage({
     Key? key,
     required this.phoneNumber,
+    required this.phone,
     required this.verificationId,
   }) : super(key: key);
   final String phoneNumber;
+  final String phone;
   final String verificationId;
   final controller = TextEditingController();
 
@@ -38,7 +40,10 @@ class PhoneVerificationPage extends HookConsumerWidget {
         await FirebaseFirestore.instance
             .collection('users')
             .doc(user.uid)
-            .update({'isPhoneVerified': true});
+            .update({
+          'isPhoneVerified': true,
+          'phone': phone,
+        });
       }
       authController.mapEventToState(AuthEvent.authCheckRequested());
     }

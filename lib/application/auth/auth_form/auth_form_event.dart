@@ -15,7 +15,6 @@ class AuthFormEvent with _$AuthFormEvent {
   const factory AuthFormEvent.registerWithEmailAndPasswordPressed(
     String email,
     String password,
-    String phone,
     String username,
   ) = RegisterWithEmailAndPasswordPressed;
   const factory AuthFormEvent.signInWithFacebookPressed() =

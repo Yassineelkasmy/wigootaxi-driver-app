@@ -1,15 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-import 'package:wigootaxidriver/application/auth/auth_event.dart';
 import 'package:wigootaxidriver/application/auth/auth_form/auth_form_event.dart';
 import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
 import 'package:wigootaxidriver/presentation/shared/logo.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/step_indicator.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
-import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 
 class SignUpForm extends HookConsumerWidget {
   SignUpForm({
@@ -22,32 +21,26 @@ class SignUpForm extends HookConsumerWidget {
     {
       'password': FormControl<String>(
         validators: [
-          Validators.required,
-          Validators.minLength(8),
+          // Validators.required,
+          // Validators.minLength(8),
         ],
       ),
       'confirmation': FormControl<String>(
         validators: [
-          Validators.required,
-          Validators.equals('password'),
+          // Validators.required,
+          // Validators.equals('password'),
         ],
       ),
       'email': FormControl<String>(
         validators: [
-          Validators.required,
-          Validators.email,
+          // Validators.required,
+          // Validators.email,
         ],
       ),
       'username': FormControl<String>(
         validators: [
-          Validators.required,
-          Validators.minLength(3),
-        ],
-      ),
-      'phone': FormControl<String>(
-        validators: [
-          Validators.required,
-          Validators.minLength(10),
+          // Validators.required,
+          // Validators.minLength(3),
         ],
       ),
     },
@@ -101,91 +94,130 @@ class SignUpForm extends HookConsumerWidget {
               formGroup: signUpForm,
               child: Column(
                 children: [
-                  ReactiveTextField(
-                    decoration: InputDecoration(
-                      contentPadding: kInputContentPadding,
-                      hintStyle: kHintStyle,
-                      hintText: "Nom d'utilisateur",
-                      prefixIcon: Icon(Icons.person),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30.r),
+                  Material(
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: ReactiveTextField(
+                      formControlName: 'username',
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(
+                          CupertinoIcons.profile_circled,
+                          color: kPrimaryColor,
+                        ),
+                        fillColor: Colors.white,
+                        filled: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: BorderSide.none,
+                        ),
+                        labelText: "Nom d'utilisateur",
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: BorderSide.none,
+                        ),
                       ),
                     ),
-                    formControlName: 'username',
-                    validationMessages: (control) => {
-                      'required': "Nom d'utilisateur ne doit pas être vide",
-                    },
                   ),
                   10.h.verticalSpace,
-                  ReactiveTextField(
-                    decoration: InputDecoration(
-                      contentPadding: kInputContentPadding,
-                      hintStyle: kHintStyle,
-                      hintText: "Email",
-                      prefixIcon: Icon(Icons.email),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30.r),
+                  Material(
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: ReactiveTextField(
+                      formControlName: 'email',
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(
+                          CupertinoIcons.mail,
+                          color: kPrimaryColor,
+                        ),
+                        fillColor: Colors.white,
+                        filled: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: BorderSide.none,
+                        ),
+                        labelText: "Email",
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: BorderSide.none,
+                        ),
                       ),
                     ),
-                    formControlName: 'email',
-                    validationMessages: (control) => {
-                      'required': "Email ne doit pas être vide",
-                    },
                   ),
                   10.h.verticalSpace,
-                  ReactiveTextField(
-                    decoration: InputDecoration(
-                      hintText: "Numéro de téléphone",
-                      contentPadding: kInputContentPadding,
-                      hintStyle: kHintStyle,
-                      prefixIcon: Icon(Icons.phone),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30.r),
+                  Material(
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: ReactiveTextField(
+                      formControlName: 'password',
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(
+                          CupertinoIcons.padlock,
+                          color: kPrimaryColor,
+                        ),
+                        fillColor: Colors.white,
+                        filled: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: BorderSide.none,
+                        ),
+                        labelText: 'Mot de passe',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: BorderSide.none,
+                        ),
                       ),
                     ),
-                    formControlName: 'phone',
-                    validationMessages: (control) => {
-                      'required': "Numéro de téléphone ne doit pas être vide",
-                      'email': 'Numéro de téléphone invalide'
-                    },
                   ),
                   10.h.verticalSpace,
-                  ReactiveTextField(
-                    decoration: InputDecoration(
-                      contentPadding: kInputContentPadding,
-                      hintStyle: kHintStyle,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30.r),
-                      ),
-                      hintText: "Mot de passe",
-                      prefixIcon: Icon(Icons.lock),
+                  Material(
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
                     ),
-                    formControlName: 'password',
-                    obscureText: true,
-                    validationMessages: (control) => {
-                      'required': 'Le mot de passe ne doit pas être vide',
-                      'minLenght':
-                          'Le mot de passe doit comporter au moins 8 caractères'
-                    },
-                  ),
-                  10.h.verticalSpace,
-                  ReactiveTextField(
-                    decoration: InputDecoration(
-                      contentPadding: kInputContentPadding,
-                      hintStyle: kHintStyle,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30.r),
+                    child: ReactiveTextField(
+                      formControlName: 'confirmation',
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(
+                          CupertinoIcons.padlock,
+                          color: kPrimaryColor,
+                        ),
+                        fillColor: Colors.white,
+                        filled: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: BorderSide.none,
+                        ),
+                        labelText: 'Confirmation du mot de passe',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: BorderSide.none,
+                        ),
                       ),
-                      hintText: "Confirmer votre Mot de passe",
-                      prefixIcon: Icon(Icons.lock),
                     ),
-                    formControlName: 'confirmation',
-                    obscureText: true,
-                    validationMessages: (control) => {
-                      'required': 'Le mot de passe ne doit pas être vide',
-                      'minLenght':
-                          'Le mot de passe doit comporter au moins 8 caractères'
-                    },
                   ),
                   20.verticalSpace,
                   SizedBox(
@@ -195,8 +227,7 @@ class SignUpForm extends HookConsumerWidget {
                       onPressed: () async {
                         final username =
                             signUpForm.findControl('username')!.value as String;
-                        final phone =
-                            signUpForm.findControl('phone')!.value as String;
+
                         final email =
                             signUpForm.findControl('email')!.value as String;
                         final password =
@@ -206,13 +237,8 @@ class SignUpForm extends HookConsumerWidget {
                           AuthFormEvent.registerWithEmailAndPasswordPressed(
                             email,
                             password,
-                            phone,
                             username,
                           ),
-                        );
-
-                        authController.mapEventToState(
-                          AuthEvent.authCheckRequested(),
                         );
                       },
                       text: "SUIVANT",
