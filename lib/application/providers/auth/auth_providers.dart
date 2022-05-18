@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart' hide User;
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:wigootaxidriver/application/auth/auth_event.dart';
 import 'package:wigootaxidriver/application/auth/auth_form/auth_form_controller.dart';
@@ -13,9 +12,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 final firebaseAuthFacadeProvider = Provider<FireBaseAuthFacade>((ref) {
   final firebaseAuth = FirebaseAuth.instance;
   final googleSignIn = GoogleSignIn();
-  final facebookAuth = FacebookAuth.instance;
-  final fireBaseAuthFacade =
-      FireBaseAuthFacade(firebaseAuth, googleSignIn, facebookAuth);
+  final fireBaseAuthFacade = FireBaseAuthFacade(firebaseAuth, googleSignIn);
   return fireBaseAuthFacade;
 });
 

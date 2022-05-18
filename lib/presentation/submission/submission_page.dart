@@ -57,10 +57,9 @@ class SubmissionPage extends HookConsumerWidget {
               physics: NeverScrollableScrollPhysics(),
               controller: pageController,
               children: [
-                if (!authenticated.value)
-                  DriverTypeForm(
-                    pageController: pageController,
-                  ),
+                DriverTypeForm(
+                  pageController: pageController,
+                ),
                 if (!authenticated.value)
                   SignUpForm(
                     pageController: pageController,

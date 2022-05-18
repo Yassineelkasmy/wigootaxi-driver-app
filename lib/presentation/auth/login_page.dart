@@ -56,6 +56,7 @@ class LoginPage extends HookConsumerWidget {
                   children: [
                     ReactiveTextField(
                       decoration: InputDecoration(
+                        filled: false,
                         contentPadding: kInputContentPadding,
                         hintStyle: kHintStyle,
                         hintText: "Nom d'utilisateur",
@@ -73,6 +74,7 @@ class LoginPage extends HookConsumerWidget {
                     10.verticalSpace,
                     ReactiveTextField(
                       decoration: InputDecoration(
+                        fillColor: Colors.white,
                         contentPadding: kInputContentPadding,
                         hintStyle: kHintStyle,
                         border: OutlineInputBorder(
@@ -130,7 +132,11 @@ class LoginPage extends HookConsumerWidget {
               ),
               20.verticalSpace,
               SocialMedia(
-                onFacebookPressed: () {},
+                onFacebookPressed: () {
+                  authFormController.mapEventToState(
+                    const AuthFormEvent.signInWithFacebookPressed(),
+                  );
+                },
                 onGooglePressed: () {
                   authFormController.mapEventToState(
                       const AuthFormEvent.signInWithGooglePresseed());

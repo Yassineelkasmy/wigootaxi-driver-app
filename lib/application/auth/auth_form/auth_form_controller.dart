@@ -31,8 +31,14 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         );
       },
       signInWithFacebookPressed: (_) async {
-        checkAuthState();
-        throw UnimplementedError();
+        final authFailureOrSuccess = await _authFacade.signInWithFacebook();
+        state = state.copyWith(
+          authFailureOrSuccessOption: optionOf(authFailureOrSuccess),
+          isSubmitting: false,
+        );
+        authFailureOrSuccess.map(
+          (r) => checkAuthState(),
+        );
       },
       signOutPressed: (_) async {
         await _authFacade.signOut();

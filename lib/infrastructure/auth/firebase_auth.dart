@@ -1,20 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:wigootaxidriver/domain/auth/auth_failure.dart';
 import 'package:wigootaxidriver/domain/auth/user.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class FireBaseAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
-  final FacebookAuth _facebookAuth;
+  final fb = FacebookLogin();
 
   FireBaseAuthFacade(
     this._firebaseAuth,
     this._googleSignIn,
-    this._facebookAuth,
   );
 
   @override
@@ -195,34 +194,50 @@ class FireBaseAuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithFacebook() async {
-    try {
-      final LoginResult result = await _facebookAuth.login(
-        permissions: ["public_profile", "email"],
-      );
-
-      if (result.status == LoginStatus.success) {
-        final Map<String, dynamic> facebookUser =
-            await _facebookAuth.getUserData(
-          fields: "email, name",
-        );
-
-        print(facebookUser);
-
-        AccessToken? _token = result.accessToken;
-
-        final facebookCredentials =
-            FacebookAuthProvider.credential(_token!.token);
-      }
-      return right(unit);
-    } on FirebaseAuthException catch (_) {
-      return left(const AuthFailure.serverError());
-    }
+    return right(unit);
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithFacebook() {
-    // TODO: implement signInWithFacebook
-    throw UnimplementedError();
+  Future<Either<AuthFailure, Unit>> signInWithFacebook() async {
+    try {
+      final res = await fb.logIn(permissions: [
+        FacebookPermission.publicProfile,
+        FacebookPermission.email,
+      ]);
+      switch (res.status) {
+        case FacebookLoginStatus.success:
+          final FacebookAccessToken accessToken = res.accessToken!;
+
+          final email = await fb.getUserEmail();
+          if (email != null) {
+            final authMethod = await checkAuthMethod(email);
+            print(authMethod);
+
+            if (authMethod == SignInMethod.facebook) {
+              final FacebookAccessToken? accessToken = res.accessToken;
+
+              final facebookAuthCredential =
+                  FacebookAuthProvider.credential(accessToken!.token);
+              await _firebaseAuth.signInWithCredential(facebookAuthCredential);
+            } else {
+              return left(AuthFailure.userDisabled());
+            }
+          }
+
+          return right(unit);
+
+        case FacebookLoginStatus.cancel:
+          // User cancel log in
+          break;
+        case FacebookLoginStatus.error:
+          // Log in failed
+          print('Error while log in: ${res.error}');
+          break;
+      }
+      return left(AuthFailure.serverError());
+    } catch (e) {
+      return left(AuthFailure.serverError());
+    }
   }
 }
 

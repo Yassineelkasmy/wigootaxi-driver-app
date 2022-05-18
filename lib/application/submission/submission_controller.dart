@@ -44,14 +44,15 @@ class SubmissionController extends StateNotifier<SubmissionState> {
             failureOrSuccessOption: none(),
           );
           final failureOrSuccess = await _userService.submitDocument(
-              event.user.uid,
-              state.docs
-                ..putIfAbsent('status', () => 'pending')
-                ..putIfAbsent('ts', () => Timestamp.now())
-                ..putIfAbsent('type', () => state.type)
-                ..putIfAbsent('username', () => state.type)
-                ..putIfAbsent('email', () => state.type)
-                ..putIfAbsent('phone', () => state.type));
+            event.user.uid,
+            state.docs
+              ..putIfAbsent('status', () => 'pending')
+              ..putIfAbsent('ts', () => Timestamp.now())
+              ..putIfAbsent('type', () => state.type)
+              ..putIfAbsent('username', () => state.type)
+              ..putIfAbsent('email', () => state.type)
+              ..putIfAbsent('phone', () => state.type),
+          );
           state = state.copyWith(
             isSubmitting: false,
             failureOrSuccessOption: optionOf(failureOrSuccess),
