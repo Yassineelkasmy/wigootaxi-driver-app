@@ -25,10 +25,7 @@ class PhoneAuthPage extends HookConsumerWidget {
     final authFormState = ref.watch(authFormProvider);
     final phoneForm = FormGroup({
       'phone': FormControl<String>(
-        validators: [
-          Validators.required,
-          Validators.minLength(10),
-        ],
+        validators: [],
       ),
     });
     return Scaffold(
@@ -55,8 +52,8 @@ class PhoneAuthPage extends HookConsumerWidget {
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: ReactiveTextField(
+                    controller: controller,
                     formControlName: 'phone',
-                    obscureText: true,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(
                         CupertinoIcons.phone,
@@ -87,39 +84,36 @@ class PhoneAuthPage extends HookConsumerWidget {
                 isLoading: isLoading.value,
                 onPressed: () async {
                   final phone = controller.text;
+                  print(phone);
                   if (phone.length >= 10) {
                     isLoading.value = true;
                     final phoneNumber = '+212${phone.substring(1)}';
-                    final testDoc = await FirebaseFirestore.instance
-                        .collection('users')
-                        .where('phone', isEqualTo: phone)
-                        .get();
+                    // final testDoc = await FirebaseFirestore.instance
+                    //     .collection('users')
+                    //     .where('phone', isEqualTo: phone)
+                    //     .get();
 
-                    if (testDoc.docs.isEmpty) {
-                      try {
-                        await FirebaseAuth.instance.verifyPhoneNumber(
-                          phoneNumber: phoneNumber,
-                          verificationCompleted:
-                              (PhoneAuthCredential credential) {},
-                          verificationFailed: (FirebaseAuthException e) {},
-                          codeSent: (String verificationId, int? resendToken) {
-                            print(verificationId);
-                            AutoRouter.of(context).push(
-                              PhoneVerificationPageRoute(
-                                phoneNumber: phoneNumber,
-                                phone: phone,
-                                verificationId: verificationId,
-                              ),
-                            );
-                          },
-                          codeAutoRetrievalTimeout: (String verificationId) {},
-                        );
-                      } catch (e) {
-                        print(e);
-                        isLoading.value = false;
-                      }
-                    } else {
-                      print('already');
+                    try {
+                      await FirebaseAuth.instance.verifyPhoneNumber(
+                        phoneNumber: phoneNumber,
+                        verificationCompleted:
+                            (PhoneAuthCredential credential) {},
+                        verificationFailed: (FirebaseAuthException e) {},
+                        codeSent: (String verificationId, int? resendToken) {
+                          print(verificationId);
+                          AutoRouter.of(context).push(
+                            PhoneVerificationPageRoute(
+                              phoneNumber: phoneNumber,
+                              phone: phone,
+                              verificationId: verificationId,
+                            ),
+                          );
+                        },
+                        codeAutoRetrievalTimeout: (String verificationId) {},
+                      );
+                    } catch (e) {
+                      print(e);
+                      isLoading.value = false;
                     }
 
                     isLoading.value = false;

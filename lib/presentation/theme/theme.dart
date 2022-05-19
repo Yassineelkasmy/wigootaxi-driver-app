@@ -29,7 +29,7 @@ final lightTheme = FlexThemeData.light(
     navigationBarMutedUnselectedIcon: true,
     inputDecoratorIsFilled: true,
     inputDecoratorBorderType: FlexInputBorderType.outline,
-    inputDecoratorFillColor: Colors.grey.shade100,
+    inputDecoratorFillColor: Colors.white,
     elevatedButtonElevation: 2,
     inputDecoratorUnfocusedHasBorder: true,
     blendOnColors: true,

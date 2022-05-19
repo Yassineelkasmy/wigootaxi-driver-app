@@ -73,24 +73,33 @@ class DriverTypeForm extends HookConsumerWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      "Taxi Driver",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                          color: Colors.black),
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      "Vous êtes un chauffeur de petit ou grand taxi",
-                      style: TextStyle(
-                          color: Colors.grey, fontWeight: FontWeight.bold),
-                    ),
+                Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "Taxi Driver",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                              color: Colors.black),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "Vous êtes un chauffeur\nde petit ou grand taxi",
+                          style: TextStyle(
+                              color: Colors.grey, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ).paddingSymmetric(horizontal: 20, vertical: 20),
+                    Image.asset(
+                      'assets/images/taxi.png',
+                      width: 60,
+                      height: 60,
+                    ).paddingOnly(right: 5),
                   ],
-                ).paddingSymmetric(horizontal: 20, vertical: 20).expandIt(),
+                ),
                 TextButton(
                   onPressed: () async {
                     await submissionController.mapEventToState(
@@ -133,24 +142,32 @@ class DriverTypeForm extends HookConsumerWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      "Indépendant",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                          color: Colors.black),
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      "Vous êtes un chauffeur indépendant avec voiture",
-                      style: TextStyle(
-                          color: Colors.grey, fontWeight: FontWeight.bold),
-                    ),
+                Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "Indépendant",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                              color: Colors.black),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "Vous êtes un chauffeur\nindépendant avec voiture",
+                          style: TextStyle(
+                              color: Colors.grey, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ).paddingSymmetric(horizontal: 20, vertical: 20),
+                    Image.asset(
+                      'assets/images/car1.png',
+                      width: 60,
+                    ).paddingOnly(right: 5),
                   ],
-                ).paddingSymmetric(horizontal: 20, vertical: 20).expandIt(),
+                ),
                 TextButton(
                   onPressed: () async {
                     await submissionController.mapEventToState(

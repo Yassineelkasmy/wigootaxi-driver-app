@@ -38,7 +38,7 @@ class PhoneVerificationPage extends HookConsumerWidget {
       final user = userCreds.user;
       if (user != null) {
         await FirebaseFirestore.instance
-            .collection('users')
+            .collection('drivers')
             .doc(user.uid)
             .update({
           'isPhoneVerified': true,
@@ -63,7 +63,8 @@ class PhoneVerificationPage extends HookConsumerWidget {
         width: double.maxFinite,
         child: SubmitButton(
           onPressed: () => {
-            AutoRouter.of(context).push(HomePageRoute()),
+            AutoRouter.of(context)
+                .popUntilRouteWithName(SubmissionPageRoute.name),
           },
           text: "CREER UN COMPTE",
         ),
