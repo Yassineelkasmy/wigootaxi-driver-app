@@ -109,6 +109,7 @@ class FireBaseAuthFacade {
             'email': email,
             'isPhoneVerified': false,
             'ts': Timestamp.now(),
+            'phone': "",
           },
         );
       }

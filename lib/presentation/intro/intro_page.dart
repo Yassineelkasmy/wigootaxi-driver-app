@@ -51,7 +51,7 @@ class _IntroPageState extends State<IntroPage> {
                   horizontal: 28.w,
                 ),
                 child: Text(
-                  "Il est facile de ganger l`argent",
+                  "Il est facile de ganger l'argent",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
