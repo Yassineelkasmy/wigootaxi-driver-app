@@ -47,14 +47,19 @@
 		<string>This app needs to access the gallery</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>This app needs to access location</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>This app needs access to location when in the background.</string>
 
 		<key>CFBundleURLTypes</key>
 		<array>
 			<dict>
+				<key>CFBundleTypeRole</key>
+				<string>Editor</string>
 				<key>CFBundleURLSchemes</key>
 				<array>
-					<string>fb5246941702030592</string>
-					<string>com.googleusercontent.apps.1010420009793-namf81io44i8gdlqa1l1q10nu1sge2o0</string>
+					<!-- TODO Replace this value: -->
+					<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
+					<string>com.googleusercontent.apps.1010420009793-o0e40830ujtfjkkhf3d3bkg7b0idgkj3</string>
 				</array>
 			</dict>
 		</array>

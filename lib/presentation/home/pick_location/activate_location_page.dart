@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/application/location/location_event.dart';
 import 'package:wigootaxidriver/application/providers/location/location_provider.dart';
 import 'package:rive/rive.dart';
+import 'package:wigootaxidriver/presentation/home/pick_location/location_map.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 
@@ -16,12 +17,30 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
     final locationController = ref.watch(locationProvider.notifier);
 
     return Scaffold(
+      appBar: locationState.position != null ? AppBar() : null,
       body: locationState.position != null
           ? SizedBox(
               height: double.maxFinite,
               width: double.maxFinite,
               child: Column(
-                children: [],
+                children: [
+                  Expanded(
+                    child: Stack(
+                      fit: StackFit.passthrough,
+                      children: [
+                        Positioned.fill(
+                          bottom: .2.sh,
+                          child: LocationMap(
+                            lat: locationState.position!.latitude,
+                            long: locationState.position!.longitude,
+                            onCameraIdle: () {},
+                            onCameraMove: (cameraPosition) {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             )
           : SizedBox(

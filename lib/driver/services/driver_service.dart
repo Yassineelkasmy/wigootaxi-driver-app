@@ -3,10 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 
 class DriverService {
+  DriverService() {
+    docRef = FirebaseFirestore.instance
+        .collection('drivers')
+        .doc(FirebaseAuth.instance.currentUser!.uid);
+  }
   final geo = Geoflutterfire();
-  final docRef = FirebaseFirestore.instance
-      .collection('drivers')
-      .doc(FirebaseAuth.instance.currentUser!.uid);
+  late DocumentReference<Map<String, dynamic>> docRef;
+
   updateLocation({
     required double lat,
     required double lng,
@@ -20,6 +24,7 @@ class DriverService {
                 longitude: lng,
               )
               .data,
+          'lastTs': FieldValue.serverTimestamp(),
         },
       );
     } catch (e) {
