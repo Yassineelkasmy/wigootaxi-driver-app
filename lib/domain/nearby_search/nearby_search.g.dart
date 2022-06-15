@@ -9,6 +9,8 @@ part of 'nearby_search.dart';
 _$_NearbySearch _$$_NearbySearchFromJson(Map<String, dynamic> json) =>
     _$_NearbySearch(
       name: json['name'] as String,
+      placeId: json['place_id'] as String,
+      vicinity: json['vicinity'] as String,
       geometry:
           NearbyGeometry.fromJson(json['geometry'] as Map<String, dynamic>),
       types: (json['types'] as List<dynamic>).map((e) => e as String).toList(),
@@ -17,6 +19,8 @@ _$_NearbySearch _$$_NearbySearchFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_NearbySearchToJson(_$_NearbySearch instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'place_id': instance.placeId,
+      'vicinity': instance.vicinity,
       'geometry': instance.geometry,
       'types': instance.types,
     };

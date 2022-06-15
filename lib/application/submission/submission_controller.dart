@@ -51,7 +51,7 @@ class SubmissionController extends StateNotifier<SubmissionState> {
               ..putIfAbsent('type', () => state.type)
               ..putIfAbsent('username', () => state.type)
               ..putIfAbsent('email', () => state.type)
-              ..putIfAbsent('phone', () => state.type),
+              ..putIfAbsent('phone', () => event.user.phone),
           );
           state = state.copyWith(
             isSubmitting: false,

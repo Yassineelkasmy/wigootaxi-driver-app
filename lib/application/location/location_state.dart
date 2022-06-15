@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:location/location.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:wigootaxidriver/domain/location/location_failure.dart';
 
 part 'location_state.freezed.dart';
@@ -11,7 +11,7 @@ class LocationState with _$LocationState {
     required bool isRequesting,
     required Option<Either<LocationFailure, Unit>>
         locationFailureOrSuccessOption,
-    LocationData? locationData,
+    Position? position,
   }) = _LocationState;
 
   factory LocationState.initial() => LocationState(

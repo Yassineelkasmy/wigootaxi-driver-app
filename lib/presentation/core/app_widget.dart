@@ -30,7 +30,7 @@ class AppWidget extends HookConsumerWidget {
         routerDelegate: _appRouter.delegate(),
         title: "WIGOO TAXI",
         theme: lightTheme,
-        darkTheme: darkTheme,
+        darkTheme: lightTheme,
         debugShowCheckedModeBanner: false,
       ),
     );

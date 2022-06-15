@@ -7,6 +7,8 @@ part 'nearby_search.g.dart';
 class NearbySearch with _$NearbySearch {
   const factory NearbySearch({
     required String name,
+    @JsonKey(name: 'place_id') required String placeId,
+    required String vicinity,
     required NearbyGeometry geometry,
     required List<String> types,
   }) = _NearbySearch;

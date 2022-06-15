@@ -24,10 +24,14 @@ class _$NearbySearchTearOff {
 
   _NearbySearch call(
       {required String name,
+      @JsonKey(name: 'place_id') required String placeId,
+      required String vicinity,
       required NearbyGeometry geometry,
       required List<String> types}) {
     return _NearbySearch(
       name: name,
+      placeId: placeId,
+      vicinity: vicinity,
       geometry: geometry,
       types: types,
     );
@@ -44,6 +48,9 @@ const $NearbySearch = _$NearbySearchTearOff();
 /// @nodoc
 mixin _$NearbySearch {
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'place_id')
+  String get placeId => throw _privateConstructorUsedError;
+  String get vicinity => throw _privateConstructorUsedError;
   NearbyGeometry get geometry => throw _privateConstructorUsedError;
   List<String> get types => throw _privateConstructorUsedError;
 
@@ -58,7 +65,12 @@ abstract class $NearbySearchCopyWith<$Res> {
   factory $NearbySearchCopyWith(
           NearbySearch value, $Res Function(NearbySearch) then) =
       _$NearbySearchCopyWithImpl<$Res>;
-  $Res call({String name, NearbyGeometry geometry, List<String> types});
+  $Res call(
+      {String name,
+      @JsonKey(name: 'place_id') String placeId,
+      String vicinity,
+      NearbyGeometry geometry,
+      List<String> types});
 
   $NearbyGeometryCopyWith<$Res> get geometry;
 }
@@ -74,6 +86,8 @@ class _$NearbySearchCopyWithImpl<$Res> implements $NearbySearchCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
+    Object? placeId = freezed,
+    Object? vicinity = freezed,
     Object? geometry = freezed,
     Object? types = freezed,
   }) {
@@ -81,6 +95,14 @@ class _$NearbySearchCopyWithImpl<$Res> implements $NearbySearchCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      placeId: placeId == freezed
+          ? _value.placeId
+          : placeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      vicinity: vicinity == freezed
+          ? _value.vicinity
+          : vicinity // ignore: cast_nullable_to_non_nullable
               as String,
       geometry: geometry == freezed
           ? _value.geometry
@@ -108,7 +130,12 @@ abstract class _$NearbySearchCopyWith<$Res>
           _NearbySearch value, $Res Function(_NearbySearch) then) =
       __$NearbySearchCopyWithImpl<$Res>;
   @override
-  $Res call({String name, NearbyGeometry geometry, List<String> types});
+  $Res call(
+      {String name,
+      @JsonKey(name: 'place_id') String placeId,
+      String vicinity,
+      NearbyGeometry geometry,
+      List<String> types});
 
   @override
   $NearbyGeometryCopyWith<$Res> get geometry;
@@ -127,6 +154,8 @@ class __$NearbySearchCopyWithImpl<$Res> extends _$NearbySearchCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
+    Object? placeId = freezed,
+    Object? vicinity = freezed,
     Object? geometry = freezed,
     Object? types = freezed,
   }) {
@@ -134,6 +163,14 @@ class __$NearbySearchCopyWithImpl<$Res> extends _$NearbySearchCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      placeId: placeId == freezed
+          ? _value.placeId
+          : placeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      vicinity: vicinity == freezed
+          ? _value.vicinity
+          : vicinity // ignore: cast_nullable_to_non_nullable
               as String,
       geometry: geometry == freezed
           ? _value.geometry
@@ -151,7 +188,11 @@ class __$NearbySearchCopyWithImpl<$Res> extends _$NearbySearchCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_NearbySearch implements _NearbySearch {
   const _$_NearbySearch(
-      {required this.name, required this.geometry, required this.types});
+      {required this.name,
+      @JsonKey(name: 'place_id') required this.placeId,
+      required this.vicinity,
+      required this.geometry,
+      required this.types});
 
   factory _$_NearbySearch.fromJson(Map<String, dynamic> json) =>
       _$$_NearbySearchFromJson(json);
@@ -159,13 +200,18 @@ class _$_NearbySearch implements _NearbySearch {
   @override
   final String name;
   @override
+  @JsonKey(name: 'place_id')
+  final String placeId;
+  @override
+  final String vicinity;
+  @override
   final NearbyGeometry geometry;
   @override
   final List<String> types;
 
   @override
   String toString() {
-    return 'NearbySearch(name: $name, geometry: $geometry, types: $types)';
+    return 'NearbySearch(name: $name, placeId: $placeId, vicinity: $vicinity, geometry: $geometry, types: $types)';
   }
 
   @override
@@ -174,6 +220,8 @@ class _$_NearbySearch implements _NearbySearch {
         (other.runtimeType == runtimeType &&
             other is _NearbySearch &&
             const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.placeId, placeId) &&
+            const DeepCollectionEquality().equals(other.vicinity, vicinity) &&
             const DeepCollectionEquality().equals(other.geometry, geometry) &&
             const DeepCollectionEquality().equals(other.types, types));
   }
@@ -182,6 +230,8 @@ class _$_NearbySearch implements _NearbySearch {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(placeId),
+      const DeepCollectionEquality().hash(vicinity),
       const DeepCollectionEquality().hash(geometry),
       const DeepCollectionEquality().hash(types));
 
@@ -199,6 +249,8 @@ class _$_NearbySearch implements _NearbySearch {
 abstract class _NearbySearch implements NearbySearch {
   const factory _NearbySearch(
       {required String name,
+      @JsonKey(name: 'place_id') required String placeId,
+      required String vicinity,
       required NearbyGeometry geometry,
       required List<String> types}) = _$_NearbySearch;
 
@@ -207,6 +259,11 @@ abstract class _NearbySearch implements NearbySearch {
 
   @override
   String get name;
+  @override
+  @JsonKey(name: 'place_id')
+  String get placeId;
+  @override
+  String get vicinity;
   @override
   NearbyGeometry get geometry;
   @override

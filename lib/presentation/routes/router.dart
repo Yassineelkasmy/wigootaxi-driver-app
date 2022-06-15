@@ -21,7 +21,7 @@ import 'package:wigootaxidriver/presentation/submission/widgets/upload_field.dar
   AutoRoute(page: PhoneAuthPage),
   AutoRoute(page: IntroPage),
   AutoRoute(page: HomePage),
-  AutoRoute(page: ActivateLocationPage),
+  AutoRoute(page: ActivateLocationOrMapPage),
   AutoRoute(page: SendMessagePage),
 ])
 class $AppRouter {}

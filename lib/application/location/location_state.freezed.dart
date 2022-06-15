@@ -22,11 +22,11 @@ class _$LocationStateTearOff {
       {required bool isRequesting,
       required Option<Either<LocationFailure, Unit>>
           locationFailureOrSuccessOption,
-      LocationData? locationData}) {
+      Position? position}) {
     return _LocationState(
       isRequesting: isRequesting,
       locationFailureOrSuccessOption: locationFailureOrSuccessOption,
-      locationData: locationData,
+      position: position,
     );
   }
 }
@@ -39,7 +39,7 @@ mixin _$LocationState {
   bool get isRequesting => throw _privateConstructorUsedError;
   Option<Either<LocationFailure, Unit>> get locationFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
-  LocationData? get locationData => throw _privateConstructorUsedError;
+  Position? get position => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LocationStateCopyWith<LocationState> get copyWith =>
@@ -54,7 +54,7 @@ abstract class $LocationStateCopyWith<$Res> {
   $Res call(
       {bool isRequesting,
       Option<Either<LocationFailure, Unit>> locationFailureOrSuccessOption,
-      LocationData? locationData});
+      Position? position});
 }
 
 /// @nodoc
@@ -70,7 +70,7 @@ class _$LocationStateCopyWithImpl<$Res>
   $Res call({
     Object? isRequesting = freezed,
     Object? locationFailureOrSuccessOption = freezed,
-    Object? locationData = freezed,
+    Object? position = freezed,
   }) {
     return _then(_value.copyWith(
       isRequesting: isRequesting == freezed
@@ -81,10 +81,10 @@ class _$LocationStateCopyWithImpl<$Res>
           ? _value.locationFailureOrSuccessOption
           : locationFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<LocationFailure, Unit>>,
-      locationData: locationData == freezed
-          ? _value.locationData
-          : locationData // ignore: cast_nullable_to_non_nullable
-              as LocationData?,
+      position: position == freezed
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as Position?,
     ));
   }
 }
@@ -99,7 +99,7 @@ abstract class _$LocationStateCopyWith<$Res>
   $Res call(
       {bool isRequesting,
       Option<Either<LocationFailure, Unit>> locationFailureOrSuccessOption,
-      LocationData? locationData});
+      Position? position});
 }
 
 /// @nodoc
@@ -117,7 +117,7 @@ class __$LocationStateCopyWithImpl<$Res>
   $Res call({
     Object? isRequesting = freezed,
     Object? locationFailureOrSuccessOption = freezed,
-    Object? locationData = freezed,
+    Object? position = freezed,
   }) {
     return _then(_LocationState(
       isRequesting: isRequesting == freezed
@@ -128,10 +128,10 @@ class __$LocationStateCopyWithImpl<$Res>
           ? _value.locationFailureOrSuccessOption
           : locationFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<LocationFailure, Unit>>,
-      locationData: locationData == freezed
-          ? _value.locationData
-          : locationData // ignore: cast_nullable_to_non_nullable
-              as LocationData?,
+      position: position == freezed
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as Position?,
     ));
   }
 }
@@ -142,18 +142,18 @@ class _$_LocationState implements _LocationState {
   const _$_LocationState(
       {required this.isRequesting,
       required this.locationFailureOrSuccessOption,
-      this.locationData});
+      this.position});
 
   @override
   final bool isRequesting;
   @override
   final Option<Either<LocationFailure, Unit>> locationFailureOrSuccessOption;
   @override
-  final LocationData? locationData;
+  final Position? position;
 
   @override
   String toString() {
-    return 'LocationState(isRequesting: $isRequesting, locationFailureOrSuccessOption: $locationFailureOrSuccessOption, locationData: $locationData)';
+    return 'LocationState(isRequesting: $isRequesting, locationFailureOrSuccessOption: $locationFailureOrSuccessOption, position: $position)';
   }
 
   @override
@@ -166,8 +166,7 @@ class _$_LocationState implements _LocationState {
             const DeepCollectionEquality().equals(
                 other.locationFailureOrSuccessOption,
                 locationFailureOrSuccessOption) &&
-            const DeepCollectionEquality()
-                .equals(other.locationData, locationData));
+            const DeepCollectionEquality().equals(other.position, position));
   }
 
   @override
@@ -175,7 +174,7 @@ class _$_LocationState implements _LocationState {
       runtimeType,
       const DeepCollectionEquality().hash(isRequesting),
       const DeepCollectionEquality().hash(locationFailureOrSuccessOption),
-      const DeepCollectionEquality().hash(locationData));
+      const DeepCollectionEquality().hash(position));
 
   @JsonKey(ignore: true)
   @override
@@ -188,14 +187,14 @@ abstract class _LocationState implements LocationState {
       {required bool isRequesting,
       required Option<Either<LocationFailure, Unit>>
           locationFailureOrSuccessOption,
-      LocationData? locationData}) = _$_LocationState;
+      Position? position}) = _$_LocationState;
 
   @override
   bool get isRequesting;
   @override
   Option<Either<LocationFailure, Unit>> get locationFailureOrSuccessOption;
   @override
-  LocationData? get locationData;
+  Position? get position;
   @override
   @JsonKey(ignore: true)
   _$LocationStateCopyWith<_LocationState> get copyWith =>

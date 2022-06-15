@@ -83,9 +83,9 @@ class AppRouter extends _i12.RootStackRouter {
       return _i12.MaterialPageX<dynamic>(
           routeData: routeData, child: _i9.HomePage(key: args.key));
     },
-    ActivateLocationPageRoute.name: (routeData) {
+    ActivateLocationOrMapPageRoute.name: (routeData) {
       return _i12.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i10.ActivateLocationPage());
+          routeData: routeData, child: const _i10.ActivateLocationOrMapPage());
     },
     SendMessagePageRoute.name: (routeData) {
       final args = routeData.argsAs<SendMessagePageRouteArgs>(
@@ -109,8 +109,8 @@ class AppRouter extends _i12.RootStackRouter {
         _i12.RouteConfig(PhoneAuthPageRoute.name, path: '/phone-auth-page'),
         _i12.RouteConfig(IntroPageRoute.name, path: '/intro-page'),
         _i12.RouteConfig(HomePageRoute.name, path: '/home-page'),
-        _i12.RouteConfig(ActivateLocationPageRoute.name,
-            path: '/activate-location-page'),
+        _i12.RouteConfig(ActivateLocationOrMapPageRoute.name,
+            path: '/activate-location-or-map-page'),
         _i12.RouteConfig(SendMessagePageRoute.name, path: '/send-message-page')
       ];
 }
@@ -292,12 +292,13 @@ class HomePageRouteArgs {
 }
 
 /// generated route for
-/// [_i10.ActivateLocationPage]
-class ActivateLocationPageRoute extends _i12.PageRouteInfo<void> {
-  const ActivateLocationPageRoute()
-      : super(ActivateLocationPageRoute.name, path: '/activate-location-page');
+/// [_i10.ActivateLocationOrMapPage]
+class ActivateLocationOrMapPageRoute extends _i12.PageRouteInfo<void> {
+  const ActivateLocationOrMapPageRoute()
+      : super(ActivateLocationOrMapPageRoute.name,
+            path: '/activate-location-or-map-page');
 
-  static const String name = 'ActivateLocationPageRoute';
+  static const String name = 'ActivateLocationOrMapPageRoute';
 }
 
 /// generated route for

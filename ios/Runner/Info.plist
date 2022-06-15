@@ -45,6 +45,8 @@
 		<false/>
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>This app needs to access the gallery</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>This app needs to access location</string>
 
 		<key>CFBundleURLTypes</key>
 		<array>
@@ -81,5 +83,7 @@
 			<string>fbauth2</string>
 			<string>fbshareextension</string>
 		</array>
+		<key>CADisableMinimumFrameDurationOnPhone</key>
+		<true/>
 	</dict>
 </plist>
