@@ -16,7 +16,7 @@ void locationIsolate(String message) async {
     (timer) async {
       driverService.updateLocation(
         lat: locationController.state.position?.latitude ?? 0,
-        lng: locationController.state.position?.latitude ?? 0,
+        lng: locationController.state.position?.longitude ?? 0,
       );
     },
   );

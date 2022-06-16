@@ -19,12 +19,12 @@ class SplashPage extends HookConsumerWidget {
           authenticated: (_) {
             if (_.user.isPhoneVerified) {
               if (_.user.status == 'accepted') {
-                AutoRouter.of(context).push(HomePageRoute());
+                AutoRouter.of(context).push(ActivateLocationOrMapPageRoute());
               } else {
                 AutoRouter.of(context).push(SubmissionPageRoute());
               }
             } else {
-              AutoRouter.of(context).push(PhoneAuthPageRoute());
+              AutoRouter.of(context).push(ActivateLocationOrMapPageRoute());
             }
           },
           unauthenticated: (unAuth) {
