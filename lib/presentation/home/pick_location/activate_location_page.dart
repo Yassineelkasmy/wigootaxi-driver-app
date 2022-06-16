@@ -29,7 +29,7 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                       fit: StackFit.passthrough,
                       children: [
                         Positioned.fill(
-                          bottom: .2.sh,
+                          // bottom: .2.sh,
                           child: LocationMap(
                             lat: locationState.position!.latitude,
                             long: locationState.position!.longitude,
