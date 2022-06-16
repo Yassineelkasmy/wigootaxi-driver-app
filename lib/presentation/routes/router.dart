@@ -10,6 +10,7 @@ import 'package:wigootaxidriver/presentation/splash/splash_page.dart';
 import 'package:wigootaxidriver/presentation/submission/submission_page.dart';
 import 'package:wigootaxidriver/presentation/submission/submission_success_page.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/upload_field.dart';
+import 'package:wigootaxidriver/profile/ui/portail_captain.dart';
 
 @MaterialAutoRouter(routes: <AutoRoute>[
   AutoRoute(page: SplashPage, initial: true),
@@ -23,5 +24,6 @@ import 'package:wigootaxidriver/presentation/submission/widgets/upload_field.dar
   AutoRoute(page: HomePage),
   AutoRoute(page: ActivateLocationOrMapPage),
   AutoRoute(page: SendMessagePage),
+  AutoRoute(page: portail_Captain),
 ])
 class $AppRouter {}
