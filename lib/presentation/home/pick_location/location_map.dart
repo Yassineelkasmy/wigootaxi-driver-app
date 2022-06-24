@@ -76,7 +76,7 @@ class LocationMapState extends ConsumerState<LocationMap> {
         widget.lat,
         widget.long,
       ),
-      zoom: 18,
+      zoom: 10,
     );
 
     return Stack(

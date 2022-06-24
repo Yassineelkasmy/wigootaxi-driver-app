@@ -66,7 +66,7 @@ class BookingsService {
 
   Stream<List<Booking>> requestsStream(String userUid) {
     final results = firestore
-        .collection('users')
+        .collection('drivers')
         .doc(userUid)
         .collection('rides')
         .orderBy("ts", descending: true)

@@ -22,11 +22,7 @@ class _$BookingTearOff {
       {required String id,
       required String dest_name,
       required String dest_place_id,
-      required double dest_lat,
-      required double dest_lng,
       required String start_name,
-      required double start_lat,
-      required double start_lng,
       required String start_place_id,
       required String type,
       required String disttext,
@@ -40,11 +36,7 @@ class _$BookingTearOff {
       id: id,
       dest_name: dest_name,
       dest_place_id: dest_place_id,
-      dest_lat: dest_lat,
-      dest_lng: dest_lng,
       start_name: start_name,
-      start_lat: start_lat,
-      start_lng: start_lng,
       start_place_id: start_place_id,
       type: type,
       disttext: disttext,
@@ -66,11 +58,7 @@ mixin _$Booking {
   String get id => throw _privateConstructorUsedError;
   String get dest_name => throw _privateConstructorUsedError;
   String get dest_place_id => throw _privateConstructorUsedError;
-  double get dest_lat => throw _privateConstructorUsedError;
-  double get dest_lng => throw _privateConstructorUsedError;
   String get start_name => throw _privateConstructorUsedError;
-  double get start_lat => throw _privateConstructorUsedError;
-  double get start_lng => throw _privateConstructorUsedError;
   String get start_place_id => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   String get disttext => throw _privateConstructorUsedError;
@@ -93,11 +81,7 @@ abstract class $BookingCopyWith<$Res> {
       {String id,
       String dest_name,
       String dest_place_id,
-      double dest_lat,
-      double dest_lng,
       String start_name,
-      double start_lat,
-      double start_lng,
       String start_place_id,
       String type,
       String disttext,
@@ -122,11 +106,7 @@ class _$BookingCopyWithImpl<$Res> implements $BookingCopyWith<$Res> {
     Object? id = freezed,
     Object? dest_name = freezed,
     Object? dest_place_id = freezed,
-    Object? dest_lat = freezed,
-    Object? dest_lng = freezed,
     Object? start_name = freezed,
-    Object? start_lat = freezed,
-    Object? start_lng = freezed,
     Object? start_place_id = freezed,
     Object? type = freezed,
     Object? disttext = freezed,
@@ -150,26 +130,10 @@ class _$BookingCopyWithImpl<$Res> implements $BookingCopyWith<$Res> {
           ? _value.dest_place_id
           : dest_place_id // ignore: cast_nullable_to_non_nullable
               as String,
-      dest_lat: dest_lat == freezed
-          ? _value.dest_lat
-          : dest_lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      dest_lng: dest_lng == freezed
-          ? _value.dest_lng
-          : dest_lng // ignore: cast_nullable_to_non_nullable
-              as double,
       start_name: start_name == freezed
           ? _value.start_name
           : start_name // ignore: cast_nullable_to_non_nullable
               as String,
-      start_lat: start_lat == freezed
-          ? _value.start_lat
-          : start_lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      start_lng: start_lng == freezed
-          ? _value.start_lng
-          : start_lng // ignore: cast_nullable_to_non_nullable
-              as double,
       start_place_id: start_place_id == freezed
           ? _value.start_place_id
           : start_place_id // ignore: cast_nullable_to_non_nullable
@@ -219,11 +183,7 @@ abstract class _$BookingCopyWith<$Res> implements $BookingCopyWith<$Res> {
       {String id,
       String dest_name,
       String dest_place_id,
-      double dest_lat,
-      double dest_lng,
       String start_name,
-      double start_lat,
-      double start_lng,
       String start_place_id,
       String type,
       String disttext,
@@ -249,11 +209,7 @@ class __$BookingCopyWithImpl<$Res> extends _$BookingCopyWithImpl<$Res>
     Object? id = freezed,
     Object? dest_name = freezed,
     Object? dest_place_id = freezed,
-    Object? dest_lat = freezed,
-    Object? dest_lng = freezed,
     Object? start_name = freezed,
-    Object? start_lat = freezed,
-    Object? start_lng = freezed,
     Object? start_place_id = freezed,
     Object? type = freezed,
     Object? disttext = freezed,
@@ -277,26 +233,10 @@ class __$BookingCopyWithImpl<$Res> extends _$BookingCopyWithImpl<$Res>
           ? _value.dest_place_id
           : dest_place_id // ignore: cast_nullable_to_non_nullable
               as String,
-      dest_lat: dest_lat == freezed
-          ? _value.dest_lat
-          : dest_lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      dest_lng: dest_lng == freezed
-          ? _value.dest_lng
-          : dest_lng // ignore: cast_nullable_to_non_nullable
-              as double,
       start_name: start_name == freezed
           ? _value.start_name
           : start_name // ignore: cast_nullable_to_non_nullable
               as String,
-      start_lat: start_lat == freezed
-          ? _value.start_lat
-          : start_lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      start_lng: start_lng == freezed
-          ? _value.start_lng
-          : start_lng // ignore: cast_nullable_to_non_nullable
-              as double,
       start_place_id: start_place_id == freezed
           ? _value.start_place_id
           : start_place_id // ignore: cast_nullable_to_non_nullable
@@ -344,11 +284,7 @@ class _$_Booking implements _Booking {
       {required this.id,
       required this.dest_name,
       required this.dest_place_id,
-      required this.dest_lat,
-      required this.dest_lng,
       required this.start_name,
-      required this.start_lat,
-      required this.start_lng,
       required this.start_place_id,
       required this.type,
       required this.disttext,
@@ -366,15 +302,7 @@ class _$_Booking implements _Booking {
   @override
   final String dest_place_id;
   @override
-  final double dest_lat;
-  @override
-  final double dest_lng;
-  @override
   final String start_name;
-  @override
-  final double start_lat;
-  @override
-  final double start_lng;
   @override
   final String start_place_id;
   @override
@@ -396,7 +324,7 @@ class _$_Booking implements _Booking {
 
   @override
   String toString() {
-    return 'Booking(id: $id, dest_name: $dest_name, dest_place_id: $dest_place_id, dest_lat: $dest_lat, dest_lng: $dest_lng, start_name: $start_name, start_lat: $start_lat, start_lng: $start_lng, start_place_id: $start_place_id, type: $type, disttext: $disttext, durtext: $durtext, distance: $distance, duration: $duration, phone: $phone, ts: $ts, date: $date)';
+    return 'Booking(id: $id, dest_name: $dest_name, dest_place_id: $dest_place_id, start_name: $start_name, start_place_id: $start_place_id, type: $type, disttext: $disttext, durtext: $durtext, distance: $distance, duration: $duration, phone: $phone, ts: $ts, date: $date)';
   }
 
   @override
@@ -408,12 +336,8 @@ class _$_Booking implements _Booking {
             const DeepCollectionEquality().equals(other.dest_name, dest_name) &&
             const DeepCollectionEquality()
                 .equals(other.dest_place_id, dest_place_id) &&
-            const DeepCollectionEquality().equals(other.dest_lat, dest_lat) &&
-            const DeepCollectionEquality().equals(other.dest_lng, dest_lng) &&
             const DeepCollectionEquality()
                 .equals(other.start_name, start_name) &&
-            const DeepCollectionEquality().equals(other.start_lat, start_lat) &&
-            const DeepCollectionEquality().equals(other.start_lng, start_lng) &&
             const DeepCollectionEquality()
                 .equals(other.start_place_id, start_place_id) &&
             const DeepCollectionEquality().equals(other.type, type) &&
@@ -432,11 +356,7 @@ class _$_Booking implements _Booking {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(dest_name),
       const DeepCollectionEquality().hash(dest_place_id),
-      const DeepCollectionEquality().hash(dest_lat),
-      const DeepCollectionEquality().hash(dest_lng),
       const DeepCollectionEquality().hash(start_name),
-      const DeepCollectionEquality().hash(start_lat),
-      const DeepCollectionEquality().hash(start_lng),
       const DeepCollectionEquality().hash(start_place_id),
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(disttext),
@@ -458,11 +378,7 @@ abstract class _Booking implements Booking {
       {required String id,
       required String dest_name,
       required String dest_place_id,
-      required double dest_lat,
-      required double dest_lng,
       required String start_name,
-      required double start_lat,
-      required double start_lng,
       required String start_place_id,
       required String type,
       required String disttext,
@@ -480,15 +396,7 @@ abstract class _Booking implements Booking {
   @override
   String get dest_place_id;
   @override
-  double get dest_lat;
-  @override
-  double get dest_lng;
-  @override
   String get start_name;
-  @override
-  double get start_lat;
-  @override
-  double get start_lng;
   @override
   String get start_place_id;
   @override

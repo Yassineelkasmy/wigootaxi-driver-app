@@ -20,137 +20,133 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
     final locationController = ref.watch(locationProvider.notifier);
 
     return Scaffold(
-      appBar:AppBar(
-          
-          leading:Builder(builder: (context) {
-
-            return IconButton(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            icon: Icon(Icons.menu));
-          }) ,
+      appBar: AppBar(
+        leading: Builder(builder: (context) {
+          return IconButton(
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              icon: Icon(Icons.menu));
+        }),
       ),
       drawer: Container(
         color: kPrimaryColor,
-      padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 30.w),
-      height: 1.sh,
-      width: 0.75.sw,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                
-                height: .15.sw,
-                width: .15.sw,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: NetworkImage("user.photoURL"),
-                    fit: BoxFit.fitWidth,
+        padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 30.w),
+        height: 1.sh,
+        width: 0.75.sw,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  height: .15.sw,
+                  width: .15.sw,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: NetworkImage("user.photoURL"),
+                      fit: BoxFit.fitWidth,
+                    ),
                   ),
                 ),
-              ),
-              10.horizontalSpace,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Bonjour,",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                10.horizontalSpace,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "Bonjour,",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "user.displayName",
-                    style: const TextStyle(
-                      color: Colors.white,
+                    Text(
+                      "user.displayName",
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          20.verticalSpace,
-          ListTile(
-            onTap: () {
-              
+                  ],
+                ),
+              ],
+            ),
+            20.verticalSpace,
+            ListTile(
+              onTap: () {
                 AutoRouter.of(context).push(Portail_CaptainRoute());
-
-            },
-            leading: Icon(
-              Icons.person,
-              color: Colors.white,
-            ),
-            horizontalTitleGap: 10.w,
-            title: Text(
-              "Portail Captain",
-              style: TextStyle(
+              },
+              leading: Icon(
+                Icons.person,
                 color: Colors.white,
               ),
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.payment,
-              color: Colors.white,
-            ),
-            horizontalTitleGap: 10.w,
-            title: Text(
-              "Portefeuille",
-              style: TextStyle(
-                color: Colors.white,
+              horizontalTitleGap: 10.w,
+              title: Text(
+                "Portail Captain",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.history_outlined,
-              color: Colors.white,
-            ),
-            horizontalTitleGap: 10.w,
-            title: Text(
-              "Mes Courses",
-              style: TextStyle(
+            ListTile(
+              leading: Icon(
+                Icons.payment,
                 color: Colors.white,
               ),
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
-            horizontalTitleGap: 10.w,
-            title: Text(
-              "Réglages",
-              style: TextStyle(
-                color: Colors.white,
+              horizontalTitleGap: 10.w,
+              title: Text(
+                "Portefeuille",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-          ListTile(
-            onTap: () {
-              
-            },
-            leading: Icon(
-              Icons.logout,
-              color: Colors.white,
-            ),
-            horizontalTitleGap: 10.w,
-            title: Text(
-              "Se déconnecter",
-              style: TextStyle(
+            ListTile(
+              onTap: () {
+                AutoRouter.of(context).push(BookingsPageRoute());
+              },
+              leading: Icon(
+                Icons.history_outlined,
                 color: Colors.white,
               ),
+              horizontalTitleGap: 10.w,
+              title: Text(
+                "Mes Courses",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
-          ),
-        ],
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+              horizontalTitleGap: 10.w,
+              title: Text(
+                "Réglages",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            ListTile(
+              onTap: () {},
+              leading: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
+              horizontalTitleGap: 10.w,
+              title: Text(
+                "Se déconnecter",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
-    ),
       body: locationState.position != null
           ? SizedBox(
               height: double.maxFinite,

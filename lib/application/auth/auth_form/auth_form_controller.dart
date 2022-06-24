@@ -66,7 +66,7 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         final registerWithSuccessOrFailure =
             await _authFacade.registerWithEmailAndPassword(
           email: event.email,
-          password: event.email,
+          password: event.password,
           username: event.username,
         );
         registerWithSuccessOrFailure.fold(

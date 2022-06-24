@@ -25,6 +25,7 @@ class DriverService {
               )
               .data,
           'lastTs': FieldValue.serverTimestamp(),
+          'lastSeconds': (DateTime.now().millisecondsSinceEpoch / 1000).round(),
         },
       );
     } catch (e) {
