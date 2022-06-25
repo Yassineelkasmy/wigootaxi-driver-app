@@ -18,9 +18,11 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$RideStateTearOff {
   const _$RideStateTearOff();
 
-  _RideState call({Booking? currentBooking}) {
+  _RideState call(
+      {Booking? currentBooking, required DriverRecord driverRecord}) {
     return _RideState(
       currentBooking: currentBooking,
+      driverRecord: driverRecord,
     );
   }
 }
@@ -31,6 +33,7 @@ const $RideState = _$RideStateTearOff();
 /// @nodoc
 mixin _$RideState {
   Booking? get currentBooking => throw _privateConstructorUsedError;
+  DriverRecord get driverRecord => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RideStateCopyWith<RideState> get copyWith =>
@@ -41,9 +44,10 @@ mixin _$RideState {
 abstract class $RideStateCopyWith<$Res> {
   factory $RideStateCopyWith(RideState value, $Res Function(RideState) then) =
       _$RideStateCopyWithImpl<$Res>;
-  $Res call({Booking? currentBooking});
+  $Res call({Booking? currentBooking, DriverRecord driverRecord});
 
   $BookingCopyWith<$Res>? get currentBooking;
+  $DriverRecordCopyWith<$Res> get driverRecord;
 }
 
 /// @nodoc
@@ -57,12 +61,17 @@ class _$RideStateCopyWithImpl<$Res> implements $RideStateCopyWith<$Res> {
   @override
   $Res call({
     Object? currentBooking = freezed,
+    Object? driverRecord = freezed,
   }) {
     return _then(_value.copyWith(
       currentBooking: currentBooking == freezed
           ? _value.currentBooking
           : currentBooking // ignore: cast_nullable_to_non_nullable
               as Booking?,
+      driverRecord: driverRecord == freezed
+          ? _value.driverRecord
+          : driverRecord // ignore: cast_nullable_to_non_nullable
+              as DriverRecord,
     ));
   }
 
@@ -76,6 +85,13 @@ class _$RideStateCopyWithImpl<$Res> implements $RideStateCopyWith<$Res> {
       return _then(_value.copyWith(currentBooking: value));
     });
   }
+
+  @override
+  $DriverRecordCopyWith<$Res> get driverRecord {
+    return $DriverRecordCopyWith<$Res>(_value.driverRecord, (value) {
+      return _then(_value.copyWith(driverRecord: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -84,10 +100,12 @@ abstract class _$RideStateCopyWith<$Res> implements $RideStateCopyWith<$Res> {
           _RideState value, $Res Function(_RideState) then) =
       __$RideStateCopyWithImpl<$Res>;
   @override
-  $Res call({Booking? currentBooking});
+  $Res call({Booking? currentBooking, DriverRecord driverRecord});
 
   @override
   $BookingCopyWith<$Res>? get currentBooking;
+  @override
+  $DriverRecordCopyWith<$Res> get driverRecord;
 }
 
 /// @nodoc
@@ -102,12 +120,17 @@ class __$RideStateCopyWithImpl<$Res> extends _$RideStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? currentBooking = freezed,
+    Object? driverRecord = freezed,
   }) {
     return _then(_RideState(
       currentBooking: currentBooking == freezed
           ? _value.currentBooking
           : currentBooking // ignore: cast_nullable_to_non_nullable
               as Booking?,
+      driverRecord: driverRecord == freezed
+          ? _value.driverRecord
+          : driverRecord // ignore: cast_nullable_to_non_nullable
+              as DriverRecord,
     ));
   }
 }
@@ -115,14 +138,16 @@ class __$RideStateCopyWithImpl<$Res> extends _$RideStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_RideState implements _RideState {
-  const _$_RideState({this.currentBooking});
+  const _$_RideState({this.currentBooking, required this.driverRecord});
 
   @override
   final Booking? currentBooking;
+  @override
+  final DriverRecord driverRecord;
 
   @override
   String toString() {
-    return 'RideState(currentBooking: $currentBooking)';
+    return 'RideState(currentBooking: $currentBooking, driverRecord: $driverRecord)';
   }
 
   @override
@@ -131,12 +156,16 @@ class _$_RideState implements _RideState {
         (other.runtimeType == runtimeType &&
             other is _RideState &&
             const DeepCollectionEquality()
-                .equals(other.currentBooking, currentBooking));
+                .equals(other.currentBooking, currentBooking) &&
+            const DeepCollectionEquality()
+                .equals(other.driverRecord, driverRecord));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(currentBooking));
+      runtimeType,
+      const DeepCollectionEquality().hash(currentBooking),
+      const DeepCollectionEquality().hash(driverRecord));
 
   @JsonKey(ignore: true)
   @override
@@ -145,10 +174,14 @@ class _$_RideState implements _RideState {
 }
 
 abstract class _RideState implements RideState {
-  const factory _RideState({Booking? currentBooking}) = _$_RideState;
+  const factory _RideState(
+      {Booking? currentBooking,
+      required DriverRecord driverRecord}) = _$_RideState;
 
   @override
   Booking? get currentBooking;
+  @override
+  DriverRecord get driverRecord;
   @override
   @JsonKey(ignore: true)
   _$RideStateCopyWith<_RideState> get copyWith =>
