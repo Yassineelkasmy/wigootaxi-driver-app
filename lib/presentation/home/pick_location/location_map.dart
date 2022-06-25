@@ -76,7 +76,7 @@ class LocationMapState extends ConsumerState<LocationMap> {
         widget.lat,
         widget.long,
       ),
-      zoom: 10,
+      zoom: 18,
     );
 
     return Stack(
@@ -90,7 +90,7 @@ class LocationMapState extends ConsumerState<LocationMap> {
             mapType: MapType.normal,
             buildingsEnabled: false,
             zoomGesturesEnabled: true,
-            zoomControlsEnabled: false,
+            zoomControlsEnabled: true,
             myLocationEnabled: true,
             indoorViewEnabled: true,
             polylines: Set<Polyline>.of(polylines.values),

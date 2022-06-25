@@ -69,7 +69,6 @@ dependencies:
   firebase_messaging: ^11.4.0
   http: ^0.13.4
   geoflutterfire: ^3.0.3
-  connectycube_flutter_call_kit: ^2.0.5
 
 dev_dependencies:
   flutter_test:
