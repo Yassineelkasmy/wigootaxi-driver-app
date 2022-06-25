@@ -11,6 +11,7 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i14;
+import 'package:flutter/cupertino.dart' as _i16;
 import 'package:flutter/material.dart' as _i15;
 
 import '../../bookings/ui/bookings_page.dart' as _i10;
@@ -142,7 +143,7 @@ class SplashPageRoute extends _i14.PageRouteInfo<void> {
 /// generated route for
 /// [_i2.SubmissionPage]
 class SubmissionPageRoute extends _i14.PageRouteInfo<SubmissionPageRouteArgs> {
-  SubmissionPageRoute({_i15.Key? key})
+  SubmissionPageRoute({_i16.Key? key})
       : super(SubmissionPageRoute.name,
             path: '/submission-page', args: SubmissionPageRouteArgs(key: key));
 
@@ -152,7 +153,7 @@ class SubmissionPageRoute extends _i14.PageRouteInfo<SubmissionPageRouteArgs> {
 class SubmissionPageRouteArgs {
   const SubmissionPageRouteArgs({this.key});
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   @override
   String toString() {
@@ -174,7 +175,7 @@ class SubmissionSuccessPageRoute extends _i14.PageRouteInfo<void> {
 /// [_i4.DocumentImagePage]
 class DocumentImagePageRoute
     extends _i14.PageRouteInfo<DocumentImagePageRouteArgs> {
-  DocumentImagePageRoute({_i15.Key? key, required String image})
+  DocumentImagePageRoute({_i16.Key? key, required String image})
       : super(DocumentImagePageRoute.name,
             path: '/document-image-page',
             args: DocumentImagePageRouteArgs(key: key, image: image));
@@ -185,7 +186,7 @@ class DocumentImagePageRoute
 class DocumentImagePageRouteArgs {
   const DocumentImagePageRouteArgs({this.key, required this.image});
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   final String image;
 
@@ -200,7 +201,7 @@ class DocumentImagePageRouteArgs {
 class PhoneVerificationPageRoute
     extends _i14.PageRouteInfo<PhoneVerificationPageRouteArgs> {
   PhoneVerificationPageRoute(
-      {_i15.Key? key,
+      {_i16.Key? key,
       required String phoneNumber,
       required String phone,
       required String verificationId})
@@ -222,7 +223,7 @@ class PhoneVerificationPageRouteArgs {
       required this.phone,
       required this.verificationId});
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   final String phoneNumber;
 
@@ -239,7 +240,7 @@ class PhoneVerificationPageRouteArgs {
 /// generated route for
 /// [_i6.LoginPage]
 class LoginPageRoute extends _i14.PageRouteInfo<LoginPageRouteArgs> {
-  LoginPageRoute({_i15.Key? key})
+  LoginPageRoute({_i16.Key? key})
       : super(LoginPageRoute.name,
             path: '/login-page', args: LoginPageRouteArgs(key: key));
 
@@ -249,7 +250,7 @@ class LoginPageRoute extends _i14.PageRouteInfo<LoginPageRouteArgs> {
 class LoginPageRouteArgs {
   const LoginPageRouteArgs({this.key});
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   @override
   String toString() {
@@ -260,7 +261,7 @@ class LoginPageRouteArgs {
 /// generated route for
 /// [_i7.PhoneAuthPage]
 class PhoneAuthPageRoute extends _i14.PageRouteInfo<PhoneAuthPageRouteArgs> {
-  PhoneAuthPageRoute({_i15.Key? key})
+  PhoneAuthPageRoute({_i16.Key? key})
       : super(PhoneAuthPageRoute.name,
             path: '/phone-auth-page', args: PhoneAuthPageRouteArgs(key: key));
 
@@ -270,7 +271,7 @@ class PhoneAuthPageRoute extends _i14.PageRouteInfo<PhoneAuthPageRouteArgs> {
 class PhoneAuthPageRouteArgs {
   const PhoneAuthPageRouteArgs({this.key});
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   @override
   String toString() {
@@ -289,7 +290,7 @@ class IntroPageRoute extends _i14.PageRouteInfo<void> {
 /// generated route for
 /// [_i9.HomePage]
 class HomePageRoute extends _i14.PageRouteInfo<HomePageRouteArgs> {
-  HomePageRoute({_i15.Key? key})
+  HomePageRoute({_i16.Key? key})
       : super(HomePageRoute.name,
             path: '/home-page', args: HomePageRouteArgs(key: key));
 
@@ -299,7 +300,7 @@ class HomePageRoute extends _i14.PageRouteInfo<HomePageRouteArgs> {
 class HomePageRouteArgs {
   const HomePageRouteArgs({this.key});
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   @override
   String toString() {
@@ -310,7 +311,7 @@ class HomePageRouteArgs {
 /// generated route for
 /// [_i10.BookingsPage]
 class BookingsPageRoute extends _i14.PageRouteInfo<BookingsPageRouteArgs> {
-  BookingsPageRoute({_i15.Key? key, bool fromBooking = false})
+  BookingsPageRoute({_i16.Key? key, bool fromBooking = false})
       : super(BookingsPageRoute.name,
             path: '/bookings-page',
             args: BookingsPageRouteArgs(key: key, fromBooking: fromBooking));
@@ -321,7 +322,7 @@ class BookingsPageRoute extends _i14.PageRouteInfo<BookingsPageRouteArgs> {
 class BookingsPageRouteArgs {
   const BookingsPageRouteArgs({this.key, this.fromBooking = false});
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   final bool fromBooking;
 
@@ -345,7 +346,7 @@ class ActivateLocationOrMapPageRoute extends _i14.PageRouteInfo<void> {
 /// [_i12.SendMessagePage]
 class SendMessagePageRoute
     extends _i14.PageRouteInfo<SendMessagePageRouteArgs> {
-  SendMessagePageRoute({_i15.Key? key})
+  SendMessagePageRoute({_i16.Key? key})
       : super(SendMessagePageRoute.name,
             path: '/send-message-page',
             args: SendMessagePageRouteArgs(key: key));
@@ -356,7 +357,7 @@ class SendMessagePageRoute
 class SendMessagePageRouteArgs {
   const SendMessagePageRouteArgs({this.key});
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   @override
   String toString() {
