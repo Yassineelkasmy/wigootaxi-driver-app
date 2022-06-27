@@ -1,13 +1,19 @@
+import 'dart:isolate';
+
 import 'package:flutter_isolate/flutter_isolate.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/application/location/location_event.dart';
 import 'package:wigootaxidriver/application/location/location_state.dart';
+import 'package:wigootaxidriver/driver/application/driver_controller.dart';
 import 'package:wigootaxidriver/isolates/location_isolate.dart';
 
 class LocationController extends StateNotifier<LocationState> {
-  LocationController({this.isSpawned = false}) : super(LocationState.initial());
+  LocationController({this.isSpawned = false, this.driverController})
+      : super(LocationState.initial());
   final bool isSpawned;
+  final DriverController? driverController;
+  final receivePort = ReceivePort();
 
   // final Location location = Location();
 
@@ -15,8 +21,8 @@ class LocationController extends StateNotifier<LocationState> {
     return event.map(
       locationRequested: (locationRequested) async {
         state = state.copyWith(isRequesting: true);
+
         final position = await _determinePosition();
-        print(position);
         state = state.copyWith(
           // locationData: _locationData,
           position: position,
@@ -63,7 +69,7 @@ class LocationController extends StateNotifier<LocationState> {
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
     if (!isSpawned) {
-      FlutterIsolate.spawn(locationIsolate, '');
+      FlutterIsolate.spawn(locationIsolate, receivePort);
     }
     return await Geolocator.getCurrentPosition();
   }

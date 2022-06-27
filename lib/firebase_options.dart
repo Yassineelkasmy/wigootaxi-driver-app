@@ -60,8 +60,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1010420009793',
     projectId: 'taxi-app-user-4800a',
     storageBucket: 'taxi-app-user-4800a.appspot.com',
-    androidClientId: '1010420009793-ic7djdcuk8ijujdrdcovq9hkhlqcs3r8.apps.googleusercontent.com',
-    iosClientId: '1010420009793-namf81io44i8gdlqa1l1q10nu1sge2o0.apps.googleusercontent.com',
+    androidClientId:
+        '1010420009793-ic7djdcuk8ijujdrdcovq9hkhlqcs3r8.apps.googleusercontent.com',
+    iosClientId:
+        '1010420009793-namf81io44i8gdlqa1l1q10nu1sge2o0.apps.googleusercontent.com',
     iosBundleId: 'com.example.wigootaxidriver',
   );
 }
