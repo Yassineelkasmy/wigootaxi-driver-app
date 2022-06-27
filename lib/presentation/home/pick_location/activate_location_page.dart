@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/application/location/location_event.dart';
+import 'package:wigootaxidriver/application/providers/driver/driver_provider.dart';
 import 'package:wigootaxidriver/application/providers/location/location_provider.dart';
 import 'package:rive/rive.dart';
+import 'package:wigootaxidriver/driver/application/driver_event.dart';
 import 'package:wigootaxidriver/presentation/home/pick_location/location_map.dart';
 import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
@@ -18,16 +20,50 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final locationState = ref.watch(locationProvider);
     final locationController = ref.watch(locationProvider.notifier);
-
+    final driverController = ref.watch(driverProvider.notifier);
+    final driverState = ref.watch(driverProvider);
     return Scaffold(
       appBar: AppBar(
-        leading: Builder(builder: (context) {
-          return IconButton(
+        leading: Builder(
+          builder: (context) {
+            return IconButton(
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },
-              icon: Icon(Icons.menu));
-        }),
+              icon: Icon(Icons.menu),
+            );
+          },
+        ),
+        actions: [
+          if (driverState.isOnline)
+            Row(
+              children: [
+                Text('En ligne'),
+                IconButton(
+                  onPressed: () {
+                    driverController.mapEventToState(
+                      const DriverEvent.onlineDeactivated(),
+                    );
+                  },
+                  icon: Icon(Icons.sensors),
+                ),
+              ],
+            ),
+          if (!driverState.isOnline)
+            Row(
+              children: [
+                Text('Déconnecté'),
+                IconButton(
+                  onPressed: () {
+                    driverController.mapEventToState(
+                      const DriverEvent.onlineActivated(),
+                    );
+                  },
+                  icon: Icon(Icons.sensors_off),
+                ),
+              ],
+            ),
+        ],
       ),
       drawer: Container(
         color: kPrimaryColor,

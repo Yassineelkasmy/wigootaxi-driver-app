@@ -21,13 +21,13 @@ class DriverController extends StateNotifier<DriverState> {
   Future mapEventToState(DriverEvent event) {
     return event.map(
       onlineActivated: (event) async {
-        prefs ??= await SharedPreferences.getInstance();
-        prefs!.setBool(isOnlineKey, true);
+        final _prefs = await SharedPreferences.getInstance();
+        _prefs.setBool(isOnlineKey, true);
         state = state.copyWith(isOnline: true);
       },
       onlineDeactivated: (event) async {
-        prefs ??= await SharedPreferences.getInstance();
-        prefs!.setBool(isOnlineKey, false);
+        final _prefs = await SharedPreferences.getInstance();
+        _prefs.setBool(isOnlineKey, false);
         state = state.copyWith(isOnline: false);
       },
     );

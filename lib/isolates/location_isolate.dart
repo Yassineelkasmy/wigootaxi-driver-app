@@ -9,7 +9,7 @@ import 'package:wigootaxidriver/constants/storage_keys.dart';
 import 'package:wigootaxidriver/driver/services/driver_service.dart';
 import 'package:wigootaxidriver/firebase_options.dart';
 
-void locationIsolate(ReceivePort port) async {
+void locationIsolate(String message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   final prefs = await SharedPreferences.getInstance();
@@ -23,7 +23,10 @@ void locationIsolate(ReceivePort port) async {
   Timer.periodic(
     Duration(seconds: 5),
     (timer) async {
+      await prefs.reload();
       final newIsOnline = prefs.getBool(isOnlineKey) ?? isOnline;
+      print("isolate " + prefs.getBool(isOnlineKey).toString());
+
       if (newIsOnline) {
         driverService.updateLocation(
           lat: locationController.state.position?.latitude ?? 0,

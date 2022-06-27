@@ -13,7 +13,6 @@ class LocationController extends StateNotifier<LocationState> {
       : super(LocationState.initial());
   final bool isSpawned;
   final DriverController? driverController;
-  final receivePort = ReceivePort();
 
   // final Location location = Location();
 
@@ -69,7 +68,7 @@ class LocationController extends StateNotifier<LocationState> {
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
     if (!isSpawned) {
-      FlutterIsolate.spawn(locationIsolate, receivePort);
+      FlutterIsolate.spawn(locationIsolate, '');
     }
     return await Geolocator.getCurrentPosition();
   }
