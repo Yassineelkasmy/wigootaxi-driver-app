@@ -29,7 +29,7 @@ class _$DriverRecordTearOff {
       required int lastSeconds,
       required String username,
       required String phone,
-      required String status}) {
+      String? booking_call}) {
     return _DriverRecord(
       lng: lng,
       lat: lat,
@@ -37,7 +37,7 @@ class _$DriverRecordTearOff {
       lastSeconds: lastSeconds,
       username: username,
       phone: phone,
-      status: status,
+      booking_call: booking_call,
     );
   }
 
@@ -57,7 +57,7 @@ mixin _$DriverRecord {
   int get lastSeconds => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  String? get booking_call => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -77,7 +77,7 @@ abstract class $DriverRecordCopyWith<$Res> {
       int lastSeconds,
       String username,
       String phone,
-      String status});
+      String? booking_call});
 }
 
 /// @nodoc
@@ -96,7 +96,7 @@ class _$DriverRecordCopyWithImpl<$Res> implements $DriverRecordCopyWith<$Res> {
     Object? lastSeconds = freezed,
     Object? username = freezed,
     Object? phone = freezed,
-    Object? status = freezed,
+    Object? booking_call = freezed,
   }) {
     return _then(_value.copyWith(
       lng: lng == freezed
@@ -123,10 +123,10 @@ class _$DriverRecordCopyWithImpl<$Res> implements $DriverRecordCopyWith<$Res> {
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
+      booking_call: booking_call == freezed
+          ? _value.booking_call
+          : booking_call // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -145,7 +145,7 @@ abstract class _$DriverRecordCopyWith<$Res>
       int lastSeconds,
       String username,
       String phone,
-      String status});
+      String? booking_call});
 }
 
 /// @nodoc
@@ -166,7 +166,7 @@ class __$DriverRecordCopyWithImpl<$Res> extends _$DriverRecordCopyWithImpl<$Res>
     Object? lastSeconds = freezed,
     Object? username = freezed,
     Object? phone = freezed,
-    Object? status = freezed,
+    Object? booking_call = freezed,
   }) {
     return _then(_DriverRecord(
       lng: lng == freezed
@@ -193,10 +193,10 @@ class __$DriverRecordCopyWithImpl<$Res> extends _$DriverRecordCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
+      booking_call: booking_call == freezed
+          ? _value.booking_call
+          : booking_call // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -211,7 +211,7 @@ class _$_DriverRecord implements _DriverRecord {
       required this.lastSeconds,
       required this.username,
       required this.phone,
-      required this.status});
+      this.booking_call});
 
   factory _$_DriverRecord.fromJson(Map<String, dynamic> json) =>
       _$$_DriverRecordFromJson(json);
@@ -229,11 +229,11 @@ class _$_DriverRecord implements _DriverRecord {
   @override
   final String phone;
   @override
-  final String status;
+  final String? booking_call;
 
   @override
   String toString() {
-    return 'DriverRecord(lng: $lng, lat: $lat, id: $id, lastSeconds: $lastSeconds, username: $username, phone: $phone, status: $status)';
+    return 'DriverRecord(lng: $lng, lat: $lat, id: $id, lastSeconds: $lastSeconds, username: $username, phone: $phone, booking_call: $booking_call)';
   }
 
   @override
@@ -248,7 +248,8 @@ class _$_DriverRecord implements _DriverRecord {
                 .equals(other.lastSeconds, lastSeconds) &&
             const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
-            const DeepCollectionEquality().equals(other.status, status));
+            const DeepCollectionEquality()
+                .equals(other.booking_call, booking_call));
   }
 
   @override
@@ -260,7 +261,7 @@ class _$_DriverRecord implements _DriverRecord {
       const DeepCollectionEquality().hash(lastSeconds),
       const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(status));
+      const DeepCollectionEquality().hash(booking_call));
 
   @JsonKey(ignore: true)
   @override
@@ -281,7 +282,7 @@ abstract class _DriverRecord implements DriverRecord {
       required int lastSeconds,
       required String username,
       required String phone,
-      required String status}) = _$_DriverRecord;
+      String? booking_call}) = _$_DriverRecord;
 
   factory _DriverRecord.fromJson(Map<String, dynamic> json) =
       _$_DriverRecord.fromJson;
@@ -299,7 +300,7 @@ abstract class _DriverRecord implements DriverRecord {
   @override
   String get phone;
   @override
-  String get status;
+  String? get booking_call;
   @override
   @JsonKey(ignore: true)
   _$DriverRecordCopyWith<_DriverRecord> get copyWith =>

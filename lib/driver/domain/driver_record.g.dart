@@ -14,7 +14,7 @@ _$_DriverRecord _$$_DriverRecordFromJson(Map<String, dynamic> json) =>
       lastSeconds: json['lastSeconds'] as int,
       username: json['username'] as String,
       phone: json['phone'] as String,
-      status: json['status'] as String,
+      booking_call: json['booking_call'] as String?,
     );
 
 Map<String, dynamic> _$$_DriverRecordToJson(_$_DriverRecord instance) =>
@@ -25,5 +25,5 @@ Map<String, dynamic> _$$_DriverRecordToJson(_$_DriverRecord instance) =>
       'lastSeconds': instance.lastSeconds,
       'username': instance.username,
       'phone': instance.phone,
-      'status': instance.status,
+      'booking_call': instance.booking_call,
     };

@@ -28,6 +28,7 @@ void locationIsolate(String message) async {
       print("isolate " + prefs.getBool(isOnlineKey).toString());
 
       if (newIsOnline) {
+        locationController.mapEventToState(LocationEvent.locationRequested());
         driverService.updateLocation(
           lat: locationController.state.position?.latitude ?? 0,
           lng: locationController.state.position?.longitude ?? 0,

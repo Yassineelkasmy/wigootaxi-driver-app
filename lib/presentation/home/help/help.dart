@@ -5,7 +5,7 @@ import 'package:wigootaxidriver/presentation/home/help/widgets/help_card.dart';
 import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 
 class Help extends StatefulWidget {
   const Help({Key? key}) : super(key: key);
@@ -83,7 +83,7 @@ class _HelpState extends State<Help> {
                           children: [
                             GestureDetector(
                               onTap: () async {
-                                await launch('tel:+2126123456789');
+                                // await launch('tel:+2126123456789');
                               },
                               child: Row(
                                 children: [

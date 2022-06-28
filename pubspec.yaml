@@ -53,7 +53,6 @@ dependencies:
   salomon_bottom_bar: ^3.3.0
   rive: ^0.8.4
   drawerbehavior: ^2.2.2
-  url_launcher: ^6.0.20
   google_maps_flutter: ^2.1.3
   geolocator: ^8.2.1
   flutter_isolate: ^2.0.2
@@ -69,6 +68,7 @@ dependencies:
   firebase_messaging: ^11.4.0
   http: ^0.13.4
   geoflutterfire: ^3.0.3
+  audioplayers: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -99,6 +99,7 @@ flutter:
     - assets/icons/
     - assets/animations/
     - assets/translations/
+    - assets/sounds/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

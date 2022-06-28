@@ -12,7 +12,7 @@ class DriverRecord with _$DriverRecord {
     required int lastSeconds,
     required String username,
     required String phone,
-    required String status,
+    String? booking_call,
   }) = _DriverRecord;
 
   factory DriverRecord.fromJson(Map<String, dynamic> json) =>

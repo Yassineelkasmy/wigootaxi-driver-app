@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:wigootaxidriver/driver/domain/driver_record.dart';
 
 part 'driver_state.freezed.dart';
 
@@ -9,6 +10,7 @@ class DriverState with _$DriverState {
     required bool isRiding,
     required bool isFree,
     String? booking_call,
+    DriverRecord? driverRecord,
   }) = _DriverState;
 
   factory DriverState.initial() => DriverState(

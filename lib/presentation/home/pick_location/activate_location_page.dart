@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +8,7 @@ import 'package:wigootaxidriver/application/providers/driver/driver_provider.dar
 import 'package:wigootaxidriver/application/providers/location/location_provider.dart';
 import 'package:rive/rive.dart';
 import 'package:wigootaxidriver/driver/application/driver_event.dart';
+import 'package:wigootaxidriver/driver/application/driver_state.dart';
 import 'package:wigootaxidriver/presentation/home/pick_location/location_map.dart';
 import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
@@ -14,7 +16,14 @@ import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 
 class ActivateLocationOrMapPage extends HookConsumerWidget {
-  const ActivateLocationOrMapPage({Key? key}) : super(key: key);
+  ActivateLocationOrMapPage({Key? key}) : super(key: key);
+  final audioPlayer = AudioPlayer();
+  final player = AudioCache(prefix: 'assets/sounds/');
+
+  void playCall() async {
+    final url = await player.load('call.wav');
+    audioPlayer.play(AssetSource('call.wav'));
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,6 +31,20 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
     final locationController = ref.watch(locationProvider.notifier);
     final driverController = ref.watch(driverProvider.notifier);
     final driverState = ref.watch(driverProvider);
+
+    ref.listen<DriverState>(
+      driverProvider,
+      (previous, next) async {
+        final prevRecord = previous?.driverRecord;
+        final nextRecord = next.driverRecord;
+        if (prevRecord?.booking_call == null &&
+            (prevRecord?.booking_call != nextRecord?.booking_call)) {
+          if (nextRecord?.booking_call != null) {
+            playCall();
+          }
+        }
+      },
+    );
     return Scaffold(
       appBar: AppBar(
         leading: Builder(

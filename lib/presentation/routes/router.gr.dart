@@ -94,8 +94,11 @@ class AppRouter extends _i14.RootStackRouter {
               _i10.BookingsPage(key: args.key, fromBooking: args.fromBooking));
     },
     ActivateLocationOrMapPageRoute.name: (routeData) {
+      final args = routeData.argsAs<ActivateLocationOrMapPageRouteArgs>(
+          orElse: () => const ActivateLocationOrMapPageRouteArgs());
       return _i14.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i11.ActivateLocationOrMapPage());
+          routeData: routeData,
+          child: _i11.ActivateLocationOrMapPage(key: args.key));
     },
     SendMessagePageRoute.name: (routeData) {
       final args = routeData.argsAs<SendMessagePageRouteArgs>(
@@ -333,12 +336,25 @@ class BookingsPageRouteArgs {
 
 /// generated route for
 /// [_i11.ActivateLocationOrMapPage]
-class ActivateLocationOrMapPageRoute extends _i14.PageRouteInfo<void> {
-  const ActivateLocationOrMapPageRoute()
+class ActivateLocationOrMapPageRoute
+    extends _i14.PageRouteInfo<ActivateLocationOrMapPageRouteArgs> {
+  ActivateLocationOrMapPageRoute({_i15.Key? key})
       : super(ActivateLocationOrMapPageRoute.name,
-            path: '/activate-location-or-map-page');
+            path: '/activate-location-or-map-page',
+            args: ActivateLocationOrMapPageRouteArgs(key: key));
 
   static const String name = 'ActivateLocationOrMapPageRoute';
+}
+
+class ActivateLocationOrMapPageRouteArgs {
+  const ActivateLocationOrMapPageRouteArgs({this.key});
+
+  final _i15.Key? key;
+
+  @override
+  String toString() {
+    return 'ActivateLocationOrMapPageRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

@@ -22,12 +22,14 @@ class _$DriverStateTearOff {
       {required bool isOnline,
       required bool isRiding,
       required bool isFree,
-      String? booking_call}) {
+      String? booking_call,
+      DriverRecord? driverRecord}) {
     return _DriverState(
       isOnline: isOnline,
       isRiding: isRiding,
       isFree: isFree,
       booking_call: booking_call,
+      driverRecord: driverRecord,
     );
   }
 }
@@ -41,6 +43,7 @@ mixin _$DriverState {
   bool get isRiding => throw _privateConstructorUsedError;
   bool get isFree => throw _privateConstructorUsedError;
   String? get booking_call => throw _privateConstructorUsedError;
+  DriverRecord? get driverRecord => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DriverStateCopyWith<DriverState> get copyWith =>
@@ -52,7 +55,14 @@ abstract class $DriverStateCopyWith<$Res> {
   factory $DriverStateCopyWith(
           DriverState value, $Res Function(DriverState) then) =
       _$DriverStateCopyWithImpl<$Res>;
-  $Res call({bool isOnline, bool isRiding, bool isFree, String? booking_call});
+  $Res call(
+      {bool isOnline,
+      bool isRiding,
+      bool isFree,
+      String? booking_call,
+      DriverRecord? driverRecord});
+
+  $DriverRecordCopyWith<$Res>? get driverRecord;
 }
 
 /// @nodoc
@@ -69,6 +79,7 @@ class _$DriverStateCopyWithImpl<$Res> implements $DriverStateCopyWith<$Res> {
     Object? isRiding = freezed,
     Object? isFree = freezed,
     Object? booking_call = freezed,
+    Object? driverRecord = freezed,
   }) {
     return _then(_value.copyWith(
       isOnline: isOnline == freezed
@@ -87,7 +98,22 @@ class _$DriverStateCopyWithImpl<$Res> implements $DriverStateCopyWith<$Res> {
           ? _value.booking_call
           : booking_call // ignore: cast_nullable_to_non_nullable
               as String?,
+      driverRecord: driverRecord == freezed
+          ? _value.driverRecord
+          : driverRecord // ignore: cast_nullable_to_non_nullable
+              as DriverRecord?,
     ));
+  }
+
+  @override
+  $DriverRecordCopyWith<$Res>? get driverRecord {
+    if (_value.driverRecord == null) {
+      return null;
+    }
+
+    return $DriverRecordCopyWith<$Res>(_value.driverRecord!, (value) {
+      return _then(_value.copyWith(driverRecord: value));
+    });
   }
 }
 
@@ -98,7 +124,15 @@ abstract class _$DriverStateCopyWith<$Res>
           _DriverState value, $Res Function(_DriverState) then) =
       __$DriverStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isOnline, bool isRiding, bool isFree, String? booking_call});
+  $Res call(
+      {bool isOnline,
+      bool isRiding,
+      bool isFree,
+      String? booking_call,
+      DriverRecord? driverRecord});
+
+  @override
+  $DriverRecordCopyWith<$Res>? get driverRecord;
 }
 
 /// @nodoc
@@ -117,6 +151,7 @@ class __$DriverStateCopyWithImpl<$Res> extends _$DriverStateCopyWithImpl<$Res>
     Object? isRiding = freezed,
     Object? isFree = freezed,
     Object? booking_call = freezed,
+    Object? driverRecord = freezed,
   }) {
     return _then(_DriverState(
       isOnline: isOnline == freezed
@@ -135,6 +170,10 @@ class __$DriverStateCopyWithImpl<$Res> extends _$DriverStateCopyWithImpl<$Res>
           ? _value.booking_call
           : booking_call // ignore: cast_nullable_to_non_nullable
               as String?,
+      driverRecord: driverRecord == freezed
+          ? _value.driverRecord
+          : driverRecord // ignore: cast_nullable_to_non_nullable
+              as DriverRecord?,
     ));
   }
 }
@@ -146,7 +185,8 @@ class _$_DriverState implements _DriverState {
       {required this.isOnline,
       required this.isRiding,
       required this.isFree,
-      this.booking_call});
+      this.booking_call,
+      this.driverRecord});
 
   @override
   final bool isOnline;
@@ -156,10 +196,12 @@ class _$_DriverState implements _DriverState {
   final bool isFree;
   @override
   final String? booking_call;
+  @override
+  final DriverRecord? driverRecord;
 
   @override
   String toString() {
-    return 'DriverState(isOnline: $isOnline, isRiding: $isRiding, isFree: $isFree, booking_call: $booking_call)';
+    return 'DriverState(isOnline: $isOnline, isRiding: $isRiding, isFree: $isFree, booking_call: $booking_call, driverRecord: $driverRecord)';
   }
 
   @override
@@ -171,7 +213,9 @@ class _$_DriverState implements _DriverState {
             const DeepCollectionEquality().equals(other.isRiding, isRiding) &&
             const DeepCollectionEquality().equals(other.isFree, isFree) &&
             const DeepCollectionEquality()
-                .equals(other.booking_call, booking_call));
+                .equals(other.booking_call, booking_call) &&
+            const DeepCollectionEquality()
+                .equals(other.driverRecord, driverRecord));
   }
 
   @override
@@ -180,7 +224,8 @@ class _$_DriverState implements _DriverState {
       const DeepCollectionEquality().hash(isOnline),
       const DeepCollectionEquality().hash(isRiding),
       const DeepCollectionEquality().hash(isFree),
-      const DeepCollectionEquality().hash(booking_call));
+      const DeepCollectionEquality().hash(booking_call),
+      const DeepCollectionEquality().hash(driverRecord));
 
   @JsonKey(ignore: true)
   @override
@@ -193,7 +238,8 @@ abstract class _DriverState implements DriverState {
       {required bool isOnline,
       required bool isRiding,
       required bool isFree,
-      String? booking_call}) = _$_DriverState;
+      String? booking_call,
+      DriverRecord? driverRecord}) = _$_DriverState;
 
   @override
   bool get isOnline;
@@ -203,6 +249,8 @@ abstract class _DriverState implements DriverState {
   bool get isFree;
   @override
   String? get booking_call;
+  @override
+  DriverRecord? get driverRecord;
   @override
   @JsonKey(ignore: true)
   _$DriverStateCopyWith<_DriverState> get copyWith =>
