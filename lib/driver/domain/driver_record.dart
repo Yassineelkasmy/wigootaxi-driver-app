@@ -13,8 +13,32 @@ class DriverRecord with _$DriverRecord {
     required String username,
     required String phone,
     String? booking_call,
+    BookingRecord? booking,
   }) = _DriverRecord;
 
   factory DriverRecord.fromJson(Map<String, dynamic> json) =>
       _$DriverRecordFromJson(json);
+}
+
+@freezed
+class UserRecord with _$UserRecord {
+  const factory UserRecord({
+    required String id,
+    required String username,
+    required String phone,
+  }) = _UserRecord;
+
+  factory UserRecord.fromJson(Map<String, dynamic> json) =>
+      _$UserRecordFromJson(json);
+}
+
+@freezed
+class BookingRecord with _$BookingRecord {
+  const factory BookingRecord({
+    required String id,
+    required UserRecord user,
+  }) = _BookingRecord;
+
+  factory BookingRecord.fromJson(Map<String, dynamic> json) =>
+      _$BookingRecordFromJson(json);
 }

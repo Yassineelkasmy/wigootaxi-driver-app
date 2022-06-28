@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,6 +12,7 @@ import 'package:wigootaxidriver/driver/application/driver_event.dart';
 import 'package:wigootaxidriver/driver/application/driver_state.dart';
 import 'package:wigootaxidriver/presentation/home/pick_location/location_map.dart';
 import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
+import 'package:wigootaxidriver/presentation/shared/popup.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
@@ -19,11 +21,6 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
   ActivateLocationOrMapPage({Key? key}) : super(key: key);
   final audioPlayer = AudioPlayer();
   final player = AudioCache(prefix: 'assets/sounds/');
-
-  void playCall() async {
-    final url = await player.load('call.wav');
-    audioPlayer.play(AssetSource('call.wav'));
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,7 +37,12 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
         if (prevRecord?.booking_call == null &&
             (prevRecord?.booking_call != nextRecord?.booking_call)) {
           if (nextRecord?.booking_call != null) {
-            playCall();
+            showPopupConfirmation(
+              context,
+              title: 'Offre de trajet',
+              body: '${nextRecord?.booking?.user.username}',
+              onTap: () {},
+            );
           }
         }
       },

@@ -29,7 +29,8 @@ class _$DriverRecordTearOff {
       required int lastSeconds,
       required String username,
       required String phone,
-      String? booking_call}) {
+      String? booking_call,
+      BookingRecord? booking}) {
     return _DriverRecord(
       lng: lng,
       lat: lat,
@@ -38,6 +39,7 @@ class _$DriverRecordTearOff {
       username: username,
       phone: phone,
       booking_call: booking_call,
+      booking: booking,
     );
   }
 
@@ -58,6 +60,7 @@ mixin _$DriverRecord {
   String get username => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String? get booking_call => throw _privateConstructorUsedError;
+  BookingRecord? get booking => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -77,7 +80,10 @@ abstract class $DriverRecordCopyWith<$Res> {
       int lastSeconds,
       String username,
       String phone,
-      String? booking_call});
+      String? booking_call,
+      BookingRecord? booking});
+
+  $BookingRecordCopyWith<$Res>? get booking;
 }
 
 /// @nodoc
@@ -97,6 +103,7 @@ class _$DriverRecordCopyWithImpl<$Res> implements $DriverRecordCopyWith<$Res> {
     Object? username = freezed,
     Object? phone = freezed,
     Object? booking_call = freezed,
+    Object? booking = freezed,
   }) {
     return _then(_value.copyWith(
       lng: lng == freezed
@@ -127,7 +134,22 @@ class _$DriverRecordCopyWithImpl<$Res> implements $DriverRecordCopyWith<$Res> {
           ? _value.booking_call
           : booking_call // ignore: cast_nullable_to_non_nullable
               as String?,
+      booking: booking == freezed
+          ? _value.booking
+          : booking // ignore: cast_nullable_to_non_nullable
+              as BookingRecord?,
     ));
+  }
+
+  @override
+  $BookingRecordCopyWith<$Res>? get booking {
+    if (_value.booking == null) {
+      return null;
+    }
+
+    return $BookingRecordCopyWith<$Res>(_value.booking!, (value) {
+      return _then(_value.copyWith(booking: value));
+    });
   }
 }
 
@@ -145,7 +167,11 @@ abstract class _$DriverRecordCopyWith<$Res>
       int lastSeconds,
       String username,
       String phone,
-      String? booking_call});
+      String? booking_call,
+      BookingRecord? booking});
+
+  @override
+  $BookingRecordCopyWith<$Res>? get booking;
 }
 
 /// @nodoc
@@ -167,6 +193,7 @@ class __$DriverRecordCopyWithImpl<$Res> extends _$DriverRecordCopyWithImpl<$Res>
     Object? username = freezed,
     Object? phone = freezed,
     Object? booking_call = freezed,
+    Object? booking = freezed,
   }) {
     return _then(_DriverRecord(
       lng: lng == freezed
@@ -197,6 +224,10 @@ class __$DriverRecordCopyWithImpl<$Res> extends _$DriverRecordCopyWithImpl<$Res>
           ? _value.booking_call
           : booking_call // ignore: cast_nullable_to_non_nullable
               as String?,
+      booking: booking == freezed
+          ? _value.booking
+          : booking // ignore: cast_nullable_to_non_nullable
+              as BookingRecord?,
     ));
   }
 }
@@ -211,7 +242,8 @@ class _$_DriverRecord implements _DriverRecord {
       required this.lastSeconds,
       required this.username,
       required this.phone,
-      this.booking_call});
+      this.booking_call,
+      this.booking});
 
   factory _$_DriverRecord.fromJson(Map<String, dynamic> json) =>
       _$$_DriverRecordFromJson(json);
@@ -230,10 +262,12 @@ class _$_DriverRecord implements _DriverRecord {
   final String phone;
   @override
   final String? booking_call;
+  @override
+  final BookingRecord? booking;
 
   @override
   String toString() {
-    return 'DriverRecord(lng: $lng, lat: $lat, id: $id, lastSeconds: $lastSeconds, username: $username, phone: $phone, booking_call: $booking_call)';
+    return 'DriverRecord(lng: $lng, lat: $lat, id: $id, lastSeconds: $lastSeconds, username: $username, phone: $phone, booking_call: $booking_call, booking: $booking)';
   }
 
   @override
@@ -249,7 +283,8 @@ class _$_DriverRecord implements _DriverRecord {
             const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
             const DeepCollectionEquality()
-                .equals(other.booking_call, booking_call));
+                .equals(other.booking_call, booking_call) &&
+            const DeepCollectionEquality().equals(other.booking, booking));
   }
 
   @override
@@ -261,7 +296,8 @@ class _$_DriverRecord implements _DriverRecord {
       const DeepCollectionEquality().hash(lastSeconds),
       const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(booking_call));
+      const DeepCollectionEquality().hash(booking_call),
+      const DeepCollectionEquality().hash(booking));
 
   @JsonKey(ignore: true)
   @override
@@ -282,7 +318,8 @@ abstract class _DriverRecord implements DriverRecord {
       required int lastSeconds,
       required String username,
       required String phone,
-      String? booking_call}) = _$_DriverRecord;
+      String? booking_call,
+      BookingRecord? booking}) = _$_DriverRecord;
 
   factory _DriverRecord.fromJson(Map<String, dynamic> json) =
       _$_DriverRecord.fromJson;
@@ -302,7 +339,378 @@ abstract class _DriverRecord implements DriverRecord {
   @override
   String? get booking_call;
   @override
+  BookingRecord? get booking;
+  @override
   @JsonKey(ignore: true)
   _$DriverRecordCopyWith<_DriverRecord> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+UserRecord _$UserRecordFromJson(Map<String, dynamic> json) {
+  return _UserRecord.fromJson(json);
+}
+
+/// @nodoc
+class _$UserRecordTearOff {
+  const _$UserRecordTearOff();
+
+  _UserRecord call(
+      {required String id, required String username, required String phone}) {
+    return _UserRecord(
+      id: id,
+      username: username,
+      phone: phone,
+    );
+  }
+
+  UserRecord fromJson(Map<String, Object?> json) {
+    return UserRecord.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $UserRecord = _$UserRecordTearOff();
+
+/// @nodoc
+mixin _$UserRecord {
+  String get id => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UserRecordCopyWith<UserRecord> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserRecordCopyWith<$Res> {
+  factory $UserRecordCopyWith(
+          UserRecord value, $Res Function(UserRecord) then) =
+      _$UserRecordCopyWithImpl<$Res>;
+  $Res call({String id, String username, String phone});
+}
+
+/// @nodoc
+class _$UserRecordCopyWithImpl<$Res> implements $UserRecordCopyWith<$Res> {
+  _$UserRecordCopyWithImpl(this._value, this._then);
+
+  final UserRecord _value;
+  // ignore: unused_field
+  final $Res Function(UserRecord) _then;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? username = freezed,
+    Object? phone = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$UserRecordCopyWith<$Res> implements $UserRecordCopyWith<$Res> {
+  factory _$UserRecordCopyWith(
+          _UserRecord value, $Res Function(_UserRecord) then) =
+      __$UserRecordCopyWithImpl<$Res>;
+  @override
+  $Res call({String id, String username, String phone});
+}
+
+/// @nodoc
+class __$UserRecordCopyWithImpl<$Res> extends _$UserRecordCopyWithImpl<$Res>
+    implements _$UserRecordCopyWith<$Res> {
+  __$UserRecordCopyWithImpl(
+      _UserRecord _value, $Res Function(_UserRecord) _then)
+      : super(_value, (v) => _then(v as _UserRecord));
+
+  @override
+  _UserRecord get _value => super._value as _UserRecord;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? username = freezed,
+    Object? phone = freezed,
+  }) {
+    return _then(_UserRecord(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_UserRecord implements _UserRecord {
+  const _$_UserRecord(
+      {required this.id, required this.username, required this.phone});
+
+  factory _$_UserRecord.fromJson(Map<String, dynamic> json) =>
+      _$$_UserRecordFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final String username;
+  @override
+  final String phone;
+
+  @override
+  String toString() {
+    return 'UserRecord(id: $id, username: $username, phone: $phone)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _UserRecord &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality().equals(other.phone, phone));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(username),
+      const DeepCollectionEquality().hash(phone));
+
+  @JsonKey(ignore: true)
+  @override
+  _$UserRecordCopyWith<_UserRecord> get copyWith =>
+      __$UserRecordCopyWithImpl<_UserRecord>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_UserRecordToJson(this);
+  }
+}
+
+abstract class _UserRecord implements UserRecord {
+  const factory _UserRecord(
+      {required String id,
+      required String username,
+      required String phone}) = _$_UserRecord;
+
+  factory _UserRecord.fromJson(Map<String, dynamic> json) =
+      _$_UserRecord.fromJson;
+
+  @override
+  String get id;
+  @override
+  String get username;
+  @override
+  String get phone;
+  @override
+  @JsonKey(ignore: true)
+  _$UserRecordCopyWith<_UserRecord> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+BookingRecord _$BookingRecordFromJson(Map<String, dynamic> json) {
+  return _BookingRecord.fromJson(json);
+}
+
+/// @nodoc
+class _$BookingRecordTearOff {
+  const _$BookingRecordTearOff();
+
+  _BookingRecord call({required String id, required UserRecord user}) {
+    return _BookingRecord(
+      id: id,
+      user: user,
+    );
+  }
+
+  BookingRecord fromJson(Map<String, Object?> json) {
+    return BookingRecord.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $BookingRecord = _$BookingRecordTearOff();
+
+/// @nodoc
+mixin _$BookingRecord {
+  String get id => throw _privateConstructorUsedError;
+  UserRecord get user => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $BookingRecordCopyWith<BookingRecord> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BookingRecordCopyWith<$Res> {
+  factory $BookingRecordCopyWith(
+          BookingRecord value, $Res Function(BookingRecord) then) =
+      _$BookingRecordCopyWithImpl<$Res>;
+  $Res call({String id, UserRecord user});
+
+  $UserRecordCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class _$BookingRecordCopyWithImpl<$Res>
+    implements $BookingRecordCopyWith<$Res> {
+  _$BookingRecordCopyWithImpl(this._value, this._then);
+
+  final BookingRecord _value;
+  // ignore: unused_field
+  final $Res Function(BookingRecord) _then;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? user = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserRecord,
+    ));
+  }
+
+  @override
+  $UserRecordCopyWith<$Res> get user {
+    return $UserRecordCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$BookingRecordCopyWith<$Res>
+    implements $BookingRecordCopyWith<$Res> {
+  factory _$BookingRecordCopyWith(
+          _BookingRecord value, $Res Function(_BookingRecord) then) =
+      __$BookingRecordCopyWithImpl<$Res>;
+  @override
+  $Res call({String id, UserRecord user});
+
+  @override
+  $UserRecordCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$BookingRecordCopyWithImpl<$Res>
+    extends _$BookingRecordCopyWithImpl<$Res>
+    implements _$BookingRecordCopyWith<$Res> {
+  __$BookingRecordCopyWithImpl(
+      _BookingRecord _value, $Res Function(_BookingRecord) _then)
+      : super(_value, (v) => _then(v as _BookingRecord));
+
+  @override
+  _BookingRecord get _value => super._value as _BookingRecord;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? user = freezed,
+  }) {
+    return _then(_BookingRecord(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserRecord,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_BookingRecord implements _BookingRecord {
+  const _$_BookingRecord({required this.id, required this.user});
+
+  factory _$_BookingRecord.fromJson(Map<String, dynamic> json) =>
+      _$$_BookingRecordFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final UserRecord user;
+
+  @override
+  String toString() {
+    return 'BookingRecord(id: $id, user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _BookingRecord &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.user, user));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(user));
+
+  @JsonKey(ignore: true)
+  @override
+  _$BookingRecordCopyWith<_BookingRecord> get copyWith =>
+      __$BookingRecordCopyWithImpl<_BookingRecord>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_BookingRecordToJson(this);
+  }
+}
+
+abstract class _BookingRecord implements BookingRecord {
+  const factory _BookingRecord({required String id, required UserRecord user}) =
+      _$_BookingRecord;
+
+  factory _BookingRecord.fromJson(Map<String, dynamic> json) =
+      _$_BookingRecord.fromJson;
+
+  @override
+  String get id;
+  @override
+  UserRecord get user;
+  @override
+  @JsonKey(ignore: true)
+  _$BookingRecordCopyWith<_BookingRecord> get copyWith =>
       throw _privateConstructorUsedError;
 }

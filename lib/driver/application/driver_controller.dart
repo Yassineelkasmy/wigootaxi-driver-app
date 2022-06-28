@@ -30,7 +30,6 @@ class DriverController extends StateNotifier<DriverState> {
     driverDocSubscription = driverService
         .driverRecordStream(userUid: userUid)
         .listen((driverRecord) {
-      print(driverRecord);
       state = state.copyWith(driverRecord: driverRecord);
     });
   }
