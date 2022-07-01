@@ -77,4 +77,19 @@ class BookingService {
 
     return results;
   }
+
+  Future<Either<BookingFailure, Unit>> accpetRide(
+      {required String driverId, required String bookingId}) async {
+    try {
+      Future.wait([
+        firestore
+            .collection('booking')
+            .doc(bookingId)
+            .update({'driverId': driverId}),
+      ]);
+      return right(unit);
+    } catch (e) {
+      return left(const BookingFailure.serverError());
+    }
+  }
 }

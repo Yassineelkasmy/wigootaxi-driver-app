@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:in_app_notification/in_app_notification.dart';
 import 'package:wigootaxidriver/firebase_options.dart';
 import 'package:wigootaxidriver/presentation/core/app_widget.dart';
 
@@ -16,7 +17,7 @@ Future<void> main() async {
 
   runApp(
     ProviderScope(
-      child: AppWidget(),
+      child: InAppNotification(child: AppWidget()),
     ),
   );
   FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;

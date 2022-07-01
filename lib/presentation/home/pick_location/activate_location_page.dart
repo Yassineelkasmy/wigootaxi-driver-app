@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:in_app_notification/in_app_notification.dart';
 import 'package:wigootaxidriver/application/location/location_event.dart';
 import 'package:wigootaxidriver/application/providers/driver/driver_provider.dart';
 import 'package:wigootaxidriver/application/providers/location/location_provider.dart';
@@ -12,6 +13,7 @@ import 'package:wigootaxidriver/driver/application/driver_event.dart';
 import 'package:wigootaxidriver/driver/application/driver_state.dart';
 import 'package:wigootaxidriver/presentation/home/pick_location/location_map.dart';
 import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
+import 'package:wigootaxidriver/presentation/shared/in_app_notfication.dart';
 import 'package:wigootaxidriver/presentation/shared/popup.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
@@ -40,8 +42,13 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
             showPopupConfirmation(
               context,
               title: 'Offre de trajet',
-              body: '${nextRecord?.booking?.user.username}',
-              onTap: () {},
+              body:
+                  '${nextRecord?.booking?.user.username}\n ${nextRecord?.booking?.user.phone}',
+              onTap: () async {
+                await driverController
+                    .mapEventToState(const DriverEvent.rideAccepted());
+                Navigator.of(context).pop();
+              },
             );
           }
         }
@@ -65,9 +72,18 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
               children: [
                 Text('En ligne'),
                 IconButton(
-                  onPressed: () {
-                    driverController.mapEventToState(
+                  onPressed: () async {
+                    await driverController.mapEventToState(
                       const DriverEvent.onlineDeactivated(),
+                    );
+                    InAppNotification.show(
+                      duration: Duration(seconds: 5),
+                      child: InnerNotifications(
+                        message:
+                            'Vous êtes hors ligne et pouvez et ne pouvez pas accepter les offres',
+                        isScuccess: false,
+                      ),
+                      context: context,
                     );
                   },
                   icon: Icon(Icons.sensors),
@@ -79,9 +95,18 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
               children: [
                 Text('Déconnecté'),
                 IconButton(
-                  onPressed: () {
-                    driverController.mapEventToState(
+                  onPressed: () async {
+                    await driverController.mapEventToState(
                       const DriverEvent.onlineActivated(),
+                    );
+                    InAppNotification.show(
+                      duration: Duration(seconds: 5),
+                      child: InnerNotifications(
+                        message:
+                            'Vous êtes en ligne et prêt à accepter des courses',
+                        isScuccess: true,
+                      ),
+                      context: context,
                     );
                   },
                   icon: Icon(Icons.sensors_off),

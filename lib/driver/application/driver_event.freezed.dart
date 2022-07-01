@@ -25,6 +25,10 @@ class _$DriverEventTearOff {
   OnlineDeactivated onlineDeactivated() {
     return const OnlineDeactivated();
   }
+
+  RideAccepted rideAccepted() {
+    return const RideAccepted();
+  }
 }
 
 /// @nodoc
@@ -36,18 +40,21 @@ mixin _$DriverEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() onlineActivated,
     required TResult Function() onlineDeactivated,
+    required TResult Function() rideAccepted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
+    TResult Function()? rideAccepted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
+    TResult Function()? rideAccepted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,18 +62,21 @@ mixin _$DriverEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(OnlineActivated value) onlineActivated,
     required TResult Function(OnlineDeactivated value) onlineDeactivated,
+    required TResult Function(RideAccepted value) rideAccepted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
+    TResult Function(RideAccepted value)? rideAccepted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
+    TResult Function(RideAccepted value)? rideAccepted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,6 +141,7 @@ class _$OnlineActivated implements OnlineActivated {
   TResult when<TResult extends Object?>({
     required TResult Function() onlineActivated,
     required TResult Function() onlineDeactivated,
+    required TResult Function() rideAccepted,
   }) {
     return onlineActivated();
   }
@@ -140,6 +151,7 @@ class _$OnlineActivated implements OnlineActivated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
+    TResult Function()? rideAccepted,
   }) {
     return onlineActivated?.call();
   }
@@ -149,6 +161,7 @@ class _$OnlineActivated implements OnlineActivated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
+    TResult Function()? rideAccepted,
     required TResult orElse(),
   }) {
     if (onlineActivated != null) {
@@ -162,6 +175,7 @@ class _$OnlineActivated implements OnlineActivated {
   TResult map<TResult extends Object?>({
     required TResult Function(OnlineActivated value) onlineActivated,
     required TResult Function(OnlineDeactivated value) onlineDeactivated,
+    required TResult Function(RideAccepted value) rideAccepted,
   }) {
     return onlineActivated(this);
   }
@@ -171,6 +185,7 @@ class _$OnlineActivated implements OnlineActivated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
+    TResult Function(RideAccepted value)? rideAccepted,
   }) {
     return onlineActivated?.call(this);
   }
@@ -180,6 +195,7 @@ class _$OnlineActivated implements OnlineActivated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
+    TResult Function(RideAccepted value)? rideAccepted,
     required TResult orElse(),
   }) {
     if (onlineActivated != null) {
@@ -236,6 +252,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
   TResult when<TResult extends Object?>({
     required TResult Function() onlineActivated,
     required TResult Function() onlineDeactivated,
+    required TResult Function() rideAccepted,
   }) {
     return onlineDeactivated();
   }
@@ -245,6 +262,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
+    TResult Function()? rideAccepted,
   }) {
     return onlineDeactivated?.call();
   }
@@ -254,6 +272,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
+    TResult Function()? rideAccepted,
     required TResult orElse(),
   }) {
     if (onlineDeactivated != null) {
@@ -267,6 +286,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
   TResult map<TResult extends Object?>({
     required TResult Function(OnlineActivated value) onlineActivated,
     required TResult Function(OnlineDeactivated value) onlineDeactivated,
+    required TResult Function(RideAccepted value) rideAccepted,
   }) {
     return onlineDeactivated(this);
   }
@@ -276,6 +296,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
+    TResult Function(RideAccepted value)? rideAccepted,
   }) {
     return onlineDeactivated?.call(this);
   }
@@ -285,6 +306,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
+    TResult Function(RideAccepted value)? rideAccepted,
     required TResult orElse(),
   }) {
     if (onlineDeactivated != null) {
@@ -296,4 +318,114 @@ class _$OnlineDeactivated implements OnlineDeactivated {
 
 abstract class OnlineDeactivated implements DriverEvent {
   const factory OnlineDeactivated() = _$OnlineDeactivated;
+}
+
+/// @nodoc
+abstract class $RideAcceptedCopyWith<$Res> {
+  factory $RideAcceptedCopyWith(
+          RideAccepted value, $Res Function(RideAccepted) then) =
+      _$RideAcceptedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$RideAcceptedCopyWithImpl<$Res> extends _$DriverEventCopyWithImpl<$Res>
+    implements $RideAcceptedCopyWith<$Res> {
+  _$RideAcceptedCopyWithImpl(
+      RideAccepted _value, $Res Function(RideAccepted) _then)
+      : super(_value, (v) => _then(v as RideAccepted));
+
+  @override
+  RideAccepted get _value => super._value as RideAccepted;
+}
+
+/// @nodoc
+
+class _$RideAccepted implements RideAccepted {
+  const _$RideAccepted();
+
+  @override
+  String toString() {
+    return 'DriverEvent.rideAccepted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is RideAccepted);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onlineActivated,
+    required TResult Function() onlineDeactivated,
+    required TResult Function() rideAccepted,
+  }) {
+    return rideAccepted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? onlineActivated,
+    TResult Function()? onlineDeactivated,
+    TResult Function()? rideAccepted,
+  }) {
+    return rideAccepted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onlineActivated,
+    TResult Function()? onlineDeactivated,
+    TResult Function()? rideAccepted,
+    required TResult orElse(),
+  }) {
+    if (rideAccepted != null) {
+      return rideAccepted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnlineActivated value) onlineActivated,
+    required TResult Function(OnlineDeactivated value) onlineDeactivated,
+    required TResult Function(RideAccepted value) rideAccepted,
+  }) {
+    return rideAccepted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(OnlineActivated value)? onlineActivated,
+    TResult Function(OnlineDeactivated value)? onlineDeactivated,
+    TResult Function(RideAccepted value)? rideAccepted,
+  }) {
+    return rideAccepted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnlineActivated value)? onlineActivated,
+    TResult Function(OnlineDeactivated value)? onlineDeactivated,
+    TResult Function(RideAccepted value)? rideAccepted,
+    required TResult orElse(),
+  }) {
+    if (rideAccepted != null) {
+      return rideAccepted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RideAccepted implements DriverEvent {
+  const factory RideAccepted() = _$RideAccepted;
 }

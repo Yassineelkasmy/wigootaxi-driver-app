@@ -84,9 +84,9 @@ class AuthFormController extends StateNotifier<AuthFormState> {
           email: event.email,
           password: event.password,
         );
-        successOrFailure.fold((l) => null, (success) => checkAuthState());
-
         state = state.copyWith(isSubmitting: false);
+
+        successOrFailure.fold((l) => null, (success) => checkAuthState());
       },
     );
   }
