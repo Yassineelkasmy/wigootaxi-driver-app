@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:wigootaxidriver/bookings/ui/bookings_page.dart';
 import 'package:wigootaxidriver/presentation/auth/login_page.dart';
 import 'package:wigootaxidriver/presentation/auth/phone_auth_page.dart';
 import 'package:wigootaxidriver/presentation/auth/phone_verification_page.dart';
@@ -23,9 +22,8 @@ import 'package:wigootaxidriver/profile/ui/portail_captain.dart';
   AutoRoute(page: PhoneAuthPage),
   AutoRoute(page: IntroPage),
   AutoRoute(page: HomePage),
-  AutoRoute(page: BookingsPage),
   AutoRoute(page: ActivateLocationOrMapPage),
   AutoRoute(page: SendMessagePage),
-  AutoRoute(page: portail_Captain),
+  AutoRoute(page: PortailCaptain),
 ])
 class $AppRouter {}

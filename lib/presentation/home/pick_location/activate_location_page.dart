@@ -1,6 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -41,13 +40,13 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
           if (nextRecord?.booking_call != null) {
             showPopupConfirmation(
               context,
+              duration: Duration(seconds: 10),
               title: 'Offre de trajet',
               body:
                   '${nextRecord?.booking?.user.username}\n ${nextRecord?.booking?.user.phone}',
               onTap: () async {
                 await driverController
                     .mapEventToState(const DriverEvent.rideAccepted());
-                Navigator.of(context).pop();
               },
             );
           }
@@ -160,7 +159,7 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
             20.verticalSpace,
             ListTile(
               onTap: () {
-                AutoRouter.of(context).push(Portail_CaptainRoute());
+                AutoRouter.of(context).push(PortailCaptainRoute());
               },
               leading: Icon(
                 Icons.person,
@@ -188,9 +187,7 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
               ),
             ),
             ListTile(
-              onTap: () {
-                AutoRouter.of(context).push(BookingsPageRoute());
-              },
+              onTap: () {},
               leading: Icon(
                 Icons.history_outlined,
                 color: Colors.white,

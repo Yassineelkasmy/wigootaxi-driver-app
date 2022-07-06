@@ -15,20 +15,36 @@ class DriverService {
   updateLocation({
     required double lat,
     required double lng,
+    String? currentRideId,
   }) async {
+    final lastTs = FieldValue.serverTimestamp();
+    final lastSeconds = (DateTime.now().millisecondsSinceEpoch / 1000).round();
+    final location = geo
+        .point(
+          latitude: lat,
+          longitude: lng,
+        )
+        .data;
     try {
       await docRef.update(
         {
-          'location': geo
-              .point(
-                latitude: lat,
-                longitude: lng,
-              )
-              .data,
-          'lastTs': FieldValue.serverTimestamp(),
-          'lastSeconds': (DateTime.now().millisecondsSinceEpoch / 1000).round(),
+          'location': location,
+          'lastTs': lastTs,
+          'lastSeconds': lastSeconds,
         },
       );
+      if (currentRideId != null) {
+        FirebaseFirestore.instance
+            .collection('rides')
+            .doc(currentRideId)
+            .update(
+          {
+            'currentDriverLocation': location,
+            'lastDriverTs': lastTs,
+            'lastDriverSeconds': lastSeconds,
+          },
+        );
+      }
     } catch (e) {
       print(e);
     }

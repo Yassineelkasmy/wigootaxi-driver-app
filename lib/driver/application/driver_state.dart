@@ -10,6 +10,7 @@ class DriverState with _$DriverState {
     required bool isRiding,
     required bool isFree,
     String? booking_call,
+    String? currentRide,
     DriverRecord? driverRecord,
   }) = _DriverState;
 

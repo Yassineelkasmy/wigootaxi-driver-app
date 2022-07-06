@@ -24,6 +24,7 @@ void locationIsolate(String message) async {
     (timer) async {
       await prefs.reload();
       final newIsOnline = prefs.getBool(isOnlineKey) ?? isOnline;
+      final currentRide = prefs.getString(currentRideKey);
       print("isolate " + prefs.getBool(isOnlineKey).toString());
 
       if (newIsOnline) {
@@ -31,6 +32,7 @@ void locationIsolate(String message) async {
         driverService.updateLocation(
           lat: locationController.state.position?.latitude ?? 0,
           lng: locationController.state.position?.longitude ?? 0,
+          currentRideId: currentRide,
         );
       }
     },

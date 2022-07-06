@@ -32,6 +32,9 @@ class DriverController extends StateNotifier<DriverState> {
     driverDocSubscription = driverService
         .driverRecordStream(userUid: userUid)
         .listen((driverRecord) {
+      if (driverRecord.booking_call != null) {
+        state = state.copyWith(currentRide: driverRecord.booking_call!);
+      }
       state = state.copyWith(driverRecord: driverRecord);
     });
   }
@@ -46,9 +49,15 @@ class DriverController extends StateNotifier<DriverState> {
       _prefs.setBool(isOnlineKey, false);
       state = state.copyWith(isOnline: false);
     }, rideAccepted: (event) async {
-      await bookingService.accpetRide(
+      final _prefs = await SharedPreferences.getInstance();
+
+      bookingService.accpetRide(
         driverId: userUid,
         bookingId: state.driverRecord!.booking_call!,
+      );
+      _prefs.setString(
+        currentRideKey,
+        state.currentRide!,
       );
     });
   }

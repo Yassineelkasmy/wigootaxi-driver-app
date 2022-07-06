@@ -19,21 +19,27 @@ class _$RideTearOff {
   const _$RideTearOff();
 
   _Ride call(
-      {required NearbySearch droppOff,
-      required NearbySearch pickUp,
-      required RideType type,
-      required MatrixResponse googelMatrix,
-      required int duration,
-      required int distance,
-      DateTime? date}) {
+      {required DateTime ts,
+      required String driverUid,
+      required String userUid,
+      GeoPoint? currentDriverLocation,
+      GeoPoint? currentUserLocation,
+      bool? cancelledByUser,
+      bool? cancelledByDriver,
+      int? driverArriveDuration,
+      int? driverWaitDuration,
+      int? rideDuration}) {
     return _Ride(
-      droppOff: droppOff,
-      pickUp: pickUp,
-      type: type,
-      googelMatrix: googelMatrix,
-      duration: duration,
-      distance: distance,
-      date: date,
+      ts: ts,
+      driverUid: driverUid,
+      userUid: userUid,
+      currentDriverLocation: currentDriverLocation,
+      currentUserLocation: currentUserLocation,
+      cancelledByUser: cancelledByUser,
+      cancelledByDriver: cancelledByDriver,
+      driverArriveDuration: driverArriveDuration,
+      driverWaitDuration: driverWaitDuration,
+      rideDuration: rideDuration,
     );
   }
 }
@@ -43,13 +49,16 @@ const $Ride = _$RideTearOff();
 
 /// @nodoc
 mixin _$Ride {
-  NearbySearch get droppOff => throw _privateConstructorUsedError;
-  NearbySearch get pickUp => throw _privateConstructorUsedError;
-  RideType get type => throw _privateConstructorUsedError;
-  MatrixResponse get googelMatrix => throw _privateConstructorUsedError;
-  int get duration => throw _privateConstructorUsedError;
-  int get distance => throw _privateConstructorUsedError;
-  DateTime? get date => throw _privateConstructorUsedError;
+  DateTime get ts => throw _privateConstructorUsedError;
+  String get driverUid => throw _privateConstructorUsedError;
+  String get userUid => throw _privateConstructorUsedError;
+  GeoPoint? get currentDriverLocation => throw _privateConstructorUsedError;
+  GeoPoint? get currentUserLocation => throw _privateConstructorUsedError;
+  bool? get cancelledByUser => throw _privateConstructorUsedError;
+  bool? get cancelledByDriver => throw _privateConstructorUsedError;
+  int? get driverArriveDuration => throw _privateConstructorUsedError;
+  int? get driverWaitDuration => throw _privateConstructorUsedError;
+  int? get rideDuration => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RideCopyWith<Ride> get copyWith => throw _privateConstructorUsedError;
@@ -60,17 +69,16 @@ abstract class $RideCopyWith<$Res> {
   factory $RideCopyWith(Ride value, $Res Function(Ride) then) =
       _$RideCopyWithImpl<$Res>;
   $Res call(
-      {NearbySearch droppOff,
-      NearbySearch pickUp,
-      RideType type,
-      MatrixResponse googelMatrix,
-      int duration,
-      int distance,
-      DateTime? date});
-
-  $NearbySearchCopyWith<$Res> get droppOff;
-  $NearbySearchCopyWith<$Res> get pickUp;
-  $MatrixResponseCopyWith<$Res> get googelMatrix;
+      {DateTime ts,
+      String driverUid,
+      String userUid,
+      GeoPoint? currentDriverLocation,
+      GeoPoint? currentUserLocation,
+      bool? cancelledByUser,
+      bool? cancelledByDriver,
+      int? driverArriveDuration,
+      int? driverWaitDuration,
+      int? rideDuration});
 }
 
 /// @nodoc
@@ -83,65 +91,59 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? droppOff = freezed,
-    Object? pickUp = freezed,
-    Object? type = freezed,
-    Object? googelMatrix = freezed,
-    Object? duration = freezed,
-    Object? distance = freezed,
-    Object? date = freezed,
+    Object? ts = freezed,
+    Object? driverUid = freezed,
+    Object? userUid = freezed,
+    Object? currentDriverLocation = freezed,
+    Object? currentUserLocation = freezed,
+    Object? cancelledByUser = freezed,
+    Object? cancelledByDriver = freezed,
+    Object? driverArriveDuration = freezed,
+    Object? driverWaitDuration = freezed,
+    Object? rideDuration = freezed,
   }) {
     return _then(_value.copyWith(
-      droppOff: droppOff == freezed
-          ? _value.droppOff
-          : droppOff // ignore: cast_nullable_to_non_nullable
-              as NearbySearch,
-      pickUp: pickUp == freezed
-          ? _value.pickUp
-          : pickUp // ignore: cast_nullable_to_non_nullable
-              as NearbySearch,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as RideType,
-      googelMatrix: googelMatrix == freezed
-          ? _value.googelMatrix
-          : googelMatrix // ignore: cast_nullable_to_non_nullable
-              as MatrixResponse,
-      duration: duration == freezed
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as int,
-      distance: distance == freezed
-          ? _value.distance
-          : distance // ignore: cast_nullable_to_non_nullable
-              as int,
-      date: date == freezed
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      ts: ts == freezed
+          ? _value.ts
+          : ts // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      driverUid: driverUid == freezed
+          ? _value.driverUid
+          : driverUid // ignore: cast_nullable_to_non_nullable
+              as String,
+      userUid: userUid == freezed
+          ? _value.userUid
+          : userUid // ignore: cast_nullable_to_non_nullable
+              as String,
+      currentDriverLocation: currentDriverLocation == freezed
+          ? _value.currentDriverLocation
+          : currentDriverLocation // ignore: cast_nullable_to_non_nullable
+              as GeoPoint?,
+      currentUserLocation: currentUserLocation == freezed
+          ? _value.currentUserLocation
+          : currentUserLocation // ignore: cast_nullable_to_non_nullable
+              as GeoPoint?,
+      cancelledByUser: cancelledByUser == freezed
+          ? _value.cancelledByUser
+          : cancelledByUser // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      cancelledByDriver: cancelledByDriver == freezed
+          ? _value.cancelledByDriver
+          : cancelledByDriver // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      driverArriveDuration: driverArriveDuration == freezed
+          ? _value.driverArriveDuration
+          : driverArriveDuration // ignore: cast_nullable_to_non_nullable
+              as int?,
+      driverWaitDuration: driverWaitDuration == freezed
+          ? _value.driverWaitDuration
+          : driverWaitDuration // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rideDuration: rideDuration == freezed
+          ? _value.rideDuration
+          : rideDuration // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
-  }
-
-  @override
-  $NearbySearchCopyWith<$Res> get droppOff {
-    return $NearbySearchCopyWith<$Res>(_value.droppOff, (value) {
-      return _then(_value.copyWith(droppOff: value));
-    });
-  }
-
-  @override
-  $NearbySearchCopyWith<$Res> get pickUp {
-    return $NearbySearchCopyWith<$Res>(_value.pickUp, (value) {
-      return _then(_value.copyWith(pickUp: value));
-    });
-  }
-
-  @override
-  $MatrixResponseCopyWith<$Res> get googelMatrix {
-    return $MatrixResponseCopyWith<$Res>(_value.googelMatrix, (value) {
-      return _then(_value.copyWith(googelMatrix: value));
-    });
   }
 }
 
@@ -151,20 +153,16 @@ abstract class _$RideCopyWith<$Res> implements $RideCopyWith<$Res> {
       __$RideCopyWithImpl<$Res>;
   @override
   $Res call(
-      {NearbySearch droppOff,
-      NearbySearch pickUp,
-      RideType type,
-      MatrixResponse googelMatrix,
-      int duration,
-      int distance,
-      DateTime? date});
-
-  @override
-  $NearbySearchCopyWith<$Res> get droppOff;
-  @override
-  $NearbySearchCopyWith<$Res> get pickUp;
-  @override
-  $MatrixResponseCopyWith<$Res> get googelMatrix;
+      {DateTime ts,
+      String driverUid,
+      String userUid,
+      GeoPoint? currentDriverLocation,
+      GeoPoint? currentUserLocation,
+      bool? cancelledByUser,
+      bool? cancelledByDriver,
+      int? driverArriveDuration,
+      int? driverWaitDuration,
+      int? rideDuration});
 }
 
 /// @nodoc
@@ -178,43 +176,58 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? droppOff = freezed,
-    Object? pickUp = freezed,
-    Object? type = freezed,
-    Object? googelMatrix = freezed,
-    Object? duration = freezed,
-    Object? distance = freezed,
-    Object? date = freezed,
+    Object? ts = freezed,
+    Object? driverUid = freezed,
+    Object? userUid = freezed,
+    Object? currentDriverLocation = freezed,
+    Object? currentUserLocation = freezed,
+    Object? cancelledByUser = freezed,
+    Object? cancelledByDriver = freezed,
+    Object? driverArriveDuration = freezed,
+    Object? driverWaitDuration = freezed,
+    Object? rideDuration = freezed,
   }) {
     return _then(_Ride(
-      droppOff: droppOff == freezed
-          ? _value.droppOff
-          : droppOff // ignore: cast_nullable_to_non_nullable
-              as NearbySearch,
-      pickUp: pickUp == freezed
-          ? _value.pickUp
-          : pickUp // ignore: cast_nullable_to_non_nullable
-              as NearbySearch,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as RideType,
-      googelMatrix: googelMatrix == freezed
-          ? _value.googelMatrix
-          : googelMatrix // ignore: cast_nullable_to_non_nullable
-              as MatrixResponse,
-      duration: duration == freezed
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as int,
-      distance: distance == freezed
-          ? _value.distance
-          : distance // ignore: cast_nullable_to_non_nullable
-              as int,
-      date: date == freezed
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      ts: ts == freezed
+          ? _value.ts
+          : ts // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      driverUid: driverUid == freezed
+          ? _value.driverUid
+          : driverUid // ignore: cast_nullable_to_non_nullable
+              as String,
+      userUid: userUid == freezed
+          ? _value.userUid
+          : userUid // ignore: cast_nullable_to_non_nullable
+              as String,
+      currentDriverLocation: currentDriverLocation == freezed
+          ? _value.currentDriverLocation
+          : currentDriverLocation // ignore: cast_nullable_to_non_nullable
+              as GeoPoint?,
+      currentUserLocation: currentUserLocation == freezed
+          ? _value.currentUserLocation
+          : currentUserLocation // ignore: cast_nullable_to_non_nullable
+              as GeoPoint?,
+      cancelledByUser: cancelledByUser == freezed
+          ? _value.cancelledByUser
+          : cancelledByUser // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      cancelledByDriver: cancelledByDriver == freezed
+          ? _value.cancelledByDriver
+          : cancelledByDriver // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      driverArriveDuration: driverArriveDuration == freezed
+          ? _value.driverArriveDuration
+          : driverArriveDuration // ignore: cast_nullable_to_non_nullable
+              as int?,
+      driverWaitDuration: driverWaitDuration == freezed
+          ? _value.driverWaitDuration
+          : driverWaitDuration // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rideDuration: rideDuration == freezed
+          ? _value.rideDuration
+          : rideDuration // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -223,32 +236,41 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
 
 class _$_Ride implements _Ride {
   const _$_Ride(
-      {required this.droppOff,
-      required this.pickUp,
-      required this.type,
-      required this.googelMatrix,
-      required this.duration,
-      required this.distance,
-      this.date});
+      {required this.ts,
+      required this.driverUid,
+      required this.userUid,
+      this.currentDriverLocation,
+      this.currentUserLocation,
+      this.cancelledByUser,
+      this.cancelledByDriver,
+      this.driverArriveDuration,
+      this.driverWaitDuration,
+      this.rideDuration});
 
   @override
-  final NearbySearch droppOff;
+  final DateTime ts;
   @override
-  final NearbySearch pickUp;
+  final String driverUid;
   @override
-  final RideType type;
+  final String userUid;
   @override
-  final MatrixResponse googelMatrix;
+  final GeoPoint? currentDriverLocation;
   @override
-  final int duration;
+  final GeoPoint? currentUserLocation;
   @override
-  final int distance;
+  final bool? cancelledByUser;
   @override
-  final DateTime? date;
+  final bool? cancelledByDriver;
+  @override
+  final int? driverArriveDuration;
+  @override
+  final int? driverWaitDuration;
+  @override
+  final int? rideDuration;
 
   @override
   String toString() {
-    return 'Ride(droppOff: $droppOff, pickUp: $pickUp, type: $type, googelMatrix: $googelMatrix, duration: $duration, distance: $distance, date: $date)';
+    return 'Ride(ts: $ts, driverUid: $driverUid, userUid: $userUid, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, cancelledByUser: $cancelledByUser, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, rideDuration: $rideDuration)';
   }
 
   @override
@@ -256,26 +278,38 @@ class _$_Ride implements _Ride {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Ride &&
-            const DeepCollectionEquality().equals(other.droppOff, droppOff) &&
-            const DeepCollectionEquality().equals(other.pickUp, pickUp) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.ts, ts) &&
+            const DeepCollectionEquality().equals(other.driverUid, driverUid) &&
+            const DeepCollectionEquality().equals(other.userUid, userUid) &&
             const DeepCollectionEquality()
-                .equals(other.googelMatrix, googelMatrix) &&
-            const DeepCollectionEquality().equals(other.duration, duration) &&
-            const DeepCollectionEquality().equals(other.distance, distance) &&
-            const DeepCollectionEquality().equals(other.date, date));
+                .equals(other.currentDriverLocation, currentDriverLocation) &&
+            const DeepCollectionEquality()
+                .equals(other.currentUserLocation, currentUserLocation) &&
+            const DeepCollectionEquality()
+                .equals(other.cancelledByUser, cancelledByUser) &&
+            const DeepCollectionEquality()
+                .equals(other.cancelledByDriver, cancelledByDriver) &&
+            const DeepCollectionEquality()
+                .equals(other.driverArriveDuration, driverArriveDuration) &&
+            const DeepCollectionEquality()
+                .equals(other.driverWaitDuration, driverWaitDuration) &&
+            const DeepCollectionEquality()
+                .equals(other.rideDuration, rideDuration));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(droppOff),
-      const DeepCollectionEquality().hash(pickUp),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(googelMatrix),
-      const DeepCollectionEquality().hash(duration),
-      const DeepCollectionEquality().hash(distance),
-      const DeepCollectionEquality().hash(date));
+      const DeepCollectionEquality().hash(ts),
+      const DeepCollectionEquality().hash(driverUid),
+      const DeepCollectionEquality().hash(userUid),
+      const DeepCollectionEquality().hash(currentDriverLocation),
+      const DeepCollectionEquality().hash(currentUserLocation),
+      const DeepCollectionEquality().hash(cancelledByUser),
+      const DeepCollectionEquality().hash(cancelledByDriver),
+      const DeepCollectionEquality().hash(driverArriveDuration),
+      const DeepCollectionEquality().hash(driverWaitDuration),
+      const DeepCollectionEquality().hash(rideDuration));
 
   @JsonKey(ignore: true)
   @override
@@ -285,28 +319,37 @@ class _$_Ride implements _Ride {
 
 abstract class _Ride implements Ride {
   const factory _Ride(
-      {required NearbySearch droppOff,
-      required NearbySearch pickUp,
-      required RideType type,
-      required MatrixResponse googelMatrix,
-      required int duration,
-      required int distance,
-      DateTime? date}) = _$_Ride;
+      {required DateTime ts,
+      required String driverUid,
+      required String userUid,
+      GeoPoint? currentDriverLocation,
+      GeoPoint? currentUserLocation,
+      bool? cancelledByUser,
+      bool? cancelledByDriver,
+      int? driverArriveDuration,
+      int? driverWaitDuration,
+      int? rideDuration}) = _$_Ride;
 
   @override
-  NearbySearch get droppOff;
+  DateTime get ts;
   @override
-  NearbySearch get pickUp;
+  String get driverUid;
   @override
-  RideType get type;
+  String get userUid;
   @override
-  MatrixResponse get googelMatrix;
+  GeoPoint? get currentDriverLocation;
   @override
-  int get duration;
+  GeoPoint? get currentUserLocation;
   @override
-  int get distance;
+  bool? get cancelledByUser;
   @override
-  DateTime? get date;
+  bool? get cancelledByDriver;
+  @override
+  int? get driverArriveDuration;
+  @override
+  int? get driverWaitDuration;
+  @override
+  int? get rideDuration;
   @override
   @JsonKey(ignore: true)
   _$RideCopyWith<_Ride> get copyWith => throw _privateConstructorUsedError;
