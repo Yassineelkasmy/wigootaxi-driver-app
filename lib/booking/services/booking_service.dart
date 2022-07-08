@@ -3,7 +3,6 @@ import 'package:dartz/dartz.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:wigootaxidriver/booking/domain/booking.dart';
 import 'package:wigootaxidriver/booking/domain/booking_failure.dart';
-import 'package:wigootaxidriver/booking/domain/ride.dart';
 
 class BookingService {
   final geo = Geoflutterfire();

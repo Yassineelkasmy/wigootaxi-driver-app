@@ -17,6 +17,7 @@ import 'package:wigootaxidriver/presentation/shared/popup.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
+import 'package:wigootaxidriver/providers/ride_provider.dart';
 
 class ActivateLocationOrMapPage extends HookConsumerWidget {
   ActivateLocationOrMapPage({Key? key}) : super(key: key);
@@ -29,6 +30,7 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
     final locationController = ref.watch(locationProvider.notifier);
     final driverController = ref.watch(driverProvider.notifier);
     final driverState = ref.watch(driverProvider);
+    final rideController = ref.watch(rideProvider.notifier);
 
     ref.listen<DriverState>(
       driverProvider,
@@ -45,8 +47,9 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
               body:
                   '${nextRecord?.booking?.user.username}\n ${nextRecord?.booking?.user.phone}',
               onTap: () async {
-                await driverController
-                    .mapEventToState(const DriverEvent.rideAccepted());
+                await driverController.mapEventToState(
+                  const DriverEvent.rideAccepted(),
+                );
               },
             );
           }

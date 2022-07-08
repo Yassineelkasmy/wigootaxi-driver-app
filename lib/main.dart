@@ -28,6 +28,7 @@ Future<void> main() async {
 }
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print('msggggg: ${message.data} ');
   final data = message.data;
   final type = (data['type'] as String?);
   if (type != null) {

@@ -43,6 +43,8 @@ dependencies:
   flutter_hooks:
   hooks_riverpod:
   dartz:
+  flutter_polyline_points: ^1.0.0
+  sliding_up_panel: ^2.0.0+1
   freezed_annotation:
   auto_route:
   reactive_forms: ^11.0.1
@@ -70,6 +72,7 @@ dependencies:
   geoflutterfire: ^3.0.3
   audioplayers: ^1.0.1
   flutter_callkit_incoming: ^1.0.2+1
+  url_launcher: ^6.0.20
   uuid: ^3.0.6
 
 dev_dependencies:

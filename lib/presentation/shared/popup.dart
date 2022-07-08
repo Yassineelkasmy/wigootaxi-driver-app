@@ -15,9 +15,6 @@ showPopupConfirmation(
   showDialog(
     context: context,
     builder: (context) {
-      if (duration != null) {
-        Timer(duration, Navigator.of(context).pop);
-      }
       return Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: SizedBox(
@@ -47,7 +44,11 @@ showPopupConfirmation(
                     text: "Accepter",
                     // color: ,
                     textColor: Colors.white,
-                    onPressed: onTap,
+                    onPressed: () {
+                      duration == null;
+                      onTap();
+                      Navigator.of(context).pop();
+                    },
                   ).expandIt(),
                   const SizedBox(width: 20),
                   SubmitButton(
