@@ -6,5 +6,6 @@ part 'driver_event.freezed.dart';
 class DriverEvent with _$DriverEvent {
   const factory DriverEvent.onlineActivated() = OnlineActivated;
   const factory DriverEvent.onlineDeactivated() = OnlineDeactivated;
-  const factory DriverEvent.rideAccepted() = RideAccepted;
+  const factory DriverEvent.rideAccepted(double driverLat, double driverLng) =
+      RideAccepted;
 }

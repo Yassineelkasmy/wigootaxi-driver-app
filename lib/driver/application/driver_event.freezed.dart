@@ -26,8 +26,11 @@ class _$DriverEventTearOff {
     return const OnlineDeactivated();
   }
 
-  RideAccepted rideAccepted() {
-    return const RideAccepted();
+  RideAccepted rideAccepted(double driverLat, double driverLng) {
+    return RideAccepted(
+      driverLat,
+      driverLng,
+    );
   }
 }
 
@@ -40,21 +43,21 @@ mixin _$DriverEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() onlineActivated,
     required TResult Function() onlineDeactivated,
-    required TResult Function() rideAccepted,
+    required TResult Function(double driverLat, double driverLng) rideAccepted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
-    TResult Function()? rideAccepted,
+    TResult Function(double driverLat, double driverLng)? rideAccepted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
-    TResult Function()? rideAccepted,
+    TResult Function(double driverLat, double driverLng)? rideAccepted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,7 +144,7 @@ class _$OnlineActivated implements OnlineActivated {
   TResult when<TResult extends Object?>({
     required TResult Function() onlineActivated,
     required TResult Function() onlineDeactivated,
-    required TResult Function() rideAccepted,
+    required TResult Function(double driverLat, double driverLng) rideAccepted,
   }) {
     return onlineActivated();
   }
@@ -151,7 +154,7 @@ class _$OnlineActivated implements OnlineActivated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
-    TResult Function()? rideAccepted,
+    TResult Function(double driverLat, double driverLng)? rideAccepted,
   }) {
     return onlineActivated?.call();
   }
@@ -161,7 +164,7 @@ class _$OnlineActivated implements OnlineActivated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
-    TResult Function()? rideAccepted,
+    TResult Function(double driverLat, double driverLng)? rideAccepted,
     required TResult orElse(),
   }) {
     if (onlineActivated != null) {
@@ -252,7 +255,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
   TResult when<TResult extends Object?>({
     required TResult Function() onlineActivated,
     required TResult Function() onlineDeactivated,
-    required TResult Function() rideAccepted,
+    required TResult Function(double driverLat, double driverLng) rideAccepted,
   }) {
     return onlineDeactivated();
   }
@@ -262,7 +265,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
-    TResult Function()? rideAccepted,
+    TResult Function(double driverLat, double driverLng)? rideAccepted,
   }) {
     return onlineDeactivated?.call();
   }
@@ -272,7 +275,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
-    TResult Function()? rideAccepted,
+    TResult Function(double driverLat, double driverLng)? rideAccepted,
     required TResult orElse(),
   }) {
     if (onlineDeactivated != null) {
@@ -325,6 +328,7 @@ abstract class $RideAcceptedCopyWith<$Res> {
   factory $RideAcceptedCopyWith(
           RideAccepted value, $Res Function(RideAccepted) then) =
       _$RideAcceptedCopyWithImpl<$Res>;
+  $Res call({double driverLat, double driverLng});
 }
 
 /// @nodoc
@@ -336,35 +340,68 @@ class _$RideAcceptedCopyWithImpl<$Res> extends _$DriverEventCopyWithImpl<$Res>
 
   @override
   RideAccepted get _value => super._value as RideAccepted;
+
+  @override
+  $Res call({
+    Object? driverLat = freezed,
+    Object? driverLng = freezed,
+  }) {
+    return _then(RideAccepted(
+      driverLat == freezed
+          ? _value.driverLat
+          : driverLat // ignore: cast_nullable_to_non_nullable
+              as double,
+      driverLng == freezed
+          ? _value.driverLng
+          : driverLng // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$RideAccepted implements RideAccepted {
-  const _$RideAccepted();
+  const _$RideAccepted(this.driverLat, this.driverLng);
+
+  @override
+  final double driverLat;
+  @override
+  final double driverLng;
 
   @override
   String toString() {
-    return 'DriverEvent.rideAccepted()';
+    return 'DriverEvent.rideAccepted(driverLat: $driverLat, driverLng: $driverLng)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is RideAccepted);
+        (other.runtimeType == runtimeType &&
+            other is RideAccepted &&
+            const DeepCollectionEquality().equals(other.driverLat, driverLat) &&
+            const DeepCollectionEquality().equals(other.driverLng, driverLng));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(driverLat),
+      const DeepCollectionEquality().hash(driverLng));
+
+  @JsonKey(ignore: true)
+  @override
+  $RideAcceptedCopyWith<RideAccepted> get copyWith =>
+      _$RideAcceptedCopyWithImpl<RideAccepted>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() onlineActivated,
     required TResult Function() onlineDeactivated,
-    required TResult Function() rideAccepted,
+    required TResult Function(double driverLat, double driverLng) rideAccepted,
   }) {
-    return rideAccepted();
+    return rideAccepted(driverLat, driverLng);
   }
 
   @override
@@ -372,9 +409,9 @@ class _$RideAccepted implements RideAccepted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
-    TResult Function()? rideAccepted,
+    TResult Function(double driverLat, double driverLng)? rideAccepted,
   }) {
-    return rideAccepted?.call();
+    return rideAccepted?.call(driverLat, driverLng);
   }
 
   @override
@@ -382,11 +419,11 @@ class _$RideAccepted implements RideAccepted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
-    TResult Function()? rideAccepted,
+    TResult Function(double driverLat, double driverLng)? rideAccepted,
     required TResult orElse(),
   }) {
     if (rideAccepted != null) {
-      return rideAccepted();
+      return rideAccepted(driverLat, driverLng);
     }
     return orElse();
   }
@@ -427,5 +464,12 @@ class _$RideAccepted implements RideAccepted {
 }
 
 abstract class RideAccepted implements DriverEvent {
-  const factory RideAccepted() = _$RideAccepted;
+  const factory RideAccepted(double driverLat, double driverLng) =
+      _$RideAccepted;
+
+  double get driverLat;
+  double get driverLng;
+  @JsonKey(ignore: true)
+  $RideAcceptedCopyWith<RideAccepted> get copyWith =>
+      throw _privateConstructorUsedError;
 }

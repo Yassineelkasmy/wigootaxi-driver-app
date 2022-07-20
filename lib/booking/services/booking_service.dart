@@ -32,14 +32,23 @@ class BookingService {
     return results;
   }
 
-  Future<Either<BookingFailure, Unit>> accpetRide(
-      {required String driverId, required String bookingId}) async {
+  Future<Either<BookingFailure, Unit>> accpetRide({
+    required String driverId,
+    required String bookingId,
+    required double driverLat,
+    required double driverLng,
+  }) async {
     try {
+      final driverStartLocation = geo.point(
+        latitude: driverLat,
+        longitude: driverLng,
+      );
+
       Future.wait([
-        firestore
-            .collection('booking')
-            .doc(bookingId)
-            .update({'driverId': driverId}),
+        firestore.collection('booking').doc(bookingId).update({
+          'driverId': driverId,
+          'driverStart': driverStartLocation.data,
+        }),
       ]);
       return right(unit);
     } catch (e) {

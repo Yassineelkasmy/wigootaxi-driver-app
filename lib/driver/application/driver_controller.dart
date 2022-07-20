@@ -54,6 +54,8 @@ class DriverController extends StateNotifier<DriverState> {
       bookingService.accpetRide(
         driverId: userUid,
         bookingId: state.driverRecord!.booking_call!,
+        driverLat: event.driverLat,
+        driverLng: event.driverLng,
       );
       _prefs.setString(
         currentRideKey,

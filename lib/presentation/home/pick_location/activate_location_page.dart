@@ -18,6 +18,7 @@ import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 import 'package:wigootaxidriver/providers/ride_provider.dart';
+import 'package:wigootaxidriver/ride/application/ride_state.dart';
 
 class ActivateLocationOrMapPage extends HookConsumerWidget {
   ActivateLocationOrMapPage({Key? key}) : super(key: key);
@@ -48,7 +49,10 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                   '${nextRecord?.booking?.user.username}\n ${nextRecord?.booking?.user.phone}',
               onTap: () async {
                 await driverController.mapEventToState(
-                  const DriverEvent.rideAccepted(),
+                  DriverEvent.rideAccepted(
+                    locationState.position!.latitude,
+                    locationState.position!.latitude,
+                  ),
                 );
               },
             );
@@ -56,6 +60,14 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
         }
       },
     );
+
+    ref.listen<RideState>(rideProvider, (previous, next) {
+      if (previous?.rideInitialized != next.rideInitialized &&
+          next.rideInitialized) {
+        AutoRouter.of(context).push(ActivateLocationOrMapPageRoute());
+      }
+    });
+
     return Scaffold(
       appBar: AppBar(
         leading: Builder(
