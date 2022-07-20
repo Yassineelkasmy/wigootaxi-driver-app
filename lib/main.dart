@@ -34,18 +34,19 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   if (type != null) {
     if (type == 'booking') {
       final username = data['username'] as String;
-      final place = data['place'] as String;
+      final start = data['start'] as String;
+      final destination = data['destination'] as String;
 
       var params = <String, dynamic>{
         'id': Uuid().v4(),
         'nameCaller': username,
         'appName': 'WigooTaxi',
-        'avatar': 'https://i.pravatar.cc/100',
-        'handle': place,
+        'avatar':
+            'https://firebasestorage.googleapis.com/v0/b/taxi-app-user-4800a.appspot.com/o/logo_white.png?alt=media&token=85d66b37-fe3d-4dfa-9b34-c8a1228e879d',
+        'handle': 'Localisation:\n$start\nDestination:\n$destination',
         'type': 0,
-        'duration': 10000,
+        'duration': 100000,
         'textAccept': 'Accepter',
-        'textDecline': 'Refuser',
         'textMissedCall': 'Course manquée',
         'textCallback': 'Justifier',
         'extra': <String, dynamic>{'userId': '1a2b3c4d'},
@@ -58,8 +59,9 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
           'isShowLogo': false,
           'isShowCallback': false,
           'ringtonePath': 'call.mp3',
-          'backgroundColor': '#0955fa',
-          'background': 'https://i.pravatar.cc/500',
+          'backgroundColor': '#1565C0',
+          'background':
+              'https://firebasestorage.googleapis.com/v0/b/taxi-app-user-4800a.appspot.com/o/logo_white.png?alt=media&token=85d66b37-fe3d-4dfa-9b34-c8a1228e879d',
           'actionColor': '#4CAF50'
         },
         'ios': <String, dynamic>{

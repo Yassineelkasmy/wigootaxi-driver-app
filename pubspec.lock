@@ -471,9 +471,11 @@ packages:
   flutter_callkit_incoming:
     dependency: "direct main"
     description:
-      name: flutter_callkit_incoming
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "7dd7c6d5b85b2f69c371d80e0c75d92c7d16e979"
+      url: "https://github.com/Yassineelkasmy/flutter_callkit_incoming.git"
+    source: git
     version: "1.0.2+1"
   flutter_hooks:
     dependency: "direct main"
