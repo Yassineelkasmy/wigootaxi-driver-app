@@ -32,6 +32,7 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
               width: double.maxFinite,
               child: Column(
                 children: [
+                  if (rideState.driverArrived) Text('driverArrived'),
                   Expanded(
                     child: Stack(
                       fit: StackFit.passthrough,

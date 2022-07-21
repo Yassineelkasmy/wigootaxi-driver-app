@@ -18,6 +18,7 @@ import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 import 'package:wigootaxidriver/providers/ride_provider.dart';
+import 'package:wigootaxidriver/ride/application/ride_event.dart';
 import 'package:wigootaxidriver/ride/application/ride_state.dart';
 
 class ActivateLocationOrMapPage extends HookConsumerWidget {
@@ -53,6 +54,10 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                     locationState.position!.latitude,
                     locationState.position!.latitude,
                   ),
+                );
+
+                rideController.mapEventToState(
+                  RideEvent.rideInitialized(nextRecord!.booking_call!),
                 );
               },
             );

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wigootaxidriver/constants/storage_keys.dart';
@@ -7,9 +8,11 @@ import 'package:wigootaxidriver/ride/application/ride_event.dart';
 import 'package:wigootaxidriver/ride/application/ride_state.dart';
 import 'package:wigootaxidriver/ride/domain/ride.dart';
 import 'package:wigootaxidriver/ride/services/ride_service.dart';
+import 'package:wigootaxidriver/shared/helpers/latlng_distance.dart';
 
 class RideController extends StateNotifier<RideState> {
   RideController() : super(RideState.initial());
+  final geo = Geoflutterfire();
 
   StreamSubscription<Ride>? rideSubscribtion;
   final RideService _rideService = RideService();
@@ -25,7 +28,18 @@ class RideController extends StateNotifier<RideState> {
         if (!state.rideInitialized) {
           state = state.copyWith(rideInitialized: true);
         }
-        state = state.copyWith(currentRide: ride, rideInitialized: true);
+        bool driverArrived = false;
+        if (!state.driverArrived) {
+          driverArrived = isDriverArrived(ride);
+          if (driverArrived) {
+            print('Arrrrrrrrrrr');
+          }
+        }
+        state = state.copyWith(
+          currentRide: ride,
+          rideInitialized: true,
+          driverArrived: driverArrived,
+        );
       },
     );
   }
@@ -53,5 +67,21 @@ class RideController extends StateNotifier<RideState> {
       rideFinished: (event) async {},
       userPicked: (event) async {},
     );
+  }
+
+  isDriverArrived(Ride ride) {
+    final distance = calculateDistance(
+          ride.driverLat!,
+          ride.driverLng!,
+          ride.startLat,
+          ride.startLng,
+        ) *
+        1000.round();
+
+    if (distance <= 10) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

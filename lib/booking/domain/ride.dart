@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'ride.freezed.dart';
@@ -9,8 +8,18 @@ class Ride with _$Ride {
     required DateTime ts,
     required String driverUid,
     required String userUid,
-    GeoPoint? currentDriverLocation,
-    GeoPoint? currentUserLocation,
+    double? driverLat,
+    double? driverLng,
+    double? userLat,
+    double? userLng,
+    double? destinationLng,
+    double? destinationLat,
+    double? startLng,
+    double? startLat,
+    dynamic currentDriverLocation,
+    dynamic currentUserLocation,
+    dynamic start,
+    dynamic destination,
     bool? cancelledByUser,
     bool? cancelledByDriver,
     int? driverArriveDuration,

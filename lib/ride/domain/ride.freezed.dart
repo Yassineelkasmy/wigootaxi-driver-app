@@ -29,8 +29,14 @@ class _$RideTearOff {
       double? driverLng,
       double? userLat,
       double? userLng,
+      double? destinationLng,
+      double? destinationLat,
+      double? startLng,
+      double? startLat,
       dynamic currentDriverLocation,
       dynamic currentUserLocation,
+      dynamic start,
+      dynamic destination,
       bool? cancelledByUser,
       bool? cancelledByDriver,
       int? driverArriveDuration,
@@ -43,8 +49,14 @@ class _$RideTearOff {
       driverLng: driverLng,
       userLat: userLat,
       userLng: userLng,
+      destinationLng: destinationLng,
+      destinationLat: destinationLat,
+      startLng: startLng,
+      startLat: startLat,
       currentDriverLocation: currentDriverLocation,
       currentUserLocation: currentUserLocation,
+      start: start,
+      destination: destination,
       cancelledByUser: cancelledByUser,
       cancelledByDriver: cancelledByDriver,
       driverArriveDuration: driverArriveDuration,
@@ -69,8 +81,14 @@ mixin _$Ride {
   double? get driverLng => throw _privateConstructorUsedError;
   double? get userLat => throw _privateConstructorUsedError;
   double? get userLng => throw _privateConstructorUsedError;
+  double? get destinationLng => throw _privateConstructorUsedError;
+  double? get destinationLat => throw _privateConstructorUsedError;
+  double? get startLng => throw _privateConstructorUsedError;
+  double? get startLat => throw _privateConstructorUsedError;
   dynamic get currentDriverLocation => throw _privateConstructorUsedError;
   dynamic get currentUserLocation => throw _privateConstructorUsedError;
+  dynamic get start => throw _privateConstructorUsedError;
+  dynamic get destination => throw _privateConstructorUsedError;
   bool? get cancelledByUser => throw _privateConstructorUsedError;
   bool? get cancelledByDriver => throw _privateConstructorUsedError;
   int? get driverArriveDuration => throw _privateConstructorUsedError;
@@ -93,8 +111,14 @@ abstract class $RideCopyWith<$Res> {
       double? driverLng,
       double? userLat,
       double? userLng,
+      double? destinationLng,
+      double? destinationLat,
+      double? startLng,
+      double? startLat,
       dynamic currentDriverLocation,
       dynamic currentUserLocation,
+      dynamic start,
+      dynamic destination,
       bool? cancelledByUser,
       bool? cancelledByDriver,
       int? driverArriveDuration,
@@ -118,8 +142,14 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
     Object? driverLng = freezed,
     Object? userLat = freezed,
     Object? userLng = freezed,
+    Object? destinationLng = freezed,
+    Object? destinationLat = freezed,
+    Object? startLng = freezed,
+    Object? startLat = freezed,
     Object? currentDriverLocation = freezed,
     Object? currentUserLocation = freezed,
+    Object? start = freezed,
+    Object? destination = freezed,
     Object? cancelledByUser = freezed,
     Object? cancelledByDriver = freezed,
     Object? driverArriveDuration = freezed,
@@ -151,6 +181,22 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
           ? _value.userLng
           : userLng // ignore: cast_nullable_to_non_nullable
               as double?,
+      destinationLng: destinationLng == freezed
+          ? _value.destinationLng
+          : destinationLng // ignore: cast_nullable_to_non_nullable
+              as double?,
+      destinationLat: destinationLat == freezed
+          ? _value.destinationLat
+          : destinationLat // ignore: cast_nullable_to_non_nullable
+              as double?,
+      startLng: startLng == freezed
+          ? _value.startLng
+          : startLng // ignore: cast_nullable_to_non_nullable
+              as double?,
+      startLat: startLat == freezed
+          ? _value.startLat
+          : startLat // ignore: cast_nullable_to_non_nullable
+              as double?,
       currentDriverLocation: currentDriverLocation == freezed
           ? _value.currentDriverLocation
           : currentDriverLocation // ignore: cast_nullable_to_non_nullable
@@ -158,6 +204,14 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
       currentUserLocation: currentUserLocation == freezed
           ? _value.currentUserLocation
           : currentUserLocation // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      start: start == freezed
+          ? _value.start
+          : start // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      destination: destination == freezed
+          ? _value.destination
+          : destination // ignore: cast_nullable_to_non_nullable
               as dynamic,
       cancelledByUser: cancelledByUser == freezed
           ? _value.cancelledByUser
@@ -195,8 +249,14 @@ abstract class _$RideCopyWith<$Res> implements $RideCopyWith<$Res> {
       double? driverLng,
       double? userLat,
       double? userLng,
+      double? destinationLng,
+      double? destinationLat,
+      double? startLng,
+      double? startLat,
       dynamic currentDriverLocation,
       dynamic currentUserLocation,
+      dynamic start,
+      dynamic destination,
       bool? cancelledByUser,
       bool? cancelledByDriver,
       int? driverArriveDuration,
@@ -221,8 +281,14 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
     Object? driverLng = freezed,
     Object? userLat = freezed,
     Object? userLng = freezed,
+    Object? destinationLng = freezed,
+    Object? destinationLat = freezed,
+    Object? startLng = freezed,
+    Object? startLat = freezed,
     Object? currentDriverLocation = freezed,
     Object? currentUserLocation = freezed,
+    Object? start = freezed,
+    Object? destination = freezed,
     Object? cancelledByUser = freezed,
     Object? cancelledByDriver = freezed,
     Object? driverArriveDuration = freezed,
@@ -254,6 +320,22 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
           ? _value.userLng
           : userLng // ignore: cast_nullable_to_non_nullable
               as double?,
+      destinationLng: destinationLng == freezed
+          ? _value.destinationLng
+          : destinationLng // ignore: cast_nullable_to_non_nullable
+              as double?,
+      destinationLat: destinationLat == freezed
+          ? _value.destinationLat
+          : destinationLat // ignore: cast_nullable_to_non_nullable
+              as double?,
+      startLng: startLng == freezed
+          ? _value.startLng
+          : startLng // ignore: cast_nullable_to_non_nullable
+              as double?,
+      startLat: startLat == freezed
+          ? _value.startLat
+          : startLat // ignore: cast_nullable_to_non_nullable
+              as double?,
       currentDriverLocation: currentDriverLocation == freezed
           ? _value.currentDriverLocation
           : currentDriverLocation // ignore: cast_nullable_to_non_nullable
@@ -261,6 +343,14 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
       currentUserLocation: currentUserLocation == freezed
           ? _value.currentUserLocation
           : currentUserLocation // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      start: start == freezed
+          ? _value.start
+          : start // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      destination: destination == freezed
+          ? _value.destination
+          : destination // ignore: cast_nullable_to_non_nullable
               as dynamic,
       cancelledByUser: cancelledByUser == freezed
           ? _value.cancelledByUser
@@ -296,8 +386,14 @@ class _$_Ride implements _Ride {
       this.driverLng,
       this.userLat,
       this.userLng,
+      this.destinationLng,
+      this.destinationLat,
+      this.startLng,
+      this.startLat,
       this.currentDriverLocation,
       this.currentUserLocation,
+      this.start,
+      this.destination,
       this.cancelledByUser,
       this.cancelledByDriver,
       this.driverArriveDuration,
@@ -319,9 +415,21 @@ class _$_Ride implements _Ride {
   @override
   final double? userLng;
   @override
+  final double? destinationLng;
+  @override
+  final double? destinationLat;
+  @override
+  final double? startLng;
+  @override
+  final double? startLat;
+  @override
   final dynamic currentDriverLocation;
   @override
   final dynamic currentUserLocation;
+  @override
+  final dynamic start;
+  @override
+  final dynamic destination;
   @override
   final bool? cancelledByUser;
   @override
@@ -335,7 +443,7 @@ class _$_Ride implements _Ride {
 
   @override
   String toString() {
-    return 'Ride(driverUid: $driverUid, userUid: $userUid, driverLat: $driverLat, driverLng: $driverLng, userLat: $userLat, userLng: $userLng, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, cancelledByUser: $cancelledByUser, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, rideDuration: $rideDuration)';
+    return 'Ride(driverUid: $driverUid, userUid: $userUid, driverLat: $driverLat, driverLng: $driverLng, userLat: $userLat, userLng: $userLng, destinationLng: $destinationLng, destinationLat: $destinationLat, startLng: $startLng, startLat: $startLat, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, start: $start, destination: $destination, cancelledByUser: $cancelledByUser, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, rideDuration: $rideDuration)';
   }
 
   @override
@@ -350,9 +458,18 @@ class _$_Ride implements _Ride {
             const DeepCollectionEquality().equals(other.userLat, userLat) &&
             const DeepCollectionEquality().equals(other.userLng, userLng) &&
             const DeepCollectionEquality()
+                .equals(other.destinationLng, destinationLng) &&
+            const DeepCollectionEquality()
+                .equals(other.destinationLat, destinationLat) &&
+            const DeepCollectionEquality().equals(other.startLng, startLng) &&
+            const DeepCollectionEquality().equals(other.startLat, startLat) &&
+            const DeepCollectionEquality()
                 .equals(other.currentDriverLocation, currentDriverLocation) &&
             const DeepCollectionEquality()
                 .equals(other.currentUserLocation, currentUserLocation) &&
+            const DeepCollectionEquality().equals(other.start, start) &&
+            const DeepCollectionEquality()
+                .equals(other.destination, destination) &&
             const DeepCollectionEquality()
                 .equals(other.cancelledByUser, cancelledByUser) &&
             const DeepCollectionEquality()
@@ -366,21 +483,28 @@ class _$_Ride implements _Ride {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(driverUid),
-      const DeepCollectionEquality().hash(userUid),
-      const DeepCollectionEquality().hash(driverLat),
-      const DeepCollectionEquality().hash(driverLng),
-      const DeepCollectionEquality().hash(userLat),
-      const DeepCollectionEquality().hash(userLng),
-      const DeepCollectionEquality().hash(currentDriverLocation),
-      const DeepCollectionEquality().hash(currentUserLocation),
-      const DeepCollectionEquality().hash(cancelledByUser),
-      const DeepCollectionEquality().hash(cancelledByDriver),
-      const DeepCollectionEquality().hash(driverArriveDuration),
-      const DeepCollectionEquality().hash(driverWaitDuration),
-      const DeepCollectionEquality().hash(rideDuration));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(driverUid),
+        const DeepCollectionEquality().hash(userUid),
+        const DeepCollectionEquality().hash(driverLat),
+        const DeepCollectionEquality().hash(driverLng),
+        const DeepCollectionEquality().hash(userLat),
+        const DeepCollectionEquality().hash(userLng),
+        const DeepCollectionEquality().hash(destinationLng),
+        const DeepCollectionEquality().hash(destinationLat),
+        const DeepCollectionEquality().hash(startLng),
+        const DeepCollectionEquality().hash(startLat),
+        const DeepCollectionEquality().hash(currentDriverLocation),
+        const DeepCollectionEquality().hash(currentUserLocation),
+        const DeepCollectionEquality().hash(start),
+        const DeepCollectionEquality().hash(destination),
+        const DeepCollectionEquality().hash(cancelledByUser),
+        const DeepCollectionEquality().hash(cancelledByDriver),
+        const DeepCollectionEquality().hash(driverArriveDuration),
+        const DeepCollectionEquality().hash(driverWaitDuration),
+        const DeepCollectionEquality().hash(rideDuration)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -401,8 +525,14 @@ abstract class _Ride implements Ride {
       double? driverLng,
       double? userLat,
       double? userLng,
+      double? destinationLng,
+      double? destinationLat,
+      double? startLng,
+      double? startLat,
       dynamic currentDriverLocation,
       dynamic currentUserLocation,
+      dynamic start,
+      dynamic destination,
       bool? cancelledByUser,
       bool? cancelledByDriver,
       int? driverArriveDuration,
@@ -424,9 +554,21 @@ abstract class _Ride implements Ride {
   @override
   double? get userLng;
   @override
+  double? get destinationLng;
+  @override
+  double? get destinationLat;
+  @override
+  double? get startLng;
+  @override
+  double? get startLat;
+  @override
   dynamic get currentDriverLocation;
   @override
   dynamic get currentUserLocation;
+  @override
+  dynamic get start;
+  @override
+  dynamic get destination;
   @override
   bool? get cancelledByUser;
   @override
