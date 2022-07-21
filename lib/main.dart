@@ -36,6 +36,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
       final username = data['username'] as String;
       final start = data['start'] as String;
       final destination = data['destination'] as String;
+      final distance = data['distance'] as String;
+      final duration = data['duration'] as String;
 
       var params = <String, dynamic>{
         'id': Uuid().v4(),
@@ -44,7 +46,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
         'avatar':
             'https://firebasestorage.googleapis.com/v0/b/taxi-app-user-4800a.appspot.com/o/logo_white.png?alt=media&token=85d66b37-fe3d-4dfa-9b34-c8a1228e879d',
         'handle':
-            'Localisation:\n$start\nDestination:\n$destination\nDistance:\n500 m\nDurée de trajet:\n40 minutes',
+            'Localisation:\n$start\nDestination:\n$destination\nDistance:\n$distance\nDurée de trajet:\n$duration',
         'type': 0,
         'duration': 100000,
         'textAccept': 'Accepter',

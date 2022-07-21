@@ -473,7 +473,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "7a4d5a6f1fb77d5e3ea73c5e799e727dcb454112"
+      resolved-ref: "4320eb8365a9c84e99774571bbbc9b0229234afb"
       url: "https://github.com/Yassineelkasmy/flutter_callkit_incoming.git"
     source: git
     version: "1.0.2+1"

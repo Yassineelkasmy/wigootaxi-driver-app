@@ -23,7 +23,8 @@ class _$RideTearOff {
   const _$RideTearOff();
 
   _Ride call(
-      {required String driverUid,
+      {required String id,
+      required String driverUid,
       required String userUid,
       double? driverLat,
       double? driverLng,
@@ -43,6 +44,7 @@ class _$RideTearOff {
       int? driverWaitDuration,
       int? rideDuration}) {
     return _Ride(
+      id: id,
       driverUid: driverUid,
       userUid: userUid,
       driverLat: driverLat,
@@ -75,6 +77,7 @@ const $Ride = _$RideTearOff();
 
 /// @nodoc
 mixin _$Ride {
+  String get id => throw _privateConstructorUsedError;
   String get driverUid => throw _privateConstructorUsedError;
   String get userUid => throw _privateConstructorUsedError;
   double? get driverLat => throw _privateConstructorUsedError;
@@ -105,7 +108,8 @@ abstract class $RideCopyWith<$Res> {
   factory $RideCopyWith(Ride value, $Res Function(Ride) then) =
       _$RideCopyWithImpl<$Res>;
   $Res call(
-      {String driverUid,
+      {String id,
+      String driverUid,
       String userUid,
       double? driverLat,
       double? driverLng,
@@ -136,6 +140,7 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? driverUid = freezed,
     Object? userUid = freezed,
     Object? driverLat = freezed,
@@ -157,6 +162,10 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
     Object? rideDuration = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       driverUid: driverUid == freezed
           ? _value.driverUid
           : driverUid // ignore: cast_nullable_to_non_nullable
@@ -243,7 +252,8 @@ abstract class _$RideCopyWith<$Res> implements $RideCopyWith<$Res> {
       __$RideCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String driverUid,
+      {String id,
+      String driverUid,
       String userUid,
       double? driverLat,
       double? driverLng,
@@ -275,6 +285,7 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? driverUid = freezed,
     Object? userUid = freezed,
     Object? driverLat = freezed,
@@ -296,6 +307,10 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
     Object? rideDuration = freezed,
   }) {
     return _then(_Ride(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       driverUid: driverUid == freezed
           ? _value.driverUid
           : driverUid // ignore: cast_nullable_to_non_nullable
@@ -380,7 +395,8 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Ride implements _Ride {
   const _$_Ride(
-      {required this.driverUid,
+      {required this.id,
+      required this.driverUid,
       required this.userUid,
       this.driverLat,
       this.driverLng,
@@ -402,6 +418,8 @@ class _$_Ride implements _Ride {
 
   factory _$_Ride.fromJson(Map<String, dynamic> json) => _$$_RideFromJson(json);
 
+  @override
+  final String id;
   @override
   final String driverUid;
   @override
@@ -443,7 +461,7 @@ class _$_Ride implements _Ride {
 
   @override
   String toString() {
-    return 'Ride(driverUid: $driverUid, userUid: $userUid, driverLat: $driverLat, driverLng: $driverLng, userLat: $userLat, userLng: $userLng, destinationLng: $destinationLng, destinationLat: $destinationLat, startLng: $startLng, startLat: $startLat, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, start: $start, destination: $destination, cancelledByUser: $cancelledByUser, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, rideDuration: $rideDuration)';
+    return 'Ride(id: $id, driverUid: $driverUid, userUid: $userUid, driverLat: $driverLat, driverLng: $driverLng, userLat: $userLat, userLng: $userLng, destinationLng: $destinationLng, destinationLat: $destinationLat, startLng: $startLng, startLat: $startLat, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, start: $start, destination: $destination, cancelledByUser: $cancelledByUser, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, rideDuration: $rideDuration)';
   }
 
   @override
@@ -451,6 +469,7 @@ class _$_Ride implements _Ride {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Ride &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.driverUid, driverUid) &&
             const DeepCollectionEquality().equals(other.userUid, userUid) &&
             const DeepCollectionEquality().equals(other.driverLat, driverLat) &&
@@ -485,6 +504,7 @@ class _$_Ride implements _Ride {
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
+        const DeepCollectionEquality().hash(id),
         const DeepCollectionEquality().hash(driverUid),
         const DeepCollectionEquality().hash(userUid),
         const DeepCollectionEquality().hash(driverLat),
@@ -519,7 +539,8 @@ class _$_Ride implements _Ride {
 
 abstract class _Ride implements Ride {
   const factory _Ride(
-      {required String driverUid,
+      {required String id,
+      required String driverUid,
       required String userUid,
       double? driverLat,
       double? driverLng,
@@ -541,6 +562,8 @@ abstract class _Ride implements Ride {
 
   factory _Ride.fromJson(Map<String, dynamic> json) = _$_Ride.fromJson;
 
+  @override
+  String get id;
   @override
   String get driverUid;
   @override

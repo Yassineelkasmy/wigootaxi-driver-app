@@ -27,9 +27,22 @@ class RideService {
           ..putIfAbsent('destinationLng', () => destinationLocation?.longitude)
           ..putIfAbsent('destinationLat', () => destinationLocation?.latitude)
           ..putIfAbsent('startLng', () => startLocation?.longitude)
-          ..putIfAbsent('startLat', () => startLocation?.latitude),
+          ..putIfAbsent('startLat', () => startLocation?.latitude)
+          ..putIfAbsent('id', () => rideDoc.id),
       );
     });
     return ride;
+  }
+
+  Future<void> declareDriverArrival({
+    required Duration duration,
+    required Ride ride,
+  }) async {
+    try {
+      collectionRef.doc(ride.id).update({
+        'driverArrived': true,
+        'driverArriveDuration': duration.inMinutes,
+      });
+    } catch (e) {}
   }
 }

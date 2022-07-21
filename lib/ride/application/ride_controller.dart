@@ -35,6 +35,10 @@ class RideController extends StateNotifier<RideState> {
             print('Arrrrrrrrrrr');
           }
         }
+
+        if (!state.driverArrived && driverArrived) {
+          mapEventToState(DriverArrived(ride, Duration(days: 1)));
+        }
         state = state.copyWith(
           currentRide: ride,
           rideInitialized: true,
@@ -61,7 +65,12 @@ class RideController extends StateNotifier<RideState> {
         );
         initializeRideStream(event.rideId);
       },
-      driverArrived: (event) async {},
+      driverArrived: (event) async {
+        _rideService.declareDriverArrival(
+          ride: event.ride,
+          duration: event.driverArrivalDuration,
+        );
+      },
       rideCancelledByDriver: (event) async {},
       rideCancelledByUser: (event) async {},
       rideFinished: (event) async {},

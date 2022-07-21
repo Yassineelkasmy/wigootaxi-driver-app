@@ -6,6 +6,7 @@ part 'ride.g.dart';
 @freezed
 class Ride with _$Ride {
   const factory Ride({
+    required String id,
     required String driverUid,
     required String userUid,
     double? driverLat,
