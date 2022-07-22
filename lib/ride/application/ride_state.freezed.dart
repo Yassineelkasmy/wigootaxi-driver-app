@@ -25,6 +25,7 @@ class _$RideStateTearOff {
       required bool rideInitialized,
       required bool initializingRide,
       required int driverDistanceFromStart,
+      required int userrDistanceFromStart,
       required bool driverArrived}) {
     return _RideState(
       currentBooking: currentBooking,
@@ -33,6 +34,7 @@ class _$RideStateTearOff {
       rideInitialized: rideInitialized,
       initializingRide: initializingRide,
       driverDistanceFromStart: driverDistanceFromStart,
+      userrDistanceFromStart: userrDistanceFromStart,
       driverArrived: driverArrived,
     );
   }
@@ -49,6 +51,7 @@ mixin _$RideState {
   bool get rideInitialized => throw _privateConstructorUsedError;
   bool get initializingRide => throw _privateConstructorUsedError;
   int get driverDistanceFromStart => throw _privateConstructorUsedError;
+  int get userrDistanceFromStart => throw _privateConstructorUsedError;
   bool get driverArrived => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -67,6 +70,7 @@ abstract class $RideStateCopyWith<$Res> {
       bool rideInitialized,
       bool initializingRide,
       int driverDistanceFromStart,
+      int userrDistanceFromStart,
       bool driverArrived});
 
   $BookingCopyWith<$Res>? get currentBooking;
@@ -90,6 +94,7 @@ class _$RideStateCopyWithImpl<$Res> implements $RideStateCopyWith<$Res> {
     Object? rideInitialized = freezed,
     Object? initializingRide = freezed,
     Object? driverDistanceFromStart = freezed,
+    Object? userrDistanceFromStart = freezed,
     Object? driverArrived = freezed,
   }) {
     return _then(_value.copyWith(
@@ -116,6 +121,10 @@ class _$RideStateCopyWithImpl<$Res> implements $RideStateCopyWith<$Res> {
       driverDistanceFromStart: driverDistanceFromStart == freezed
           ? _value.driverDistanceFromStart
           : driverDistanceFromStart // ignore: cast_nullable_to_non_nullable
+              as int,
+      userrDistanceFromStart: userrDistanceFromStart == freezed
+          ? _value.userrDistanceFromStart
+          : userrDistanceFromStart // ignore: cast_nullable_to_non_nullable
               as int,
       driverArrived: driverArrived == freezed
           ? _value.driverArrived
@@ -171,6 +180,7 @@ abstract class _$RideStateCopyWith<$Res> implements $RideStateCopyWith<$Res> {
       bool rideInitialized,
       bool initializingRide,
       int driverDistanceFromStart,
+      int userrDistanceFromStart,
       bool driverArrived});
 
   @override
@@ -198,6 +208,7 @@ class __$RideStateCopyWithImpl<$Res> extends _$RideStateCopyWithImpl<$Res>
     Object? rideInitialized = freezed,
     Object? initializingRide = freezed,
     Object? driverDistanceFromStart = freezed,
+    Object? userrDistanceFromStart = freezed,
     Object? driverArrived = freezed,
   }) {
     return _then(_RideState(
@@ -225,6 +236,10 @@ class __$RideStateCopyWithImpl<$Res> extends _$RideStateCopyWithImpl<$Res>
           ? _value.driverDistanceFromStart
           : driverDistanceFromStart // ignore: cast_nullable_to_non_nullable
               as int,
+      userrDistanceFromStart: userrDistanceFromStart == freezed
+          ? _value.userrDistanceFromStart
+          : userrDistanceFromStart // ignore: cast_nullable_to_non_nullable
+              as int,
       driverArrived: driverArrived == freezed
           ? _value.driverArrived
           : driverArrived // ignore: cast_nullable_to_non_nullable
@@ -243,6 +258,7 @@ class _$_RideState implements _RideState {
       required this.rideInitialized,
       required this.initializingRide,
       required this.driverDistanceFromStart,
+      required this.userrDistanceFromStart,
       required this.driverArrived});
 
   @override
@@ -258,11 +274,13 @@ class _$_RideState implements _RideState {
   @override
   final int driverDistanceFromStart;
   @override
+  final int userrDistanceFromStart;
+  @override
   final bool driverArrived;
 
   @override
   String toString() {
-    return 'RideState(currentBooking: $currentBooking, driverRecord: $driverRecord, currentRide: $currentRide, rideInitialized: $rideInitialized, initializingRide: $initializingRide, driverDistanceFromStart: $driverDistanceFromStart, driverArrived: $driverArrived)';
+    return 'RideState(currentBooking: $currentBooking, driverRecord: $driverRecord, currentRide: $currentRide, rideInitialized: $rideInitialized, initializingRide: $initializingRide, driverDistanceFromStart: $driverDistanceFromStart, userrDistanceFromStart: $userrDistanceFromStart, driverArrived: $driverArrived)';
   }
 
   @override
@@ -283,6 +301,8 @@ class _$_RideState implements _RideState {
             const DeepCollectionEquality().equals(
                 other.driverDistanceFromStart, driverDistanceFromStart) &&
             const DeepCollectionEquality()
+                .equals(other.userrDistanceFromStart, userrDistanceFromStart) &&
+            const DeepCollectionEquality()
                 .equals(other.driverArrived, driverArrived));
   }
 
@@ -295,6 +315,7 @@ class _$_RideState implements _RideState {
       const DeepCollectionEquality().hash(rideInitialized),
       const DeepCollectionEquality().hash(initializingRide),
       const DeepCollectionEquality().hash(driverDistanceFromStart),
+      const DeepCollectionEquality().hash(userrDistanceFromStart),
       const DeepCollectionEquality().hash(driverArrived));
 
   @JsonKey(ignore: true)
@@ -311,6 +332,7 @@ abstract class _RideState implements RideState {
       required bool rideInitialized,
       required bool initializingRide,
       required int driverDistanceFromStart,
+      required int userrDistanceFromStart,
       required bool driverArrived}) = _$_RideState;
 
   @override
@@ -325,6 +347,8 @@ abstract class _RideState implements RideState {
   bool get initializingRide;
   @override
   int get driverDistanceFromStart;
+  @override
+  int get userrDistanceFromStart;
   @override
   bool get driverArrived;
   @override

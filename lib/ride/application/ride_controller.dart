@@ -36,16 +36,23 @@ class RideController extends StateNotifier<RideState> {
 
         if (!state.driverArrived && driverArrived) {
           mapEventToState(
-            DriverArrived(
+            RideEvent.driverArrived(
               ride,
               Duration(days: 1),
             ),
           );
         }
 
-        final distanceFromStart = calculateDistance(
+        final driverDistanceFromStart = calculateDistance(
               ride.driverLat!,
               ride.driverLng!,
+              ride.startLat,
+              ride.startLng,
+            ) *
+            1000.round();
+        final userDistanceFromStart = calculateDistance(
+              ride.userLat!,
+              ride.userLng!,
               ride.startLat,
               ride.startLng,
             ) *
@@ -54,7 +61,8 @@ class RideController extends StateNotifier<RideState> {
           currentRide: ride,
           rideInitialized: true,
           driverArrived: driverArrived,
-          driverDistanceFromStart: distanceFromStart.toInt(),
+          driverDistanceFromStart: driverDistanceFromStart.toInt(),
+          userrDistanceFromStart: userDistanceFromStart.toInt(),
         );
       },
     );
@@ -62,7 +70,11 @@ class RideController extends StateNotifier<RideState> {
 
   Future mapEventToState(RideEvent event) {
     return event.map(
-      rideStarted: (event) async {},
+      rideStarted: (event) async {
+        await _rideService.startRide(
+          state.currentRide!.id,
+        );
+      },
       rideAccepted: (event) async {},
       rideDenied: (event) async {},
       rideInitialized: (event) async {

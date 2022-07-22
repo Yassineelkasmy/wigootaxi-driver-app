@@ -45,4 +45,13 @@ class RideService {
       });
     } catch (e) {}
   }
+
+  Future<void> startRide(String rideId) async {
+    await collectionRef.doc(rideId).update(
+      {
+        'started': true,
+        'startedAt': FieldValue.serverTimestamp(),
+      },
+    );
+  }
 }

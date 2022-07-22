@@ -78,25 +78,26 @@ class UserProfile extends HookConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: SubmitButton(
-                      onPressed: () {
-                        rideController.mapEventToState(RideEvent.rideStarted());
-                      },
-                      text: 'Commencer',
-                      color: rideState.driverDistanceFromStart <= 30
-                          ? Colors.green
-                          : Colors.grey,
+                  if (rideState.driverDistanceFromStart <= 30)
+                    Expanded(
+                      child: SubmitButton(
+                        onPressed: () {
+                          rideController
+                              .mapEventToState(RideEvent.rideStarted());
+                        },
+                        text: 'Commencer',
+                        color: Colors.green,
+                      ),
                     ),
-                  ),
-                  5.w.horizontalSpace,
-                  Expanded(
-                    child: SubmitButton(
-                      onPressed: () {},
-                      text: 'Anuller',
-                    ),
-                  )
                 ],
+              ),
+              5.w.horizontalSpace,
+              SizedBox(
+                width: double.maxFinite,
+                child: SubmitButton(
+                  onPressed: () {},
+                  text: 'Anuller',
+                ),
               )
             ],
           ),
