@@ -37,6 +37,10 @@ class _$RideEventTearOff {
     return const RideCancelledByDriver();
   }
 
+  RideStarted rideStarted() {
+    return const RideStarted();
+  }
+
   UserPicked userPicked() {
     return const UserPicked();
   }
@@ -68,6 +72,7 @@ mixin _$RideEvent {
         driverArrived,
     required TResult Function() rideCancelledByUser,
     required TResult Function() rideCancelledByDriver,
+    required TResult Function() rideStarted,
     required TResult Function() userPicked,
     required TResult Function() rideFinished,
     required TResult Function() rideDenied,
@@ -80,6 +85,7 @@ mixin _$RideEvent {
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -92,6 +98,7 @@ mixin _$RideEvent {
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -106,6 +113,7 @@ mixin _$RideEvent {
     required TResult Function(RideCancelledByUser value) rideCancelledByUser,
     required TResult Function(RideCancelledByDriver value)
         rideCancelledByDriver,
+    required TResult Function(RideStarted value) rideStarted,
     required TResult Function(UserPicked value) userPicked,
     required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
@@ -118,6 +126,7 @@ mixin _$RideEvent {
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -130,6 +139,7 @@ mixin _$RideEvent {
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -205,6 +215,7 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
         driverArrived,
     required TResult Function() rideCancelledByUser,
     required TResult Function() rideCancelledByDriver,
+    required TResult Function() rideStarted,
     required TResult Function() userPicked,
     required TResult Function() rideFinished,
     required TResult Function() rideDenied,
@@ -220,6 +231,7 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -235,6 +247,7 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -255,6 +268,7 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
     required TResult Function(RideCancelledByUser value) rideCancelledByUser,
     required TResult Function(RideCancelledByDriver value)
         rideCancelledByDriver,
+    required TResult Function(RideStarted value) rideStarted,
     required TResult Function(UserPicked value) userPicked,
     required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
@@ -270,6 +284,7 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -285,6 +300,7 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -401,6 +417,7 @@ class _$DriverArrived with DiagnosticableTreeMixin implements DriverArrived {
         driverArrived,
     required TResult Function() rideCancelledByUser,
     required TResult Function() rideCancelledByDriver,
+    required TResult Function() rideStarted,
     required TResult Function() userPicked,
     required TResult Function() rideFinished,
     required TResult Function() rideDenied,
@@ -416,6 +433,7 @@ class _$DriverArrived with DiagnosticableTreeMixin implements DriverArrived {
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -431,6 +449,7 @@ class _$DriverArrived with DiagnosticableTreeMixin implements DriverArrived {
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -451,6 +470,7 @@ class _$DriverArrived with DiagnosticableTreeMixin implements DriverArrived {
     required TResult Function(RideCancelledByUser value) rideCancelledByUser,
     required TResult Function(RideCancelledByDriver value)
         rideCancelledByDriver,
+    required TResult Function(RideStarted value) rideStarted,
     required TResult Function(UserPicked value) userPicked,
     required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
@@ -466,6 +486,7 @@ class _$DriverArrived with DiagnosticableTreeMixin implements DriverArrived {
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -481,6 +502,7 @@ class _$DriverArrived with DiagnosticableTreeMixin implements DriverArrived {
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -560,6 +582,7 @@ class _$RideCancelledByUser
         driverArrived,
     required TResult Function() rideCancelledByUser,
     required TResult Function() rideCancelledByDriver,
+    required TResult Function() rideStarted,
     required TResult Function() userPicked,
     required TResult Function() rideFinished,
     required TResult Function() rideDenied,
@@ -575,6 +598,7 @@ class _$RideCancelledByUser
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -590,6 +614,7 @@ class _$RideCancelledByUser
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -610,6 +635,7 @@ class _$RideCancelledByUser
     required TResult Function(RideCancelledByUser value) rideCancelledByUser,
     required TResult Function(RideCancelledByDriver value)
         rideCancelledByDriver,
+    required TResult Function(RideStarted value) rideStarted,
     required TResult Function(UserPicked value) userPicked,
     required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
@@ -625,6 +651,7 @@ class _$RideCancelledByUser
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -640,6 +667,7 @@ class _$RideCancelledByUser
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -712,6 +740,7 @@ class _$RideCancelledByDriver
         driverArrived,
     required TResult Function() rideCancelledByUser,
     required TResult Function() rideCancelledByDriver,
+    required TResult Function() rideStarted,
     required TResult Function() userPicked,
     required TResult Function() rideFinished,
     required TResult Function() rideDenied,
@@ -727,6 +756,7 @@ class _$RideCancelledByDriver
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -742,6 +772,7 @@ class _$RideCancelledByDriver
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -762,6 +793,7 @@ class _$RideCancelledByDriver
     required TResult Function(RideCancelledByUser value) rideCancelledByUser,
     required TResult Function(RideCancelledByDriver value)
         rideCancelledByDriver,
+    required TResult Function(RideStarted value) rideStarted,
     required TResult Function(UserPicked value) userPicked,
     required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
@@ -777,6 +809,7 @@ class _$RideCancelledByDriver
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -792,6 +825,7 @@ class _$RideCancelledByDriver
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -807,6 +841,160 @@ class _$RideCancelledByDriver
 
 abstract class RideCancelledByDriver implements RideEvent {
   const factory RideCancelledByDriver() = _$RideCancelledByDriver;
+}
+
+/// @nodoc
+abstract class $RideStartedCopyWith<$Res> {
+  factory $RideStartedCopyWith(
+          RideStarted value, $Res Function(RideStarted) then) =
+      _$RideStartedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$RideStartedCopyWithImpl<$Res> extends _$RideEventCopyWithImpl<$Res>
+    implements $RideStartedCopyWith<$Res> {
+  _$RideStartedCopyWithImpl(
+      RideStarted _value, $Res Function(RideStarted) _then)
+      : super(_value, (v) => _then(v as RideStarted));
+
+  @override
+  RideStarted get _value => super._value as RideStarted;
+}
+
+/// @nodoc
+
+class _$RideStarted with DiagnosticableTreeMixin implements RideStarted {
+  const _$RideStarted();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RideEvent.rideStarted()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'RideEvent.rideStarted'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is RideStarted);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() rideAccepted,
+    required TResult Function(Ride ride, Duration driverArrivalDuration)
+        driverArrived,
+    required TResult Function() rideCancelledByUser,
+    required TResult Function() rideCancelledByDriver,
+    required TResult Function() rideStarted,
+    required TResult Function() userPicked,
+    required TResult Function() rideFinished,
+    required TResult Function() rideDenied,
+    required TResult Function(String rideId) rideInitialized,
+  }) {
+    return rideStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? rideAccepted,
+    TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
+    TResult Function()? rideDenied,
+    TResult Function(String rideId)? rideInitialized,
+  }) {
+    return rideStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? rideAccepted,
+    TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
+    TResult Function()? rideDenied,
+    TResult Function(String rideId)? rideInitialized,
+    required TResult orElse(),
+  }) {
+    if (rideStarted != null) {
+      return rideStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(DriverArrived value) driverArrived,
+    required TResult Function(RideCancelledByUser value) rideCancelledByUser,
+    required TResult Function(RideCancelledByDriver value)
+        rideCancelledByDriver,
+    required TResult Function(RideStarted value) rideStarted,
+    required TResult Function(UserPicked value) userPicked,
+    required TResult Function(RideFinished value) rideFinished,
+    required TResult Function(RideDnied value) rideDenied,
+    required TResult Function(RideInitilialized value) rideInitialized,
+  }) {
+    return rideStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
+    TResult Function(RideDnied value)? rideDenied,
+    TResult Function(RideInitilialized value)? rideInitialized,
+  }) {
+    return rideStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
+    TResult Function(RideDnied value)? rideDenied,
+    TResult Function(RideInitilialized value)? rideInitialized,
+    required TResult orElse(),
+  }) {
+    if (rideStarted != null) {
+      return rideStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RideStarted implements RideEvent {
+  const factory RideStarted() = _$RideStarted;
 }
 
 /// @nodoc
@@ -859,6 +1047,7 @@ class _$UserPicked with DiagnosticableTreeMixin implements UserPicked {
         driverArrived,
     required TResult Function() rideCancelledByUser,
     required TResult Function() rideCancelledByDriver,
+    required TResult Function() rideStarted,
     required TResult Function() userPicked,
     required TResult Function() rideFinished,
     required TResult Function() rideDenied,
@@ -874,6 +1063,7 @@ class _$UserPicked with DiagnosticableTreeMixin implements UserPicked {
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -889,6 +1079,7 @@ class _$UserPicked with DiagnosticableTreeMixin implements UserPicked {
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -909,6 +1100,7 @@ class _$UserPicked with DiagnosticableTreeMixin implements UserPicked {
     required TResult Function(RideCancelledByUser value) rideCancelledByUser,
     required TResult Function(RideCancelledByDriver value)
         rideCancelledByDriver,
+    required TResult Function(RideStarted value) rideStarted,
     required TResult Function(UserPicked value) userPicked,
     required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
@@ -924,6 +1116,7 @@ class _$UserPicked with DiagnosticableTreeMixin implements UserPicked {
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -939,6 +1132,7 @@ class _$UserPicked with DiagnosticableTreeMixin implements UserPicked {
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -1007,6 +1201,7 @@ class _$RideFinished with DiagnosticableTreeMixin implements RideFinished {
         driverArrived,
     required TResult Function() rideCancelledByUser,
     required TResult Function() rideCancelledByDriver,
+    required TResult Function() rideStarted,
     required TResult Function() userPicked,
     required TResult Function() rideFinished,
     required TResult Function() rideDenied,
@@ -1022,6 +1217,7 @@ class _$RideFinished with DiagnosticableTreeMixin implements RideFinished {
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -1037,6 +1233,7 @@ class _$RideFinished with DiagnosticableTreeMixin implements RideFinished {
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -1057,6 +1254,7 @@ class _$RideFinished with DiagnosticableTreeMixin implements RideFinished {
     required TResult Function(RideCancelledByUser value) rideCancelledByUser,
     required TResult Function(RideCancelledByDriver value)
         rideCancelledByDriver,
+    required TResult Function(RideStarted value) rideStarted,
     required TResult Function(UserPicked value) userPicked,
     required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
@@ -1072,6 +1270,7 @@ class _$RideFinished with DiagnosticableTreeMixin implements RideFinished {
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -1087,6 +1286,7 @@ class _$RideFinished with DiagnosticableTreeMixin implements RideFinished {
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -1153,6 +1353,7 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
         driverArrived,
     required TResult Function() rideCancelledByUser,
     required TResult Function() rideCancelledByDriver,
+    required TResult Function() rideStarted,
     required TResult Function() userPicked,
     required TResult Function() rideFinished,
     required TResult Function() rideDenied,
@@ -1168,6 +1369,7 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -1183,6 +1385,7 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -1203,6 +1406,7 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
     required TResult Function(RideCancelledByUser value) rideCancelledByUser,
     required TResult Function(RideCancelledByDriver value)
         rideCancelledByDriver,
+    required TResult Function(RideStarted value) rideStarted,
     required TResult Function(UserPicked value) userPicked,
     required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
@@ -1218,6 +1422,7 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -1233,6 +1438,7 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -1330,6 +1536,7 @@ class _$RideInitilialized
         driverArrived,
     required TResult Function() rideCancelledByUser,
     required TResult Function() rideCancelledByDriver,
+    required TResult Function() rideStarted,
     required TResult Function() userPicked,
     required TResult Function() rideFinished,
     required TResult Function() rideDenied,
@@ -1345,6 +1552,7 @@ class _$RideInitilialized
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -1360,6 +1568,7 @@ class _$RideInitilialized
     TResult Function(Ride ride, Duration driverArrivalDuration)? driverArrived,
     TResult Function()? rideCancelledByUser,
     TResult Function()? rideCancelledByDriver,
+    TResult Function()? rideStarted,
     TResult Function()? userPicked,
     TResult Function()? rideFinished,
     TResult Function()? rideDenied,
@@ -1380,6 +1589,7 @@ class _$RideInitilialized
     required TResult Function(RideCancelledByUser value) rideCancelledByUser,
     required TResult Function(RideCancelledByDriver value)
         rideCancelledByDriver,
+    required TResult Function(RideStarted value) rideStarted,
     required TResult Function(UserPicked value) userPicked,
     required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
@@ -1395,6 +1605,7 @@ class _$RideInitilialized
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
@@ -1410,6 +1621,7 @@ class _$RideInitilialized
     TResult Function(DriverArrived value)? driverArrived,
     TResult Function(RideCancelledByUser value)? rideCancelledByUser,
     TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(RideStarted value)? rideStarted,
     TResult Function(UserPicked value)? userPicked,
     TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,

@@ -62,6 +62,7 @@ class RideController extends StateNotifier<RideState> {
 
   Future mapEventToState(RideEvent event) {
     return event.map(
+      rideStarted: (event) async {},
       rideAccepted: (event) async {},
       rideDenied: (event) async {},
       rideInitialized: (event) async {

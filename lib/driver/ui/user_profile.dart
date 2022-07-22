@@ -8,6 +8,7 @@ import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 import 'package:wigootaxidriver/providers/ride_provider.dart';
+import 'package:wigootaxidriver/ride/application/ride_event.dart';
 import 'package:wigootaxidriver/shared/helpers/latlng_distance.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -23,6 +24,7 @@ class UserProfile extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final rideState = ref.watch(rideProvider);
+    final rideController = ref.watch(rideProvider.notifier);
     final locationState = ref.watch(locationProvider);
 
     return MediaQuery.removePadding(
@@ -78,7 +80,9 @@ class UserProfile extends HookConsumerWidget {
                 children: [
                   Expanded(
                     child: SubmitButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        rideController.mapEventToState(RideEvent.rideStarted());
+                      },
                       text: 'Commencer',
                       color: rideState.driverDistanceFromStart <= 30
                           ? Colors.green

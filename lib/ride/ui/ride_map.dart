@@ -163,9 +163,9 @@ class RideMapState extends ConsumerState<RideMap> {
             next.currentRide!.driverLng!,
           );
 
-          LatLng userLatLng = LatLng(
-            next.currentRide!.userLat!,
-            next.currentRide!.userLng!,
+          LatLng startLatLng = LatLng(
+            next.currentRide!.startLat!,
+            next.currentRide!.startLng!,
           );
           // _markers.removeWhere(
           //   (mrk) => mrk.mapsId.value == next.currentRide!.driverUid,
@@ -178,28 +178,37 @@ class RideMapState extends ConsumerState<RideMap> {
             next.currentRide!.driverUid,
           );
 
+          addMarker(
+            startLatLng,
+            null,
+            null,
+            'pickup',
+          );
+
           LatLngBounds bound;
-          if (driverLatLng.latitude > userLatLng.latitude &&
-              driverLatLng.longitude > userLatLng.longitude) {
+          if (driverLatLng.latitude > startLatLng.latitude &&
+              driverLatLng.longitude > startLatLng.longitude) {
             bound =
-                LatLngBounds(southwest: userLatLng, northeast: driverLatLng);
-          } else if (driverLatLng.longitude > userLatLng.longitude) {
+                LatLngBounds(southwest: startLatLng, northeast: driverLatLng);
+          } else if (driverLatLng.longitude > startLatLng.longitude) {
             bound = LatLngBounds(
-                southwest: LatLng(driverLatLng.latitude, userLatLng.longitude),
-                northeast: LatLng(userLatLng.latitude, driverLatLng.longitude));
-          } else if (driverLatLng.latitude > userLatLng.latitude) {
+                southwest: LatLng(driverLatLng.latitude, startLatLng.longitude),
+                northeast:
+                    LatLng(startLatLng.latitude, driverLatLng.longitude));
+          } else if (driverLatLng.latitude > startLatLng.latitude) {
             bound = LatLngBounds(
-                southwest: LatLng(userLatLng.latitude, driverLatLng.longitude),
-                northeast: LatLng(driverLatLng.latitude, userLatLng.longitude));
+                southwest: LatLng(startLatLng.latitude, driverLatLng.longitude),
+                northeast:
+                    LatLng(driverLatLng.latitude, startLatLng.longitude));
           } else {
             bound =
-                LatLngBounds(southwest: driverLatLng, northeast: userLatLng);
+                LatLngBounds(southwest: driverLatLng, northeast: startLatLng);
           }
           await _createPolylines(
             driverLatLng.latitude,
             driverLatLng.longitude,
-            userLatLng.latitude,
-            userLatLng.longitude,
+            startLatLng.latitude,
+            startLatLng.longitude,
           );
 
           // CameraUpdate u2 = CameraUpdate.newLatLngBounds(bound, 70);
