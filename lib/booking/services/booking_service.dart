@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:wigootaxidriver/booking/domain/booking.dart';
 import 'package:wigootaxidriver/booking/domain/booking_failure.dart';
+import 'package:wigootaxidriver/driver/domain/driver_record.dart';
 
 class BookingService {
   final geo = Geoflutterfire();
@@ -52,6 +53,25 @@ class BookingService {
       ]);
       return right(unit);
     } catch (e) {
+      return left(const BookingFailure.serverError());
+    }
+  }
+
+  Future<Either<BookingFailure, UserRecord>> getUserRecord({
+    required String userUid,
+  }) async {
+    try {
+      final userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userUid)
+          .get();
+
+      final userRecord = UserRecord.fromJson(
+        userDoc.data()!..putIfAbsent('id', () => userUid),
+      );
+      return right(userRecord);
+    } catch (e) {
+      print(e);
       return left(const BookingFailure.serverError());
     }
   }

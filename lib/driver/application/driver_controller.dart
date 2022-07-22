@@ -33,7 +33,10 @@ class DriverController extends StateNotifier<DriverState> {
         .driverRecordStream(userUid: userUid)
         .listen((driverRecord) {
       if (driverRecord.booking_call != null) {
-        state = state.copyWith(currentRide: driverRecord.booking_call!);
+        state = state.copyWith(
+          currentRide: driverRecord.booking_call!,
+          userRecord: driverRecord.booking!.user,
+        );
       }
       state = state.copyWith(driverRecord: driverRecord);
     });
@@ -57,6 +60,7 @@ class DriverController extends StateNotifier<DriverState> {
         driverLat: event.driverLat,
         driverLng: event.driverLng,
       );
+
       _prefs.setString(
         currentRideKey,
         state.currentRide!,

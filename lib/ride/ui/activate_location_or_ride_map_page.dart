@@ -13,9 +13,9 @@ import 'package:wigootaxidriver/shared/ui/map_animation.dart';
 class ActivateLocationOrRideMapPage extends HookConsumerWidget {
   const ActivateLocationOrRideMapPage({
     Key? key,
-    required this.driverRecord,
+    required this.userRecord,
   }) : super(key: key);
-  final DriverRecord driverRecord;
+  final UserRecord userRecord;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,15 +32,14 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
               width: double.maxFinite,
               child: Column(
                 children: [
-                  if (rideState.driverArrived) Text('driverArrived'),
                   Expanded(
                     child: Stack(
                       fit: StackFit.passthrough,
                       children: [
                         Positioned.fill(
                           child: RideMap(
-                            lat: driverRecord.lat,
-                            long: driverRecord.lng,
+                            lat: locationState.position!.latitude,
+                            long: locationState.position!.longitude,
                             onCameraIdle: () {},
                             onCameraMove: (cameraPosition) {},
                           ),

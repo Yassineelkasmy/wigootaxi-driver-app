@@ -31,18 +31,30 @@ class RideController extends StateNotifier<RideState> {
         bool driverArrived = false;
         if (!state.driverArrived) {
           driverArrived = isDriverArrived(ride);
-          if (driverArrived) {
-            print('Arrrrrrrrrrr');
-          }
+          if (driverArrived) {}
         }
 
         if (!state.driverArrived && driverArrived) {
-          mapEventToState(DriverArrived(ride, Duration(days: 1)));
+          mapEventToState(
+            DriverArrived(
+              ride,
+              Duration(days: 1),
+            ),
+          );
         }
+
+        final distanceFromStart = calculateDistance(
+              ride.driverLat!,
+              ride.driverLng!,
+              ride.startLat,
+              ride.startLng,
+            ) *
+            1000.round();
         state = state.copyWith(
           currentRide: ride,
           rideInitialized: true,
           driverArrived: driverArrived,
+          driverDistanceFromStart: distanceFromStart.toInt(),
         );
       },
     );

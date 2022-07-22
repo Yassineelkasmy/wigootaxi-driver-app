@@ -15,6 +15,7 @@ _$_DriverRecord _$$_DriverRecordFromJson(Map<String, dynamic> json) =>
       username: json['username'] as String,
       phone: json['phone'] as String,
       booking_call: json['booking_call'] as String?,
+      bookingUserUid: json['bookingUserUid'] as String?,
       booking: json['booking'] == null
           ? null
           : BookingRecord.fromJson(json['booking'] as Map<String, dynamic>),
@@ -29,6 +30,7 @@ Map<String, dynamic> _$$_DriverRecordToJson(_$_DriverRecord instance) =>
       'username': instance.username,
       'phone': instance.phone,
       'booking_call': instance.booking_call,
+      'bookingUserUid': instance.bookingUserUid,
       'booking': instance.booking,
     };
 

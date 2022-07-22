@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/application/providers/location/location_provider.dart';
 import 'package:wigootaxidriver/providers/ride_provider.dart';
-import 'package:wigootaxidriver/shared/helpers/latlng_distance.dart';
 
 class RideLocationIndicator extends HookConsumerWidget {
   const RideLocationIndicator({Key? key}) : super(key: key);
@@ -34,12 +33,7 @@ class RideLocationIndicator extends HookConsumerWidget {
                   size: 32,
                 ),
                 label: Text(
-                  '${(calculateDistance(
-                        rideState.currentRide!.driverLat!,
-                        rideState.currentRide!.driverLng!,
-                        locationState.position!.latitude,
-                        locationState.position!.longitude,
-                      ) * 1000).round()} Mètres',
+                  '${rideState.driverDistanceFromStart} Mètres',
                   style: TextStyle(
                     fontSize: 16.sp,
                   ),

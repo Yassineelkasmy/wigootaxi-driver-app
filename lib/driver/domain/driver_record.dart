@@ -13,6 +13,7 @@ class DriverRecord with _$DriverRecord {
     required String username,
     required String phone,
     String? booking_call,
+    String? bookingUserUid,
     BookingRecord? booking,
   }) = _DriverRecord;
 

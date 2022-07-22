@@ -12,6 +12,7 @@ class DriverState with _$DriverState {
     String? booking_call,
     String? currentRide,
     DriverRecord? driverRecord,
+    UserRecord? userRecord,
   }) = _DriverState;
 
   factory DriverState.initial() => DriverState(

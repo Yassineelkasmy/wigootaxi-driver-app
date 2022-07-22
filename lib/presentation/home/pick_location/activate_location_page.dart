@@ -20,6 +20,7 @@ import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 import 'package:wigootaxidriver/providers/ride_provider.dart';
 import 'package:wigootaxidriver/ride/application/ride_event.dart';
 import 'package:wigootaxidriver/ride/application/ride_state.dart';
+import 'package:wigootaxidriver/ride/ui/ride_root_page.dart';
 
 class ActivateLocationOrMapPage extends HookConsumerWidget {
   ActivateLocationOrMapPage({Key? key}) : super(key: key);
@@ -69,7 +70,11 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
     ref.listen<RideState>(rideProvider, (previous, next) {
       if (previous?.rideInitialized != next.rideInitialized &&
           next.rideInitialized) {
-        AutoRouter.of(context).push(ActivateLocationOrMapPageRoute());
+        AutoRouter.of(context).push(
+          RideRootPageRoute(
+            userRecord: driverState.userRecord!,
+          ),
+        );
       }
     });
 
