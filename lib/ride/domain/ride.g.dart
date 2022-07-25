@@ -6,7 +6,7 @@ part of 'ride.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Ride _$$_RideFromJson(Map<String, dynamic> json) => _$_Ride(
+Ride _$RideFromJson(Map<String, dynamic> json) => Ride(
       id: json['id'] as String,
       driverUid: json['driverUid'] as String,
       userUid: json['userUid'] as String,
@@ -34,7 +34,7 @@ _$_Ride _$$_RideFromJson(Map<String, dynamic> json) => _$_Ride(
       rideDuration: json['rideDuration'] as int?,
     );
 
-Map<String, dynamic> _$$_RideToJson(_$_Ride instance) => <String, dynamic>{
+Map<String, dynamic> _$RideToJson(Ride instance) => <String, dynamic>{
       'id': instance.id,
       'driverUid': instance.driverUid,
       'userUid': instance.userUid,

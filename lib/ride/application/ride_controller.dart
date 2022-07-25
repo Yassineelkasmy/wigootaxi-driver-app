@@ -9,6 +9,7 @@ import 'package:wigootaxidriver/ride/application/ride_state.dart';
 import 'package:wigootaxidriver/ride/domain/ride.dart';
 import 'package:wigootaxidriver/ride/services/ride_service.dart';
 import 'package:wigootaxidriver/shared/helpers/latlng_distance.dart';
+import 'package:wigootaxidriver/shared/helpers/serialize_coordinates_path.dart';
 
 class RideController extends StateNotifier<RideState> {
   RideController() : super(RideState.initial());
@@ -24,7 +25,7 @@ class RideController extends StateNotifier<RideState> {
       rideId: rideId,
     )
         .listen(
-      (ride) {
+      (ride) async {
         if (!state.rideInitialized) {
           state = state.copyWith(rideInitialized: true);
         }
@@ -38,7 +39,7 @@ class RideController extends StateNotifier<RideState> {
         }
 
         if (!state.driverArrived && driverArrived) {
-          mapEventToState(
+          await mapEventToState(
             RideEvent.driverArrived(
               ride,
               Duration(days: 1),
@@ -47,7 +48,7 @@ class RideController extends StateNotifier<RideState> {
         }
 
         if (!state.driverArrivedToDestination && driverArrivedToDestination) {
-          mapEventToState(
+          await mapEventToState(
             RideEvent.driverArrivedToDestination(
               ride,
               Duration(days: 1),
@@ -76,11 +77,15 @@ class RideController extends StateNotifier<RideState> {
               ride.startLng,
             ) *
             1000.round();
+        final distanceTravelled = pathDistance(
+          stringPathToCoordinates(ride.path),
+        );
         state = state.copyWith(
           currentRide: ride,
           rideInitialized: true,
           driverDistanceFromStart: driverDistanceFromStart.toInt(),
           userrDistanceFromStart: userDistanceFromStart.toInt(),
+          distanceTravelled: distanceTravelled,
           driverDistanceFromDestination: driverDistanceFromDestination.toInt(),
         );
       },
@@ -93,6 +98,7 @@ class RideController extends StateNotifier<RideState> {
         await _rideService.declareDriverDestinationArrival(
           duration: event.driverDestinationArrivalDuration,
           ride: event.ride,
+          distanceTravelled: state.distanceTravelled,
         );
         state = state.copyWith(
           driverArrivedToDestination: true,

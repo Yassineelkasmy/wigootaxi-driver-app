@@ -60,12 +60,14 @@ class RideService {
   Future<void> declareDriverDestinationArrival({
     required Duration duration,
     required Ride ride,
+    required int distanceTravelled,
   }) async {
     try {
       collectionRef.doc(ride.id).update(
         {
           'driverArrivedToDestination': true,
           'driving': false,
+          'distanceTravelled': distanceTravelled,
           'driverArrivedToDestinationDuration': duration.inSeconds,
           'driverArrivedToDestinationAt': FieldValue.serverTimestamp(),
         },

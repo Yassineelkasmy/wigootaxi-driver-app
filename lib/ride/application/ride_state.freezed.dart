@@ -25,6 +25,7 @@ class _$RideStateTearOff {
       required bool rideInitialized,
       required bool initializingRide,
       required int driverDistanceFromStart,
+      required int distanceTravelled,
       required int driverDistanceFromDestination,
       required int userrDistanceFromStart,
       required bool driverArrived,
@@ -40,6 +41,7 @@ class _$RideStateTearOff {
       rideInitialized: rideInitialized,
       initializingRide: initializingRide,
       driverDistanceFromStart: driverDistanceFromStart,
+      distanceTravelled: distanceTravelled,
       driverDistanceFromDestination: driverDistanceFromDestination,
       userrDistanceFromStart: userrDistanceFromStart,
       driverArrived: driverArrived,
@@ -63,6 +65,7 @@ mixin _$RideState {
   bool get rideInitialized => throw _privateConstructorUsedError;
   bool get initializingRide => throw _privateConstructorUsedError;
   int get driverDistanceFromStart => throw _privateConstructorUsedError;
+  int get distanceTravelled => throw _privateConstructorUsedError;
   int get driverDistanceFromDestination => throw _privateConstructorUsedError;
   int get userrDistanceFromStart => throw _privateConstructorUsedError;
   bool get driverArrived => throw _privateConstructorUsedError;
@@ -88,6 +91,7 @@ abstract class $RideStateCopyWith<$Res> {
       bool rideInitialized,
       bool initializingRide,
       int driverDistanceFromStart,
+      int distanceTravelled,
       int driverDistanceFromDestination,
       int userrDistanceFromStart,
       bool driverArrived,
@@ -118,6 +122,7 @@ class _$RideStateCopyWithImpl<$Res> implements $RideStateCopyWith<$Res> {
     Object? rideInitialized = freezed,
     Object? initializingRide = freezed,
     Object? driverDistanceFromStart = freezed,
+    Object? distanceTravelled = freezed,
     Object? driverDistanceFromDestination = freezed,
     Object? userrDistanceFromStart = freezed,
     Object? driverArrived = freezed,
@@ -151,6 +156,10 @@ class _$RideStateCopyWithImpl<$Res> implements $RideStateCopyWith<$Res> {
       driverDistanceFromStart: driverDistanceFromStart == freezed
           ? _value.driverDistanceFromStart
           : driverDistanceFromStart // ignore: cast_nullable_to_non_nullable
+              as int,
+      distanceTravelled: distanceTravelled == freezed
+          ? _value.distanceTravelled
+          : distanceTravelled // ignore: cast_nullable_to_non_nullable
               as int,
       driverDistanceFromDestination: driverDistanceFromDestination == freezed
           ? _value.driverDistanceFromDestination
@@ -234,6 +243,7 @@ abstract class _$RideStateCopyWith<$Res> implements $RideStateCopyWith<$Res> {
       bool rideInitialized,
       bool initializingRide,
       int driverDistanceFromStart,
+      int distanceTravelled,
       int driverDistanceFromDestination,
       int userrDistanceFromStart,
       bool driverArrived,
@@ -268,6 +278,7 @@ class __$RideStateCopyWithImpl<$Res> extends _$RideStateCopyWithImpl<$Res>
     Object? rideInitialized = freezed,
     Object? initializingRide = freezed,
     Object? driverDistanceFromStart = freezed,
+    Object? distanceTravelled = freezed,
     Object? driverDistanceFromDestination = freezed,
     Object? userrDistanceFromStart = freezed,
     Object? driverArrived = freezed,
@@ -301,6 +312,10 @@ class __$RideStateCopyWithImpl<$Res> extends _$RideStateCopyWithImpl<$Res>
       driverDistanceFromStart: driverDistanceFromStart == freezed
           ? _value.driverDistanceFromStart
           : driverDistanceFromStart // ignore: cast_nullable_to_non_nullable
+              as int,
+      distanceTravelled: distanceTravelled == freezed
+          ? _value.distanceTravelled
+          : distanceTravelled // ignore: cast_nullable_to_non_nullable
               as int,
       driverDistanceFromDestination: driverDistanceFromDestination == freezed
           ? _value.driverDistanceFromDestination
@@ -348,6 +363,7 @@ class _$_RideState implements _RideState {
       required this.rideInitialized,
       required this.initializingRide,
       required this.driverDistanceFromStart,
+      required this.distanceTravelled,
       required this.driverDistanceFromDestination,
       required this.userrDistanceFromStart,
       required this.driverArrived,
@@ -370,6 +386,8 @@ class _$_RideState implements _RideState {
   @override
   final int driverDistanceFromStart;
   @override
+  final int distanceTravelled;
+  @override
   final int driverDistanceFromDestination;
   @override
   final int userrDistanceFromStart;
@@ -388,7 +406,7 @@ class _$_RideState implements _RideState {
 
   @override
   String toString() {
-    return 'RideState(currentBooking: $currentBooking, driverRecord: $driverRecord, currentRide: $currentRide, rideInitialized: $rideInitialized, initializingRide: $initializingRide, driverDistanceFromStart: $driverDistanceFromStart, driverDistanceFromDestination: $driverDistanceFromDestination, userrDistanceFromStart: $userrDistanceFromStart, driverArrived: $driverArrived, rideStarted: $rideStarted, rideFinished: $rideFinished, driverArrivedToDestination: $driverArrivedToDestination, isDriving: $isDriving, driverCanCncell: $driverCanCncell)';
+    return 'RideState(currentBooking: $currentBooking, driverRecord: $driverRecord, currentRide: $currentRide, rideInitialized: $rideInitialized, initializingRide: $initializingRide, driverDistanceFromStart: $driverDistanceFromStart, distanceTravelled: $distanceTravelled, driverDistanceFromDestination: $driverDistanceFromDestination, userrDistanceFromStart: $userrDistanceFromStart, driverArrived: $driverArrived, rideStarted: $rideStarted, rideFinished: $rideFinished, driverArrivedToDestination: $driverArrivedToDestination, isDriving: $isDriving, driverCanCncell: $driverCanCncell)';
   }
 
   @override
@@ -408,6 +426,8 @@ class _$_RideState implements _RideState {
                 .equals(other.initializingRide, initializingRide) &&
             const DeepCollectionEquality().equals(
                 other.driverDistanceFromStart, driverDistanceFromStart) &&
+            const DeepCollectionEquality()
+                .equals(other.distanceTravelled, distanceTravelled) &&
             const DeepCollectionEquality().equals(
                 other.driverDistanceFromDestination,
                 driverDistanceFromDestination) &&
@@ -435,6 +455,7 @@ class _$_RideState implements _RideState {
       const DeepCollectionEquality().hash(rideInitialized),
       const DeepCollectionEquality().hash(initializingRide),
       const DeepCollectionEquality().hash(driverDistanceFromStart),
+      const DeepCollectionEquality().hash(distanceTravelled),
       const DeepCollectionEquality().hash(driverDistanceFromDestination),
       const DeepCollectionEquality().hash(userrDistanceFromStart),
       const DeepCollectionEquality().hash(driverArrived),
@@ -458,6 +479,7 @@ abstract class _RideState implements RideState {
       required bool rideInitialized,
       required bool initializingRide,
       required int driverDistanceFromStart,
+      required int distanceTravelled,
       required int driverDistanceFromDestination,
       required int userrDistanceFromStart,
       required bool driverArrived,
@@ -479,6 +501,8 @@ abstract class _RideState implements RideState {
   bool get initializingRide;
   @override
   int get driverDistanceFromStart;
+  @override
+  int get distanceTravelled;
   @override
   int get driverDistanceFromDestination;
   @override

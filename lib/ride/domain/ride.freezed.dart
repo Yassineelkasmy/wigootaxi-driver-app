@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Ride _$RideFromJson(Map<String, dynamic> json) {
-  return _Ride.fromJson(json);
-}
-
 /// @nodoc
 class _$RideTearOff {
   const _$RideTearOff();
@@ -76,10 +72,6 @@ class _$RideTearOff {
       rideDuration: rideDuration,
     );
   }
-
-  Ride fromJson(Map<String, Object?> json) {
-    return Ride.fromJson(json);
-  }
 }
 
 /// @nodoc
@@ -113,7 +105,6 @@ mixin _$Ride {
   int? get driverWaitDuration => throw _privateConstructorUsedError;
   int? get rideDuration => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $RideCopyWith<Ride> get copyWith => throw _privateConstructorUsedError;
 }
@@ -467,7 +458,7 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_Ride implements _Ride {
   const _$_Ride(
       {required this.id,
@@ -495,8 +486,6 @@ class _$_Ride implements _Ride {
       this.driverArriveDuration,
       this.driverWaitDuration,
       this.rideDuration});
-
-  factory _$_Ride.fromJson(Map<String, dynamic> json) => _$$_RideFromJson(json);
 
   @override
   final String id;
@@ -632,11 +621,6 @@ class _$_Ride implements _Ride {
   @override
   _$RideCopyWith<_Ride> get copyWith =>
       __$RideCopyWithImpl<_Ride>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_RideToJson(this);
-  }
 }
 
 abstract class _Ride implements Ride {
@@ -666,8 +650,6 @@ abstract class _Ride implements Ride {
       int? driverArriveDuration,
       int? driverWaitDuration,
       int? rideDuration}) = _$_Ride;
-
-  factory _Ride.fromJson(Map<String, dynamic> json) = _$_Ride.fromJson;
 
   @override
   String get id;
