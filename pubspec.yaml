@@ -75,6 +75,7 @@ dependencies:
     git: https://github.com/Yassineelkasmy/flutter_callkit_incoming.git
   url_launcher: ^6.0.20
   uuid: ^3.0.6
+  timer_count_down: ^2.2.1
 
 dev_dependencies:
   flutter_test:

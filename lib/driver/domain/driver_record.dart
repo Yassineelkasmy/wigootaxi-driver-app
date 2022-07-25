@@ -38,6 +38,10 @@ class BookingRecord with _$BookingRecord {
   const factory BookingRecord({
     required String id,
     required UserRecord user,
+    required String start_name,
+    required String dest_name,
+    required String disttext,
+    required String durtext,
   }) = _BookingRecord;
 
   factory BookingRecord.fromJson(Map<String, dynamic> json) =>

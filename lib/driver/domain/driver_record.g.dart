@@ -52,10 +52,18 @@ _$_BookingRecord _$$_BookingRecordFromJson(Map<String, dynamic> json) =>
     _$_BookingRecord(
       id: json['id'] as String,
       user: UserRecord.fromJson(json['user'] as Map<String, dynamic>),
+      start_name: json['start_name'] as String,
+      dest_name: json['dest_name'] as String,
+      disttext: json['disttext'] as String,
+      durtext: json['durtext'] as String,
     );
 
 Map<String, dynamic> _$$_BookingRecordToJson(_$_BookingRecord instance) =>
     <String, dynamic>{
       'id': instance.id,
       'user': instance.user,
+      'start_name': instance.start_name,
+      'dest_name': instance.dest_name,
+      'disttext': instance.disttext,
+      'durtext': instance.durtext,
     };

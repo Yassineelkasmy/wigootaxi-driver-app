@@ -566,10 +566,20 @@ BookingRecord _$BookingRecordFromJson(Map<String, dynamic> json) {
 class _$BookingRecordTearOff {
   const _$BookingRecordTearOff();
 
-  _BookingRecord call({required String id, required UserRecord user}) {
+  _BookingRecord call(
+      {required String id,
+      required UserRecord user,
+      required String start_name,
+      required String dest_name,
+      required String disttext,
+      required String durtext}) {
     return _BookingRecord(
       id: id,
       user: user,
+      start_name: start_name,
+      dest_name: dest_name,
+      disttext: disttext,
+      durtext: durtext,
     );
   }
 
@@ -585,6 +595,10 @@ const $BookingRecord = _$BookingRecordTearOff();
 mixin _$BookingRecord {
   String get id => throw _privateConstructorUsedError;
   UserRecord get user => throw _privateConstructorUsedError;
+  String get start_name => throw _privateConstructorUsedError;
+  String get dest_name => throw _privateConstructorUsedError;
+  String get disttext => throw _privateConstructorUsedError;
+  String get durtext => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -597,7 +611,13 @@ abstract class $BookingRecordCopyWith<$Res> {
   factory $BookingRecordCopyWith(
           BookingRecord value, $Res Function(BookingRecord) then) =
       _$BookingRecordCopyWithImpl<$Res>;
-  $Res call({String id, UserRecord user});
+  $Res call(
+      {String id,
+      UserRecord user,
+      String start_name,
+      String dest_name,
+      String disttext,
+      String durtext});
 
   $UserRecordCopyWith<$Res> get user;
 }
@@ -615,6 +635,10 @@ class _$BookingRecordCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? user = freezed,
+    Object? start_name = freezed,
+    Object? dest_name = freezed,
+    Object? disttext = freezed,
+    Object? durtext = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -625,6 +649,22 @@ class _$BookingRecordCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserRecord,
+      start_name: start_name == freezed
+          ? _value.start_name
+          : start_name // ignore: cast_nullable_to_non_nullable
+              as String,
+      dest_name: dest_name == freezed
+          ? _value.dest_name
+          : dest_name // ignore: cast_nullable_to_non_nullable
+              as String,
+      disttext: disttext == freezed
+          ? _value.disttext
+          : disttext // ignore: cast_nullable_to_non_nullable
+              as String,
+      durtext: durtext == freezed
+          ? _value.durtext
+          : durtext // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -643,7 +683,13 @@ abstract class _$BookingRecordCopyWith<$Res>
           _BookingRecord value, $Res Function(_BookingRecord) then) =
       __$BookingRecordCopyWithImpl<$Res>;
   @override
-  $Res call({String id, UserRecord user});
+  $Res call(
+      {String id,
+      UserRecord user,
+      String start_name,
+      String dest_name,
+      String disttext,
+      String durtext});
 
   @override
   $UserRecordCopyWith<$Res> get user;
@@ -664,6 +710,10 @@ class __$BookingRecordCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? user = freezed,
+    Object? start_name = freezed,
+    Object? dest_name = freezed,
+    Object? disttext = freezed,
+    Object? durtext = freezed,
   }) {
     return _then(_BookingRecord(
       id: id == freezed
@@ -674,6 +724,22 @@ class __$BookingRecordCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserRecord,
+      start_name: start_name == freezed
+          ? _value.start_name
+          : start_name // ignore: cast_nullable_to_non_nullable
+              as String,
+      dest_name: dest_name == freezed
+          ? _value.dest_name
+          : dest_name // ignore: cast_nullable_to_non_nullable
+              as String,
+      disttext: disttext == freezed
+          ? _value.disttext
+          : disttext // ignore: cast_nullable_to_non_nullable
+              as String,
+      durtext: durtext == freezed
+          ? _value.durtext
+          : durtext // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -681,7 +747,13 @@ class __$BookingRecordCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_BookingRecord implements _BookingRecord {
-  const _$_BookingRecord({required this.id, required this.user});
+  const _$_BookingRecord(
+      {required this.id,
+      required this.user,
+      required this.start_name,
+      required this.dest_name,
+      required this.disttext,
+      required this.durtext});
 
   factory _$_BookingRecord.fromJson(Map<String, dynamic> json) =>
       _$$_BookingRecordFromJson(json);
@@ -690,10 +762,18 @@ class _$_BookingRecord implements _BookingRecord {
   final String id;
   @override
   final UserRecord user;
+  @override
+  final String start_name;
+  @override
+  final String dest_name;
+  @override
+  final String disttext;
+  @override
+  final String durtext;
 
   @override
   String toString() {
-    return 'BookingRecord(id: $id, user: $user)';
+    return 'BookingRecord(id: $id, user: $user, start_name: $start_name, dest_name: $dest_name, disttext: $disttext, durtext: $durtext)';
   }
 
   @override
@@ -702,14 +782,23 @@ class _$_BookingRecord implements _BookingRecord {
         (other.runtimeType == runtimeType &&
             other is _BookingRecord &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.user, user));
+            const DeepCollectionEquality().equals(other.user, user) &&
+            const DeepCollectionEquality()
+                .equals(other.start_name, start_name) &&
+            const DeepCollectionEquality().equals(other.dest_name, dest_name) &&
+            const DeepCollectionEquality().equals(other.disttext, disttext) &&
+            const DeepCollectionEquality().equals(other.durtext, durtext));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(user));
+      const DeepCollectionEquality().hash(user),
+      const DeepCollectionEquality().hash(start_name),
+      const DeepCollectionEquality().hash(dest_name),
+      const DeepCollectionEquality().hash(disttext),
+      const DeepCollectionEquality().hash(durtext));
 
   @JsonKey(ignore: true)
   @override
@@ -723,8 +812,13 @@ class _$_BookingRecord implements _BookingRecord {
 }
 
 abstract class _BookingRecord implements BookingRecord {
-  const factory _BookingRecord({required String id, required UserRecord user}) =
-      _$_BookingRecord;
+  const factory _BookingRecord(
+      {required String id,
+      required UserRecord user,
+      required String start_name,
+      required String dest_name,
+      required String disttext,
+      required String durtext}) = _$_BookingRecord;
 
   factory _BookingRecord.fromJson(Map<String, dynamic> json) =
       _$_BookingRecord.fromJson;
@@ -733,6 +827,14 @@ abstract class _BookingRecord implements BookingRecord {
   String get id;
   @override
   UserRecord get user;
+  @override
+  String get start_name;
+  @override
+  String get dest_name;
+  @override
+  String get disttext;
+  @override
+  String get durtext;
   @override
   @JsonKey(ignore: true)
   _$BookingRecordCopyWith<_BookingRecord> get copyWith =>

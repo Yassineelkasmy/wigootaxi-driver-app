@@ -46,9 +46,7 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
             showPopupConfirmation(
               context,
               duration: Duration(seconds: 10),
-              title: 'Offre de trajet',
-              body:
-                  '${nextRecord?.booking?.user.username}\n ${nextRecord?.booking?.user.phone}',
+              bookingRecord: nextRecord!.booking!,
               onTap: () async {
                 await driverController.mapEventToState(
                   DriverEvent.rideAccepted(
