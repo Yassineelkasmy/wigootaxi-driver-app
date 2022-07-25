@@ -41,7 +41,8 @@ class RideService {
     try {
       collectionRef.doc(ride.id).update({
         'driverArrived': true,
-        'driverArriveDuration': duration.inMinutes,
+        'driverArrivedAt': FieldValue.serverTimestamp(),
+        'driverArriveDuration': duration.inSeconds,
       });
     } catch (e) {}
   }
@@ -65,7 +66,7 @@ class RideService {
         {
           'driverArrivedToDestination': true,
           'driving': false,
-          'driverArrivedToDestinationDuration': duration.inMinutes,
+          'driverArrivedToDestinationDuration': duration.inSeconds,
           'driverArrivedToDestinationAt': FieldValue.serverTimestamp(),
         },
       );

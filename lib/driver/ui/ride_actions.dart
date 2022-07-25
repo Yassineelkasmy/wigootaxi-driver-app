@@ -32,6 +32,18 @@ class RideActions extends HookConsumerWidget {
       rideProvider.select((value) => value.driverArrived),
     );
 
+    final rideStarted = ref.watch(
+      rideProvider.select((value) => value.rideStarted),
+    );
+
+    final rideFinished = ref.watch(
+      rideProvider.select((value) => value.rideFinished),
+    );
+
+    final driverArrivedToDestination = ref.watch(
+      rideProvider.select((value) => value.driverArrivedToDestination),
+    );
+
     final driverCanCancell = ref.watch(
       rideProvider.select((value) => value.driverCanCncell),
     );
@@ -43,60 +55,74 @@ class RideActions extends HookConsumerWidget {
 
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            if (driverDistanceFromStart <= 40)
-              Expanded(
-                child: SubmitButton(
-                  onPressed: () {
-                    rideController.mapEventToState(RideEvent.rideStarted());
-                  },
-                  text: 'Commencer',
-                  color: Colors.green,
+        if (!rideStarted) ...[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if (driverDistanceFromStart <= 40)
+                Expanded(
+                  child: SubmitButton(
+                    onPressed: () {
+                      rideController.mapEventToState(RideEvent.rideStarted());
+                    },
+                    text: 'Commencer',
+                    color: Colors.green,
+                  ),
                 ),
-              ),
-          ],
-        ),
-        5.h.verticalSpace,
-        if (driverArrived && !driverCanCancell)
-          Countdown(
-            onFinished: () {
-              showCountDown.value = false;
-              rideController.mapEventToState(RideEvent.driverCancellTimeOff());
-            },
-            seconds: endTime.value,
-            build: (context, second) {
-              final seconds = second.toInt();
-              final duration = Duration(seconds: seconds);
-              return SizedBox(
-                width: double.maxFinite,
-                child: SubmitButton(
-                  color: Colors.grey,
-                  onPressed: () {},
-                  text:
-                      'Annulez librement dans ${duration.inMinutes}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}',
-                ),
-              );
-            },
+            ],
           ),
-        if (driverArrived && driverCanCancell)
+          5.h.verticalSpace,
+          if (driverArrived && !driverCanCancell)
+            Countdown(
+              onFinished: () {
+                showCountDown.value = false;
+                rideController
+                    .mapEventToState(RideEvent.driverCancellTimeOff());
+              },
+              seconds: endTime.value,
+              build: (context, second) {
+                final seconds = second.toInt();
+                final duration = Duration(seconds: seconds);
+                return SizedBox(
+                  width: double.maxFinite,
+                  child: SubmitButton(
+                    color: Colors.grey,
+                    onPressed: () {},
+                    text:
+                        'Annulez librement dans ${duration.inMinutes}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}',
+                  ),
+                );
+              },
+            ),
+          if (driverArrived && driverCanCancell)
+            SizedBox(
+              width: double.maxFinite,
+              child: SubmitButton(
+                onPressed: () {},
+                text: 'Annulez librement',
+              ),
+            ),
+        ],
+        if (driverArrivedToDestination && rideStarted) ...[
           SizedBox(
             width: double.maxFinite,
             child: SubmitButton(
+              color: Colors.green,
               onPressed: () {},
-              text: 'Annulez librement ',
+              text: 'Marquer la fin du voyage',
             ),
           ),
+        ],
         5.h.verticalSpace,
-        SizedBox(
-          width: double.maxFinite,
-          child: SubmitButton(
-            color: Colors.red,
-            onPressed: () {},
-            text: 'Anuller le trajet',
-          ),
-        )
+        if (!driverArrivedToDestination)
+          SizedBox(
+            width: double.maxFinite,
+            child: SubmitButton(
+              color: Colors.red,
+              onPressed: () {},
+              text: 'Anuller le trajet',
+            ),
+          )
       ],
     );
   }

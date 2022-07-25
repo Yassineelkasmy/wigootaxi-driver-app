@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'ride.freezed.dart';
@@ -10,6 +11,7 @@ class Ride with _$Ride {
     required String driverUid,
     required String userUid,
     required List<String> path,
+    required DateTime driverPickedAt,
     double? driverLat,
     double? driverLng,
     double? userLat,
@@ -32,5 +34,9 @@ class Ride with _$Ride {
     int? rideDuration,
   }) = _Ride;
 
-  factory Ride.fromJson(Map<String, dynamic> json) => _$RideFromJson(json);
+  factory Ride.fromJson(Map<String, dynamic> json) {
+    json["driverPickedAt"] =
+        ((json["driverPickedAt"] as Timestamp).toDate().toString());
+    return _$RideFromJson(json);
+  }
 }

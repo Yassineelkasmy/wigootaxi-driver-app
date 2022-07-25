@@ -29,13 +29,26 @@ class RideController extends StateNotifier<RideState> {
           state = state.copyWith(rideInitialized: true);
         }
         bool driverArrived = false;
+        bool driverArrivedToDestination = false;
         if (!state.driverArrived) {
           driverArrived = isDriverArrived(ride);
+        }
+        if (!state.driverArrivedToDestination) {
+          driverArrivedToDestination = isDriverArrivedToDestination(ride);
         }
 
         if (!state.driverArrived && driverArrived) {
           mapEventToState(
             RideEvent.driverArrived(
+              ride,
+              Duration(days: 1),
+            ),
+          );
+        }
+
+        if (!state.driverArrivedToDestination && driverArrivedToDestination) {
+          mapEventToState(
+            RideEvent.driverArrivedToDestination(
               ride,
               Duration(days: 1),
             ),
@@ -94,6 +107,8 @@ class RideController extends StateNotifier<RideState> {
         await _rideService.startRide(
           state.currentRide!.id,
         );
+
+        state = state.copyWith(rideStarted: true);
       },
       rideAccepted: (event) async {},
       rideDenied: (event) async {},
@@ -127,6 +142,22 @@ class RideController extends StateNotifier<RideState> {
   }
 
   isDriverArrived(Ride ride) {
+    final distance = calculateDistance(
+          ride.driverLat!,
+          ride.driverLng!,
+          ride.startLat,
+          ride.startLng,
+        ) *
+        1000.round();
+
+    if (distance <= 40) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isDriverArrivedToDestination(Ride ride) {
     final distance = calculateDistance(
           ride.driverLat!,
           ride.driverLng!,
