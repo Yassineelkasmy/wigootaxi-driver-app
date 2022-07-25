@@ -15,6 +15,7 @@ class DriverService {
   updateLocation({
     required double lat,
     required double lng,
+    required bool isDriving,
     String? currentRideId,
   }) async {
     final lastTs = FieldValue.serverTimestamp();
@@ -34,16 +35,30 @@ class DriverService {
         },
       );
       if (currentRideId != null) {
-        FirebaseFirestore.instance
-            .collection('rides')
-            .doc(currentRideId)
-            .update(
-          {
-            'currentDriverLocation': location,
-            'lastDriverTs': lastTs,
-            'lastDriverSeconds': lastSeconds,
-          },
-        );
+        if (isDriving) {
+          FirebaseFirestore.instance
+              .collection('rides')
+              .doc(currentRideId)
+              .update(
+            {
+              'currentDriverLocation': location,
+              'lastDriverTs': lastTs,
+              'lastDriverSeconds': lastSeconds,
+              'path': FieldValue.arrayUnion(["$lat,$lng"]),
+            },
+          );
+        } else {
+          FirebaseFirestore.instance
+              .collection('rides')
+              .doc(currentRideId)
+              .update(
+            {
+              'currentDriverLocation': location,
+              'lastDriverTs': lastTs,
+              'lastDriverSeconds': lastSeconds,
+            },
+          );
+        }
       }
     } catch (e) {
       print(e);

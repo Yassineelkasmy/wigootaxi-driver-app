@@ -51,7 +51,7 @@ class RideRootPage extends HookConsumerWidget {
           ),
           parallaxEnabled: true,
           parallaxOffset: .5,
-          minHeight: locationState.position != null ? .3.sh : 0,
+          minHeight: locationState.position != null ? .35.sh : 0,
           body: ActivateLocationOrRideMapPage(
             userRecord: userRecord,
           ),

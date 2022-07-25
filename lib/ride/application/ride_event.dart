@@ -11,6 +11,10 @@ class RideEvent with _$RideEvent {
     Ride ride,
     Duration driverArrivalDuration,
   ) = DriverArrived;
+  const factory RideEvent.driverArrivedToDestination(
+    Ride ride,
+    Duration driverDestinationArrivalDuration,
+  ) = DriverArrivedToDestination;
   const factory RideEvent.rideCancelledByUser() = RideCancelledByUser;
   const factory RideEvent.rideCancelledByDriver() = RideCancelledByDriver;
   const factory RideEvent.rideStarted() = RideStarted;

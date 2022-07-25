@@ -13,6 +13,7 @@ void locationIsolate(String message) async {
 
   final prefs = await SharedPreferences.getInstance();
   bool isOnline = prefs.getBool(isOnlineKey) ?? false;
+  bool isDriving = prefs.getBool(isDrivingKey) ?? false;
 
   final driverService = DriverService();
 
@@ -32,6 +33,7 @@ void locationIsolate(String message) async {
         driverService.updateLocation(
           lat: locationController.state.position?.latitude ?? 0,
           lng: locationController.state.position?.longitude ?? 0,
+          isDriving: isDriving,
           currentRideId: currentRide,
         );
       }

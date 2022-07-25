@@ -65,6 +65,11 @@ class DriverController extends StateNotifier<DriverState> {
         currentRideKey,
         state.currentRide!,
       );
+
+      _prefs.setBool(
+        isDrivingKey,
+        true,
+      );
     });
   }
 }

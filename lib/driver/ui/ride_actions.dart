@@ -19,7 +19,7 @@ class RideActions extends HookConsumerWidget {
     ref.listen<RideState>(
       rideProvider,
       (previous, next) {
-        if (previous?.driverArrived != next.driverArrived) {
+        if (next.driverArrived) {
           if (!countDownStarted) {
             countDownStarted = true;
             endTime.value = 60;
@@ -59,13 +59,13 @@ class RideActions extends HookConsumerWidget {
           ],
         ),
         5.h.verticalSpace,
-        if (showCountDown.value)
+        if (driverArrived && !driverCanCancell)
           Countdown(
             onFinished: () {
               showCountDown.value = false;
               rideController.mapEventToState(RideEvent.driverCancellTimeOff());
             },
-            seconds: endTime.value!,
+            seconds: endTime.value,
             build: (context, second) {
               final seconds = second.toInt();
               final duration = Duration(seconds: seconds);

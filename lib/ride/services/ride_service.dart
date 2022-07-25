@@ -50,8 +50,25 @@ class RideService {
     await collectionRef.doc(rideId).update(
       {
         'started': true,
+        'driving': true,
         'startedAt': FieldValue.serverTimestamp(),
       },
     );
+  }
+
+  Future<void> declareDriverDestinationArrival({
+    required Duration duration,
+    required Ride ride,
+  }) async {
+    try {
+      collectionRef.doc(ride.id).update(
+        {
+          'driverArrivedToDestination': true,
+          'driving': false,
+          'driverArrivedToDestinationDuration': duration.inMinutes,
+          'driverArrivedToDestinationAt': FieldValue.serverTimestamp(),
+        },
+      );
+    } catch (e) {}
   }
 }
