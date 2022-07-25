@@ -116,7 +116,7 @@ class RideController extends StateNotifier<RideState> {
         ) *
         1000.round();
 
-    if (distance <= 30) {
+    if (distance <= 40) {
       return true;
     } else {
       return false;

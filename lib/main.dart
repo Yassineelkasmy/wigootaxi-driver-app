@@ -23,7 +23,11 @@ Future<void> main() async {
   final user = FirebaseAuth.instance.currentUser;
   if (user != null) {
     await firebaseMessaging.subscribeToTopic(user.uid);
-    firebaseMessaging.requestPermission(alert: true, badge: true, sound: true);
+    firebaseMessaging.requestPermission(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
   }
 }
 

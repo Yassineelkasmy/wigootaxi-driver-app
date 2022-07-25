@@ -9,6 +9,7 @@ class Ride with _$Ride {
     required String id,
     required String driverUid,
     required String userUid,
+    required List<String> path,
     double? driverLat,
     double? driverLng,
     double? userLat,

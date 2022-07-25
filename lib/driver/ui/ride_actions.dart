@@ -46,7 +46,7 @@ class RideActions extends HookConsumerWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            if (driverDistanceFromStart <= 30)
+            if (driverDistanceFromStart <= 40)
               Expanded(
                 child: SubmitButton(
                   onPressed: () {

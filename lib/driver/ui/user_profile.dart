@@ -3,15 +3,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:timer_count_down/timer_count_down.dart';
 import 'package:wigootaxidriver/application/providers/location/location_provider.dart';
 import 'package:wigootaxidriver/driver/domain/driver_record.dart';
 import 'package:wigootaxidriver/driver/ui/ride_actions.dart';
-import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 import 'package:wigootaxidriver/providers/ride_provider.dart';
-import 'package:wigootaxidriver/ride/application/ride_event.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wigootaxidriver/ride/application/ride_state.dart';
 

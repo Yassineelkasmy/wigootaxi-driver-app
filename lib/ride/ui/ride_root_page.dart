@@ -35,6 +35,13 @@ class RideRootPage extends HookConsumerWidget {
       },
       child: Scaffold(
         body: SlidingUpPanel(
+          padding: EdgeInsets.symmetric(
+            horizontal: 5.w,
+          ),
+          margin: EdgeInsets.symmetric(
+            horizontal: 20.w,
+            vertical: 20.h,
+          ),
           borderRadius: BorderRadius.circular(15),
           maxHeight: .8.sh,
           panel: UserProfile(
