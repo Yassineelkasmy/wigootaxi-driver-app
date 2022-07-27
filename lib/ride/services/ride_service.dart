@@ -43,6 +43,8 @@ class RideService {
         'driverArrived': true,
         'driverArrivedAt': FieldValue.serverTimestamp(),
         'driverArriveDuration': duration.inSeconds,
+        'pathToDestination': ride.path,
+        'path': [],
       });
     } catch (e) {}
   }

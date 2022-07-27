@@ -23,6 +23,11 @@ class _$RideTearOff {
       required String driverUid,
       required String userUid,
       required List<String> path,
+      required List<String> pathToStart,
+      required String disttext,
+      required String durtext,
+      required int distance,
+      required int duration,
       required DateTime driverPickedAt,
       double? driverLat,
       double? driverLng,
@@ -49,6 +54,11 @@ class _$RideTearOff {
       driverUid: driverUid,
       userUid: userUid,
       path: path,
+      pathToStart: pathToStart,
+      disttext: disttext,
+      durtext: durtext,
+      distance: distance,
+      duration: duration,
       driverPickedAt: driverPickedAt,
       driverLat: driverLat,
       driverLng: driverLng,
@@ -83,6 +93,11 @@ mixin _$Ride {
   String get driverUid => throw _privateConstructorUsedError;
   String get userUid => throw _privateConstructorUsedError;
   List<String> get path => throw _privateConstructorUsedError;
+  List<String> get pathToStart => throw _privateConstructorUsedError;
+  String get disttext => throw _privateConstructorUsedError;
+  String get durtext => throw _privateConstructorUsedError;
+  int get distance => throw _privateConstructorUsedError;
+  int get duration => throw _privateConstructorUsedError;
   DateTime get driverPickedAt => throw _privateConstructorUsedError;
   double? get driverLat => throw _privateConstructorUsedError;
   double? get driverLng => throw _privateConstructorUsedError;
@@ -118,6 +133,11 @@ abstract class $RideCopyWith<$Res> {
       String driverUid,
       String userUid,
       List<String> path,
+      List<String> pathToStart,
+      String disttext,
+      String durtext,
+      int distance,
+      int duration,
       DateTime driverPickedAt,
       double? driverLat,
       double? driverLng,
@@ -155,6 +175,11 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
     Object? driverUid = freezed,
     Object? userUid = freezed,
     Object? path = freezed,
+    Object? pathToStart = freezed,
+    Object? disttext = freezed,
+    Object? durtext = freezed,
+    Object? distance = freezed,
+    Object? duration = freezed,
     Object? driverPickedAt = freezed,
     Object? driverLat = freezed,
     Object? driverLng = freezed,
@@ -194,6 +219,26 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      pathToStart: pathToStart == freezed
+          ? _value.pathToStart
+          : pathToStart // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      disttext: disttext == freezed
+          ? _value.disttext
+          : disttext // ignore: cast_nullable_to_non_nullable
+              as String,
+      durtext: durtext == freezed
+          ? _value.durtext
+          : durtext // ignore: cast_nullable_to_non_nullable
+              as String,
+      distance: distance == freezed
+          ? _value.distance
+          : distance // ignore: cast_nullable_to_non_nullable
+              as int,
+      duration: duration == freezed
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as int,
       driverPickedAt: driverPickedAt == freezed
           ? _value.driverPickedAt
           : driverPickedAt // ignore: cast_nullable_to_non_nullable
@@ -292,6 +337,11 @@ abstract class _$RideCopyWith<$Res> implements $RideCopyWith<$Res> {
       String driverUid,
       String userUid,
       List<String> path,
+      List<String> pathToStart,
+      String disttext,
+      String durtext,
+      int distance,
+      int duration,
       DateTime driverPickedAt,
       double? driverLat,
       double? driverLng,
@@ -330,6 +380,11 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
     Object? driverUid = freezed,
     Object? userUid = freezed,
     Object? path = freezed,
+    Object? pathToStart = freezed,
+    Object? disttext = freezed,
+    Object? durtext = freezed,
+    Object? distance = freezed,
+    Object? duration = freezed,
     Object? driverPickedAt = freezed,
     Object? driverLat = freezed,
     Object? driverLng = freezed,
@@ -369,6 +424,26 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      pathToStart: pathToStart == freezed
+          ? _value.pathToStart
+          : pathToStart // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      disttext: disttext == freezed
+          ? _value.disttext
+          : disttext // ignore: cast_nullable_to_non_nullable
+              as String,
+      durtext: durtext == freezed
+          ? _value.durtext
+          : durtext // ignore: cast_nullable_to_non_nullable
+              as String,
+      distance: distance == freezed
+          ? _value.distance
+          : distance // ignore: cast_nullable_to_non_nullable
+              as int,
+      duration: duration == freezed
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as int,
       driverPickedAt: driverPickedAt == freezed
           ? _value.driverPickedAt
           : driverPickedAt // ignore: cast_nullable_to_non_nullable
@@ -465,6 +540,11 @@ class _$_Ride implements _Ride {
       required this.driverUid,
       required this.userUid,
       required this.path,
+      required this.pathToStart,
+      required this.disttext,
+      required this.durtext,
+      required this.distance,
+      required this.duration,
       required this.driverPickedAt,
       this.driverLat,
       this.driverLng,
@@ -495,6 +575,16 @@ class _$_Ride implements _Ride {
   final String userUid;
   @override
   final List<String> path;
+  @override
+  final List<String> pathToStart;
+  @override
+  final String disttext;
+  @override
+  final String durtext;
+  @override
+  final int distance;
+  @override
+  final int duration;
   @override
   final DateTime driverPickedAt;
   @override
@@ -540,7 +630,7 @@ class _$_Ride implements _Ride {
 
   @override
   String toString() {
-    return 'Ride(id: $id, driverUid: $driverUid, userUid: $userUid, path: $path, driverPickedAt: $driverPickedAt, driverLat: $driverLat, driverLng: $driverLng, userLat: $userLat, userLng: $userLng, destinationLng: $destinationLng, destinationLat: $destinationLat, startLng: $startLng, startLat: $startLat, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, start: $start, destination: $destination, cancelledByUser: $cancelledByUser, driverArrived: $driverArrived, started: $started, driving: $driving, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, rideDuration: $rideDuration)';
+    return 'Ride(id: $id, driverUid: $driverUid, userUid: $userUid, path: $path, pathToStart: $pathToStart, disttext: $disttext, durtext: $durtext, distance: $distance, duration: $duration, driverPickedAt: $driverPickedAt, driverLat: $driverLat, driverLng: $driverLng, userLat: $userLat, userLng: $userLng, destinationLng: $destinationLng, destinationLat: $destinationLat, startLng: $startLng, startLat: $startLat, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, start: $start, destination: $destination, cancelledByUser: $cancelledByUser, driverArrived: $driverArrived, started: $started, driving: $driving, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, rideDuration: $rideDuration)';
   }
 
   @override
@@ -552,6 +642,12 @@ class _$_Ride implements _Ride {
             const DeepCollectionEquality().equals(other.driverUid, driverUid) &&
             const DeepCollectionEquality().equals(other.userUid, userUid) &&
             const DeepCollectionEquality().equals(other.path, path) &&
+            const DeepCollectionEquality()
+                .equals(other.pathToStart, pathToStart) &&
+            const DeepCollectionEquality().equals(other.disttext, disttext) &&
+            const DeepCollectionEquality().equals(other.durtext, durtext) &&
+            const DeepCollectionEquality().equals(other.distance, distance) &&
+            const DeepCollectionEquality().equals(other.duration, duration) &&
             const DeepCollectionEquality()
                 .equals(other.driverPickedAt, driverPickedAt) &&
             const DeepCollectionEquality().equals(other.driverLat, driverLat) &&
@@ -594,6 +690,11 @@ class _$_Ride implements _Ride {
         const DeepCollectionEquality().hash(driverUid),
         const DeepCollectionEquality().hash(userUid),
         const DeepCollectionEquality().hash(path),
+        const DeepCollectionEquality().hash(pathToStart),
+        const DeepCollectionEquality().hash(disttext),
+        const DeepCollectionEquality().hash(durtext),
+        const DeepCollectionEquality().hash(distance),
+        const DeepCollectionEquality().hash(duration),
         const DeepCollectionEquality().hash(driverPickedAt),
         const DeepCollectionEquality().hash(driverLat),
         const DeepCollectionEquality().hash(driverLng),
@@ -629,6 +730,11 @@ abstract class _Ride implements Ride {
       required String driverUid,
       required String userUid,
       required List<String> path,
+      required List<String> pathToStart,
+      required String disttext,
+      required String durtext,
+      required int distance,
+      required int duration,
       required DateTime driverPickedAt,
       double? driverLat,
       double? driverLng,
@@ -659,6 +765,16 @@ abstract class _Ride implements Ride {
   String get userUid;
   @override
   List<String> get path;
+  @override
+  List<String> get pathToStart;
+  @override
+  String get disttext;
+  @override
+  String get durtext;
+  @override
+  int get distance;
+  @override
+  int get duration;
   @override
   DateTime get driverPickedAt;
   @override

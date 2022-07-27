@@ -151,7 +151,7 @@ class RideMapState extends ConsumerState<RideMap> {
         LatLngBounds(
             southwest: LatLng(minLat, minLong),
             northeast: LatLng(maxLat, maxLong)),
-        50,
+        100,
       ),
     );
   }
@@ -238,12 +238,24 @@ class RideMapState extends ConsumerState<RideMap> {
             bound =
                 LatLngBounds(southwest: driverLatLng, northeast: driverTarget);
           }
-          await _createPolylines(
-            driverLatLng.latitude,
-            driverLatLng.longitude,
-            driverTarget.latitude,
-            driverTarget.longitude,
-          );
+
+          if (!rideStarted) {
+            await _createPolylines(
+              driverLatLng.latitude,
+              driverLatLng.longitude,
+              driverTarget.latitude,
+              driverTarget.longitude,
+            );
+          }
+
+          if (rideStarted) {
+            await _createPolylines(
+              startLatLng.latitude,
+              startLatLng.longitude,
+              destinationLatLng.latitude,
+              destinationLatLng.longitude,
+            );
+          }
 
           await _createRoutePolyLines(
             stringPathToCoordinates(

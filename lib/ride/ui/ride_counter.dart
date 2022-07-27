@@ -12,30 +12,79 @@ class RideCounter extends HookConsumerWidget {
 
     return Align(
       alignment: Alignment.topCenter,
-      child: Row(
-        children: [
-          Image.asset(
-            'assets/icons/distance.png',
-            height: 24.h,
-            width: 24.w,
-          ),
-          4.w.horizontalSpace,
-          Text(
-            'Parcourue : ${rideState.distanceTravelled} Mètres',
-            style: TextStyle(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 10.w,
+          vertical: 10.h,
+        ),
+        child: TextButton(
+          style: TextButton.styleFrom(
+            elevation: 8,
+            backgroundColor: Colors.white,
+            padding: EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 15,
             ),
           ),
-          4.w.horizontalSpace,
-          Text(
-            'Destination : ${rideState.driverDistanceFromDestination} Mètres',
-            style: TextStyle(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold,
-            ),
+          onPressed: () {},
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset(
+                    'assets/icons/distance.png',
+                    height: 24.h,
+                    width: 24.w,
+                  ),
+                  4.w.horizontalSpace,
+                  Text(
+                    'Destination : ${rideState.driverDistanceFromDestination} Mètres',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  4.w.horizontalSpace,
+                  Text(
+                    'Parcourue : ${rideState.distanceTravelled} Mètres',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    Icons.monetization_on_outlined,
+                  ),
+                  4.w.horizontalSpace,
+                  Text(
+                    'Montant : ${((rideState.distanceTravelled / 1000) * 20).toStringAsFixed(2)} DH',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  // 4.w.horizontalSpace,
+                  // Text(
+                  //   'Parcourue : ${rideState.distanceTravelled} Mètres',
+                  //   style: TextStyle(
+                  //     fontSize: 14.sp,
+                  //     fontWeight: FontWeight.bold,
+                  //     color: Colors.green,
+                  //   ),
+                  // ),
+                ],
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
