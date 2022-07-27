@@ -48,7 +48,8 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
                     ),
                   ),
                 ],
-              ))
+              ),
+            )
           : SizedBox(
               height: double.maxFinite,
               child: Padding(

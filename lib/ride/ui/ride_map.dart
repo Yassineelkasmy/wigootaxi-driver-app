@@ -8,6 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/providers/ride_provider.dart';
 import 'package:wigootaxidriver/ride/application/ride_state.dart';
+import 'package:wigootaxidriver/ride/ui/ride_counter.dart';
 import 'package:wigootaxidriver/ride/ui/ride_location_indicator.dart';
 import 'package:wigootaxidriver/shared/helpers/serialize_coordinates_path.dart';
 
@@ -291,7 +292,7 @@ class RideMapState extends ConsumerState<RideMap> {
           ),
         ),
         Positioned.fill(
-          child: RideLocationIndicator(),
+          child: rideStarted ? RideCounter() : RideLocationIndicator(),
         ),
       ],
     );
