@@ -6,6 +6,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:wigootaxidriver/application/providers/location/location_provider.dart';
 import 'package:wigootaxidriver/driver/domain/driver_record.dart';
 import 'package:wigootaxidriver/driver/ui/user_profile.dart';
+import 'package:wigootaxidriver/providers/ride_provider.dart';
 import 'package:wigootaxidriver/ride/ui/activate_location_or_ride_map_page.dart';
 
 class RideRootPage extends HookConsumerWidget {
@@ -18,6 +19,7 @@ class RideRootPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locationState = ref.watch(locationProvider);
+    final rideState = ref.watch(rideProvider);
     return WillPopScope(
       onWillPop: () async {
         final okCancell = await showOkCancelAlertDialog(
@@ -51,7 +53,11 @@ class RideRootPage extends HookConsumerWidget {
           ),
           parallaxEnabled: true,
           parallaxOffset: .5,
-          minHeight: locationState.position != null ? .35.sh : 0,
+          minHeight: locationState.position == null
+              ? 0
+              : !rideState.rideStarted
+                  ? .35.sh
+                  : 0.25.sh,
           body: ActivateLocationOrRideMapPage(
             userRecord: userRecord,
           ),

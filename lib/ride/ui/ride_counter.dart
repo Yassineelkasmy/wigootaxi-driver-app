@@ -40,7 +40,16 @@ class RideCounter extends HookConsumerWidget {
                   ),
                   4.w.horizontalSpace,
                   Text(
-                    'Destination : ${rideState.driverDistanceFromDestination} Mètres',
+                    'Estimée : ${rideState.currentRide!.disttext}',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  4.w.horizontalSpace,
+                  Text(
+                    'Destination : ${(rideState.driverDistanceFromDestination / 1000).toStringAsFixed(1)} km',
                     style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
@@ -48,7 +57,7 @@ class RideCounter extends HookConsumerWidget {
                   ),
                   4.w.horizontalSpace,
                   Text(
-                    'Parcourue : ${rideState.distanceTravelled} Mètres',
+                    'Parcourue : ${rideState.distanceTravelled} m',
                     style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
@@ -65,10 +74,20 @@ class RideCounter extends HookConsumerWidget {
                   ),
                   4.w.horizontalSpace,
                   Text(
+                    'Estimé : ${((rideState.currentRide!.distance / 1000) * 20).toStringAsFixed(2)} DH',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  4.w.horizontalSpace,
+                  Text(
                     'Montant : ${((rideState.distanceTravelled / 1000) * 20).toStringAsFixed(2)} DH',
                     style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
+                      color: Colors.green,
                     ),
                   ),
                   // 4.w.horizontalSpace,
