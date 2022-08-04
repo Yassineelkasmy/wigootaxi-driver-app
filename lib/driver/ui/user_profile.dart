@@ -69,6 +69,15 @@ class _UserProfileState extends ConsumerState<UserProfile> {
       },
     );
 
+    ref.listen<RideState>(
+      rideProvider,
+      (previous, next) {
+        if (previous?.rideStarted != next.rideStarted && next.rideStarted) {
+          stopWatchTimer.onExecute.add(StopWatchExecute.start);
+        }
+      },
+    );
+
     return MediaQuery.removePadding(
       context: context,
       removeTop: true,
@@ -123,6 +132,7 @@ class _UserProfileState extends ConsumerState<UserProfile> {
               10.h.verticalSpace,
               if (rideState.rideStarted)
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       '${((rideState.distanceTravelled / 1000) * 20).toStringAsFixed(2)} DH',
@@ -139,6 +149,7 @@ class _UserProfileState extends ConsumerState<UserProfile> {
                         return Text(
                           StopWatchTimer.getDisplayTime(
                             snap.data!,
+                            milliSecond: false,
                           ),
                           style: TextStyle(
                             fontSize: 24.sp,

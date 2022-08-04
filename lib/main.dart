@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_callkit_incoming/flutter_callkit_incoming.dart';
+import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:uuid/uuid.dart';
 import 'package:wigootaxidriver/firebase_options.dart';
@@ -32,15 +34,24 @@ Future<void> main() async {
 }
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print('msggggg: ${message.data} ');
   final data = message.data;
+  final geo = Geoflutterfire();
   final type = (data['type'] as String?);
   if (type != null) {
     if (type == 'booking') {
       final username = data['username'] as String;
       final start = data['start'] as String;
+
+      final startLat = double.tryParse(data['startLat'] as String)!;
+      final startLng = double.tryParse(data['startLng'] as String)!;
+      final driverLat = double.tryParse(data['driverLat'] as String)!;
+      final driverLng = double.tryParse(data['driverLng'] as String)!;
       final destination = data['destination'] as String;
-      final distance = data['distance'] as String;
+      final distance =
+          geo.point(latitude: startLat, longitude: startLng).kmDistance(
+                lat: driverLat,
+                lng: driverLng,
+              );
       final duration = data['duration'] as String;
 
       var params = <String, dynamic>{
@@ -50,7 +61,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
         'avatar':
             'https://firebasestorage.googleapis.com/v0/b/taxi-app-user-4800a.appspot.com/o/logo_white.png?alt=media&token=85d66b37-fe3d-4dfa-9b34-c8a1228e879d',
         'handle':
-            'Localisation:\n$start\nDestination:\n$destination\nDistance:\n$distance\nDurée de trajet:\n$duration',
+            'Localisation:\n$start\nDestination:\n$destination\nDistance:\n$distance km\nDurée de trajet:\n$duration',
         'type': 0,
         'duration': 100000,
         'textAccept': 'Accepter',

@@ -30,6 +30,8 @@ class DriverService {
       await docRef.update(
         {
           'location': location,
+          'lat': lat,
+          'lng': lng,
           'lastTs': lastTs,
           'lastSeconds': lastSeconds,
         },
