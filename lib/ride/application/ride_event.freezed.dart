@@ -41,8 +41,10 @@ class _$RideEventTearOff {
     return const RideCancelledByUser();
   }
 
-  RideCancelledByDriver rideCancelledByDriver() {
-    return const RideCancelledByDriver();
+  RideCancelledByDriver rideCancelledByDriver({required bool beforeTimeOut}) {
+    return RideCancelledByDriver(
+      beforeTimeOut: beforeTimeOut,
+    );
   }
 
   RideStarted rideStarted() {
@@ -53,8 +55,15 @@ class _$RideEventTearOff {
     return const UserPicked();
   }
 
-  RideFinished rideFinished() {
-    return const RideFinished();
+  RideFinished rideFinished(
+      {required double totalPrice,
+      required int totalDistance,
+      required Duration totalDuration}) {
+    return RideFinished(
+      totalPrice: totalPrice,
+      totalDistance: totalDistance,
+      totalDuration: totalDuration,
+    );
   }
 
   RideDnied rideDenied() {
@@ -86,10 +95,12 @@ mixin _$RideEvent {
             Ride ride, Duration driverDestinationArrivalDuration)
         driverArrivedToDestination,
     required TResult Function() rideCancelledByUser,
-    required TResult Function() rideCancelledByDriver,
+    required TResult Function(bool beforeTimeOut) rideCancelledByDriver,
     required TResult Function() rideStarted,
     required TResult Function() userPicked,
-    required TResult Function() rideFinished,
+    required TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)
+        rideFinished,
     required TResult Function() rideDenied,
     required TResult Function() driverCancellTimeOff,
     required TResult Function(String rideId) rideInitialized,
@@ -102,10 +113,12 @@ mixin _$RideEvent {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -118,10 +131,12 @@ mixin _$RideEvent {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -248,10 +263,12 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
             Ride ride, Duration driverDestinationArrivalDuration)
         driverArrivedToDestination,
     required TResult Function() rideCancelledByUser,
-    required TResult Function() rideCancelledByDriver,
+    required TResult Function(bool beforeTimeOut) rideCancelledByDriver,
     required TResult Function() rideStarted,
     required TResult Function() userPicked,
-    required TResult Function() rideFinished,
+    required TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)
+        rideFinished,
     required TResult Function() rideDenied,
     required TResult Function() driverCancellTimeOff,
     required TResult Function(String rideId) rideInitialized,
@@ -267,10 +284,12 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -286,10 +305,12 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -469,10 +490,12 @@ class _$DriverArrived with DiagnosticableTreeMixin implements DriverArrived {
             Ride ride, Duration driverDestinationArrivalDuration)
         driverArrivedToDestination,
     required TResult Function() rideCancelledByUser,
-    required TResult Function() rideCancelledByDriver,
+    required TResult Function(bool beforeTimeOut) rideCancelledByDriver,
     required TResult Function() rideStarted,
     required TResult Function() userPicked,
-    required TResult Function() rideFinished,
+    required TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)
+        rideFinished,
     required TResult Function() rideDenied,
     required TResult Function() driverCancellTimeOff,
     required TResult Function(String rideId) rideInitialized,
@@ -488,10 +511,12 @@ class _$DriverArrived with DiagnosticableTreeMixin implements DriverArrived {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -507,10 +532,12 @@ class _$DriverArrived with DiagnosticableTreeMixin implements DriverArrived {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -705,10 +732,12 @@ class _$DriverArrivedToDestination
             Ride ride, Duration driverDestinationArrivalDuration)
         driverArrivedToDestination,
     required TResult Function() rideCancelledByUser,
-    required TResult Function() rideCancelledByDriver,
+    required TResult Function(bool beforeTimeOut) rideCancelledByDriver,
     required TResult Function() rideStarted,
     required TResult Function() userPicked,
-    required TResult Function() rideFinished,
+    required TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)
+        rideFinished,
     required TResult Function() rideDenied,
     required TResult Function() driverCancellTimeOff,
     required TResult Function(String rideId) rideInitialized,
@@ -724,10 +753,12 @@ class _$DriverArrivedToDestination
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -744,10 +775,12 @@ class _$DriverArrivedToDestination
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -891,10 +924,12 @@ class _$RideCancelledByUser
             Ride ride, Duration driverDestinationArrivalDuration)
         driverArrivedToDestination,
     required TResult Function() rideCancelledByUser,
-    required TResult Function() rideCancelledByDriver,
+    required TResult Function(bool beforeTimeOut) rideCancelledByDriver,
     required TResult Function() rideStarted,
     required TResult Function() userPicked,
-    required TResult Function() rideFinished,
+    required TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)
+        rideFinished,
     required TResult Function() rideDenied,
     required TResult Function() driverCancellTimeOff,
     required TResult Function(String rideId) rideInitialized,
@@ -910,10 +945,12 @@ class _$RideCancelledByUser
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -929,10 +966,12 @@ class _$RideCancelledByUser
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -1016,6 +1055,7 @@ abstract class $RideCancelledByDriverCopyWith<$Res> {
   factory $RideCancelledByDriverCopyWith(RideCancelledByDriver value,
           $Res Function(RideCancelledByDriver) then) =
       _$RideCancelledByDriverCopyWithImpl<$Res>;
+  $Res call({bool beforeTimeOut});
 }
 
 /// @nodoc
@@ -1028,6 +1068,18 @@ class _$RideCancelledByDriverCopyWithImpl<$Res>
 
   @override
   RideCancelledByDriver get _value => super._value as RideCancelledByDriver;
+
+  @override
+  $Res call({
+    Object? beforeTimeOut = freezed,
+  }) {
+    return _then(RideCancelledByDriver(
+      beforeTimeOut: beforeTimeOut == freezed
+          ? _value.beforeTimeOut
+          : beforeTimeOut // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
@@ -1035,28 +1087,42 @@ class _$RideCancelledByDriverCopyWithImpl<$Res>
 class _$RideCancelledByDriver
     with DiagnosticableTreeMixin
     implements RideCancelledByDriver {
-  const _$RideCancelledByDriver();
+  const _$RideCancelledByDriver({required this.beforeTimeOut});
+
+  @override
+  final bool beforeTimeOut;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RideEvent.rideCancelledByDriver()';
+    return 'RideEvent.rideCancelledByDriver(beforeTimeOut: $beforeTimeOut)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'RideEvent.rideCancelledByDriver'));
+      ..add(DiagnosticsProperty('type', 'RideEvent.rideCancelledByDriver'))
+      ..add(DiagnosticsProperty('beforeTimeOut', beforeTimeOut));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is RideCancelledByDriver);
+        (other.runtimeType == runtimeType &&
+            other is RideCancelledByDriver &&
+            const DeepCollectionEquality()
+                .equals(other.beforeTimeOut, beforeTimeOut));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(beforeTimeOut));
+
+  @JsonKey(ignore: true)
+  @override
+  $RideCancelledByDriverCopyWith<RideCancelledByDriver> get copyWith =>
+      _$RideCancelledByDriverCopyWithImpl<RideCancelledByDriver>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1068,15 +1134,17 @@ class _$RideCancelledByDriver
             Ride ride, Duration driverDestinationArrivalDuration)
         driverArrivedToDestination,
     required TResult Function() rideCancelledByUser,
-    required TResult Function() rideCancelledByDriver,
+    required TResult Function(bool beforeTimeOut) rideCancelledByDriver,
     required TResult Function() rideStarted,
     required TResult Function() userPicked,
-    required TResult Function() rideFinished,
+    required TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)
+        rideFinished,
     required TResult Function() rideDenied,
     required TResult Function() driverCancellTimeOff,
     required TResult Function(String rideId) rideInitialized,
   }) {
-    return rideCancelledByDriver();
+    return rideCancelledByDriver(beforeTimeOut);
   }
 
   @override
@@ -1087,15 +1155,17 @@ class _$RideCancelledByDriver
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
   }) {
-    return rideCancelledByDriver?.call();
+    return rideCancelledByDriver?.call(beforeTimeOut);
   }
 
   @override
@@ -1106,17 +1176,19 @@ class _$RideCancelledByDriver
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
     required TResult orElse(),
   }) {
     if (rideCancelledByDriver != null) {
-      return rideCancelledByDriver();
+      return rideCancelledByDriver(beforeTimeOut);
     }
     return orElse();
   }
@@ -1185,7 +1257,13 @@ class _$RideCancelledByDriver
 }
 
 abstract class RideCancelledByDriver implements RideEvent {
-  const factory RideCancelledByDriver() = _$RideCancelledByDriver;
+  const factory RideCancelledByDriver({required bool beforeTimeOut}) =
+      _$RideCancelledByDriver;
+
+  bool get beforeTimeOut;
+  @JsonKey(ignore: true)
+  $RideCancelledByDriverCopyWith<RideCancelledByDriver> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1241,10 +1319,12 @@ class _$RideStarted with DiagnosticableTreeMixin implements RideStarted {
             Ride ride, Duration driverDestinationArrivalDuration)
         driverArrivedToDestination,
     required TResult Function() rideCancelledByUser,
-    required TResult Function() rideCancelledByDriver,
+    required TResult Function(bool beforeTimeOut) rideCancelledByDriver,
     required TResult Function() rideStarted,
     required TResult Function() userPicked,
-    required TResult Function() rideFinished,
+    required TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)
+        rideFinished,
     required TResult Function() rideDenied,
     required TResult Function() driverCancellTimeOff,
     required TResult Function(String rideId) rideInitialized,
@@ -1260,10 +1340,12 @@ class _$RideStarted with DiagnosticableTreeMixin implements RideStarted {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -1279,10 +1361,12 @@ class _$RideStarted with DiagnosticableTreeMixin implements RideStarted {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -1413,10 +1497,12 @@ class _$UserPicked with DiagnosticableTreeMixin implements UserPicked {
             Ride ride, Duration driverDestinationArrivalDuration)
         driverArrivedToDestination,
     required TResult Function() rideCancelledByUser,
-    required TResult Function() rideCancelledByDriver,
+    required TResult Function(bool beforeTimeOut) rideCancelledByDriver,
     required TResult Function() rideStarted,
     required TResult Function() userPicked,
-    required TResult Function() rideFinished,
+    required TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)
+        rideFinished,
     required TResult Function() rideDenied,
     required TResult Function() driverCancellTimeOff,
     required TResult Function(String rideId) rideInitialized,
@@ -1432,10 +1518,12 @@ class _$UserPicked with DiagnosticableTreeMixin implements UserPicked {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -1451,10 +1539,12 @@ class _$UserPicked with DiagnosticableTreeMixin implements UserPicked {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -1538,6 +1628,7 @@ abstract class $RideFinishedCopyWith<$Res> {
   factory $RideFinishedCopyWith(
           RideFinished value, $Res Function(RideFinished) then) =
       _$RideFinishedCopyWithImpl<$Res>;
+  $Res call({double totalPrice, int totalDistance, Duration totalDuration});
 }
 
 /// @nodoc
@@ -1549,32 +1640,84 @@ class _$RideFinishedCopyWithImpl<$Res> extends _$RideEventCopyWithImpl<$Res>
 
   @override
   RideFinished get _value => super._value as RideFinished;
+
+  @override
+  $Res call({
+    Object? totalPrice = freezed,
+    Object? totalDistance = freezed,
+    Object? totalDuration = freezed,
+  }) {
+    return _then(RideFinished(
+      totalPrice: totalPrice == freezed
+          ? _value.totalPrice
+          : totalPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      totalDistance: totalDistance == freezed
+          ? _value.totalDistance
+          : totalDistance // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalDuration: totalDuration == freezed
+          ? _value.totalDuration
+          : totalDuration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$RideFinished with DiagnosticableTreeMixin implements RideFinished {
-  const _$RideFinished();
+  const _$RideFinished(
+      {required this.totalPrice,
+      required this.totalDistance,
+      required this.totalDuration});
+
+  @override
+  final double totalPrice;
+  @override
+  final int totalDistance;
+  @override
+  final Duration totalDuration;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RideEvent.rideFinished()';
+    return 'RideEvent.rideFinished(totalPrice: $totalPrice, totalDistance: $totalDistance, totalDuration: $totalDuration)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'RideEvent.rideFinished'));
+    properties
+      ..add(DiagnosticsProperty('type', 'RideEvent.rideFinished'))
+      ..add(DiagnosticsProperty('totalPrice', totalPrice))
+      ..add(DiagnosticsProperty('totalDistance', totalDistance))
+      ..add(DiagnosticsProperty('totalDuration', totalDuration));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is RideFinished);
+        (other.runtimeType == runtimeType &&
+            other is RideFinished &&
+            const DeepCollectionEquality()
+                .equals(other.totalPrice, totalPrice) &&
+            const DeepCollectionEquality()
+                .equals(other.totalDistance, totalDistance) &&
+            const DeepCollectionEquality()
+                .equals(other.totalDuration, totalDuration));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(totalPrice),
+      const DeepCollectionEquality().hash(totalDistance),
+      const DeepCollectionEquality().hash(totalDuration));
+
+  @JsonKey(ignore: true)
+  @override
+  $RideFinishedCopyWith<RideFinished> get copyWith =>
+      _$RideFinishedCopyWithImpl<RideFinished>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1586,15 +1729,17 @@ class _$RideFinished with DiagnosticableTreeMixin implements RideFinished {
             Ride ride, Duration driverDestinationArrivalDuration)
         driverArrivedToDestination,
     required TResult Function() rideCancelledByUser,
-    required TResult Function() rideCancelledByDriver,
+    required TResult Function(bool beforeTimeOut) rideCancelledByDriver,
     required TResult Function() rideStarted,
     required TResult Function() userPicked,
-    required TResult Function() rideFinished,
+    required TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)
+        rideFinished,
     required TResult Function() rideDenied,
     required TResult Function() driverCancellTimeOff,
     required TResult Function(String rideId) rideInitialized,
   }) {
-    return rideFinished();
+    return rideFinished(totalPrice, totalDistance, totalDuration);
   }
 
   @override
@@ -1605,15 +1750,17 @@ class _$RideFinished with DiagnosticableTreeMixin implements RideFinished {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
   }) {
-    return rideFinished?.call();
+    return rideFinished?.call(totalPrice, totalDistance, totalDuration);
   }
 
   @override
@@ -1624,17 +1771,19 @@ class _$RideFinished with DiagnosticableTreeMixin implements RideFinished {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
     required TResult orElse(),
   }) {
     if (rideFinished != null) {
-      return rideFinished();
+      return rideFinished(totalPrice, totalDistance, totalDuration);
     }
     return orElse();
   }
@@ -1703,7 +1852,17 @@ class _$RideFinished with DiagnosticableTreeMixin implements RideFinished {
 }
 
 abstract class RideFinished implements RideEvent {
-  const factory RideFinished() = _$RideFinished;
+  const factory RideFinished(
+      {required double totalPrice,
+      required int totalDistance,
+      required Duration totalDuration}) = _$RideFinished;
+
+  double get totalPrice;
+  int get totalDistance;
+  Duration get totalDuration;
+  @JsonKey(ignore: true)
+  $RideFinishedCopyWith<RideFinished> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1757,10 +1916,12 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
             Ride ride, Duration driverDestinationArrivalDuration)
         driverArrivedToDestination,
     required TResult Function() rideCancelledByUser,
-    required TResult Function() rideCancelledByDriver,
+    required TResult Function(bool beforeTimeOut) rideCancelledByDriver,
     required TResult Function() rideStarted,
     required TResult Function() userPicked,
-    required TResult Function() rideFinished,
+    required TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)
+        rideFinished,
     required TResult Function() rideDenied,
     required TResult Function() driverCancellTimeOff,
     required TResult Function(String rideId) rideInitialized,
@@ -1776,10 +1937,12 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -1795,10 +1958,12 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -1934,10 +2099,12 @@ class _$DriverCancellTimeOff
             Ride ride, Duration driverDestinationArrivalDuration)
         driverArrivedToDestination,
     required TResult Function() rideCancelledByUser,
-    required TResult Function() rideCancelledByDriver,
+    required TResult Function(bool beforeTimeOut) rideCancelledByDriver,
     required TResult Function() rideStarted,
     required TResult Function() userPicked,
-    required TResult Function() rideFinished,
+    required TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)
+        rideFinished,
     required TResult Function() rideDenied,
     required TResult Function() driverCancellTimeOff,
     required TResult Function(String rideId) rideInitialized,
@@ -1953,10 +2120,12 @@ class _$DriverCancellTimeOff
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -1972,10 +2141,12 @@ class _$DriverCancellTimeOff
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -2136,10 +2307,12 @@ class _$RideInitilialized
             Ride ride, Duration driverDestinationArrivalDuration)
         driverArrivedToDestination,
     required TResult Function() rideCancelledByUser,
-    required TResult Function() rideCancelledByDriver,
+    required TResult Function(bool beforeTimeOut) rideCancelledByDriver,
     required TResult Function() rideStarted,
     required TResult Function() userPicked,
-    required TResult Function() rideFinished,
+    required TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)
+        rideFinished,
     required TResult Function() rideDenied,
     required TResult Function() driverCancellTimeOff,
     required TResult Function(String rideId) rideInitialized,
@@ -2155,10 +2328,12 @@ class _$RideInitilialized
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,
@@ -2174,10 +2349,12 @@ class _$RideInitilialized
     TResult Function(Ride ride, Duration driverDestinationArrivalDuration)?
         driverArrivedToDestination,
     TResult Function()? rideCancelledByUser,
-    TResult Function()? rideCancelledByDriver,
+    TResult Function(bool beforeTimeOut)? rideCancelledByDriver,
     TResult Function()? rideStarted,
     TResult Function()? userPicked,
-    TResult Function()? rideFinished,
+    TResult Function(
+            double totalPrice, int totalDistance, Duration totalDuration)?
+        rideFinished,
     TResult Function()? rideDenied,
     TResult Function()? driverCancellTimeOff,
     TResult Function(String rideId)? rideInitialized,

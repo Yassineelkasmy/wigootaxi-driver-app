@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:wigootaxidriver/driver/ui/ride_finished_page.dart';
 import 'package:wigootaxidriver/presentation/auth/login_page.dart';
 import 'package:wigootaxidriver/presentation/auth/phone_auth_page.dart';
 import 'package:wigootaxidriver/presentation/auth/phone_verification_page.dart';
@@ -24,6 +25,7 @@ import 'package:wigootaxidriver/ride/ui/ride_root_page.dart';
   AutoRoute(page: PhoneAuthPage),
   AutoRoute(page: IntroPage),
   AutoRoute(page: HomePage),
+  AutoRoute(page: RideFinishedPage),
   AutoRoute(page: ActivateLocationOrMapPage),
   AutoRoute(page: ActivateLocationOrRideMapPage),
   AutoRoute(page: SendMessagePage),

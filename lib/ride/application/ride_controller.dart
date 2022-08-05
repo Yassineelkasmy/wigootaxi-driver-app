@@ -14,6 +14,7 @@ import 'package:wigootaxidriver/shared/helpers/serialize_coordinates_path.dart';
 class RideController extends StateNotifier<RideState> {
   RideController() : super(RideState.initial());
   final geo = Geoflutterfire();
+  Ride? currentRide;
 
   StreamSubscription<Ride>? rideSubscribtion;
   final RideService _rideService = RideService();
@@ -38,23 +39,23 @@ class RideController extends StateNotifier<RideState> {
           driverArrivedToDestination = isDriverArrivedToDestination(ride);
         }
 
-        if (!state.driverArrived && driverArrived) {
-          await mapEventToState(
-            RideEvent.driverArrived(
-              ride,
-              Duration(days: 1),
-            ),
-          );
-        }
+        // if (!state.driverArrived && driverArrived) {
+        //   await mapEventToState(
+        //     RideEvent.driverArrived(
+        //       ride,
+        //       Duration(days: 1),
+        //     ),
+        //   );
+        // }
 
-        if (!state.driverArrivedToDestination && driverArrivedToDestination) {
-          await mapEventToState(
-            RideEvent.driverArrivedToDestination(
-              ride,
-              Duration(days: 1),
-            ),
-          );
-        }
+        // if (!state.driverArrivedToDestination && driverArrivedToDestination) {
+        //   await mapEventToState(
+        //     RideEvent.driverArrivedToDestination(
+        //       ride,
+        //       Duration(days: 1),
+        //     ),
+        //   );
+        // }
 
         final driverDistanceFromStart = calculateDistance(
               ride.driverLat!,
@@ -88,6 +89,7 @@ class RideController extends StateNotifier<RideState> {
           distanceTravelled: distanceTravelled,
           driverDistanceFromDestination: driverDistanceFromDestination.toInt(),
         );
+        currentRide = ride;
       },
     );
   }
@@ -140,9 +142,36 @@ class RideController extends StateNotifier<RideState> {
           driverArrived: true,
         );
       },
-      rideCancelledByDriver: (event) async {},
+      rideCancelledByDriver: (event) async {
+        rideSubscribtion?.cancel();
+
+        state = state.copyWith(rideCancelled: true);
+
+        await _rideService.cancelRide(
+          ride: state.currentRide!,
+          beforeTimeOut: event.beforeTimeOut,
+        );
+        final _prefs = await SharedPreferences.getInstance();
+        _prefs.remove(currentRideKey);
+        _prefs.setBool(isDrivingKey, false);
+        state = RideState.initial();
+      },
       rideCancelledByUser: (event) async {},
-      rideFinished: (event) async {},
+      rideFinished: (event) async {
+        rideSubscribtion?.cancel();
+        state = state.copyWith(rideFinished: true);
+        await _rideService.finishRide(
+          ride: state.currentRide!,
+          totalPrice: event.totalPrice,
+          totalDistance: event.totalDistance,
+          totalDuration: event.totalDuration,
+        );
+        final _prefs = await SharedPreferences.getInstance();
+        _prefs.remove(currentRideKey);
+
+        _prefs.setBool(isDrivingKey, false);
+        state = RideState.initial();
+      },
       userPicked: (event) async {},
     );
   }

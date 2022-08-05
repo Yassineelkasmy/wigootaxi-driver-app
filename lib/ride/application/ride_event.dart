@@ -16,10 +16,16 @@ class RideEvent with _$RideEvent {
     Duration driverDestinationArrivalDuration,
   ) = DriverArrivedToDestination;
   const factory RideEvent.rideCancelledByUser() = RideCancelledByUser;
-  const factory RideEvent.rideCancelledByDriver() = RideCancelledByDriver;
+  const factory RideEvent.rideCancelledByDriver({
+    required bool beforeTimeOut,
+  }) = RideCancelledByDriver;
   const factory RideEvent.rideStarted() = RideStarted;
   const factory RideEvent.userPicked() = UserPicked;
-  const factory RideEvent.rideFinished() = RideFinished;
+  const factory RideEvent.rideFinished({
+    required double totalPrice,
+    required int totalDistance,
+    required Duration totalDuration,
+  }) = RideFinished;
   const factory RideEvent.rideDenied() = RideDnied;
   const factory RideEvent.driverCancellTimeOff() = DriverCancellTimeOff;
   const factory RideEvent.rideInitialized(String rideId) = RideInitilialized;

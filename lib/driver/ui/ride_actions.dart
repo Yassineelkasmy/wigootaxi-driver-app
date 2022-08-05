@@ -1,7 +1,10 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:timer_count_down/timer_count_down.dart';
+import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/providers/ride_provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +14,8 @@ import 'package:wigootaxidriver/ride/application/ride_state.dart';
 class RideActions extends HookConsumerWidget {
   RideActions({Key? key}) : super(key: key);
   bool countDownStarted = false;
+
+  Duration rideDuration = Duration(seconds: 0);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,6 +32,13 @@ class RideActions extends HookConsumerWidget {
           }
         }
       },
+    );
+    final ride = ref.watch(
+      rideProvider.select((value) => value.currentRide!),
+    );
+
+    final distanceTravelled = ref.watch(
+      rideProvider.select((value) => value.distanceTravelled),
     );
     final driverArrived = ref.watch(
       rideProvider.select((value) => value.driverArrived),
@@ -56,10 +68,10 @@ class RideActions extends HookConsumerWidget {
     return Column(
       children: [
         if (!rideStarted) ...[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              if (driverDistanceFromStart <= 40)
+          if (driverArrived)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
                 Expanded(
                   child: SubmitButton(
                     onPressed: () {
@@ -69,10 +81,10 @@ class RideActions extends HookConsumerWidget {
                     color: Colors.green,
                   ),
                 ),
-            ],
-          ),
+              ],
+            ),
           5.h.verticalSpace,
-          if (driverArrived && !driverCanCancell)
+          if (driverArrived && !driverCanCancell) ...[
             Countdown(
               onFinished: () {
                 showCountDown.value = false;
@@ -83,6 +95,7 @@ class RideActions extends HookConsumerWidget {
               build: (context, second) {
                 final seconds = second.toInt();
                 final duration = Duration(seconds: seconds);
+                rideDuration = duration;
                 return SizedBox(
                   width: double.maxFinite,
                   child: SubmitButton(
@@ -94,35 +107,109 @@ class RideActions extends HookConsumerWidget {
                 );
               },
             ),
+            5.h.verticalSpace,
+          ],
           if (driverArrived && driverCanCancell)
             SizedBox(
               width: double.maxFinite,
               child: SubmitButton(
-                onPressed: () {},
+                onPressed: () {
+                  showOkCancelAlertDialog(
+                    context: context,
+                    message: 'Voulez-vous vraiment annuler le trajet ?r',
+                    title: 'Confirmation',
+                    okLabel: 'Oui',
+                    cancelLabel: 'Non',
+                  ).then((okCancell) {
+                    if (okCancell.index == 0) {
+                      rideController.mapEventToState(
+                        RideEvent.rideCancelledByDriver(
+                          beforeTimeOut: false,
+                        ),
+                      );
+                    }
+                  });
+                },
                 text: 'Annulez librement',
               ),
             ),
         ],
-        if (driverArrivedToDestination && rideStarted) ...[
+        if (rideStarted) ...[
           SizedBox(
             width: double.maxFinite,
             child: SubmitButton(
               color: Colors.green,
-              onPressed: () {},
+              onPressed: () {
+                showOkCancelAlertDialog(
+                  context: context,
+                  message:
+                      'Voulez-vous vraiment marquer le trajet comme terminé ?',
+                  title: 'Confirmation',
+                  okLabel: 'Oui',
+                  cancelLabel: 'Non',
+                ).then((okCancell) async {
+                  if (okCancell.index == 0) {
+                    await rideController.mapEventToState(RideEvent.rideFinished(
+                      totalPrice: ((distanceTravelled / 1000) * 20),
+                      totalDistance: distanceTravelled,
+                      totalDuration: rideDuration,
+                    ));
+                    AutoRouter.of(context).replace(HomePageRoute());
+
+                    AutoRouter.of(context).push(
+                      RideFinishedPageRoute(ride: ride),
+                    );
+                  }
+                });
+              },
               text: 'Marquer la fin du voyage',
             ),
           ),
+          5.h.verticalSpace,
         ],
-        5.h.verticalSpace,
-        if (!driverArrivedToDestination)
+        if (!driverArrived && !rideStarted) ...[
           SizedBox(
             width: double.maxFinite,
             child: SubmitButton(
-              color: Colors.red,
-              onPressed: () {},
-              text: 'Anuller le trajet',
+              color: Colors.green,
+              onPressed: () {
+                rideController.mapEventToState(
+                    RideEvent.driverArrived(ride, Duration(hours: 1)));
+              },
+              text: "Arrivé au départ",
             ),
-          )
+          ),
+          5.h.verticalSpace,
+        ],
+        SizedBox(
+          width: double.maxFinite,
+          child: SubmitButton(
+            color: Colors.red,
+            onPressed: () {
+              showOkCancelAlertDialog(
+                context: context,
+                message: 'Voulez-vous vraiment annuler le trajet ?r',
+                title: 'Confirmation',
+                okLabel: 'Oui',
+                cancelLabel: 'Non',
+              ).then((okCancell) {
+                if (okCancell.index == 0) {
+                  AutoRouter.of(context).replace(HomePageRoute());
+
+                  AutoRouter.of(context).push(
+                    RideFinishedPageRoute(ride: ride),
+                  );
+                  rideController.mapEventToState(
+                    RideEvent.rideCancelledByDriver(
+                      beforeTimeOut: driverCanCancell ? true : false,
+                    ),
+                  );
+                }
+              });
+            },
+            text: 'Anuller le trajet',
+          ),
+        )
       ],
     );
   }

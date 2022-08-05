@@ -13,7 +13,6 @@ void locationIsolate(String message) async {
 
   final prefs = await SharedPreferences.getInstance();
   bool isOnline = prefs.getBool(isOnlineKey) ?? false;
-  bool isDriving = prefs.getBool(isDrivingKey) ?? false;
 
   final driverService = DriverService();
 
@@ -25,9 +24,9 @@ void locationIsolate(String message) async {
     (timer) async {
       await prefs.reload();
       final newIsOnline = prefs.getBool(isOnlineKey) ?? isOnline;
-      final currentRide = prefs.getString(currentRideKey);
       print("isolate " + prefs.getBool(isOnlineKey).toString());
-
+      bool isDriving = prefs.getBool(isDrivingKey) ?? false;
+      final currentRide = prefs.getString(currentRideKey);
       if (newIsOnline) {
         locationController.mapEventToState(LocationEvent.locationRequested());
         driverService.updateLocation(

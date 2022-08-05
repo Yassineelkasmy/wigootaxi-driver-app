@@ -76,4 +76,30 @@ class RideService {
       );
     } catch (e) {}
   }
+
+  Future<void> cancelRide({
+    required Ride ride,
+    required bool beforeTimeOut,
+  }) async {
+    await collectionRef.doc(ride.id).update({
+      'cancelledByDriver': true,
+      'beforeTimeOut': beforeTimeOut,
+    });
+    try {} catch (e) {}
+  }
+
+  Future<void> finishRide({
+    required Ride ride,
+    required double totalPrice,
+    required int totalDistance,
+    required Duration totalDuration,
+  }) async {
+    await collectionRef.doc(ride.id).update({
+      'totalPrice': totalPrice,
+      'totalDistance': totalDistance,
+      'totalDuration': totalDuration.inSeconds,
+      'finished': true,
+    });
+    try {} catch (e) {}
+  }
 }

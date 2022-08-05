@@ -22,6 +22,7 @@ class RideState with _$RideState {
     required bool rideFinished,
     required bool driverArrivedToDestination,
     required bool isDriving,
+    required bool rideCancelled,
     required bool driverCanCncell,
   }) = _RideState;
 
@@ -37,6 +38,7 @@ class RideState with _$RideState {
         driverDistanceFromStart: 10000,
         driverDistanceFromDestination: 10000,
         driverArrivedToDestination: false,
+        rideCancelled: false,
         rideFinished: false,
       );
 }

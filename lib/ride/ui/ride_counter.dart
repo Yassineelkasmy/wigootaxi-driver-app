@@ -66,41 +66,41 @@ class RideCounter extends HookConsumerWidget {
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Icon(
-                    Icons.monetization_on_outlined,
-                  ),
-                  4.w.horizontalSpace,
-                  Text(
-                    'Estimé : ${((rideState.currentRide!.distance / 1000) * 20).toStringAsFixed(2)} DH',
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  4.w.horizontalSpace,
-                  Text(
-                    'Montant : ${((rideState.distanceTravelled / 1000) * 20).toStringAsFixed(2)} DH',
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
-                    ),
-                  ),
-                  // 4.w.horizontalSpace,
-                  // Text(
-                  //   'Parcourue : ${rideState.distanceTravelled} Mètres',
-                  //   style: TextStyle(
-                  //     fontSize: 14.sp,
-                  //     fontWeight: FontWeight.bold,
-                  //     color: Colors.green,
-                  //   ),
-                  // ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Icon(
+              //       Icons.monetization_on_outlined,
+              //     ),
+              //     4.w.horizontalSpace,
+              //     Text(
+              //       'Estimé : ${((rideState.currentRide!.distance / 1000) * 20).toStringAsFixed(2)} DH',
+              //       style: TextStyle(
+              //         fontSize: 14.sp,
+              //         fontWeight: FontWeight.bold,
+              //         color: Colors.black,
+              //       ),
+              //     ),
+              //     4.w.horizontalSpace,
+              //     Text(
+              //       'Montant : ${((rideState.distanceTravelled / 1000) * 20).toStringAsFixed(2)} DH',
+              //       style: TextStyle(
+              //         fontSize: 14.sp,
+              //         fontWeight: FontWeight.bold,
+              //         color: Colors.green,
+              //       ),
+              //     ),
+              //     // 4.w.horizontalSpace,
+              //     // Text(
+              //     //   'Parcourue : ${rideState.distanceTravelled} Mètres',
+              //     //   style: TextStyle(
+              //     //     fontSize: 14.sp,
+              //     //     fontWeight: FontWeight.bold,
+              //     //     color: Colors.green,
+              //     //   ),
+              //     // ),
+              //   ],
+              // ),
             ],
           ),
         ),

@@ -134,15 +134,6 @@ class _UserProfileState extends ConsumerState<UserProfile> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '${((rideState.distanceTravelled / 1000) * 20).toStringAsFixed(2)} DH',
-                      style: TextStyle(
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green,
-                      ),
-                    ),
-                    5.w.horizontalSpace,
                     StreamBuilder<int>(
                       stream: stopWatchTimer.rawTime,
                       builder: (context, snap) {

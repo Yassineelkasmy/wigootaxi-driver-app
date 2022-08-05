@@ -18,6 +18,8 @@ class Ride with _$Ride {
     required int distance,
     required int duration,
     required DateTime driverPickedAt,
+    String? start_name,
+    String? dest_name,
     double? driverLat,
     double? driverLng,
     double? userLat,
@@ -34,10 +36,13 @@ class Ride with _$Ride {
     bool? driverArrived,
     bool? started,
     bool? driving,
+    bool? finished,
     bool? cancelledByDriver,
     int? driverArriveDuration,
     int? driverWaitDuration,
-    int? rideDuration,
+    int? totalDuration,
+    int? totalDistance,
+    double? totalPrice,
   }) = _Ride;
 
   factory Ride.fromJson(Map<String, dynamic> json) {

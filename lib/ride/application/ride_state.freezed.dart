@@ -33,6 +33,7 @@ class _$RideStateTearOff {
       required bool rideFinished,
       required bool driverArrivedToDestination,
       required bool isDriving,
+      required bool rideCancelled,
       required bool driverCanCncell}) {
     return _RideState(
       currentBooking: currentBooking,
@@ -49,6 +50,7 @@ class _$RideStateTearOff {
       rideFinished: rideFinished,
       driverArrivedToDestination: driverArrivedToDestination,
       isDriving: isDriving,
+      rideCancelled: rideCancelled,
       driverCanCncell: driverCanCncell,
     );
   }
@@ -73,6 +75,7 @@ mixin _$RideState {
   bool get rideFinished => throw _privateConstructorUsedError;
   bool get driverArrivedToDestination => throw _privateConstructorUsedError;
   bool get isDriving => throw _privateConstructorUsedError;
+  bool get rideCancelled => throw _privateConstructorUsedError;
   bool get driverCanCncell => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -99,6 +102,7 @@ abstract class $RideStateCopyWith<$Res> {
       bool rideFinished,
       bool driverArrivedToDestination,
       bool isDriving,
+      bool rideCancelled,
       bool driverCanCncell});
 
   $BookingCopyWith<$Res>? get currentBooking;
@@ -130,6 +134,7 @@ class _$RideStateCopyWithImpl<$Res> implements $RideStateCopyWith<$Res> {
     Object? rideFinished = freezed,
     Object? driverArrivedToDestination = freezed,
     Object? isDriving = freezed,
+    Object? rideCancelled = freezed,
     Object? driverCanCncell = freezed,
   }) {
     return _then(_value.copyWith(
@@ -188,6 +193,10 @@ class _$RideStateCopyWithImpl<$Res> implements $RideStateCopyWith<$Res> {
       isDriving: isDriving == freezed
           ? _value.isDriving
           : isDriving // ignore: cast_nullable_to_non_nullable
+              as bool,
+      rideCancelled: rideCancelled == freezed
+          ? _value.rideCancelled
+          : rideCancelled // ignore: cast_nullable_to_non_nullable
               as bool,
       driverCanCncell: driverCanCncell == freezed
           ? _value.driverCanCncell
@@ -251,6 +260,7 @@ abstract class _$RideStateCopyWith<$Res> implements $RideStateCopyWith<$Res> {
       bool rideFinished,
       bool driverArrivedToDestination,
       bool isDriving,
+      bool rideCancelled,
       bool driverCanCncell});
 
   @override
@@ -286,6 +296,7 @@ class __$RideStateCopyWithImpl<$Res> extends _$RideStateCopyWithImpl<$Res>
     Object? rideFinished = freezed,
     Object? driverArrivedToDestination = freezed,
     Object? isDriving = freezed,
+    Object? rideCancelled = freezed,
     Object? driverCanCncell = freezed,
   }) {
     return _then(_RideState(
@@ -345,6 +356,10 @@ class __$RideStateCopyWithImpl<$Res> extends _$RideStateCopyWithImpl<$Res>
           ? _value.isDriving
           : isDriving // ignore: cast_nullable_to_non_nullable
               as bool,
+      rideCancelled: rideCancelled == freezed
+          ? _value.rideCancelled
+          : rideCancelled // ignore: cast_nullable_to_non_nullable
+              as bool,
       driverCanCncell: driverCanCncell == freezed
           ? _value.driverCanCncell
           : driverCanCncell // ignore: cast_nullable_to_non_nullable
@@ -371,6 +386,7 @@ class _$_RideState implements _RideState {
       required this.rideFinished,
       required this.driverArrivedToDestination,
       required this.isDriving,
+      required this.rideCancelled,
       required this.driverCanCncell});
 
   @override
@@ -402,11 +418,13 @@ class _$_RideState implements _RideState {
   @override
   final bool isDriving;
   @override
+  final bool rideCancelled;
+  @override
   final bool driverCanCncell;
 
   @override
   String toString() {
-    return 'RideState(currentBooking: $currentBooking, driverRecord: $driverRecord, currentRide: $currentRide, rideInitialized: $rideInitialized, initializingRide: $initializingRide, driverDistanceFromStart: $driverDistanceFromStart, distanceTravelled: $distanceTravelled, driverDistanceFromDestination: $driverDistanceFromDestination, userrDistanceFromStart: $userrDistanceFromStart, driverArrived: $driverArrived, rideStarted: $rideStarted, rideFinished: $rideFinished, driverArrivedToDestination: $driverArrivedToDestination, isDriving: $isDriving, driverCanCncell: $driverCanCncell)';
+    return 'RideState(currentBooking: $currentBooking, driverRecord: $driverRecord, currentRide: $currentRide, rideInitialized: $rideInitialized, initializingRide: $initializingRide, driverDistanceFromStart: $driverDistanceFromStart, distanceTravelled: $distanceTravelled, driverDistanceFromDestination: $driverDistanceFromDestination, userrDistanceFromStart: $userrDistanceFromStart, driverArrived: $driverArrived, rideStarted: $rideStarted, rideFinished: $rideFinished, driverArrivedToDestination: $driverArrivedToDestination, isDriving: $isDriving, rideCancelled: $rideCancelled, driverCanCncell: $driverCanCncell)';
   }
 
   @override
@@ -443,6 +461,8 @@ class _$_RideState implements _RideState {
                 other.driverArrivedToDestination, driverArrivedToDestination) &&
             const DeepCollectionEquality().equals(other.isDriving, isDriving) &&
             const DeepCollectionEquality()
+                .equals(other.rideCancelled, rideCancelled) &&
+            const DeepCollectionEquality()
                 .equals(other.driverCanCncell, driverCanCncell));
   }
 
@@ -463,6 +483,7 @@ class _$_RideState implements _RideState {
       const DeepCollectionEquality().hash(rideFinished),
       const DeepCollectionEquality().hash(driverArrivedToDestination),
       const DeepCollectionEquality().hash(isDriving),
+      const DeepCollectionEquality().hash(rideCancelled),
       const DeepCollectionEquality().hash(driverCanCncell));
 
   @JsonKey(ignore: true)
@@ -487,6 +508,7 @@ abstract class _RideState implements RideState {
       required bool rideFinished,
       required bool driverArrivedToDestination,
       required bool isDriving,
+      required bool rideCancelled,
       required bool driverCanCncell}) = _$_RideState;
 
   @override
@@ -517,6 +539,8 @@ abstract class _RideState implements RideState {
   bool get driverArrivedToDestination;
   @override
   bool get isDriving;
+  @override
+  bool get rideCancelled;
   @override
   bool get driverCanCncell;
   @override
