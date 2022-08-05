@@ -43,6 +43,7 @@ class PhoneVerificationPage extends HookConsumerWidget {
             .update({
           'isPhoneVerified': true,
           'phone': phone,
+          'status': 'pending',
         });
       }
       authController.mapEventToState(AuthEvent.authCheckRequested());

@@ -1,12 +1,17 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/application/location/location_event.dart';
 import 'package:wigootaxidriver/application/providers/location/location_provider.dart';
 import 'package:wigootaxidriver/driver/domain/driver_record.dart';
+import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 import 'package:wigootaxidriver/providers/ride_provider.dart';
+import 'package:wigootaxidriver/ride/application/ride_event.dart';
+import 'package:wigootaxidriver/ride/application/ride_state.dart';
+import 'package:wigootaxidriver/ride/ui/ride_cancelled_page.dart';
 import 'package:wigootaxidriver/ride/ui/ride_map.dart';
 import 'package:wigootaxidriver/shared/ui/map_animation.dart';
 
@@ -24,6 +29,20 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
 
     final rideState = ref.watch(rideProvider);
     final rideController = ref.watch(rideProvider.notifier);
+
+    ref.listen<RideState>(
+      rideProvider,
+      (previous, next) {
+        if (next.rideCancelledByUser) {
+          rideController.mapEventToState(RideEvent.rideCleared());
+
+          AutoRouter.of(context).replace(ActivateLocationOrMapPageRoute());
+          AutoRouter.of(context).push(
+            RideCancelledPageRoute(message: 'Le passager a annulé le voyage'),
+          );
+        }
+      },
+    );
 
     return Scaffold(
       body: locationState.position != null

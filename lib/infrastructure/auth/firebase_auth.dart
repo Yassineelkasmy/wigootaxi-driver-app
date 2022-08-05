@@ -34,7 +34,7 @@ class FireBaseAuthFacade {
             .doc(user.uid)
             .get();
 
-        status = submissionDoc.data()!['status'] as String;
+        status = (submissionDoc.data()?['status'] ?? 'pending') as String;
       } catch (e) {
         print(e);
       }
@@ -110,6 +110,7 @@ class FireBaseAuthFacade {
             'isPhoneVerified': false,
             'ts': Timestamp.now(),
             'phone': "",
+            'status': 'pending',
           },
         );
       }

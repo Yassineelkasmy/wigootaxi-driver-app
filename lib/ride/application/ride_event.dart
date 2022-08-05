@@ -29,4 +29,5 @@ class RideEvent with _$RideEvent {
   const factory RideEvent.rideDenied() = RideDnied;
   const factory RideEvent.driverCancellTimeOff() = DriverCancellTimeOff;
   const factory RideEvent.rideInitialized(String rideId) = RideInitilialized;
+  const factory RideEvent.rideCleared() = RideCleared;
 }

@@ -115,7 +115,7 @@ class RideFinishedPage extends StatelessWidget {
                 ),
                 4.w.horizontalSpace,
                 Text(
-                  'Durée : ${Duration(seconds: totalDuration).inMinutes} min',
+                  'Durée : ${Duration(seconds: totalDuration).inMinutes}:${(Duration(seconds: totalDuration).inSeconds % 60).toString().padLeft(2, '0')}',
                   style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,

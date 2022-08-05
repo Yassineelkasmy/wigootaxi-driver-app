@@ -27,7 +27,7 @@ class RideActions extends HookConsumerWidget {
         if (next.driverArrived) {
           if (!countDownStarted) {
             countDownStarted = true;
-            endTime.value = 60;
+            endTime.value = 60 * 3;
             showCountDown.value = true;
           }
         }
@@ -116,7 +116,7 @@ class RideActions extends HookConsumerWidget {
                 onPressed: () {
                   showOkCancelAlertDialog(
                     context: context,
-                    message: 'Voulez-vous vraiment annuler le trajet ?r',
+                    message: 'Voulez-vous vraiment annuler le trajet ?',
                     title: 'Confirmation',
                     okLabel: 'Oui',
                     cancelLabel: 'Non',
@@ -195,7 +195,7 @@ class RideActions extends HookConsumerWidget {
             onPressed: () {
               showOkCancelAlertDialog(
                 context: context,
-                message: 'Voulez-vous vraiment annuler le trajet ?r',
+                message: 'Voulez-vous vraiment annuler le trajet ?',
                 title: 'Confirmation',
                 okLabel: 'Oui',
                 cancelLabel: 'Non',

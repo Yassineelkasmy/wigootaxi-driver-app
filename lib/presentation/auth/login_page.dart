@@ -11,7 +11,6 @@ import 'package:wigootaxidriver/presentation/auth/widgets/social_media_button.da
 import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
-import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 
 import '../shared/logo.dart';
 
