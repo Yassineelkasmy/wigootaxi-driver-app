@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
-import 'package:wigootaxidriver/ride/domain/ride.dart';
 
 class RideFinishedPage extends StatelessWidget {
   const RideFinishedPage({
     Key? key,
-    required this.ride,
+    required this.startname,
+    required this.destname,
+    required this.totalDistance,
+    required this.totalDuration,
+    required this.totalPrice,
   }) : super(key: key);
-  final Ride ride;
-
-  @override
+  final String startname;
+  final String destname;
+  final double totalPrice;
+  final int totalDistance;
+  final int totalDuration;
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Voyage terminé"),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: 20.w,
@@ -48,7 +57,7 @@ class RideFinishedPage extends StatelessWidget {
             ),
             5.h.verticalSpace,
             Text(
-              ride.start_name!,
+              startname,
               style: TextStyle(
                 fontSize: 16.sp,
               ),
@@ -73,7 +82,7 @@ class RideFinishedPage extends StatelessWidget {
             ),
             5.h.verticalSpace,
             Text(
-              ride.dest_name!,
+              destname,
               style: TextStyle(
                 fontSize: 16.sp,
               ),
@@ -88,7 +97,7 @@ class RideFinishedPage extends StatelessWidget {
                 ),
                 4.w.horizontalSpace,
                 Text(
-                  'Distance : ${(ride.totalDistance! / 1000).toStringAsFixed(2)} km',
+                  'Distance : ${(totalDistance / 1000).toStringAsFixed(2)} km',
                   style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
@@ -106,7 +115,7 @@ class RideFinishedPage extends StatelessWidget {
                 ),
                 4.w.horizontalSpace,
                 Text(
-                  'Durée : ${Duration(seconds: ride.totalDuration!).inMinutes} min',
+                  'Durée : ${Duration(seconds: totalDuration).inMinutes} min',
                   style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
@@ -115,22 +124,28 @@ class RideFinishedPage extends StatelessWidget {
               ],
             ),
             20.h.verticalSpace,
-            Row(
-              children: [
-                Icon(
-                  Icons.price_change,
-                  color: kPrimaryColor,
-                ),
-                4.w.horizontalSpace,
-                Text(
-                  '${ride.totalPrice} DH',
+            Expanded(
+              child: Center(
+                child: Text(
+                  'Total: $totalPrice DH',
                   style: TextStyle(
-                    fontSize: 16.sp,
+                    fontSize: 22.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ],
+              ),
             ),
+            20.h.verticalSpace,
+            SizedBox(
+              width: double.maxFinite,
+              child: SubmitButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                text: 'Daccord',
+              ),
+            ),
+            20.h.verticalSpace,
           ],
         ),
       ),

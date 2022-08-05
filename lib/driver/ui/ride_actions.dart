@@ -154,10 +154,17 @@ class RideActions extends HookConsumerWidget {
                       totalDistance: distanceTravelled,
                       totalDuration: rideDuration,
                     ));
-                    AutoRouter.of(context).replace(HomePageRoute());
+                    AutoRouter.of(context)
+                        .replace(ActivateLocationOrMapPageRoute());
 
                     AutoRouter.of(context).push(
-                      RideFinishedPageRoute(ride: ride),
+                      RideFinishedPageRoute(
+                        startname: ride.start_name!,
+                        destname: ride.start_name!,
+                        totalPrice: ((distanceTravelled / 1000) * 20),
+                        totalDistance: distanceTravelled,
+                        totalDuration: rideDuration.inMinutes,
+                      ),
                     );
                   }
                 });
@@ -194,11 +201,8 @@ class RideActions extends HookConsumerWidget {
                 cancelLabel: 'Non',
               ).then((okCancell) {
                 if (okCancell.index == 0) {
-                  AutoRouter.of(context).replace(HomePageRoute());
+                  Navigator.of(context).pop();
 
-                  AutoRouter.of(context).push(
-                    RideFinishedPageRoute(ride: ride),
-                  );
                   rideController.mapEventToState(
                     RideEvent.rideCancelledByDriver(
                       beforeTimeOut: driverCanCancell ? true : false,

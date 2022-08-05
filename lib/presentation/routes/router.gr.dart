@@ -13,10 +13,9 @@
 import 'package:auto_route/auto_route.dart' as _i16;
 import 'package:flutter/material.dart' as _i17;
 
-import '../../driver/domain/driver_record.dart' as _i19;
+import '../../driver/domain/driver_record.dart' as _i18;
 import '../../driver/ui/ride_finished_page.dart' as _i10;
 import '../../profile/ui/portail_captain.dart' as _i14;
-import '../../ride/domain/ride.dart' as _i18;
 import '../../ride/ui/activate_location_or_ride_map_page.dart' as _i12;
 import '../../ride/ui/ride_root_page.dart' as _i15;
 import '../auth/login_page.dart' as _i6;
@@ -93,7 +92,13 @@ class AppRouter extends _i16.RootStackRouter {
       final args = routeData.argsAs<RideFinishedPageRouteArgs>();
       return _i16.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i10.RideFinishedPage(key: args.key, ride: args.ride));
+          child: _i10.RideFinishedPage(
+              key: args.key,
+              startname: args.startname,
+              destname: args.destname,
+              totalDistance: args.totalDistance,
+              totalDuration: args.totalDuration,
+              totalPrice: args.totalPrice));
     },
     ActivateLocationOrMapPageRoute.name: (routeData) {
       final args = routeData.argsAs<ActivateLocationOrMapPageRouteArgs>(
@@ -333,24 +338,50 @@ class HomePageRouteArgs {
 /// [_i10.RideFinishedPage]
 class RideFinishedPageRoute
     extends _i16.PageRouteInfo<RideFinishedPageRouteArgs> {
-  RideFinishedPageRoute({_i17.Key? key, required _i18.Ride ride})
+  RideFinishedPageRoute(
+      {_i17.Key? key,
+      required String startname,
+      required String destname,
+      required int totalDistance,
+      required int totalDuration,
+      required double totalPrice})
       : super(RideFinishedPageRoute.name,
             path: '/ride-finished-page',
-            args: RideFinishedPageRouteArgs(key: key, ride: ride));
+            args: RideFinishedPageRouteArgs(
+                key: key,
+                startname: startname,
+                destname: destname,
+                totalDistance: totalDistance,
+                totalDuration: totalDuration,
+                totalPrice: totalPrice));
 
   static const String name = 'RideFinishedPageRoute';
 }
 
 class RideFinishedPageRouteArgs {
-  const RideFinishedPageRouteArgs({this.key, required this.ride});
+  const RideFinishedPageRouteArgs(
+      {this.key,
+      required this.startname,
+      required this.destname,
+      required this.totalDistance,
+      required this.totalDuration,
+      required this.totalPrice});
 
   final _i17.Key? key;
 
-  final _i18.Ride ride;
+  final String startname;
+
+  final String destname;
+
+  final int totalDistance;
+
+  final int totalDuration;
+
+  final double totalPrice;
 
   @override
   String toString() {
-    return 'RideFinishedPageRouteArgs{key: $key, ride: $ride}';
+    return 'RideFinishedPageRouteArgs{key: $key, startname: $startname, destname: $destname, totalDistance: $totalDistance, totalDuration: $totalDuration, totalPrice: $totalPrice}';
   }
 }
 
@@ -382,7 +413,7 @@ class ActivateLocationOrMapPageRouteArgs {
 class ActivateLocationOrRideMapPageRoute
     extends _i16.PageRouteInfo<ActivateLocationOrRideMapPageRouteArgs> {
   ActivateLocationOrRideMapPageRoute(
-      {_i17.Key? key, required _i19.UserRecord userRecord})
+      {_i17.Key? key, required _i18.UserRecord userRecord})
       : super(ActivateLocationOrRideMapPageRoute.name,
             path: '/activate-location-or-ride-map-page',
             args: ActivateLocationOrRideMapPageRouteArgs(
@@ -397,7 +428,7 @@ class ActivateLocationOrRideMapPageRouteArgs {
 
   final _i17.Key? key;
 
-  final _i19.UserRecord userRecord;
+  final _i18.UserRecord userRecord;
 
   @override
   String toString() {
@@ -440,7 +471,7 @@ class PortailCaptainRoute extends _i16.PageRouteInfo<void> {
 /// generated route for
 /// [_i15.RideRootPage]
 class RideRootPageRoute extends _i16.PageRouteInfo<RideRootPageRouteArgs> {
-  RideRootPageRoute({_i17.Key? key, required _i19.UserRecord userRecord})
+  RideRootPageRoute({_i17.Key? key, required _i18.UserRecord userRecord})
       : super(RideRootPageRoute.name,
             path: '/ride-root-page',
             args: RideRootPageRouteArgs(key: key, userRecord: userRecord));
@@ -453,7 +484,7 @@ class RideRootPageRouteArgs {
 
   final _i17.Key? key;
 
-  final _i19.UserRecord userRecord;
+  final _i18.UserRecord userRecord;
 
   @override
   String toString() {
