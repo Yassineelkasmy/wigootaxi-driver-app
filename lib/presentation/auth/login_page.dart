@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:wigootaxidriver/application/auth/auth_form/auth_form_event.dart';
+import 'package:wigootaxidriver/application/auth/auth_state.dart';
 import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
 import 'package:wigootaxidriver/presentation/auth/widgets/social_media_button.dart';
 import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
@@ -32,6 +33,24 @@ class LoginPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final authFormController = ref.watch(authFormProvider.notifier);
     final authFormState = ref.watch(authFormProvider);
+    ref.listen<AuthState>(authtProvider, (_, nextAuthState) {
+      nextAuthState.map(
+          initial: (_) {},
+          authenticated: (_) {
+            if (_.user.isPhoneVerified) {
+              if (_.user.status == 'accepted') {
+                AutoRouter.of(context).push(ActivateLocationOrMapPageRoute());
+              } else {
+                AutoRouter.of(context).push(SubmissionPageRoute());
+              }
+            } else {
+              AutoRouter.of(context).push(PhoneAuthPageRoute());
+            }
+          },
+          unauthenticated: (unAuth) {
+            AutoRouter.of(context).replace(IntroPageRoute());
+          });
+    });
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -157,20 +176,8 @@ class LoginPage extends HookConsumerWidget {
                     ],
                   ),
                 ),
-                20.verticalSpace,
-                SocialMedia(
-                  onFacebookPressed: () {
-                    authFormController.mapEventToState(
-                      const AuthFormEvent.signInWithFacebookPressed(),
-                    );
-                  },
-                  onGooglePressed: () {
-                    authFormController.mapEventToState(
-                        const AuthFormEvent.signInWithGooglePresseed());
-                  },
-                  text: "SE CONNECTER AVEC",
-                ),
-                Expanded(child: SizedBox()),
+
+                // Expanded(child: SizedBox()),
               ],
             ),
           ),

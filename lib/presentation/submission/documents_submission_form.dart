@@ -31,7 +31,8 @@ class DocumentSubmissionForm extends HookConsumerWidget {
       submissionProvider,
       (previous, next) {
         if (next.submission != null) {
-          AutoRouter.of(context).replace(SubmissionSuccessPageRoute());
+          Navigator.of(context).pop();
+          AutoRouter.of(context).push(SubmissionSuccessPageRoute());
         }
       },
     );

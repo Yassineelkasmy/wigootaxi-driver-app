@@ -133,6 +133,7 @@ class FireBaseAuthFacade {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
+
       return right(unit);
     } on FirebaseAuthException catch (e) {
       print(e);

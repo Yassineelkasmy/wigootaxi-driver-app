@@ -24,7 +24,7 @@ class SplashPage extends HookConsumerWidget {
                 AutoRouter.of(context).push(SubmissionPageRoute());
               }
             } else {
-              AutoRouter.of(context).push(ActivateLocationOrMapPageRoute());
+              AutoRouter.of(context).push(PhoneAuthPageRoute());
             }
           },
           unauthenticated: (unAuth) {
@@ -33,59 +33,54 @@ class SplashPage extends HookConsumerWidget {
     });
 
     return Scaffold(
-      body: Scaffold(
-        body: Stack(
-          children: [
-            Positioned.fill(
-              child: Image.asset(
-                'assets/images/intro.png',
-                fit: BoxFit.cover,
-              ),
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/intro.png',
+              fit: BoxFit.cover,
             ),
-            Positioned.fill(
-              child: Container(
-                color: FlexColor.blue.light.primary.withOpacity(0.8),
-              ),
+          ),
+          Positioned.fill(
+            child: Container(
+              color: FlexColor.blue.light.primary.withOpacity(0.8),
             ),
-            Positioned.fill(
-              child: Align(
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Positioned(
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: buildLogo(),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    CircularProgressIndicator(
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 10,
-              child: Container(
-                width: size.width,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: Text(
-                  "Vous serez au bon endroit, au bon moment, avec le bon prix",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
+          ),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: buildLogo(),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CircularProgressIndicator(
                     color: Colors.white,
                   ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 10,
+            child: Container(
+              width: size.width,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Text(
+                "Vous serez au bon endroit, au bon moment, avec le bon prix",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

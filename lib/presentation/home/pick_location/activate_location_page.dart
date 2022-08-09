@@ -1,10 +1,13 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:in_app_notification/in_app_notification.dart';
+import 'package:wigootaxidriver/application/auth/auth_form/auth_form_event.dart';
 import 'package:wigootaxidriver/application/location/location_event.dart';
+import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
 import 'package:wigootaxidriver/application/providers/driver/driver_provider.dart';
 import 'package:wigootaxidriver/application/providers/location/location_provider.dart';
 import 'package:rive/rive.dart';
@@ -29,6 +32,7 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final autFormController = ref.watch(authFormProvider.notifier);
     final locationState = ref.watch(locationProvider);
     final locationController = ref.watch(locationProvider.notifier);
     final driverController = ref.watch(driverProvider.notifier);
@@ -237,7 +241,20 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                showOkCancelAlertDialog(
+                  context: context,
+                  message: 'Êtes-vous sûr de vouloir vous déconnecter',
+                  title: 'Confirmation',
+                  okLabel: 'Oui',
+                  cancelLabel: 'Non',
+                ).then((okCancell) {
+                  if (okCancell.index == 0) {
+                    autFormController
+                        .mapEventToState(const AuthFormEvent.signOutPressed());
+                  }
+                });
+              },
               leading: Icon(
                 Icons.logout,
                 color: Colors.white,
