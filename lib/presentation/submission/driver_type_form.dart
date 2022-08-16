@@ -5,7 +5,6 @@ import 'package:wigootaxidriver/application/providers/submission_provider.dart';
 import 'package:wigootaxidriver/application/submission/submission_event.dart';
 import 'package:wigootaxidriver/extensions/extensions.dart';
 import 'package:wigootaxidriver/presentation/shared/logo.dart';
-import 'package:wigootaxidriver/presentation/submission/widgets/driver_type_card.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/step_indicator.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 
@@ -95,8 +94,8 @@ class DriverTypeForm extends HookConsumerWidget {
                     ).paddingSymmetric(horizontal: 20, vertical: 20),
                     Image.asset(
                       'assets/images/taxi.png',
-                      width: 60,
-                      height: 60,
+                      width: 60.w,
+                      height: 60.h,
                     ).paddingOnly(right: 5),
                   ],
                 ),
@@ -116,9 +115,9 @@ class DriverTypeForm extends HookConsumerWidget {
                     ),
                     backgroundColor: kPrimaryColor,
                   ),
-                  child: const SizedBox(
+                  child: SizedBox(
                     height: 150,
-                    width: 70,
+                    width: 40.w,
                     child: Icon(
                       Icons.arrow_forward_ios,
                       size: 40,
@@ -164,7 +163,7 @@ class DriverTypeForm extends HookConsumerWidget {
                     ).paddingSymmetric(horizontal: 20, vertical: 20),
                     Image.asset(
                       'assets/images/car1.png',
-                      width: 60,
+                      width: 60.w,
                     ).paddingOnly(right: 5),
                   ],
                 ),
@@ -184,14 +183,15 @@ class DriverTypeForm extends HookConsumerWidget {
                     primary: Colors.white,
                     backgroundColor: kPrimaryColor,
                   ),
-                  child: const SizedBox(
-                      height: 150,
-                      width: 70,
-                      child: Icon(
-                        Icons.arrow_forward_ios,
-                        size: 40,
-                        color: Colors.white,
-                      )),
+                  child: SizedBox(
+                    height: 150,
+                    width: 40.w,
+                    child: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 40.r,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ],
             ),
