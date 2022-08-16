@@ -180,8 +180,19 @@ class RideActions extends HookConsumerWidget {
             child: SubmitButton(
               color: Colors.green,
               onPressed: () {
-                rideController.mapEventToState(
-                    RideEvent.driverArrived(ride, Duration(hours: 1)));
+                showOkCancelAlertDialog(
+                  context: context,
+                  message:
+                      'Êtes-vous sûr de vouloir arriver au point de départ ?',
+                  title: 'Confirmation',
+                  okLabel: 'Oui',
+                  cancelLabel: 'Non',
+                ).then((okCancell) async {
+                  if (okCancell.index == 0) {
+                    rideController.mapEventToState(
+                        RideEvent.driverArrived(ride, Duration(hours: 1)));
+                  }
+                });
               },
               text: "Arrivé au départ",
             ),
