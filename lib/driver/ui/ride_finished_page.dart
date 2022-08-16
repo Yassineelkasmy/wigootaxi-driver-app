@@ -127,7 +127,7 @@ class RideFinishedPage extends StatelessWidget {
             Expanded(
               child: Center(
                 child: Text(
-                  'Total: $totalPrice DH',
+                  'Total: ${totalPrice.toStringAsFixed(2)} DH',
                   style: TextStyle(
                     fontSize: 22.sp,
                     fontWeight: FontWeight.bold,
