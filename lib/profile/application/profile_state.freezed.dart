@@ -19,13 +19,13 @@ class _$ProfileStateTearOff {
   const _$ProfileStateTearOff();
 
   _ProfileState call(
-      {DriverRecord? driverRecord,
+      {DriverProfile? driverProfile,
       required List<Ride> finishedRides,
       required List<Ride> userCancelledRides,
       required List<Ride> driverCancelledRides,
       required bool isLoading}) {
     return _ProfileState(
-      driverRecord: driverRecord,
+      driverProfile: driverProfile,
       finishedRides: finishedRides,
       userCancelledRides: userCancelledRides,
       driverCancelledRides: driverCancelledRides,
@@ -39,7 +39,7 @@ const $ProfileState = _$ProfileStateTearOff();
 
 /// @nodoc
 mixin _$ProfileState {
-  DriverRecord? get driverRecord => throw _privateConstructorUsedError;
+  DriverProfile? get driverProfile => throw _privateConstructorUsedError;
   List<Ride> get finishedRides => throw _privateConstructorUsedError;
   List<Ride> get userCancelledRides => throw _privateConstructorUsedError;
   List<Ride> get driverCancelledRides => throw _privateConstructorUsedError;
@@ -56,13 +56,13 @@ abstract class $ProfileStateCopyWith<$Res> {
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res>;
   $Res call(
-      {DriverRecord? driverRecord,
+      {DriverProfile? driverProfile,
       List<Ride> finishedRides,
       List<Ride> userCancelledRides,
       List<Ride> driverCancelledRides,
       bool isLoading});
 
-  $DriverRecordCopyWith<$Res>? get driverRecord;
+  $DriverProfileCopyWith<$Res>? get driverProfile;
 }
 
 /// @nodoc
@@ -75,17 +75,17 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? driverRecord = freezed,
+    Object? driverProfile = freezed,
     Object? finishedRides = freezed,
     Object? userCancelledRides = freezed,
     Object? driverCancelledRides = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
-      driverRecord: driverRecord == freezed
-          ? _value.driverRecord
-          : driverRecord // ignore: cast_nullable_to_non_nullable
-              as DriverRecord?,
+      driverProfile: driverProfile == freezed
+          ? _value.driverProfile
+          : driverProfile // ignore: cast_nullable_to_non_nullable
+              as DriverProfile?,
       finishedRides: finishedRides == freezed
           ? _value.finishedRides
           : finishedRides // ignore: cast_nullable_to_non_nullable
@@ -106,13 +106,13 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
   }
 
   @override
-  $DriverRecordCopyWith<$Res>? get driverRecord {
-    if (_value.driverRecord == null) {
+  $DriverProfileCopyWith<$Res>? get driverProfile {
+    if (_value.driverProfile == null) {
       return null;
     }
 
-    return $DriverRecordCopyWith<$Res>(_value.driverRecord!, (value) {
-      return _then(_value.copyWith(driverRecord: value));
+    return $DriverProfileCopyWith<$Res>(_value.driverProfile!, (value) {
+      return _then(_value.copyWith(driverProfile: value));
     });
   }
 }
@@ -125,14 +125,14 @@ abstract class _$ProfileStateCopyWith<$Res>
       __$ProfileStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {DriverRecord? driverRecord,
+      {DriverProfile? driverProfile,
       List<Ride> finishedRides,
       List<Ride> userCancelledRides,
       List<Ride> driverCancelledRides,
       bool isLoading});
 
   @override
-  $DriverRecordCopyWith<$Res>? get driverRecord;
+  $DriverProfileCopyWith<$Res>? get driverProfile;
 }
 
 /// @nodoc
@@ -147,17 +147,17 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? driverRecord = freezed,
+    Object? driverProfile = freezed,
     Object? finishedRides = freezed,
     Object? userCancelledRides = freezed,
     Object? driverCancelledRides = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_ProfileState(
-      driverRecord: driverRecord == freezed
-          ? _value.driverRecord
-          : driverRecord // ignore: cast_nullable_to_non_nullable
-              as DriverRecord?,
+      driverProfile: driverProfile == freezed
+          ? _value.driverProfile
+          : driverProfile // ignore: cast_nullable_to_non_nullable
+              as DriverProfile?,
       finishedRides: finishedRides == freezed
           ? _value.finishedRides
           : finishedRides // ignore: cast_nullable_to_non_nullable
@@ -182,14 +182,14 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
 
 class _$_ProfileState implements _ProfileState {
   const _$_ProfileState(
-      {this.driverRecord,
+      {this.driverProfile,
       required this.finishedRides,
       required this.userCancelledRides,
       required this.driverCancelledRides,
       required this.isLoading});
 
   @override
-  final DriverRecord? driverRecord;
+  final DriverProfile? driverProfile;
   @override
   final List<Ride> finishedRides;
   @override
@@ -201,7 +201,7 @@ class _$_ProfileState implements _ProfileState {
 
   @override
   String toString() {
-    return 'ProfileState(driverRecord: $driverRecord, finishedRides: $finishedRides, userCancelledRides: $userCancelledRides, driverCancelledRides: $driverCancelledRides, isLoading: $isLoading)';
+    return 'ProfileState(driverProfile: $driverProfile, finishedRides: $finishedRides, userCancelledRides: $userCancelledRides, driverCancelledRides: $driverCancelledRides, isLoading: $isLoading)';
   }
 
   @override
@@ -210,7 +210,7 @@ class _$_ProfileState implements _ProfileState {
         (other.runtimeType == runtimeType &&
             other is _ProfileState &&
             const DeepCollectionEquality()
-                .equals(other.driverRecord, driverRecord) &&
+                .equals(other.driverProfile, driverProfile) &&
             const DeepCollectionEquality()
                 .equals(other.finishedRides, finishedRides) &&
             const DeepCollectionEquality()
@@ -223,7 +223,7 @@ class _$_ProfileState implements _ProfileState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(driverRecord),
+      const DeepCollectionEquality().hash(driverProfile),
       const DeepCollectionEquality().hash(finishedRides),
       const DeepCollectionEquality().hash(userCancelledRides),
       const DeepCollectionEquality().hash(driverCancelledRides),
@@ -237,14 +237,14 @@ class _$_ProfileState implements _ProfileState {
 
 abstract class _ProfileState implements ProfileState {
   const factory _ProfileState(
-      {DriverRecord? driverRecord,
+      {DriverProfile? driverProfile,
       required List<Ride> finishedRides,
       required List<Ride> userCancelledRides,
       required List<Ride> driverCancelledRides,
       required bool isLoading}) = _$_ProfileState;
 
   @override
-  DriverRecord? get driverRecord;
+  DriverProfile? get driverProfile;
   @override
   List<Ride> get finishedRides;
   @override

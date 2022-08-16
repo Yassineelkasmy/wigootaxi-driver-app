@@ -9,6 +9,5 @@ class ProfileEvent with _$ProfileEvent {
       UserCancelledRidesRequested;
   const factory ProfileEvent.driverCancelledRidesRequested() =
       DriverCancelledRidesRequested;
-  const factory ProfileEvent.driverRecordRequested(String uid) =
-      DriverRecordRequested;
+  const factory ProfileEvent.driverRecordRequested() = DriverRecordRequested;
 }

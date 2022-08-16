@@ -4,7 +4,12 @@ import 'package:wigootaxidriver/profile/application/profile_state.dart';
 import 'package:wigootaxidriver/profile/services/profile_service.dart';
 
 class ProfileController extends StateNotifier<ProfileState> {
-  ProfileController(this._profileService) : super(ProfileState.initial());
+  ProfileController(this._profileService) : super(ProfileState.initial()) {
+    mapEventToState(ProfileEvent.driverRecordRequested());
+    mapEventToState(ProfileEvent.finishedRidesRequested());
+    mapEventToState(ProfileEvent.userCancelledRidesRequested());
+    mapEventToState(ProfileEvent.driverCancelledRidesRequested());
+  }
   final ProfileService _profileService;
 
   Future mapEventToState(ProfileEvent event) {
@@ -36,7 +41,13 @@ class ProfileController extends StateNotifier<ProfileState> {
           (rides) => state = state.copyWith(driverCancelledRides: rides),
         );
       },
-      driverRecordRequested: (event) async {},
+      driverRecordRequested: (event) async {
+        final driverOrFailure = await _profileService.getDriverRecord();
+        driverOrFailure.map(
+          (driverProfile) =>
+              state = state.copyWith(driverProfile: driverProfile),
+        );
+      },
     );
   }
 }

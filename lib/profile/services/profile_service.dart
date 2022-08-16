@@ -26,9 +26,11 @@ class ProfileService {
             isEqualTo: true,
           )
           .get();
+      print(ridesData.docs.first.data());
       final rides = ridesData.docs.map(docDataToRide).toList();
       return right(rides);
     } catch (e) {
+      print(e);
       return left(RideFailure.serverError());
     }
   }

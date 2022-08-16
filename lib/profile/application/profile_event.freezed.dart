@@ -30,10 +30,8 @@ class _$ProfileEventTearOff {
     return const DriverCancelledRidesRequested();
   }
 
-  DriverRecordRequested driverRecordRequested(String uid) {
-    return DriverRecordRequested(
-      uid,
-    );
+  DriverRecordRequested driverRecordRequested() {
+    return const DriverRecordRequested();
   }
 }
 
@@ -47,7 +45,7 @@ mixin _$ProfileEvent {
     required TResult Function() finishedRidesRequested,
     required TResult Function() userCancelledRidesRequested,
     required TResult Function() driverCancelledRidesRequested,
-    required TResult Function(String uid) driverRecordRequested,
+    required TResult Function() driverRecordRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,7 +53,7 @@ mixin _$ProfileEvent {
     TResult Function()? finishedRidesRequested,
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
-    TResult Function(String uid)? driverRecordRequested,
+    TResult Function()? driverRecordRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,7 +61,7 @@ mixin _$ProfileEvent {
     TResult Function()? finishedRidesRequested,
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
-    TResult Function(String uid)? driverRecordRequested,
+    TResult Function()? driverRecordRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -162,7 +160,7 @@ class _$FinishedRidesRequested implements FinishedRidesRequested {
     required TResult Function() finishedRidesRequested,
     required TResult Function() userCancelledRidesRequested,
     required TResult Function() driverCancelledRidesRequested,
-    required TResult Function(String uid) driverRecordRequested,
+    required TResult Function() driverRecordRequested,
   }) {
     return finishedRidesRequested();
   }
@@ -173,7 +171,7 @@ class _$FinishedRidesRequested implements FinishedRidesRequested {
     TResult Function()? finishedRidesRequested,
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
-    TResult Function(String uid)? driverRecordRequested,
+    TResult Function()? driverRecordRequested,
   }) {
     return finishedRidesRequested?.call();
   }
@@ -184,7 +182,7 @@ class _$FinishedRidesRequested implements FinishedRidesRequested {
     TResult Function()? finishedRidesRequested,
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
-    TResult Function(String uid)? driverRecordRequested,
+    TResult Function()? driverRecordRequested,
     required TResult orElse(),
   }) {
     if (finishedRidesRequested != null) {
@@ -290,7 +288,7 @@ class _$UserCancelledRidesRequested implements UserCancelledRidesRequested {
     required TResult Function() finishedRidesRequested,
     required TResult Function() userCancelledRidesRequested,
     required TResult Function() driverCancelledRidesRequested,
-    required TResult Function(String uid) driverRecordRequested,
+    required TResult Function() driverRecordRequested,
   }) {
     return userCancelledRidesRequested();
   }
@@ -301,7 +299,7 @@ class _$UserCancelledRidesRequested implements UserCancelledRidesRequested {
     TResult Function()? finishedRidesRequested,
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
-    TResult Function(String uid)? driverRecordRequested,
+    TResult Function()? driverRecordRequested,
   }) {
     return userCancelledRidesRequested?.call();
   }
@@ -312,7 +310,7 @@ class _$UserCancelledRidesRequested implements UserCancelledRidesRequested {
     TResult Function()? finishedRidesRequested,
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
-    TResult Function(String uid)? driverRecordRequested,
+    TResult Function()? driverRecordRequested,
     required TResult orElse(),
   }) {
     if (userCancelledRidesRequested != null) {
@@ -419,7 +417,7 @@ class _$DriverCancelledRidesRequested implements DriverCancelledRidesRequested {
     required TResult Function() finishedRidesRequested,
     required TResult Function() userCancelledRidesRequested,
     required TResult Function() driverCancelledRidesRequested,
-    required TResult Function(String uid) driverRecordRequested,
+    required TResult Function() driverRecordRequested,
   }) {
     return driverCancelledRidesRequested();
   }
@@ -430,7 +428,7 @@ class _$DriverCancelledRidesRequested implements DriverCancelledRidesRequested {
     TResult Function()? finishedRidesRequested,
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
-    TResult Function(String uid)? driverRecordRequested,
+    TResult Function()? driverRecordRequested,
   }) {
     return driverCancelledRidesRequested?.call();
   }
@@ -441,7 +439,7 @@ class _$DriverCancelledRidesRequested implements DriverCancelledRidesRequested {
     TResult Function()? finishedRidesRequested,
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
-    TResult Function(String uid)? driverRecordRequested,
+    TResult Function()? driverRecordRequested,
     required TResult orElse(),
   }) {
     if (driverCancelledRidesRequested != null) {
@@ -506,7 +504,6 @@ abstract class $DriverRecordRequestedCopyWith<$Res> {
   factory $DriverRecordRequestedCopyWith(DriverRecordRequested value,
           $Res Function(DriverRecordRequested) then) =
       _$DriverRecordRequestedCopyWithImpl<$Res>;
-  $Res call({String uid});
 }
 
 /// @nodoc
@@ -519,50 +516,26 @@ class _$DriverRecordRequestedCopyWithImpl<$Res>
 
   @override
   DriverRecordRequested get _value => super._value as DriverRecordRequested;
-
-  @override
-  $Res call({
-    Object? uid = freezed,
-  }) {
-    return _then(DriverRecordRequested(
-      uid == freezed
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$DriverRecordRequested implements DriverRecordRequested {
-  const _$DriverRecordRequested(this.uid);
-
-  @override
-  final String uid;
+  const _$DriverRecordRequested();
 
   @override
   String toString() {
-    return 'ProfileEvent.driverRecordRequested(uid: $uid)';
+    return 'ProfileEvent.driverRecordRequested()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is DriverRecordRequested &&
-            const DeepCollectionEquality().equals(other.uid, uid));
+        (other.runtimeType == runtimeType && other is DriverRecordRequested);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(uid));
-
-  @JsonKey(ignore: true)
-  @override
-  $DriverRecordRequestedCopyWith<DriverRecordRequested> get copyWith =>
-      _$DriverRecordRequestedCopyWithImpl<DriverRecordRequested>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -570,9 +543,9 @@ class _$DriverRecordRequested implements DriverRecordRequested {
     required TResult Function() finishedRidesRequested,
     required TResult Function() userCancelledRidesRequested,
     required TResult Function() driverCancelledRidesRequested,
-    required TResult Function(String uid) driverRecordRequested,
+    required TResult Function() driverRecordRequested,
   }) {
-    return driverRecordRequested(uid);
+    return driverRecordRequested();
   }
 
   @override
@@ -581,9 +554,9 @@ class _$DriverRecordRequested implements DriverRecordRequested {
     TResult Function()? finishedRidesRequested,
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
-    TResult Function(String uid)? driverRecordRequested,
+    TResult Function()? driverRecordRequested,
   }) {
-    return driverRecordRequested?.call(uid);
+    return driverRecordRequested?.call();
   }
 
   @override
@@ -592,11 +565,11 @@ class _$DriverRecordRequested implements DriverRecordRequested {
     TResult Function()? finishedRidesRequested,
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
-    TResult Function(String uid)? driverRecordRequested,
+    TResult Function()? driverRecordRequested,
     required TResult orElse(),
   }) {
     if (driverRecordRequested != null) {
-      return driverRecordRequested(uid);
+      return driverRecordRequested();
     }
     return orElse();
   }
@@ -648,10 +621,5 @@ class _$DriverRecordRequested implements DriverRecordRequested {
 }
 
 abstract class DriverRecordRequested implements ProfileEvent {
-  const factory DriverRecordRequested(String uid) = _$DriverRecordRequested;
-
-  String get uid;
-  @JsonKey(ignore: true)
-  $DriverRecordRequestedCopyWith<DriverRecordRequested> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory DriverRecordRequested() = _$DriverRecordRequested;
 }
