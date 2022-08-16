@@ -150,7 +150,8 @@ class RideActions extends HookConsumerWidget {
                 ).then((okCancell) async {
                   if (okCancell.index == 0) {
                     await rideController.mapEventToState(RideEvent.rideFinished(
-                      totalPrice: ((distanceTravelled / 1000) * 20),
+                      totalPrice:
+                          ((distanceTravelled / 1000) * ride.price_per_km),
                       totalDistance: distanceTravelled,
                       totalDuration: rideDuration,
                     ));
@@ -161,7 +162,8 @@ class RideActions extends HookConsumerWidget {
                       RideFinishedPageRoute(
                         startname: ride.start_name!,
                         destname: ride.start_name!,
-                        totalPrice: ((distanceTravelled / 1000) * 20),
+                        totalPrice:
+                            ((distanceTravelled / 1000) * ride.price_per_km),
                         totalDistance: distanceTravelled,
                         totalDuration: rideDuration.inMinutes,
                       ),

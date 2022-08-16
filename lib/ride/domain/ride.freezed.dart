@@ -29,6 +29,7 @@ class _$RideTearOff {
       required int distance,
       required int duration,
       required DateTime driverPickedAt,
+      required int price_per_km,
       String? start_name,
       String? dest_name,
       double? driverLat,
@@ -65,6 +66,7 @@ class _$RideTearOff {
       distance: distance,
       duration: duration,
       driverPickedAt: driverPickedAt,
+      price_per_km: price_per_km,
       start_name: start_name,
       dest_name: dest_name,
       driverLat: driverLat,
@@ -109,6 +111,7 @@ mixin _$Ride {
   int get distance => throw _privateConstructorUsedError;
   int get duration => throw _privateConstructorUsedError;
   DateTime get driverPickedAt => throw _privateConstructorUsedError;
+  int get price_per_km => throw _privateConstructorUsedError;
   String? get start_name => throw _privateConstructorUsedError;
   String? get dest_name => throw _privateConstructorUsedError;
   double? get driverLat => throw _privateConstructorUsedError;
@@ -154,6 +157,7 @@ abstract class $RideCopyWith<$Res> {
       int distance,
       int duration,
       DateTime driverPickedAt,
+      int price_per_km,
       String? start_name,
       String? dest_name,
       double? driverLat,
@@ -201,6 +205,7 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
     Object? distance = freezed,
     Object? duration = freezed,
     Object? driverPickedAt = freezed,
+    Object? price_per_km = freezed,
     Object? start_name = freezed,
     Object? dest_name = freezed,
     Object? driverLat = freezed,
@@ -268,6 +273,10 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
           ? _value.driverPickedAt
           : driverPickedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      price_per_km: price_per_km == freezed
+          ? _value.price_per_km
+          : price_per_km // ignore: cast_nullable_to_non_nullable
+              as int,
       start_name: start_name == freezed
           ? _value.start_name
           : start_name // ignore: cast_nullable_to_non_nullable
@@ -388,6 +397,7 @@ abstract class _$RideCopyWith<$Res> implements $RideCopyWith<$Res> {
       int distance,
       int duration,
       DateTime driverPickedAt,
+      int price_per_km,
       String? start_name,
       String? dest_name,
       double? driverLat,
@@ -436,6 +446,7 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
     Object? distance = freezed,
     Object? duration = freezed,
     Object? driverPickedAt = freezed,
+    Object? price_per_km = freezed,
     Object? start_name = freezed,
     Object? dest_name = freezed,
     Object? driverLat = freezed,
@@ -503,6 +514,10 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
           ? _value.driverPickedAt
           : driverPickedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      price_per_km: price_per_km == freezed
+          ? _value.price_per_km
+          : price_per_km // ignore: cast_nullable_to_non_nullable
+              as int,
       start_name: start_name == freezed
           ? _value.start_name
           : start_name // ignore: cast_nullable_to_non_nullable
@@ -621,6 +636,7 @@ class _$_Ride implements _Ride {
       required this.distance,
       required this.duration,
       required this.driverPickedAt,
+      required this.price_per_km,
       this.start_name,
       this.dest_name,
       this.driverLat,
@@ -667,6 +683,8 @@ class _$_Ride implements _Ride {
   final int duration;
   @override
   final DateTime driverPickedAt;
+  @override
+  final int price_per_km;
   @override
   final String? start_name;
   @override
@@ -720,7 +738,7 @@ class _$_Ride implements _Ride {
 
   @override
   String toString() {
-    return 'Ride(id: $id, driverUid: $driverUid, userUid: $userUid, path: $path, pathToStart: $pathToStart, disttext: $disttext, durtext: $durtext, distance: $distance, duration: $duration, driverPickedAt: $driverPickedAt, start_name: $start_name, dest_name: $dest_name, driverLat: $driverLat, driverLng: $driverLng, userLat: $userLat, userLng: $userLng, destinationLng: $destinationLng, destinationLat: $destinationLat, startLng: $startLng, startLat: $startLat, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, start: $start, destination: $destination, cancelledByUser: $cancelledByUser, driverArrived: $driverArrived, started: $started, driving: $driving, finished: $finished, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, totalDuration: $totalDuration, totalDistance: $totalDistance, totalPrice: $totalPrice)';
+    return 'Ride(id: $id, driverUid: $driverUid, userUid: $userUid, path: $path, pathToStart: $pathToStart, disttext: $disttext, durtext: $durtext, distance: $distance, duration: $duration, driverPickedAt: $driverPickedAt, price_per_km: $price_per_km, start_name: $start_name, dest_name: $dest_name, driverLat: $driverLat, driverLng: $driverLng, userLat: $userLat, userLng: $userLng, destinationLng: $destinationLng, destinationLat: $destinationLat, startLng: $startLng, startLat: $startLat, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, start: $start, destination: $destination, cancelledByUser: $cancelledByUser, driverArrived: $driverArrived, started: $started, driving: $driving, finished: $finished, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, totalDuration: $totalDuration, totalDistance: $totalDistance, totalPrice: $totalPrice)';
   }
 
   @override
@@ -740,6 +758,8 @@ class _$_Ride implements _Ride {
             const DeepCollectionEquality().equals(other.duration, duration) &&
             const DeepCollectionEquality()
                 .equals(other.driverPickedAt, driverPickedAt) &&
+            const DeepCollectionEquality()
+                .equals(other.price_per_km, price_per_km) &&
             const DeepCollectionEquality()
                 .equals(other.start_name, start_name) &&
             const DeepCollectionEquality().equals(other.dest_name, dest_name) &&
@@ -794,6 +814,7 @@ class _$_Ride implements _Ride {
         const DeepCollectionEquality().hash(distance),
         const DeepCollectionEquality().hash(duration),
         const DeepCollectionEquality().hash(driverPickedAt),
+        const DeepCollectionEquality().hash(price_per_km),
         const DeepCollectionEquality().hash(start_name),
         const DeepCollectionEquality().hash(dest_name),
         const DeepCollectionEquality().hash(driverLat),
@@ -839,6 +860,7 @@ abstract class _Ride implements Ride {
       required int distance,
       required int duration,
       required DateTime driverPickedAt,
+      required int price_per_km,
       String? start_name,
       String? dest_name,
       double? driverLat,
@@ -885,6 +907,8 @@ abstract class _Ride implements Ride {
   int get duration;
   @override
   DateTime get driverPickedAt;
+  @override
+  int get price_per_km;
   @override
   String? get start_name;
   @override

@@ -18,6 +18,7 @@ class Ride with _$Ride {
     required int distance,
     required int duration,
     required DateTime driverPickedAt,
+    required int price_per_km,
     String? start_name,
     String? dest_name,
     double? driverLat,
