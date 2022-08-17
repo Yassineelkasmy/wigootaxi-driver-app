@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:wigootaxidriver/driver/domain/driver_record.dart';
 import 'package:wigootaxidriver/profile/domain/driver_profile.dart';
 import 'package:wigootaxidriver/ride/domain/ride.dart';
 import 'package:wigootaxidriver/ride/domain/ride_failure.dart';
@@ -26,7 +25,6 @@ class ProfileService {
             isEqualTo: true,
           )
           .get();
-      print(ridesData.docs.first.data());
       final rides = ridesData.docs.map(docDataToRide).toList();
       return right(rides);
     } catch (e) {
@@ -35,7 +33,7 @@ class ProfileService {
     }
   }
 
-  Future<Either<RideFailure, DriverProfile>> getDriverRecord() async {
+  Future<Either<RideFailure, DriverProfile>> getDriverProfile() async {
     final uid = FirebaseAuth.instance.currentUser!.uid;
 
     try {

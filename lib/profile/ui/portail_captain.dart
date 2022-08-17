@@ -11,14 +11,12 @@ class PortailCaptain extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final profileState = ref.watch(profileProvider);
     final profileController = ref.watch(profileProvider.notifier);
-    final totalRidesAccepted = (profileState.driverCancelledRides.length +
-        profileState.userCancelledRides.length +
-        profileState.finishedRides.length);
-    final totalRides =
-        (profileState.driverProfile?.ridesIgnored ?? 0) + totalRidesAccepted;
-    final acceptingRate = (totalRidesAccepted / totalRides) * 100;
-    final successRideRate =
-        (profileState.finishedRides.length / totalRides) * 100;
+    final totalRides = profileState.driverProfile?.totalRides ?? 0;
+    final ridesIgnored = profileState.driverProfile?.ridesIgnored ?? 0;
+    final ridesFinished = profileState.driverProfile?.ridesFinished ?? 0;
+    final acceptingRideRate = ((totalRides - ridesIgnored) / totalRides) * 100;
+    final successRideRate = (ridesFinished / totalRides) * 100;
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -59,7 +57,7 @@ class PortailCaptain extends HookConsumerWidget {
               children: [
                 PortailInfo(
                   title: "Taux d'acceptation",
-                  value: "${acceptingRate.toStringAsFixed(2)}%",
+                  value: "${acceptingRideRate.toStringAsFixed(2)}%",
                   icon: Icon(
                     Icons.check,
                     color: kPrimaryColor,
@@ -74,6 +72,27 @@ class PortailCaptain extends HookConsumerWidget {
                   ),
                 ),
               ],
+            ),
+            20.h.verticalSpace,
+            Row(
+              children: [
+                Icon(
+                  Icons.warning,
+                  color: Colors.orange,
+                ),
+                5.w.horizontalSpace,
+                Text(
+                  'Suivi du blocage cash',
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+            5.h.verticalSpace,
+            LinearProgressIndicator(
+              color: kPrimaryColor,
+              backgroundColor: Colors.grey,
             )
           ],
         ),

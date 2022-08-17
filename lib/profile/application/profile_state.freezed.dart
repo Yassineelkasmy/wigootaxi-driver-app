@@ -20,12 +20,14 @@ class _$ProfileStateTearOff {
 
   _ProfileState call(
       {DriverProfile? driverProfile,
+      Metrics? metrics,
       required List<Ride> finishedRides,
       required List<Ride> userCancelledRides,
       required List<Ride> driverCancelledRides,
       required bool isLoading}) {
     return _ProfileState(
       driverProfile: driverProfile,
+      metrics: metrics,
       finishedRides: finishedRides,
       userCancelledRides: userCancelledRides,
       driverCancelledRides: driverCancelledRides,
@@ -40,6 +42,7 @@ const $ProfileState = _$ProfileStateTearOff();
 /// @nodoc
 mixin _$ProfileState {
   DriverProfile? get driverProfile => throw _privateConstructorUsedError;
+  Metrics? get metrics => throw _privateConstructorUsedError;
   List<Ride> get finishedRides => throw _privateConstructorUsedError;
   List<Ride> get userCancelledRides => throw _privateConstructorUsedError;
   List<Ride> get driverCancelledRides => throw _privateConstructorUsedError;
@@ -57,12 +60,14 @@ abstract class $ProfileStateCopyWith<$Res> {
       _$ProfileStateCopyWithImpl<$Res>;
   $Res call(
       {DriverProfile? driverProfile,
+      Metrics? metrics,
       List<Ride> finishedRides,
       List<Ride> userCancelledRides,
       List<Ride> driverCancelledRides,
       bool isLoading});
 
   $DriverProfileCopyWith<$Res>? get driverProfile;
+  $MetricsCopyWith<$Res>? get metrics;
 }
 
 /// @nodoc
@@ -76,6 +81,7 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
   @override
   $Res call({
     Object? driverProfile = freezed,
+    Object? metrics = freezed,
     Object? finishedRides = freezed,
     Object? userCancelledRides = freezed,
     Object? driverCancelledRides = freezed,
@@ -86,6 +92,10 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
           ? _value.driverProfile
           : driverProfile // ignore: cast_nullable_to_non_nullable
               as DriverProfile?,
+      metrics: metrics == freezed
+          ? _value.metrics
+          : metrics // ignore: cast_nullable_to_non_nullable
+              as Metrics?,
       finishedRides: finishedRides == freezed
           ? _value.finishedRides
           : finishedRides // ignore: cast_nullable_to_non_nullable
@@ -115,6 +125,17 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
       return _then(_value.copyWith(driverProfile: value));
     });
   }
+
+  @override
+  $MetricsCopyWith<$Res>? get metrics {
+    if (_value.metrics == null) {
+      return null;
+    }
+
+    return $MetricsCopyWith<$Res>(_value.metrics!, (value) {
+      return _then(_value.copyWith(metrics: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -126,6 +147,7 @@ abstract class _$ProfileStateCopyWith<$Res>
   @override
   $Res call(
       {DriverProfile? driverProfile,
+      Metrics? metrics,
       List<Ride> finishedRides,
       List<Ride> userCancelledRides,
       List<Ride> driverCancelledRides,
@@ -133,6 +155,8 @@ abstract class _$ProfileStateCopyWith<$Res>
 
   @override
   $DriverProfileCopyWith<$Res>? get driverProfile;
+  @override
+  $MetricsCopyWith<$Res>? get metrics;
 }
 
 /// @nodoc
@@ -148,6 +172,7 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? driverProfile = freezed,
+    Object? metrics = freezed,
     Object? finishedRides = freezed,
     Object? userCancelledRides = freezed,
     Object? driverCancelledRides = freezed,
@@ -158,6 +183,10 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
           ? _value.driverProfile
           : driverProfile // ignore: cast_nullable_to_non_nullable
               as DriverProfile?,
+      metrics: metrics == freezed
+          ? _value.metrics
+          : metrics // ignore: cast_nullable_to_non_nullable
+              as Metrics?,
       finishedRides: finishedRides == freezed
           ? _value.finishedRides
           : finishedRides // ignore: cast_nullable_to_non_nullable
@@ -183,6 +212,7 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
 class _$_ProfileState implements _ProfileState {
   const _$_ProfileState(
       {this.driverProfile,
+      this.metrics,
       required this.finishedRides,
       required this.userCancelledRides,
       required this.driverCancelledRides,
@@ -190,6 +220,8 @@ class _$_ProfileState implements _ProfileState {
 
   @override
   final DriverProfile? driverProfile;
+  @override
+  final Metrics? metrics;
   @override
   final List<Ride> finishedRides;
   @override
@@ -201,7 +233,7 @@ class _$_ProfileState implements _ProfileState {
 
   @override
   String toString() {
-    return 'ProfileState(driverProfile: $driverProfile, finishedRides: $finishedRides, userCancelledRides: $userCancelledRides, driverCancelledRides: $driverCancelledRides, isLoading: $isLoading)';
+    return 'ProfileState(driverProfile: $driverProfile, metrics: $metrics, finishedRides: $finishedRides, userCancelledRides: $userCancelledRides, driverCancelledRides: $driverCancelledRides, isLoading: $isLoading)';
   }
 
   @override
@@ -211,6 +243,7 @@ class _$_ProfileState implements _ProfileState {
             other is _ProfileState &&
             const DeepCollectionEquality()
                 .equals(other.driverProfile, driverProfile) &&
+            const DeepCollectionEquality().equals(other.metrics, metrics) &&
             const DeepCollectionEquality()
                 .equals(other.finishedRides, finishedRides) &&
             const DeepCollectionEquality()
@@ -224,6 +257,7 @@ class _$_ProfileState implements _ProfileState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(driverProfile),
+      const DeepCollectionEquality().hash(metrics),
       const DeepCollectionEquality().hash(finishedRides),
       const DeepCollectionEquality().hash(userCancelledRides),
       const DeepCollectionEquality().hash(driverCancelledRides),
@@ -238,6 +272,7 @@ class _$_ProfileState implements _ProfileState {
 abstract class _ProfileState implements ProfileState {
   const factory _ProfileState(
       {DriverProfile? driverProfile,
+      Metrics? metrics,
       required List<Ride> finishedRides,
       required List<Ride> userCancelledRides,
       required List<Ride> driverCancelledRides,
@@ -245,6 +280,8 @@ abstract class _ProfileState implements ProfileState {
 
   @override
   DriverProfile? get driverProfile;
+  @override
+  Metrics? get metrics;
   @override
   List<Ride> get finishedRides;
   @override

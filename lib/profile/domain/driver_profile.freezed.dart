@@ -26,6 +26,10 @@ class _$DriverProfileTearOff {
       {required String username,
       required String phone,
       int? ridesIgnored,
+      int? ridesFinished,
+      int? ridesCancelledByDriver,
+      int? ridesCancelledByUser,
+      int? totalRides,
       double? totalAmount,
       double? tvaToPay,
       double? revenueToPay}) {
@@ -33,6 +37,10 @@ class _$DriverProfileTearOff {
       username: username,
       phone: phone,
       ridesIgnored: ridesIgnored,
+      ridesFinished: ridesFinished,
+      ridesCancelledByDriver: ridesCancelledByDriver,
+      ridesCancelledByUser: ridesCancelledByUser,
+      totalRides: totalRides,
       totalAmount: totalAmount,
       tvaToPay: tvaToPay,
       revenueToPay: revenueToPay,
@@ -52,6 +60,10 @@ mixin _$DriverProfile {
   String get username => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   int? get ridesIgnored => throw _privateConstructorUsedError;
+  int? get ridesFinished => throw _privateConstructorUsedError;
+  int? get ridesCancelledByDriver => throw _privateConstructorUsedError;
+  int? get ridesCancelledByUser => throw _privateConstructorUsedError;
+  int? get totalRides => throw _privateConstructorUsedError;
   double? get totalAmount => throw _privateConstructorUsedError;
   double? get tvaToPay => throw _privateConstructorUsedError;
   double? get revenueToPay => throw _privateConstructorUsedError;
@@ -71,6 +83,10 @@ abstract class $DriverProfileCopyWith<$Res> {
       {String username,
       String phone,
       int? ridesIgnored,
+      int? ridesFinished,
+      int? ridesCancelledByDriver,
+      int? ridesCancelledByUser,
+      int? totalRides,
       double? totalAmount,
       double? tvaToPay,
       double? revenueToPay});
@@ -90,6 +106,10 @@ class _$DriverProfileCopyWithImpl<$Res>
     Object? username = freezed,
     Object? phone = freezed,
     Object? ridesIgnored = freezed,
+    Object? ridesFinished = freezed,
+    Object? ridesCancelledByDriver = freezed,
+    Object? ridesCancelledByUser = freezed,
+    Object? totalRides = freezed,
     Object? totalAmount = freezed,
     Object? tvaToPay = freezed,
     Object? revenueToPay = freezed,
@@ -106,6 +126,22 @@ class _$DriverProfileCopyWithImpl<$Res>
       ridesIgnored: ridesIgnored == freezed
           ? _value.ridesIgnored
           : ridesIgnored // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ridesFinished: ridesFinished == freezed
+          ? _value.ridesFinished
+          : ridesFinished // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ridesCancelledByDriver: ridesCancelledByDriver == freezed
+          ? _value.ridesCancelledByDriver
+          : ridesCancelledByDriver // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ridesCancelledByUser: ridesCancelledByUser == freezed
+          ? _value.ridesCancelledByUser
+          : ridesCancelledByUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalRides: totalRides == freezed
+          ? _value.totalRides
+          : totalRides // ignore: cast_nullable_to_non_nullable
               as int?,
       totalAmount: totalAmount == freezed
           ? _value.totalAmount
@@ -134,6 +170,10 @@ abstract class _$DriverProfileCopyWith<$Res>
       {String username,
       String phone,
       int? ridesIgnored,
+      int? ridesFinished,
+      int? ridesCancelledByDriver,
+      int? ridesCancelledByUser,
+      int? totalRides,
       double? totalAmount,
       double? tvaToPay,
       double? revenueToPay});
@@ -155,6 +195,10 @@ class __$DriverProfileCopyWithImpl<$Res>
     Object? username = freezed,
     Object? phone = freezed,
     Object? ridesIgnored = freezed,
+    Object? ridesFinished = freezed,
+    Object? ridesCancelledByDriver = freezed,
+    Object? ridesCancelledByUser = freezed,
+    Object? totalRides = freezed,
     Object? totalAmount = freezed,
     Object? tvaToPay = freezed,
     Object? revenueToPay = freezed,
@@ -171,6 +215,22 @@ class __$DriverProfileCopyWithImpl<$Res>
       ridesIgnored: ridesIgnored == freezed
           ? _value.ridesIgnored
           : ridesIgnored // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ridesFinished: ridesFinished == freezed
+          ? _value.ridesFinished
+          : ridesFinished // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ridesCancelledByDriver: ridesCancelledByDriver == freezed
+          ? _value.ridesCancelledByDriver
+          : ridesCancelledByDriver // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ridesCancelledByUser: ridesCancelledByUser == freezed
+          ? _value.ridesCancelledByUser
+          : ridesCancelledByUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalRides: totalRides == freezed
+          ? _value.totalRides
+          : totalRides // ignore: cast_nullable_to_non_nullable
               as int?,
       totalAmount: totalAmount == freezed
           ? _value.totalAmount
@@ -195,6 +255,10 @@ class _$_DriverProfile implements _DriverProfile {
       {required this.username,
       required this.phone,
       this.ridesIgnored,
+      this.ridesFinished,
+      this.ridesCancelledByDriver,
+      this.ridesCancelledByUser,
+      this.totalRides,
       this.totalAmount,
       this.tvaToPay,
       this.revenueToPay});
@@ -209,6 +273,14 @@ class _$_DriverProfile implements _DriverProfile {
   @override
   final int? ridesIgnored;
   @override
+  final int? ridesFinished;
+  @override
+  final int? ridesCancelledByDriver;
+  @override
+  final int? ridesCancelledByUser;
+  @override
+  final int? totalRides;
+  @override
   final double? totalAmount;
   @override
   final double? tvaToPay;
@@ -217,7 +289,7 @@ class _$_DriverProfile implements _DriverProfile {
 
   @override
   String toString() {
-    return 'DriverProfile(username: $username, phone: $phone, ridesIgnored: $ridesIgnored, totalAmount: $totalAmount, tvaToPay: $tvaToPay, revenueToPay: $revenueToPay)';
+    return 'DriverProfile(username: $username, phone: $phone, ridesIgnored: $ridesIgnored, ridesFinished: $ridesFinished, ridesCancelledByDriver: $ridesCancelledByDriver, ridesCancelledByUser: $ridesCancelledByUser, totalRides: $totalRides, totalAmount: $totalAmount, tvaToPay: $tvaToPay, revenueToPay: $revenueToPay)';
   }
 
   @override
@@ -229,6 +301,14 @@ class _$_DriverProfile implements _DriverProfile {
             const DeepCollectionEquality().equals(other.phone, phone) &&
             const DeepCollectionEquality()
                 .equals(other.ridesIgnored, ridesIgnored) &&
+            const DeepCollectionEquality()
+                .equals(other.ridesFinished, ridesFinished) &&
+            const DeepCollectionEquality()
+                .equals(other.ridesCancelledByDriver, ridesCancelledByDriver) &&
+            const DeepCollectionEquality()
+                .equals(other.ridesCancelledByUser, ridesCancelledByUser) &&
+            const DeepCollectionEquality()
+                .equals(other.totalRides, totalRides) &&
             const DeepCollectionEquality()
                 .equals(other.totalAmount, totalAmount) &&
             const DeepCollectionEquality().equals(other.tvaToPay, tvaToPay) &&
@@ -242,6 +322,10 @@ class _$_DriverProfile implements _DriverProfile {
       const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(phone),
       const DeepCollectionEquality().hash(ridesIgnored),
+      const DeepCollectionEquality().hash(ridesFinished),
+      const DeepCollectionEquality().hash(ridesCancelledByDriver),
+      const DeepCollectionEquality().hash(ridesCancelledByUser),
+      const DeepCollectionEquality().hash(totalRides),
       const DeepCollectionEquality().hash(totalAmount),
       const DeepCollectionEquality().hash(tvaToPay),
       const DeepCollectionEquality().hash(revenueToPay));
@@ -262,6 +346,10 @@ abstract class _DriverProfile implements DriverProfile {
       {required String username,
       required String phone,
       int? ridesIgnored,
+      int? ridesFinished,
+      int? ridesCancelledByDriver,
+      int? ridesCancelledByUser,
+      int? totalRides,
       double? totalAmount,
       double? tvaToPay,
       double? revenueToPay}) = _$_DriverProfile;
@@ -275,6 +363,14 @@ abstract class _DriverProfile implements DriverProfile {
   String get phone;
   @override
   int? get ridesIgnored;
+  @override
+  int? get ridesFinished;
+  @override
+  int? get ridesCancelledByDriver;
+  @override
+  int? get ridesCancelledByUser;
+  @override
+  int? get totalRides;
   @override
   double? get totalAmount;
   @override

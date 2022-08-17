@@ -1,16 +1,16 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/profile/application/profile_event.dart';
 import 'package:wigootaxidriver/profile/application/profile_state.dart';
+import 'package:wigootaxidriver/profile/services/metrics_service.dart';
 import 'package:wigootaxidriver/profile/services/profile_service.dart';
 
 class ProfileController extends StateNotifier<ProfileState> {
-  ProfileController(this._profileService) : super(ProfileState.initial()) {
+  ProfileController(this._profileService, this._metricsService)
+      : super(ProfileState.initial()) {
     mapEventToState(ProfileEvent.driverRecordRequested());
-    mapEventToState(ProfileEvent.finishedRidesRequested());
-    mapEventToState(ProfileEvent.userCancelledRidesRequested());
-    mapEventToState(ProfileEvent.driverCancelledRidesRequested());
   }
   final ProfileService _profileService;
+  final MetricsService _metricsService;
 
   Future mapEventToState(ProfileEvent event) {
     return event.map(
@@ -42,7 +42,7 @@ class ProfileController extends StateNotifier<ProfileState> {
         );
       },
       driverRecordRequested: (event) async {
-        final driverOrFailure = await _profileService.getDriverRecord();
+        final driverOrFailure = await _profileService.getDriverProfile();
         driverOrFailure.map(
           (driverProfile) =>
               state = state.copyWith(driverProfile: driverProfile),
