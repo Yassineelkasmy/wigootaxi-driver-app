@@ -92,6 +92,7 @@ class RideService {
       'totalDistance': totalDistance,
       'totalDuration': totalDuration.inSeconds,
       'finished': true,
+      'finishedAt': FieldValue.serverTimestamp(),
     });
     try {} catch (e) {}
   }

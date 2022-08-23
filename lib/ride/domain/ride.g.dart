@@ -45,6 +45,9 @@ Ride _$RideFromJson(Map<String, dynamic> json) => Ride(
       totalDuration: json['totalDuration'] as int?,
       totalDistance: json['totalDistance'] as int?,
       totalPrice: (json['totalPrice'] as num?)?.toDouble(),
+      tva: (json['tva'] as num?)?.toDouble(),
+      revenue: (json['revenue'] as num?)?.toDouble(),
+      driverRevenue: (json['driverRevenue'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$RideToJson(Ride instance) => <String, dynamic>{
@@ -84,4 +87,7 @@ Map<String, dynamic> _$RideToJson(Ride instance) => <String, dynamic>{
       'totalDuration': instance.totalDuration,
       'totalDistance': instance.totalDistance,
       'totalPrice': instance.totalPrice,
+      'tva': instance.tva,
+      'revenue': instance.revenue,
+      'driverRevenue': instance.driverRevenue,
     };

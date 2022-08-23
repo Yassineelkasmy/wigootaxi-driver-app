@@ -44,6 +44,9 @@ class Ride with _$Ride {
     int? totalDuration,
     int? totalDistance,
     double? totalPrice,
+    double? tva,
+    double? revenue,
+    double? driverRevenue,
   }) = _Ride;
 
   factory Ride.fromJson(Map<String, dynamic> json) {
