@@ -232,12 +232,12 @@ class _MyRidePageState extends State<MyRidePage> {
               child: Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(
                         Icons.route,
                         color: Colors.green,
                       ),
+                      5.w.horizontalSpace,
                       Text(
                         'Trajet suivi',
                         style: TextStyle(
@@ -248,12 +248,12 @@ class _MyRidePageState extends State<MyRidePage> {
                   ),
                   5.h.verticalSpace,
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(
                         Icons.route,
                         color: kPrimaryColor,
                       ),
+                      5.w.horizontalSpace,
                       Text(
                         'Trajet estimé',
                         style: TextStyle(

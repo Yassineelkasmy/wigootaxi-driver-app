@@ -310,6 +310,7 @@ ListView buildDriverCancelledRides(List<Ride> rides) {
                     )
                   ],
                 ),
+                10.h.verticalSpace,
               ],
             ),
           )
