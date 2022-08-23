@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/profile/application/profile_event.dart';
@@ -74,8 +75,42 @@ ListView buildFinishedRides(List<Ride> rides) {
     itemBuilder: (context, index) {
       final ride = rides[index];
 
-      return ListTile(
-        title: Text(ride.start_name!),
+      return ExpansionTile(
+        title: Text(ride.dest_name!),
+        subtitle: Row(
+          children: [
+            Text(ride.disttext),
+            5.w.horizontalSpace,
+            Text(ride.durtext),
+          ],
+        ),
+        children: [
+          ListTile(
+            title: Text('Départ: ${ride.start_name!}'),
+            leading: Image.asset(
+              'assets/icons/flag.png',
+              height: 24.h,
+              width: 24.w,
+            ),
+          ),
+          ListTile(
+            title: Text(
+                'Distance: ${(ride.totalDistance! / 1000).toStringAsFixed(2)} km'),
+            leading: Image.asset(
+              'assets/icons/distance.png',
+              height: 24.h,
+              width: 24.w,
+            ),
+          ),
+          Row(
+            children: [Text('data')],
+          ),
+        ],
+        iconColor: kPrimaryColor,
+        leading: Icon(
+          Icons.drive_eta,
+          color: kPrimaryColor,
+        ),
       );
     },
     itemCount: rides.length,
@@ -86,9 +121,18 @@ ListView buildDriverCancelledRides(List<Ride> rides) {
   return ListView.builder(
     itemBuilder: (context, index) {
       final ride = rides[index];
-
-      return ListTile(
-        title: Text(ride.start_name!),
+      // ListTile(
+      //   title: Text(ride.dest_name!),
+      //   subtitle: Text(ride.start_name!),
+      //   trailing: Icon(Icons.warning),
+      // );
+      return ExpansionTile(
+        title: Text(ride.dest_name!),
+        iconColor: kPrimaryColor,
+        leading: Icon(
+          Icons.drive_eta,
+          color: kPrimaryColor,
+        ),
       );
     },
     itemCount: rides.length,
@@ -101,7 +145,9 @@ ListView buildUserCancelledRides(List<Ride> rides) {
       final ride = rides[index];
 
       return ListTile(
-        title: Text(ride.start_name!),
+        title: Text(ride.dest_name!),
+        subtitle: Text(ride.start_name!),
+        trailing: Icon(Icons.warning),
       );
     },
     itemCount: rides.length,
