@@ -3,6 +3,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/ride/domain/ride.dart';
@@ -202,21 +203,69 @@ class _MyRidePageState extends State<MyRidePage> {
     );
 
     return Scaffold(
-      appBar: AppBar(),
-      body: GoogleMap(
-        markers: _markers,
-        initialCameraPosition: cameraPosition,
-        onMapCreated: (mapController) {
-          _googleMapController = mapController;
-        },
-        mapType: MapType.normal,
-        buildingsEnabled: false,
-        zoomGesturesEnabled: true,
-        zoomControlsEnabled: true,
-        myLocationEnabled: true,
-        indoorViewEnabled: true,
-        polylines: Set<Polyline>.of(polylines.values),
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Trajet détaillé'),
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: GoogleMap(
+                markers: _markers,
+                initialCameraPosition: cameraPosition,
+                onMapCreated: (mapController) {
+                  _googleMapController = mapController;
+                },
+                mapType: MapType.normal,
+                buildingsEnabled: false,
+                zoomGesturesEnabled: true,
+                zoomControlsEnabled: true,
+                myLocationEnabled: true,
+                indoorViewEnabled: true,
+                polylines: Set<Polyline>.of(polylines.values),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20.w,
+                vertical: 10.h,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.route,
+                        color: Colors.green,
+                      ),
+                      Text(
+                        'Trajet suivi',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                  5.h.verticalSpace,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.route,
+                        color: kPrimaryColor,
+                      ),
+                      Text(
+                        'Trajet estimé',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ));
   }
 }
