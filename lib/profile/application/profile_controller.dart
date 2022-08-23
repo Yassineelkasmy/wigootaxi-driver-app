@@ -8,12 +8,19 @@ class ProfileController extends StateNotifier<ProfileState> {
   ProfileController(this._profileService, this._metricsService)
       : super(ProfileState.initial()) {
     mapEventToState(ProfileEvent.driverRecordRequested());
+    mapEventToState(ProfileEvent.metricsRequested());
   }
   final ProfileService _profileService;
   final MetricsService _metricsService;
 
   Future mapEventToState(ProfileEvent event) {
     return event.map(
+      metricsRequested: (event) async {
+        final metricsOrFailure = await _metricsService.getMetrics();
+        metricsOrFailure.map(
+          (metrics) => state = state.copyWith(metrics: metrics),
+        );
+      },
       finishedRidesRequested: (event) async {
         final ridesOrFailure = await _profileService.getRidesWithCanncellOption(
           option: 'finished',

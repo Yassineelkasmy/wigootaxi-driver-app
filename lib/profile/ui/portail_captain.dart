@@ -11,36 +11,22 @@ class PortailCaptain extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final profileState = ref.watch(profileProvider);
     final profileController = ref.watch(profileProvider.notifier);
+    final amountThreshold = profileState.metrics?.amountThreshold ?? 1;
     final totalRides = profileState.driverProfile?.totalRides ?? 0;
     final ridesIgnored = profileState.driverProfile?.ridesIgnored ?? 0;
     final ridesFinished = profileState.driverProfile?.ridesFinished ?? 0;
     final acceptingRideRate = ((totalRides - ridesIgnored) / totalRides) * 100;
     final successRideRate = (ridesFinished / totalRides) * 100;
+    final revenueToPay = (profileState.driverProfile?.revenueToPay ?? 0);
+    final tvaToPay = profileState.driverProfile?.tvaToPay ?? 0;
+    final cashBlock = revenueToPay + tvaToPay;
 
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          Row(
-            children: [
-              ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.person_outlined),
-                  label: Text('Profil')),
-              SizedBox(
-                width: 10,
-              ),
-              ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.car_rental),
-                  label: Text('Courses')),
-            ],
-          )
-        ],
-      ),
+      appBar: AppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Portail Captain",
@@ -75,25 +61,51 @@ class PortailCaptain extends HookConsumerWidget {
             ),
             20.h.verticalSpace,
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(
-                  Icons.warning,
-                  color: Colors.orange,
+                Row(
+                  children: [
+                    Icon(
+                      Icons.warning,
+                      color: Colors.orange,
+                    ),
+                    5.w.horizontalSpace,
+                    Text(
+                      'Suivi du blocage cash',
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
                 ),
-                5.w.horizontalSpace,
                 Text(
-                  'Suivi du blocage cash',
+                  '-${cashBlock.toStringAsFixed(2)} MAD',
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.orange,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+            10.h.verticalSpace,
+            LinearProgressIndicator(
+              color: Colors.orange,
+              backgroundColor: Colors.grey.shade300,
+              value: cashBlock / amountThreshold,
+            ),
+            5.h.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '-${amountThreshold.toStringAsFixed(2)} MAD',
+                  style: TextStyle(
+                    color: Colors.orange,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
-            5.h.verticalSpace,
-            LinearProgressIndicator(
-              color: kPrimaryColor,
-              backgroundColor: Colors.grey,
-            )
           ],
         ),
       ),

@@ -214,7 +214,9 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                AutoRouter.of(context).push(MyRidesPageRoute());
+              },
               leading: Icon(
                 Icons.history_outlined,
                 color: Colors.white,

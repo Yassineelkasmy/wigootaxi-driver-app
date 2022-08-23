@@ -15,6 +15,7 @@ class MetricsService {
         Metrics.fromJson(metricsDoc.data()!),
       );
     } catch (e) {
+      print(e);
       return left(const RideFailure.serverError());
     }
   }

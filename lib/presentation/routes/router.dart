@@ -13,12 +13,14 @@ import 'package:wigootaxidriver/presentation/submission/submission_success_page.
 import 'package:wigootaxidriver/presentation/submission/widgets/upload_field.dart';
 import 'package:wigootaxidriver/profile/ui/portail_captain.dart';
 import 'package:wigootaxidriver/ride/ui/activate_location_or_ride_map_page.dart';
+import 'package:wigootaxidriver/ride/ui/my_rides_page.dart';
 import 'package:wigootaxidriver/ride/ui/ride_cancelled_page.dart';
 import 'package:wigootaxidriver/ride/ui/ride_root_page.dart';
 
 @MaterialAutoRouter(routes: <AutoRoute>[
   AutoRoute(page: SplashPage, initial: true),
   AutoRoute(page: SubmissionPage),
+  AutoRoute(page: MyRidesPage),
   AutoRoute(page: SubmissionSuccessPage),
   AutoRoute(page: DocumentImagePage),
   AutoRoute(page: PhoneVerificationPage),
