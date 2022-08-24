@@ -18,7 +18,8 @@ Ride _$RideFromJson(Map<String, dynamic> json) => Ride(
       durtext: json['durtext'] as String,
       distance: json['distance'] as int,
       duration: json['duration'] as int,
-      driverPickedAt: DateTime.parse(json['driverPickedAt'] as String),
+      driverPickedAt: const TimestampConverter()
+          .fromJson(json['driverPickedAt'] as Timestamp),
       price_per_km: json['price_per_km'] as int,
       start_name: json['start_name'] as String?,
       dest_name: json['dest_name'] as String?,
@@ -60,7 +61,8 @@ Map<String, dynamic> _$RideToJson(Ride instance) => <String, dynamic>{
       'durtext': instance.durtext,
       'distance': instance.distance,
       'duration': instance.duration,
-      'driverPickedAt': instance.driverPickedAt.toIso8601String(),
+      'driverPickedAt':
+          const TimestampConverter().toJson(instance.driverPickedAt),
       'price_per_km': instance.price_per_km,
       'start_name': instance.start_name,
       'dest_name': instance.dest_name,

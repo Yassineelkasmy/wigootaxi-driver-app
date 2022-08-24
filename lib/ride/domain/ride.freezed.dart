@@ -28,7 +28,7 @@ class _$RideTearOff {
       required String durtext,
       required int distance,
       required int duration,
-      required DateTime driverPickedAt,
+      @TimestampConverter() required DateTime driverPickedAt,
       required int price_per_km,
       String? start_name,
       String? dest_name,
@@ -116,6 +116,7 @@ mixin _$Ride {
   String get durtext => throw _privateConstructorUsedError;
   int get distance => throw _privateConstructorUsedError;
   int get duration => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime get driverPickedAt => throw _privateConstructorUsedError;
   int get price_per_km => throw _privateConstructorUsedError;
   String? get start_name => throw _privateConstructorUsedError;
@@ -165,7 +166,7 @@ abstract class $RideCopyWith<$Res> {
       String durtext,
       int distance,
       int duration,
-      DateTime driverPickedAt,
+      @TimestampConverter() DateTime driverPickedAt,
       int price_per_km,
       String? start_name,
       String? dest_name,
@@ -423,7 +424,7 @@ abstract class _$RideCopyWith<$Res> implements $RideCopyWith<$Res> {
       String durtext,
       int distance,
       int duration,
-      DateTime driverPickedAt,
+      @TimestampConverter() DateTime driverPickedAt,
       int price_per_km,
       String? start_name,
       String? dest_name,
@@ -680,7 +681,7 @@ class _$_Ride implements _Ride {
       required this.durtext,
       required this.distance,
       required this.duration,
-      required this.driverPickedAt,
+      @TimestampConverter() required this.driverPickedAt,
       required this.price_per_km,
       this.start_name,
       this.dest_name,
@@ -730,6 +731,7 @@ class _$_Ride implements _Ride {
   @override
   final int duration;
   @override
+  @TimestampConverter()
   final DateTime driverPickedAt;
   @override
   final int price_per_km;
@@ -920,7 +922,7 @@ abstract class _Ride implements Ride {
       required String durtext,
       required int distance,
       required int duration,
-      required DateTime driverPickedAt,
+      @TimestampConverter() required DateTime driverPickedAt,
       required int price_per_km,
       String? start_name,
       String? dest_name,
@@ -970,6 +972,7 @@ abstract class _Ride implements Ride {
   @override
   int get duration;
   @override
+  @TimestampConverter()
   DateTime get driverPickedAt;
   @override
   int get price_per_km;
