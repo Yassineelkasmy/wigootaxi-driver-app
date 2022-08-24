@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -102,6 +103,16 @@ ListView buildFinishedRides(List<Ride> rides) {
               width: 24.w,
             ),
           ),
+          ListTile(
+            title: Text(
+              'Durée : ${Duration(seconds: ride.totalDuration!).inMinutes} min',
+            ),
+            leading: Image.asset(
+              'assets/icons/duration.png',
+              height: 24.h,
+              width: 24.w,
+            ),
+          ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Column(
@@ -171,6 +182,66 @@ ListView buildFinishedRides(List<Ride> rides) {
                     ),
                     Text(
                       '-${ride.revenue} MAD',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+                10.h.verticalSpace,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Réservé à ',
+                        ),
+                        Text(
+                          DateFormat('HH:mm').format(ride.ts),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Chauffeur est arrivé à ',
+                        ),
+                        Text(
+                          DateFormat('HH:mm').format(ride.driverArrivedAt!),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+                10.h.verticalSpace,
+                Row(
+                  children: [
+                    Text(
+                      'Terminé à ',
+                    ),
+                    Text(
+                      DateFormat('HH:mm').format(ride.finishedAt!),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+                10.h.verticalSpace,
+                Row(
+                  children: [
+                    Text(
+                      'Le ',
+                    ),
+                    Text(
+                      DateFormat('yyyy/MM/dd').format(ride.ts),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -311,6 +382,19 @@ ListView buildDriverCancelledRides(List<Ride> rides) {
                   ],
                 ),
                 10.h.verticalSpace,
+                Row(
+                  children: [
+                    Text(
+                      'Le ',
+                    ),
+                    Text(
+                      DateFormat('yyyy/MM/dd').format(ride.ts),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
               ],
             ),
           )

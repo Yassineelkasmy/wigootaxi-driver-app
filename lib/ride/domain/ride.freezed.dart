@@ -29,7 +29,11 @@ class _$RideTearOff {
       required int distance,
       required int duration,
       @TimestampConverter() required DateTime driverPickedAt,
+      @TimestampConverter() required DateTime ts,
       required int price_per_km,
+      @TimestampOrNullConverter() DateTime? driverArrivedAt,
+      @TimestampOrNullConverter() DateTime? startedAt,
+      @TimestampOrNullConverter() DateTime? finishedAt,
       String? start_name,
       String? dest_name,
       double? driverLat,
@@ -69,7 +73,11 @@ class _$RideTearOff {
       distance: distance,
       duration: duration,
       driverPickedAt: driverPickedAt,
+      ts: ts,
       price_per_km: price_per_km,
+      driverArrivedAt: driverArrivedAt,
+      startedAt: startedAt,
+      finishedAt: finishedAt,
       start_name: start_name,
       dest_name: dest_name,
       driverLat: driverLat,
@@ -118,7 +126,15 @@ mixin _$Ride {
   int get duration => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime get driverPickedAt => throw _privateConstructorUsedError;
+  @TimestampConverter()
+  DateTime get ts => throw _privateConstructorUsedError;
   int get price_per_km => throw _privateConstructorUsedError;
+  @TimestampOrNullConverter()
+  DateTime? get driverArrivedAt => throw _privateConstructorUsedError;
+  @TimestampOrNullConverter()
+  DateTime? get startedAt => throw _privateConstructorUsedError;
+  @TimestampOrNullConverter()
+  DateTime? get finishedAt => throw _privateConstructorUsedError;
   String? get start_name => throw _privateConstructorUsedError;
   String? get dest_name => throw _privateConstructorUsedError;
   double? get driverLat => throw _privateConstructorUsedError;
@@ -167,7 +183,11 @@ abstract class $RideCopyWith<$Res> {
       int distance,
       int duration,
       @TimestampConverter() DateTime driverPickedAt,
+      @TimestampConverter() DateTime ts,
       int price_per_km,
+      @TimestampOrNullConverter() DateTime? driverArrivedAt,
+      @TimestampOrNullConverter() DateTime? startedAt,
+      @TimestampOrNullConverter() DateTime? finishedAt,
       String? start_name,
       String? dest_name,
       double? driverLat,
@@ -218,7 +238,11 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
     Object? distance = freezed,
     Object? duration = freezed,
     Object? driverPickedAt = freezed,
+    Object? ts = freezed,
     Object? price_per_km = freezed,
+    Object? driverArrivedAt = freezed,
+    Object? startedAt = freezed,
+    Object? finishedAt = freezed,
     Object? start_name = freezed,
     Object? dest_name = freezed,
     Object? driverLat = freezed,
@@ -289,10 +313,26 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
           ? _value.driverPickedAt
           : driverPickedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      ts: ts == freezed
+          ? _value.ts
+          : ts // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       price_per_km: price_per_km == freezed
           ? _value.price_per_km
           : price_per_km // ignore: cast_nullable_to_non_nullable
               as int,
+      driverArrivedAt: driverArrivedAt == freezed
+          ? _value.driverArrivedAt
+          : driverArrivedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      startedAt: startedAt == freezed
+          ? _value.startedAt
+          : startedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      finishedAt: finishedAt == freezed
+          ? _value.finishedAt
+          : finishedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       start_name: start_name == freezed
           ? _value.start_name
           : start_name // ignore: cast_nullable_to_non_nullable
@@ -425,7 +465,11 @@ abstract class _$RideCopyWith<$Res> implements $RideCopyWith<$Res> {
       int distance,
       int duration,
       @TimestampConverter() DateTime driverPickedAt,
+      @TimestampConverter() DateTime ts,
       int price_per_km,
+      @TimestampOrNullConverter() DateTime? driverArrivedAt,
+      @TimestampOrNullConverter() DateTime? startedAt,
+      @TimestampOrNullConverter() DateTime? finishedAt,
       String? start_name,
       String? dest_name,
       double? driverLat,
@@ -477,7 +521,11 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
     Object? distance = freezed,
     Object? duration = freezed,
     Object? driverPickedAt = freezed,
+    Object? ts = freezed,
     Object? price_per_km = freezed,
+    Object? driverArrivedAt = freezed,
+    Object? startedAt = freezed,
+    Object? finishedAt = freezed,
     Object? start_name = freezed,
     Object? dest_name = freezed,
     Object? driverLat = freezed,
@@ -548,10 +596,26 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
           ? _value.driverPickedAt
           : driverPickedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      ts: ts == freezed
+          ? _value.ts
+          : ts // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       price_per_km: price_per_km == freezed
           ? _value.price_per_km
           : price_per_km // ignore: cast_nullable_to_non_nullable
               as int,
+      driverArrivedAt: driverArrivedAt == freezed
+          ? _value.driverArrivedAt
+          : driverArrivedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      startedAt: startedAt == freezed
+          ? _value.startedAt
+          : startedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      finishedAt: finishedAt == freezed
+          ? _value.finishedAt
+          : finishedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       start_name: start_name == freezed
           ? _value.start_name
           : start_name // ignore: cast_nullable_to_non_nullable
@@ -682,7 +746,11 @@ class _$_Ride implements _Ride {
       required this.distance,
       required this.duration,
       @TimestampConverter() required this.driverPickedAt,
+      @TimestampConverter() required this.ts,
       required this.price_per_km,
+      @TimestampOrNullConverter() this.driverArrivedAt,
+      @TimestampOrNullConverter() this.startedAt,
+      @TimestampOrNullConverter() this.finishedAt,
       this.start_name,
       this.dest_name,
       this.driverLat,
@@ -734,7 +802,19 @@ class _$_Ride implements _Ride {
   @TimestampConverter()
   final DateTime driverPickedAt;
   @override
+  @TimestampConverter()
+  final DateTime ts;
+  @override
   final int price_per_km;
+  @override
+  @TimestampOrNullConverter()
+  final DateTime? driverArrivedAt;
+  @override
+  @TimestampOrNullConverter()
+  final DateTime? startedAt;
+  @override
+  @TimestampOrNullConverter()
+  final DateTime? finishedAt;
   @override
   final String? start_name;
   @override
@@ -794,7 +874,7 @@ class _$_Ride implements _Ride {
 
   @override
   String toString() {
-    return 'Ride(id: $id, driverUid: $driverUid, userUid: $userUid, path: $path, pathToStart: $pathToStart, disttext: $disttext, durtext: $durtext, distance: $distance, duration: $duration, driverPickedAt: $driverPickedAt, price_per_km: $price_per_km, start_name: $start_name, dest_name: $dest_name, driverLat: $driverLat, driverLng: $driverLng, userLat: $userLat, userLng: $userLng, destinationLng: $destinationLng, destinationLat: $destinationLat, startLng: $startLng, startLat: $startLat, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, start: $start, destination: $destination, cancelledByUser: $cancelledByUser, driverArrived: $driverArrived, started: $started, driving: $driving, finished: $finished, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, totalDuration: $totalDuration, totalDistance: $totalDistance, totalPrice: $totalPrice, tva: $tva, revenue: $revenue, driverRevenue: $driverRevenue)';
+    return 'Ride(id: $id, driverUid: $driverUid, userUid: $userUid, path: $path, pathToStart: $pathToStart, disttext: $disttext, durtext: $durtext, distance: $distance, duration: $duration, driverPickedAt: $driverPickedAt, ts: $ts, price_per_km: $price_per_km, driverArrivedAt: $driverArrivedAt, startedAt: $startedAt, finishedAt: $finishedAt, start_name: $start_name, dest_name: $dest_name, driverLat: $driverLat, driverLng: $driverLng, userLat: $userLat, userLng: $userLng, destinationLng: $destinationLng, destinationLat: $destinationLat, startLng: $startLng, startLat: $startLat, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, start: $start, destination: $destination, cancelledByUser: $cancelledByUser, driverArrived: $driverArrived, started: $started, driving: $driving, finished: $finished, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, totalDuration: $totalDuration, totalDistance: $totalDistance, totalPrice: $totalPrice, tva: $tva, revenue: $revenue, driverRevenue: $driverRevenue)';
   }
 
   @override
@@ -814,8 +894,14 @@ class _$_Ride implements _Ride {
             const DeepCollectionEquality().equals(other.duration, duration) &&
             const DeepCollectionEquality()
                 .equals(other.driverPickedAt, driverPickedAt) &&
+            const DeepCollectionEquality().equals(other.ts, ts) &&
             const DeepCollectionEquality()
                 .equals(other.price_per_km, price_per_km) &&
+            const DeepCollectionEquality()
+                .equals(other.driverArrivedAt, driverArrivedAt) &&
+            const DeepCollectionEquality().equals(other.startedAt, startedAt) &&
+            const DeepCollectionEquality()
+                .equals(other.finishedAt, finishedAt) &&
             const DeepCollectionEquality()
                 .equals(other.start_name, start_name) &&
             const DeepCollectionEquality().equals(other.dest_name, dest_name) &&
@@ -874,7 +960,11 @@ class _$_Ride implements _Ride {
         const DeepCollectionEquality().hash(distance),
         const DeepCollectionEquality().hash(duration),
         const DeepCollectionEquality().hash(driverPickedAt),
+        const DeepCollectionEquality().hash(ts),
         const DeepCollectionEquality().hash(price_per_km),
+        const DeepCollectionEquality().hash(driverArrivedAt),
+        const DeepCollectionEquality().hash(startedAt),
+        const DeepCollectionEquality().hash(finishedAt),
         const DeepCollectionEquality().hash(start_name),
         const DeepCollectionEquality().hash(dest_name),
         const DeepCollectionEquality().hash(driverLat),
@@ -923,7 +1013,11 @@ abstract class _Ride implements Ride {
       required int distance,
       required int duration,
       @TimestampConverter() required DateTime driverPickedAt,
+      @TimestampConverter() required DateTime ts,
       required int price_per_km,
+      @TimestampOrNullConverter() DateTime? driverArrivedAt,
+      @TimestampOrNullConverter() DateTime? startedAt,
+      @TimestampOrNullConverter() DateTime? finishedAt,
       String? start_name,
       String? dest_name,
       double? driverLat,
@@ -975,7 +1069,19 @@ abstract class _Ride implements Ride {
   @TimestampConverter()
   DateTime get driverPickedAt;
   @override
+  @TimestampConverter()
+  DateTime get ts;
+  @override
   int get price_per_km;
+  @override
+  @TimestampOrNullConverter()
+  DateTime? get driverArrivedAt;
+  @override
+  @TimestampOrNullConverter()
+  DateTime? get startedAt;
+  @override
+  @TimestampOrNullConverter()
+  DateTime? get finishedAt;
   @override
   String? get start_name;
   @override

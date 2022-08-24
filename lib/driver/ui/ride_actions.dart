@@ -165,7 +165,6 @@ class RideActions extends HookConsumerWidget {
                         totalPrice:
                             ((distanceTravelled / 1000) * ride.price_per_km),
                         totalDistance: distanceTravelled,
-                        totalDuration: rideDuration.inMinutes,
                       ),
                     );
                   }

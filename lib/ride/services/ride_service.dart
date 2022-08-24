@@ -90,7 +90,6 @@ class RideService {
     await collectionRef.doc(ride.id).update({
       'totalPrice': totalPrice,
       'totalDistance': totalDistance,
-      'totalDuration': totalDuration.inSeconds,
       'finished': true,
       'finishedAt': FieldValue.serverTimestamp(),
     });

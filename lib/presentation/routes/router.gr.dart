@@ -113,7 +113,6 @@ class AppRouter extends _i19.RootStackRouter {
               startname: args.startname,
               destname: args.destname,
               totalDistance: args.totalDistance,
-              totalDuration: args.totalDuration,
               totalPrice: args.totalPrice));
     },
     RideCancelledPageRoute.name: (routeData) {
@@ -414,7 +413,6 @@ class RideFinishedPageRoute
       required String startname,
       required String destname,
       required int totalDistance,
-      required int totalDuration,
       required double totalPrice})
       : super(RideFinishedPageRoute.name,
             path: '/ride-finished-page',
@@ -423,7 +421,6 @@ class RideFinishedPageRoute
                 startname: startname,
                 destname: destname,
                 totalDistance: totalDistance,
-                totalDuration: totalDuration,
                 totalPrice: totalPrice));
 
   static const String name = 'RideFinishedPageRoute';
@@ -435,7 +432,6 @@ class RideFinishedPageRouteArgs {
       required this.startname,
       required this.destname,
       required this.totalDistance,
-      required this.totalDuration,
       required this.totalPrice});
 
   final _i20.Key? key;
@@ -446,13 +442,11 @@ class RideFinishedPageRouteArgs {
 
   final int totalDistance;
 
-  final int totalDuration;
-
   final double totalPrice;
 
   @override
   String toString() {
-    return 'RideFinishedPageRouteArgs{key: $key, startname: $startname, destname: $destname, totalDistance: $totalDistance, totalDuration: $totalDuration, totalPrice: $totalPrice}';
+    return 'RideFinishedPageRouteArgs{key: $key, startname: $startname, destname: $destname, totalDistance: $totalDistance, totalPrice: $totalPrice}';
   }
 }
 

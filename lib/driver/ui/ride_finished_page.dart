@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
-import 'package:wigootaxidriver/presentation/theme/colors.dart';
 
 class RideFinishedPage extends StatelessWidget {
   const RideFinishedPage({
@@ -9,14 +8,12 @@ class RideFinishedPage extends StatelessWidget {
     required this.startname,
     required this.destname,
     required this.totalDistance,
-    required this.totalDuration,
     required this.totalPrice,
   }) : super(key: key);
   final String startname;
   final String destname;
   final double totalPrice;
   final int totalDistance;
-  final int totalDuration;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -98,24 +95,6 @@ class RideFinishedPage extends StatelessWidget {
                 4.w.horizontalSpace,
                 Text(
                   'Distance : ${(totalDistance / 1000).toStringAsFixed(2)} km',
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            20.h.verticalSpace,
-            Row(
-              children: [
-                Image.asset(
-                  'assets/icons/duration.png',
-                  height: 24.h,
-                  width: 24.w,
-                ),
-                4.w.horizontalSpace,
-                Text(
-                  'Durée : ${Duration(seconds: totalDuration).inMinutes}:${(Duration(seconds: totalDuration).inSeconds % 60).toString().padLeft(2, '0')}',
                   style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,

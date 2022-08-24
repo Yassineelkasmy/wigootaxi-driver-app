@@ -20,7 +20,14 @@ Ride _$RideFromJson(Map<String, dynamic> json) => Ride(
       duration: json['duration'] as int,
       driverPickedAt: const TimestampConverter()
           .fromJson(json['driverPickedAt'] as Timestamp),
+      ts: const TimestampConverter().fromJson(json['ts'] as Timestamp),
       price_per_km: json['price_per_km'] as int,
+      driverArrivedAt: const TimestampOrNullConverter()
+          .fromJson(json['driverArrivedAt'] as Timestamp?),
+      startedAt: const TimestampOrNullConverter()
+          .fromJson(json['startedAt'] as Timestamp?),
+      finishedAt: const TimestampOrNullConverter()
+          .fromJson(json['finishedAt'] as Timestamp?),
       start_name: json['start_name'] as String?,
       dest_name: json['dest_name'] as String?,
       driverLat: (json['driverLat'] as num?)?.toDouble(),
@@ -63,7 +70,13 @@ Map<String, dynamic> _$RideToJson(Ride instance) => <String, dynamic>{
       'duration': instance.duration,
       'driverPickedAt':
           const TimestampConverter().toJson(instance.driverPickedAt),
+      'ts': const TimestampConverter().toJson(instance.ts),
       'price_per_km': instance.price_per_km,
+      'driverArrivedAt':
+          const TimestampOrNullConverter().toJson(instance.driverArrivedAt),
+      'startedAt': const TimestampOrNullConverter().toJson(instance.startedAt),
+      'finishedAt':
+          const TimestampOrNullConverter().toJson(instance.finishedAt),
       'start_name': instance.start_name,
       'dest_name': instance.dest_name,
       'driverLat': instance.driverLat,
