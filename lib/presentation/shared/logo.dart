@@ -7,14 +7,17 @@ Widget buildLogo({bool white = true, BoxFit? fit}) {
   return white
       ? Image.asset(
           "assets/images/$logoAsset",
+          width: 0.8.sw,
           fit: fit,
+          color: Colors.white,
+          
         )
       : Padding(
-          padding: EdgeInsets.all(60.sp),
+          padding: EdgeInsets.all(0.sp),
           child: Image.asset(
             "assets/images/$logoAsset",
             fit: fit,
-            height: 0.25.sh,
+          width: 0.8.sw,
           ),
         );
 }

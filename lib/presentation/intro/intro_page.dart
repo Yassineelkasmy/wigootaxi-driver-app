@@ -39,8 +39,10 @@ class _IntroPageState extends State<IntroPage> {
           ),
           Positioned(
             child: Align(
-              alignment: Alignment.topCenter,
-              child: buildLogo(),
+              alignment: Alignment.center,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 0.25.sh),
+                child: buildLogo()),
             ),
           ),
           Positioned(

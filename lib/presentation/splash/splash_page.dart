@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,7 @@ class SplashPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
     ref.listen<AuthState>(authtProvider, (_, nextAuthState) {
+      Timer(Duration(seconds: 2), () {
       nextAuthState.map(
           initial: (_) {},
           authenticated: (_) {
@@ -29,7 +32,7 @@ class SplashPage extends HookConsumerWidget {
           },
           unauthenticated: (unAuth) {
             AutoRouter.of(context).replace(IntroPageRoute());
-          });
+          });});
     });
 
     return Scaffold(
