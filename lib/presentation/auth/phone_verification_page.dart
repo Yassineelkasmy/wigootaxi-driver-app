@@ -73,6 +73,7 @@ class PhoneVerificationPage extends HookConsumerWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             buildLogo(white: false),

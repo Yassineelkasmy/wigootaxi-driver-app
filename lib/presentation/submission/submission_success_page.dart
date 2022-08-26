@@ -16,6 +16,7 @@ class SubmissionSuccessPage extends StatelessWidget {
       body: Padding(
         padding: kPadding,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             buildLogo(white: false),
             20.h.verticalSpace,

@@ -31,7 +31,7 @@ class MyRidesPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mes coures'),
+        title: Text('Mes courses'),
       ),
       body: Column(
         children: [

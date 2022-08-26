@@ -223,7 +223,7 @@ class RideActions extends HookConsumerWidget {
                 }
               });
             },
-            text: 'Anuller le trajet',
+            text: 'Annuler le trajet',
           ),
         )
       ],
