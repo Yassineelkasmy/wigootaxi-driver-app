@@ -10,59 +10,73 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i17;
-import 'package:flutter/cupertino.dart' as _i19;
-import 'package:flutter/material.dart' as _i18;
+import 'package:auto_route/auto_route.dart' as _i19;
+import 'package:flutter/material.dart' as _i20;
 
-import '../../driver/domain/driver_record.dart' as _i20;
-import '../../driver/ui/ride_finished_page.dart' as _i10;
-import '../../profile/ui/portail_captain.dart' as _i15;
-import '../../ride/ui/activate_location_or_ride_map_page.dart' as _i13;
-import '../../ride/ui/ride_cancelled_page.dart' as _i11;
-import '../../ride/ui/ride_root_page.dart' as _i16;
-import '../auth/login_page.dart' as _i6;
-import '../auth/phone_auth_page.dart' as _i7;
-import '../auth/phone_verification_page.dart' as _i5;
-import '../home/help/send_message_page.dart' as _i14;
-import '../home/home_page.dart' as _i9;
-import '../home/pick_location/activate_location_page.dart' as _i12;
-import '../intro/intro_page.dart' as _i8;
+import '../../driver/domain/driver_record.dart' as _i22;
+import '../../driver/ui/ride_finished_page.dart' as _i12;
+import '../../profile/ui/portail_captain.dart' as _i17;
+import '../../ride/domain/ride.dart' as _i21;
+import '../../ride/ui/activate_location_or_ride_map_page.dart' as _i15;
+import '../../ride/ui/my_ride_page.dart' as _i4;
+import '../../ride/ui/my_rides_page.dart' as _i3;
+import '../../ride/ui/ride_cancelled_page.dart' as _i13;
+import '../../ride/ui/ride_root_page.dart' as _i18;
+import '../auth/login_page.dart' as _i8;
+import '../auth/phone_auth_page.dart' as _i9;
+import '../auth/phone_verification_page.dart' as _i7;
+import '../home/help/send_message_page.dart' as _i16;
+import '../home/home_page.dart' as _i11;
+import '../home/pick_location/activate_location_page.dart' as _i14;
+import '../intro/intro_page.dart' as _i10;
 import '../splash/splash_page.dart' as _i1;
 import '../submission/submission_page.dart' as _i2;
-import '../submission/submission_success_page.dart' as _i3;
-import '../submission/widgets/upload_field.dart' as _i4;
+import '../submission/submission_success_page.dart' as _i5;
+import '../submission/widgets/upload_field.dart' as _i6;
 
-class AppRouter extends _i17.RootStackRouter {
-  AppRouter([_i18.GlobalKey<_i18.NavigatorState>? navigatorKey])
+class AppRouter extends _i19.RootStackRouter {
+  AppRouter([_i20.GlobalKey<_i20.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i17.PageFactory> pagesMap = {
+  final Map<String, _i19.PageFactory> pagesMap = {
     SplashPageRoute.name: (routeData) {
-      return _i17.MaterialPageX<dynamic>(
+      return _i19.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.SplashPage());
     },
     SubmissionPageRoute.name: (routeData) {
       final args = routeData.argsAs<SubmissionPageRouteArgs>(
           orElse: () => const SubmissionPageRouteArgs());
-      return _i17.MaterialPageX<dynamic>(
+      return _i19.MaterialPageX<dynamic>(
           routeData: routeData, child: _i2.SubmissionPage(key: args.key));
     },
+    MyRidesPageRoute.name: (routeData) {
+      final args = routeData.argsAs<MyRidesPageRouteArgs>(
+          orElse: () => const MyRidesPageRouteArgs());
+      return _i19.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i3.MyRidesPage(key: args.key));
+    },
+    MyRidePageRoute.name: (routeData) {
+      final args = routeData.argsAs<MyRidePageRouteArgs>();
+      return _i19.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i4.MyRidePage(key: args.key, ride: args.ride));
+    },
     SubmissionSuccessPageRoute.name: (routeData) {
-      return _i17.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i3.SubmissionSuccessPage());
+      return _i19.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i5.SubmissionSuccessPage());
     },
     DocumentImagePageRoute.name: (routeData) {
       final args = routeData.argsAs<DocumentImagePageRouteArgs>();
-      return _i17.MaterialPageX<dynamic>(
+      return _i19.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i4.DocumentImagePage(key: args.key, image: args.image));
+          child: _i6.DocumentImagePage(key: args.key, image: args.image));
     },
     PhoneVerificationPageRoute.name: (routeData) {
       final args = routeData.argsAs<PhoneVerificationPageRouteArgs>();
-      return _i17.MaterialPageX<dynamic>(
+      return _i19.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i5.PhoneVerificationPage(
+          child: _i7.PhoneVerificationPage(
               key: args.key,
               phoneNumber: args.phoneNumber,
               phone: args.phone,
@@ -71,106 +85,107 @@ class AppRouter extends _i17.RootStackRouter {
     LoginPageRoute.name: (routeData) {
       final args = routeData.argsAs<LoginPageRouteArgs>(
           orElse: () => const LoginPageRouteArgs());
-      return _i17.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i6.LoginPage(key: args.key));
+      return _i19.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i8.LoginPage(key: args.key));
     },
     PhoneAuthPageRoute.name: (routeData) {
       final args = routeData.argsAs<PhoneAuthPageRouteArgs>(
           orElse: () => const PhoneAuthPageRouteArgs());
-      return _i17.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i7.PhoneAuthPage(key: args.key));
+      return _i19.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i9.PhoneAuthPage(key: args.key));
     },
     IntroPageRoute.name: (routeData) {
-      return _i17.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i8.IntroPage());
+      return _i19.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i10.IntroPage());
     },
     HomePageRoute.name: (routeData) {
       final args = routeData.argsAs<HomePageRouteArgs>(
           orElse: () => const HomePageRouteArgs());
-      return _i17.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i9.HomePage(key: args.key));
+      return _i19.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i11.HomePage(key: args.key));
     },
     RideFinishedPageRoute.name: (routeData) {
       final args = routeData.argsAs<RideFinishedPageRouteArgs>();
-      return _i17.MaterialPageX<dynamic>(
+      return _i19.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i10.RideFinishedPage(
+          child: _i12.RideFinishedPage(
               key: args.key,
               startname: args.startname,
               destname: args.destname,
               totalDistance: args.totalDistance,
-              totalDuration: args.totalDuration,
               totalPrice: args.totalPrice));
     },
     RideCancelledPageRoute.name: (routeData) {
       final args = routeData.argsAs<RideCancelledPageRouteArgs>();
-      return _i17.MaterialPageX<dynamic>(
+      return _i19.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i11.RideCancelledPage(key: args.key, message: args.message));
+          child: _i13.RideCancelledPage(key: args.key, message: args.message));
     },
     ActivateLocationOrMapPageRoute.name: (routeData) {
       final args = routeData.argsAs<ActivateLocationOrMapPageRouteArgs>(
           orElse: () => const ActivateLocationOrMapPageRouteArgs());
-      return _i17.MaterialPageX<dynamic>(
+      return _i19.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i12.ActivateLocationOrMapPage(key: args.key));
+          child: _i14.ActivateLocationOrMapPage(key: args.key));
     },
     ActivateLocationOrRideMapPageRoute.name: (routeData) {
       final args = routeData.argsAs<ActivateLocationOrRideMapPageRouteArgs>();
-      return _i17.MaterialPageX<dynamic>(
+      return _i19.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i13.ActivateLocationOrRideMapPage(
+          child: _i15.ActivateLocationOrRideMapPage(
               key: args.key, userRecord: args.userRecord));
     },
     SendMessagePageRoute.name: (routeData) {
       final args = routeData.argsAs<SendMessagePageRouteArgs>(
           orElse: () => const SendMessagePageRouteArgs());
-      return _i17.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i14.SendMessagePage(key: args.key));
+      return _i19.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i16.SendMessagePage(key: args.key));
     },
     PortailCaptainRoute.name: (routeData) {
-      return _i17.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i15.PortailCaptain());
+      return _i19.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i17.PortailCaptain());
     },
     RideRootPageRoute.name: (routeData) {
       final args = routeData.argsAs<RideRootPageRouteArgs>();
-      return _i17.MaterialPageX<dynamic>(
+      return _i19.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i16.RideRootPage(key: args.key, userRecord: args.userRecord));
+          child: _i18.RideRootPage(key: args.key, userRecord: args.userRecord));
     }
   };
 
   @override
-  List<_i17.RouteConfig> get routes => [
-        _i17.RouteConfig(SplashPageRoute.name, path: '/'),
-        _i17.RouteConfig(SubmissionPageRoute.name, path: '/submission-page'),
-        _i17.RouteConfig(SubmissionSuccessPageRoute.name,
+  List<_i19.RouteConfig> get routes => [
+        _i19.RouteConfig(SplashPageRoute.name, path: '/'),
+        _i19.RouteConfig(SubmissionPageRoute.name, path: '/submission-page'),
+        _i19.RouteConfig(MyRidesPageRoute.name, path: '/my-rides-page'),
+        _i19.RouteConfig(MyRidePageRoute.name, path: '/my-ride-page'),
+        _i19.RouteConfig(SubmissionSuccessPageRoute.name,
             path: '/submission-success-page'),
-        _i17.RouteConfig(DocumentImagePageRoute.name,
+        _i19.RouteConfig(DocumentImagePageRoute.name,
             path: '/document-image-page'),
-        _i17.RouteConfig(PhoneVerificationPageRoute.name,
+        _i19.RouteConfig(PhoneVerificationPageRoute.name,
             path: '/phone-verification-page'),
-        _i17.RouteConfig(LoginPageRoute.name, path: '/login-page'),
-        _i17.RouteConfig(PhoneAuthPageRoute.name, path: '/phone-auth-page'),
-        _i17.RouteConfig(IntroPageRoute.name, path: '/intro-page'),
-        _i17.RouteConfig(HomePageRoute.name, path: '/home-page'),
-        _i17.RouteConfig(RideFinishedPageRoute.name,
+        _i19.RouteConfig(LoginPageRoute.name, path: '/login-page'),
+        _i19.RouteConfig(PhoneAuthPageRoute.name, path: '/phone-auth-page'),
+        _i19.RouteConfig(IntroPageRoute.name, path: '/intro-page'),
+        _i19.RouteConfig(HomePageRoute.name, path: '/home-page'),
+        _i19.RouteConfig(RideFinishedPageRoute.name,
             path: '/ride-finished-page'),
-        _i17.RouteConfig(RideCancelledPageRoute.name,
+        _i19.RouteConfig(RideCancelledPageRoute.name,
             path: '/ride-cancelled-page'),
-        _i17.RouteConfig(ActivateLocationOrMapPageRoute.name,
+        _i19.RouteConfig(ActivateLocationOrMapPageRoute.name,
             path: '/activate-location-or-map-page'),
-        _i17.RouteConfig(ActivateLocationOrRideMapPageRoute.name,
+        _i19.RouteConfig(ActivateLocationOrRideMapPageRoute.name,
             path: '/activate-location-or-ride-map-page'),
-        _i17.RouteConfig(SendMessagePageRoute.name, path: '/send-message-page'),
-        _i17.RouteConfig(PortailCaptainRoute.name, path: '/portail-captain'),
-        _i17.RouteConfig(RideRootPageRoute.name, path: '/ride-root-page')
+        _i19.RouteConfig(SendMessagePageRoute.name, path: '/send-message-page'),
+        _i19.RouteConfig(PortailCaptainRoute.name, path: '/portail-captain'),
+        _i19.RouteConfig(RideRootPageRoute.name, path: '/ride-root-page')
       ];
 }
 
 /// generated route for
 /// [_i1.SplashPage]
-class SplashPageRoute extends _i17.PageRouteInfo<void> {
+class SplashPageRoute extends _i19.PageRouteInfo<void> {
   const SplashPageRoute() : super(SplashPageRoute.name, path: '/');
 
   static const String name = 'SplashPageRoute';
@@ -178,8 +193,8 @@ class SplashPageRoute extends _i17.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.SubmissionPage]
-class SubmissionPageRoute extends _i17.PageRouteInfo<SubmissionPageRouteArgs> {
-  SubmissionPageRoute({_i19.Key? key})
+class SubmissionPageRoute extends _i19.PageRouteInfo<SubmissionPageRouteArgs> {
+  SubmissionPageRoute({_i20.Key? key})
       : super(SubmissionPageRoute.name,
             path: '/submission-page', args: SubmissionPageRouteArgs(key: key));
 
@@ -189,7 +204,7 @@ class SubmissionPageRoute extends _i17.PageRouteInfo<SubmissionPageRouteArgs> {
 class SubmissionPageRouteArgs {
   const SubmissionPageRouteArgs({this.key});
 
-  final _i19.Key? key;
+  final _i20.Key? key;
 
   @override
   String toString() {
@@ -198,8 +213,53 @@ class SubmissionPageRouteArgs {
 }
 
 /// generated route for
-/// [_i3.SubmissionSuccessPage]
-class SubmissionSuccessPageRoute extends _i17.PageRouteInfo<void> {
+/// [_i3.MyRidesPage]
+class MyRidesPageRoute extends _i19.PageRouteInfo<MyRidesPageRouteArgs> {
+  MyRidesPageRoute({_i20.Key? key})
+      : super(MyRidesPageRoute.name,
+            path: '/my-rides-page', args: MyRidesPageRouteArgs(key: key));
+
+  static const String name = 'MyRidesPageRoute';
+}
+
+class MyRidesPageRouteArgs {
+  const MyRidesPageRouteArgs({this.key});
+
+  final _i20.Key? key;
+
+  @override
+  String toString() {
+    return 'MyRidesPageRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i4.MyRidePage]
+class MyRidePageRoute extends _i19.PageRouteInfo<MyRidePageRouteArgs> {
+  MyRidePageRoute({_i20.Key? key, required _i21.Ride ride})
+      : super(MyRidePageRoute.name,
+            path: '/my-ride-page',
+            args: MyRidePageRouteArgs(key: key, ride: ride));
+
+  static const String name = 'MyRidePageRoute';
+}
+
+class MyRidePageRouteArgs {
+  const MyRidePageRouteArgs({this.key, required this.ride});
+
+  final _i20.Key? key;
+
+  final _i21.Ride ride;
+
+  @override
+  String toString() {
+    return 'MyRidePageRouteArgs{key: $key, ride: $ride}';
+  }
+}
+
+/// generated route for
+/// [_i5.SubmissionSuccessPage]
+class SubmissionSuccessPageRoute extends _i19.PageRouteInfo<void> {
   const SubmissionSuccessPageRoute()
       : super(SubmissionSuccessPageRoute.name,
             path: '/submission-success-page');
@@ -208,10 +268,10 @@ class SubmissionSuccessPageRoute extends _i17.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.DocumentImagePage]
+/// [_i6.DocumentImagePage]
 class DocumentImagePageRoute
-    extends _i17.PageRouteInfo<DocumentImagePageRouteArgs> {
-  DocumentImagePageRoute({_i19.Key? key, required String image})
+    extends _i19.PageRouteInfo<DocumentImagePageRouteArgs> {
+  DocumentImagePageRoute({_i20.Key? key, required String image})
       : super(DocumentImagePageRoute.name,
             path: '/document-image-page',
             args: DocumentImagePageRouteArgs(key: key, image: image));
@@ -222,7 +282,7 @@ class DocumentImagePageRoute
 class DocumentImagePageRouteArgs {
   const DocumentImagePageRouteArgs({this.key, required this.image});
 
-  final _i19.Key? key;
+  final _i20.Key? key;
 
   final String image;
 
@@ -233,11 +293,11 @@ class DocumentImagePageRouteArgs {
 }
 
 /// generated route for
-/// [_i5.PhoneVerificationPage]
+/// [_i7.PhoneVerificationPage]
 class PhoneVerificationPageRoute
-    extends _i17.PageRouteInfo<PhoneVerificationPageRouteArgs> {
+    extends _i19.PageRouteInfo<PhoneVerificationPageRouteArgs> {
   PhoneVerificationPageRoute(
-      {_i19.Key? key,
+      {_i20.Key? key,
       required String phoneNumber,
       required String phone,
       required String verificationId})
@@ -259,7 +319,7 @@ class PhoneVerificationPageRouteArgs {
       required this.phone,
       required this.verificationId});
 
-  final _i19.Key? key;
+  final _i20.Key? key;
 
   final String phoneNumber;
 
@@ -274,9 +334,9 @@ class PhoneVerificationPageRouteArgs {
 }
 
 /// generated route for
-/// [_i6.LoginPage]
-class LoginPageRoute extends _i17.PageRouteInfo<LoginPageRouteArgs> {
-  LoginPageRoute({_i19.Key? key})
+/// [_i8.LoginPage]
+class LoginPageRoute extends _i19.PageRouteInfo<LoginPageRouteArgs> {
+  LoginPageRoute({_i20.Key? key})
       : super(LoginPageRoute.name,
             path: '/login-page', args: LoginPageRouteArgs(key: key));
 
@@ -286,7 +346,7 @@ class LoginPageRoute extends _i17.PageRouteInfo<LoginPageRouteArgs> {
 class LoginPageRouteArgs {
   const LoginPageRouteArgs({this.key});
 
-  final _i19.Key? key;
+  final _i20.Key? key;
 
   @override
   String toString() {
@@ -295,9 +355,9 @@ class LoginPageRouteArgs {
 }
 
 /// generated route for
-/// [_i7.PhoneAuthPage]
-class PhoneAuthPageRoute extends _i17.PageRouteInfo<PhoneAuthPageRouteArgs> {
-  PhoneAuthPageRoute({_i19.Key? key})
+/// [_i9.PhoneAuthPage]
+class PhoneAuthPageRoute extends _i19.PageRouteInfo<PhoneAuthPageRouteArgs> {
+  PhoneAuthPageRoute({_i20.Key? key})
       : super(PhoneAuthPageRoute.name,
             path: '/phone-auth-page', args: PhoneAuthPageRouteArgs(key: key));
 
@@ -307,7 +367,7 @@ class PhoneAuthPageRoute extends _i17.PageRouteInfo<PhoneAuthPageRouteArgs> {
 class PhoneAuthPageRouteArgs {
   const PhoneAuthPageRouteArgs({this.key});
 
-  final _i19.Key? key;
+  final _i20.Key? key;
 
   @override
   String toString() {
@@ -316,17 +376,17 @@ class PhoneAuthPageRouteArgs {
 }
 
 /// generated route for
-/// [_i8.IntroPage]
-class IntroPageRoute extends _i17.PageRouteInfo<void> {
+/// [_i10.IntroPage]
+class IntroPageRoute extends _i19.PageRouteInfo<void> {
   const IntroPageRoute() : super(IntroPageRoute.name, path: '/intro-page');
 
   static const String name = 'IntroPageRoute';
 }
 
 /// generated route for
-/// [_i9.HomePage]
-class HomePageRoute extends _i17.PageRouteInfo<HomePageRouteArgs> {
-  HomePageRoute({_i19.Key? key})
+/// [_i11.HomePage]
+class HomePageRoute extends _i19.PageRouteInfo<HomePageRouteArgs> {
+  HomePageRoute({_i20.Key? key})
       : super(HomePageRoute.name,
             path: '/home-page', args: HomePageRouteArgs(key: key));
 
@@ -336,7 +396,7 @@ class HomePageRoute extends _i17.PageRouteInfo<HomePageRouteArgs> {
 class HomePageRouteArgs {
   const HomePageRouteArgs({this.key});
 
-  final _i19.Key? key;
+  final _i20.Key? key;
 
   @override
   String toString() {
@@ -345,15 +405,14 @@ class HomePageRouteArgs {
 }
 
 /// generated route for
-/// [_i10.RideFinishedPage]
+/// [_i12.RideFinishedPage]
 class RideFinishedPageRoute
-    extends _i17.PageRouteInfo<RideFinishedPageRouteArgs> {
+    extends _i19.PageRouteInfo<RideFinishedPageRouteArgs> {
   RideFinishedPageRoute(
-      {_i19.Key? key,
+      {_i20.Key? key,
       required String startname,
       required String destname,
       required int totalDistance,
-      required int totalDuration,
       required double totalPrice})
       : super(RideFinishedPageRoute.name,
             path: '/ride-finished-page',
@@ -362,7 +421,6 @@ class RideFinishedPageRoute
                 startname: startname,
                 destname: destname,
                 totalDistance: totalDistance,
-                totalDuration: totalDuration,
                 totalPrice: totalPrice));
 
   static const String name = 'RideFinishedPageRoute';
@@ -374,10 +432,9 @@ class RideFinishedPageRouteArgs {
       required this.startname,
       required this.destname,
       required this.totalDistance,
-      required this.totalDuration,
       required this.totalPrice});
 
-  final _i19.Key? key;
+  final _i20.Key? key;
 
   final String startname;
 
@@ -385,21 +442,19 @@ class RideFinishedPageRouteArgs {
 
   final int totalDistance;
 
-  final int totalDuration;
-
   final double totalPrice;
 
   @override
   String toString() {
-    return 'RideFinishedPageRouteArgs{key: $key, startname: $startname, destname: $destname, totalDistance: $totalDistance, totalDuration: $totalDuration, totalPrice: $totalPrice}';
+    return 'RideFinishedPageRouteArgs{key: $key, startname: $startname, destname: $destname, totalDistance: $totalDistance, totalPrice: $totalPrice}';
   }
 }
 
 /// generated route for
-/// [_i11.RideCancelledPage]
+/// [_i13.RideCancelledPage]
 class RideCancelledPageRoute
-    extends _i17.PageRouteInfo<RideCancelledPageRouteArgs> {
-  RideCancelledPageRoute({_i19.Key? key, required String message})
+    extends _i19.PageRouteInfo<RideCancelledPageRouteArgs> {
+  RideCancelledPageRoute({_i20.Key? key, required String message})
       : super(RideCancelledPageRoute.name,
             path: '/ride-cancelled-page',
             args: RideCancelledPageRouteArgs(key: key, message: message));
@@ -410,7 +465,7 @@ class RideCancelledPageRoute
 class RideCancelledPageRouteArgs {
   const RideCancelledPageRouteArgs({this.key, required this.message});
 
-  final _i19.Key? key;
+  final _i20.Key? key;
 
   final String message;
 
@@ -421,10 +476,10 @@ class RideCancelledPageRouteArgs {
 }
 
 /// generated route for
-/// [_i12.ActivateLocationOrMapPage]
+/// [_i14.ActivateLocationOrMapPage]
 class ActivateLocationOrMapPageRoute
-    extends _i17.PageRouteInfo<ActivateLocationOrMapPageRouteArgs> {
-  ActivateLocationOrMapPageRoute({_i19.Key? key})
+    extends _i19.PageRouteInfo<ActivateLocationOrMapPageRouteArgs> {
+  ActivateLocationOrMapPageRoute({_i20.Key? key})
       : super(ActivateLocationOrMapPageRoute.name,
             path: '/activate-location-or-map-page',
             args: ActivateLocationOrMapPageRouteArgs(key: key));
@@ -435,7 +490,7 @@ class ActivateLocationOrMapPageRoute
 class ActivateLocationOrMapPageRouteArgs {
   const ActivateLocationOrMapPageRouteArgs({this.key});
 
-  final _i19.Key? key;
+  final _i20.Key? key;
 
   @override
   String toString() {
@@ -444,11 +499,11 @@ class ActivateLocationOrMapPageRouteArgs {
 }
 
 /// generated route for
-/// [_i13.ActivateLocationOrRideMapPage]
+/// [_i15.ActivateLocationOrRideMapPage]
 class ActivateLocationOrRideMapPageRoute
-    extends _i17.PageRouteInfo<ActivateLocationOrRideMapPageRouteArgs> {
+    extends _i19.PageRouteInfo<ActivateLocationOrRideMapPageRouteArgs> {
   ActivateLocationOrRideMapPageRoute(
-      {_i19.Key? key, required _i20.UserRecord userRecord})
+      {_i20.Key? key, required _i22.UserRecord userRecord})
       : super(ActivateLocationOrRideMapPageRoute.name,
             path: '/activate-location-or-ride-map-page',
             args: ActivateLocationOrRideMapPageRouteArgs(
@@ -461,9 +516,9 @@ class ActivateLocationOrRideMapPageRouteArgs {
   const ActivateLocationOrRideMapPageRouteArgs(
       {this.key, required this.userRecord});
 
-  final _i19.Key? key;
+  final _i20.Key? key;
 
-  final _i20.UserRecord userRecord;
+  final _i22.UserRecord userRecord;
 
   @override
   String toString() {
@@ -472,10 +527,10 @@ class ActivateLocationOrRideMapPageRouteArgs {
 }
 
 /// generated route for
-/// [_i14.SendMessagePage]
+/// [_i16.SendMessagePage]
 class SendMessagePageRoute
-    extends _i17.PageRouteInfo<SendMessagePageRouteArgs> {
-  SendMessagePageRoute({_i19.Key? key})
+    extends _i19.PageRouteInfo<SendMessagePageRouteArgs> {
+  SendMessagePageRoute({_i20.Key? key})
       : super(SendMessagePageRoute.name,
             path: '/send-message-page',
             args: SendMessagePageRouteArgs(key: key));
@@ -486,7 +541,7 @@ class SendMessagePageRoute
 class SendMessagePageRouteArgs {
   const SendMessagePageRouteArgs({this.key});
 
-  final _i19.Key? key;
+  final _i20.Key? key;
 
   @override
   String toString() {
@@ -495,8 +550,8 @@ class SendMessagePageRouteArgs {
 }
 
 /// generated route for
-/// [_i15.PortailCaptain]
-class PortailCaptainRoute extends _i17.PageRouteInfo<void> {
+/// [_i17.PortailCaptain]
+class PortailCaptainRoute extends _i19.PageRouteInfo<void> {
   const PortailCaptainRoute()
       : super(PortailCaptainRoute.name, path: '/portail-captain');
 
@@ -504,9 +559,9 @@ class PortailCaptainRoute extends _i17.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i16.RideRootPage]
-class RideRootPageRoute extends _i17.PageRouteInfo<RideRootPageRouteArgs> {
-  RideRootPageRoute({_i19.Key? key, required _i20.UserRecord userRecord})
+/// [_i18.RideRootPage]
+class RideRootPageRoute extends _i19.PageRouteInfo<RideRootPageRouteArgs> {
+  RideRootPageRoute({_i20.Key? key, required _i22.UserRecord userRecord})
       : super(RideRootPageRoute.name,
             path: '/ride-root-page',
             args: RideRootPageRouteArgs(key: key, userRecord: userRecord));
@@ -517,9 +572,9 @@ class RideRootPageRoute extends _i17.PageRouteInfo<RideRootPageRouteArgs> {
 class RideRootPageRouteArgs {
   const RideRootPageRouteArgs({this.key, required this.userRecord});
 
-  final _i19.Key? key;
+  final _i20.Key? key;
 
-  final _i20.UserRecord userRecord;
+  final _i22.UserRecord userRecord;
 
   @override
   String toString() {

@@ -23,7 +23,6 @@ import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 import 'package:wigootaxidriver/providers/ride_provider.dart';
 import 'package:wigootaxidriver/ride/application/ride_event.dart';
 import 'package:wigootaxidriver/ride/application/ride_state.dart';
-import 'package:wigootaxidriver/ride/ui/ride_root_page.dart';
 
 class ActivateLocationOrMapPage extends HookConsumerWidget {
   ActivateLocationOrMapPage({Key? key}) : super(key: key);
@@ -60,7 +59,7 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                 );
 
                 rideController.mapEventToState(
-                  RideEvent.rideInitialized(nextRecord!.booking_call!),
+                  RideEvent.rideInitialized(nextRecord.booking_call!),
                 );
               },
             );
@@ -214,7 +213,9 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                AutoRouter.of(context).push(MyRidesPageRoute());
+              },
               leading: Icon(
                 Icons.history_outlined,
                 color: Colors.white,

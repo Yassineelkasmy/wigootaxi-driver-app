@@ -1,6 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
 import 'package:wigootaxidriver/presentation/shared/logo.dart';
+import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 import 'package:wigootaxidriver/presentation/theme/spacings.dart';
 
@@ -48,6 +51,16 @@ class SubmissionSuccessPage extends StatelessWidget {
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 16.sp,
+              ),
+            ),
+            40.h.verticalSpace,
+            SizedBox(
+              width: double.maxFinite,
+              child: SubmitButton(
+                onPressed: () {
+                  AutoRouter.of(context).replace(IntroPageRoute());
+                },
+                text: 'Daccord',
               ),
             ),
           ],

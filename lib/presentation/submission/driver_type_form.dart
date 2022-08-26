@@ -22,10 +22,10 @@ class DriverTypeForm extends HookConsumerWidget {
         child: Column(
           children: [
             Text(
-              'Devenir un chauffeur chez WiGoo',
+              'Devenir un chauffeur chez wigoo',
               style: TextStyle(
                 color: kPrimaryColor,
-                fontSize: 24.sp,
+                fontSize: 26.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),

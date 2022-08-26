@@ -8,8 +8,6 @@ class RideService {
     final ride = collectionRef.doc(rideId).snapshots().asyncMap((rideDoc) {
       final driverLocation =
           rideDoc.get('currentDriverLocation')?['geopoint'] as GeoPoint?;
-      final userLocation =
-          rideDoc.get('currentUserLocation')?['geopoint'] as GeoPoint?;
 
       final destinationLocation =
           rideDoc.get('destination')?['geopoint'] as GeoPoint?;
@@ -17,11 +15,6 @@ class RideService {
 
       return Ride.fromJson(
         rideDoc.data()!
-          ..putIfAbsent(
-            'userLat',
-            () => userLocation?.latitude,
-          )
-          ..putIfAbsent('userLng', () => userLocation?.longitude)
           ..putIfAbsent('driverLat', () => driverLocation?.latitude)
           ..putIfAbsent('driverLng', () => driverLocation?.longitude)
           ..putIfAbsent('destinationLng', () => destinationLocation?.longitude)
@@ -97,8 +90,8 @@ class RideService {
     await collectionRef.doc(ride.id).update({
       'totalPrice': totalPrice,
       'totalDistance': totalDistance,
-      'totalDuration': totalDuration.inSeconds,
       'finished': true,
+      'finishedAt': FieldValue.serverTimestamp(),
     });
     try {} catch (e) {}
   }

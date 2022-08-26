@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:wigootaxidriver/shared/helpers/timestamps_converter.dart';
 
 part 'ride.freezed.dart';
 part 'ride.g.dart';
@@ -17,7 +18,12 @@ class Ride with _$Ride {
     required String durtext,
     required int distance,
     required int duration,
-    required DateTime driverPickedAt,
+    @TimestampConverter() required DateTime driverPickedAt,
+    @TimestampConverter() required DateTime ts,
+    required int price_per_km,
+    @TimestampOrNullConverter() DateTime? driverArrivedAt,
+    @TimestampOrNullConverter() DateTime? startedAt,
+    @TimestampOrNullConverter() DateTime? finishedAt,
     String? start_name,
     String? dest_name,
     double? driverLat,
@@ -43,11 +49,12 @@ class Ride with _$Ride {
     int? totalDuration,
     int? totalDistance,
     double? totalPrice,
+    double? tva,
+    double? revenue,
+    double? driverRevenue,
   }) = _Ride;
 
   factory Ride.fromJson(Map<String, dynamic> json) {
-    json["driverPickedAt"] =
-        ((json["driverPickedAt"] as Timestamp).toDate().toString());
     return _$RideFromJson(json);
   }
 }

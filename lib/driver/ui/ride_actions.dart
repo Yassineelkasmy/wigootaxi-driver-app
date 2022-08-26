@@ -150,7 +150,8 @@ class RideActions extends HookConsumerWidget {
                 ).then((okCancell) async {
                   if (okCancell.index == 0) {
                     await rideController.mapEventToState(RideEvent.rideFinished(
-                      totalPrice: ((distanceTravelled / 1000) * 20),
+                      totalPrice:
+                          ((distanceTravelled / 1000) * ride.price_per_km),
                       totalDistance: distanceTravelled,
                       totalDuration: rideDuration,
                     ));
@@ -161,9 +162,9 @@ class RideActions extends HookConsumerWidget {
                       RideFinishedPageRoute(
                         startname: ride.start_name!,
                         destname: ride.start_name!,
-                        totalPrice: ((distanceTravelled / 1000) * 20),
+                        totalPrice:
+                            ((distanceTravelled / 1000) * ride.price_per_km),
                         totalDistance: distanceTravelled,
-                        totalDuration: rideDuration.inMinutes,
                       ),
                     );
                   }
@@ -180,8 +181,19 @@ class RideActions extends HookConsumerWidget {
             child: SubmitButton(
               color: Colors.green,
               onPressed: () {
-                rideController.mapEventToState(
-                    RideEvent.driverArrived(ride, Duration(hours: 1)));
+                showOkCancelAlertDialog(
+                  context: context,
+                  message:
+                      'Êtes-vous sûr de vouloir arriver au point de départ ?',
+                  title: 'Confirmation',
+                  okLabel: 'Oui',
+                  cancelLabel: 'Non',
+                ).then((okCancell) async {
+                  if (okCancell.index == 0) {
+                    rideController.mapEventToState(
+                        RideEvent.driverArrived(ride, Duration(hours: 1)));
+                  }
+                });
               },
               text: "Arrivé au départ",
             ),
