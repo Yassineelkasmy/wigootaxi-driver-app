@@ -145,7 +145,7 @@ ListView buildFinishedRides(List<Ride> rides) {
                       ),
                     ),
                     Text(
-                      '${ride.driverRevenue} MAD',
+                      '${ride.driverRevenue?.toStringAsFixed(2)} MAD',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -163,7 +163,7 @@ ListView buildFinishedRides(List<Ride> rides) {
                       ),
                     ),
                     Text(
-                      '-${ride.tva} MAD',
+                      '-${ride.tva?.toStringAsFixed(2)} MAD',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -181,7 +181,7 @@ ListView buildFinishedRides(List<Ride> rides) {
                       ),
                     ),
                     Text(
-                      '-${ride.revenue} MAD',
+                      '-${ride.revenue?.toStringAsFixed(2)} MAD',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -337,7 +337,7 @@ ListView buildDriverCancelledRides(List<Ride> rides) {
                       ),
                     ),
                     Text(
-                      '${(ride.price_per_km * ride.distance / 1000)} MAD',
+                      '${(ride.price_per_km * ride.distance / 1000).toStringAsFixed(2)} MAD',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
