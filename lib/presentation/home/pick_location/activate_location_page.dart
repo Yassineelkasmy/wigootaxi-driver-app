@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:im_animations/im_animations.dart';
 import 'package:in_app_notification/in_app_notification.dart';
 import 'package:wigootaxidriver/application/auth/auth_form/auth_form_event.dart';
 import 'package:wigootaxidriver/application/location/location_event.dart';
@@ -86,6 +87,31 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
     });
 
     return Scaffold(
+      floatingActionButton: driverState.userRecord != null
+          ? Sonar(
+              radius: 50.r,
+              waveColor: kPrimaryColor,
+              child: FloatingActionButton(
+                backgroundColor: kPrimaryColor,
+                onPressed: () async {
+                  await rideController.mapEventToState(
+                    RideEvent.rideInitialized(
+                      driverState.driverRecord!.currentRideId!,
+                    ),
+                  );
+                  AutoRouter.of(context).push(
+                    RideRootPageRoute(
+                      userRecord: driverState.userRecord!,
+                    ),
+                  );
+                },
+                child: Icon(
+                  Icons.drive_eta,
+                  color: Colors.white,
+                ),
+              ),
+            )
+          : null,
       appBar: AppBar(
         leading: Builder(
           builder: (context) {
@@ -179,7 +205,7 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                       ),
                     ),
                     Text(
-                      "user.displayName",
+                      "${driverState.driverRecord?.username}",
                       style: const TextStyle(
                         color: Colors.white,
                       ),

@@ -5,11 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wigootaxidriver/application/auth/auth_form/auth_form_event.dart';
 import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
+import 'package:wigootaxidriver/application/providers/driver/driver_provider.dart';
 import 'package:wigootaxidriver/domain/auth/user.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 
 SideDrawer buildSideDrawer(User user, WidgetRef ref, BuildContext context) {
   final autFormController = ref.watch(authFormProvider.notifier);
+  final driverState = ref.watch(driverProvider);
   return SideDrawer(
     percentage: 0.6,
     direction: Direction.left,
@@ -49,7 +51,7 @@ SideDrawer buildSideDrawer(User user, WidgetRef ref, BuildContext context) {
                     ),
                   ),
                   Text(
-                    "user.displayName",
+                    "${driverState.driverRecord?.username}",
                     style: const TextStyle(
                       color: Colors.white,
                     ),

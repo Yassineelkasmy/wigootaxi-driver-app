@@ -26,49 +26,33 @@ class RideRootPage extends HookConsumerWidget {
     ref.listen<RideState>(rideProvider, (previous, next) {});
     final locationState = ref.watch(locationProvider);
     final rideState = ref.watch(rideProvider);
-    return WillPopScope(
-      onWillPop: () async {
-        final okCancell = await showOkCancelAlertDialog(
-          context: context,
-          message: 'Êtes-vous sûr de vouloir annuler votre trajet ?',
-          title: 'Confirmation',
-          okLabel: 'Oui',
-          cancelLabel: 'Non',
-        );
-        if (okCancell.index == 0) {
-          return true;
-        } else {
-          return false;
-        }
-      },
-      child: Scaffold(
-        body: SlidingUpPanel(
-          padding: EdgeInsets.symmetric(
-            horizontal: 5.w,
-          ),
-          margin: EdgeInsets.symmetric(
-            horizontal: 20.w,
-            vertical: 20.h,
-          ),
-          borderRadius: BorderRadius.circular(15),
-          maxHeight: .8.sh,
-          panel: UserProfile(
-            userRecord: userRecord,
-            // isSlidedUp: true,
-            panelController: pickUpPanelController,
-          ),
-          parallaxEnabled: true,
-          parallaxOffset: .5,
-          minHeight: locationState.position == null
-              ? 0
-              : !rideState.rideStarted
-                  ? .35.sh
-                  : 0.25.sh,
-          body: ActivateLocationOrRideMapPage(
-            userRecord: userRecord,
-          ),
-          controller: pickUpPanelController,
+    return Scaffold(
+      body: SlidingUpPanel(
+        padding: EdgeInsets.symmetric(
+          horizontal: 5.w,
         ),
+        margin: EdgeInsets.symmetric(
+          horizontal: 20.w,
+          vertical: 20.h,
+        ),
+        borderRadius: BorderRadius.circular(15),
+        maxHeight: .8.sh,
+        panel: UserProfile(
+          userRecord: userRecord,
+          // isSlidedUp: true,
+          panelController: pickUpPanelController,
+        ),
+        parallaxEnabled: true,
+        parallaxOffset: .5,
+        minHeight: locationState.position == null
+            ? 0
+            : !rideState.rideStarted
+                ? .35.sh
+                : 0.25.sh,
+        body: ActivateLocationOrRideMapPage(
+          userRecord: userRecord,
+        ),
+        controller: pickUpPanelController,
       ),
     );
   }
