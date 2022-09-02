@@ -1,4 +1,4 @@
-package com.example.wigootaxidriver
+package com.syloops.wigoodriver
 
 import io.flutter.embedding.android.FlutterActivity
 
