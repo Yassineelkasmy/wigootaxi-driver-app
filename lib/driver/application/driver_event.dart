@@ -8,4 +8,6 @@ class DriverEvent with _$DriverEvent {
   const factory DriverEvent.onlineDeactivated() = OnlineDeactivated;
   const factory DriverEvent.rideAccepted(double driverLat, double driverLng) =
       RideAccepted;
+
+  const factory DriverEvent.currnetRideCleaned() = CurrnetRideCleaned;
 }

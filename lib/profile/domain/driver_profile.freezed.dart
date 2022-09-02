@@ -25,6 +25,8 @@ class _$DriverProfileTearOff {
   _DriverProfile call(
       {required String username,
       required String phone,
+      String? currentRideId,
+      String? currentUserId,
       int? ridesIgnored,
       int? ridesFinished,
       int? ridesCancelledByDriver,
@@ -36,6 +38,8 @@ class _$DriverProfileTearOff {
     return _DriverProfile(
       username: username,
       phone: phone,
+      currentRideId: currentRideId,
+      currentUserId: currentUserId,
       ridesIgnored: ridesIgnored,
       ridesFinished: ridesFinished,
       ridesCancelledByDriver: ridesCancelledByDriver,
@@ -59,6 +63,8 @@ const $DriverProfile = _$DriverProfileTearOff();
 mixin _$DriverProfile {
   String get username => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
+  String? get currentRideId => throw _privateConstructorUsedError;
+  String? get currentUserId => throw _privateConstructorUsedError;
   int? get ridesIgnored => throw _privateConstructorUsedError;
   int? get ridesFinished => throw _privateConstructorUsedError;
   int? get ridesCancelledByDriver => throw _privateConstructorUsedError;
@@ -82,6 +88,8 @@ abstract class $DriverProfileCopyWith<$Res> {
   $Res call(
       {String username,
       String phone,
+      String? currentRideId,
+      String? currentUserId,
       int? ridesIgnored,
       int? ridesFinished,
       int? ridesCancelledByDriver,
@@ -105,6 +113,8 @@ class _$DriverProfileCopyWithImpl<$Res>
   $Res call({
     Object? username = freezed,
     Object? phone = freezed,
+    Object? currentRideId = freezed,
+    Object? currentUserId = freezed,
     Object? ridesIgnored = freezed,
     Object? ridesFinished = freezed,
     Object? ridesCancelledByDriver = freezed,
@@ -123,6 +133,14 @@ class _$DriverProfileCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      currentRideId: currentRideId == freezed
+          ? _value.currentRideId
+          : currentRideId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currentUserId: currentUserId == freezed
+          ? _value.currentUserId
+          : currentUserId // ignore: cast_nullable_to_non_nullable
+              as String?,
       ridesIgnored: ridesIgnored == freezed
           ? _value.ridesIgnored
           : ridesIgnored // ignore: cast_nullable_to_non_nullable
@@ -169,6 +187,8 @@ abstract class _$DriverProfileCopyWith<$Res>
   $Res call(
       {String username,
       String phone,
+      String? currentRideId,
+      String? currentUserId,
       int? ridesIgnored,
       int? ridesFinished,
       int? ridesCancelledByDriver,
@@ -194,6 +214,8 @@ class __$DriverProfileCopyWithImpl<$Res>
   $Res call({
     Object? username = freezed,
     Object? phone = freezed,
+    Object? currentRideId = freezed,
+    Object? currentUserId = freezed,
     Object? ridesIgnored = freezed,
     Object? ridesFinished = freezed,
     Object? ridesCancelledByDriver = freezed,
@@ -212,6 +234,14 @@ class __$DriverProfileCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      currentRideId: currentRideId == freezed
+          ? _value.currentRideId
+          : currentRideId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currentUserId: currentUserId == freezed
+          ? _value.currentUserId
+          : currentUserId // ignore: cast_nullable_to_non_nullable
+              as String?,
       ridesIgnored: ridesIgnored == freezed
           ? _value.ridesIgnored
           : ridesIgnored // ignore: cast_nullable_to_non_nullable
@@ -254,6 +284,8 @@ class _$_DriverProfile implements _DriverProfile {
   const _$_DriverProfile(
       {required this.username,
       required this.phone,
+      this.currentRideId,
+      this.currentUserId,
       this.ridesIgnored,
       this.ridesFinished,
       this.ridesCancelledByDriver,
@@ -270,6 +302,10 @@ class _$_DriverProfile implements _DriverProfile {
   final String username;
   @override
   final String phone;
+  @override
+  final String? currentRideId;
+  @override
+  final String? currentUserId;
   @override
   final int? ridesIgnored;
   @override
@@ -289,7 +325,7 @@ class _$_DriverProfile implements _DriverProfile {
 
   @override
   String toString() {
-    return 'DriverProfile(username: $username, phone: $phone, ridesIgnored: $ridesIgnored, ridesFinished: $ridesFinished, ridesCancelledByDriver: $ridesCancelledByDriver, ridesCancelledByUser: $ridesCancelledByUser, totalRides: $totalRides, totalAmount: $totalAmount, tvaToPay: $tvaToPay, revenueToPay: $revenueToPay)';
+    return 'DriverProfile(username: $username, phone: $phone, currentRideId: $currentRideId, currentUserId: $currentUserId, ridesIgnored: $ridesIgnored, ridesFinished: $ridesFinished, ridesCancelledByDriver: $ridesCancelledByDriver, ridesCancelledByUser: $ridesCancelledByUser, totalRides: $totalRides, totalAmount: $totalAmount, tvaToPay: $tvaToPay, revenueToPay: $revenueToPay)';
   }
 
   @override
@@ -299,6 +335,10 @@ class _$_DriverProfile implements _DriverProfile {
             other is _DriverProfile &&
             const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
+            const DeepCollectionEquality()
+                .equals(other.currentRideId, currentRideId) &&
+            const DeepCollectionEquality()
+                .equals(other.currentUserId, currentUserId) &&
             const DeepCollectionEquality()
                 .equals(other.ridesIgnored, ridesIgnored) &&
             const DeepCollectionEquality()
@@ -321,6 +361,8 @@ class _$_DriverProfile implements _DriverProfile {
       runtimeType,
       const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(currentRideId),
+      const DeepCollectionEquality().hash(currentUserId),
       const DeepCollectionEquality().hash(ridesIgnored),
       const DeepCollectionEquality().hash(ridesFinished),
       const DeepCollectionEquality().hash(ridesCancelledByDriver),
@@ -345,6 +387,8 @@ abstract class _DriverProfile implements DriverProfile {
   const factory _DriverProfile(
       {required String username,
       required String phone,
+      String? currentRideId,
+      String? currentUserId,
       int? ridesIgnored,
       int? ridesFinished,
       int? ridesCancelledByDriver,
@@ -361,6 +405,10 @@ abstract class _DriverProfile implements DriverProfile {
   String get username;
   @override
   String get phone;
+  @override
+  String? get currentRideId;
+  @override
+  String? get currentUserId;
   @override
   int? get ridesIgnored;
   @override

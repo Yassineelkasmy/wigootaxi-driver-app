@@ -10,6 +10,8 @@ _$_DriverProfile _$$_DriverProfileFromJson(Map<String, dynamic> json) =>
     _$_DriverProfile(
       username: json['username'] as String,
       phone: json['phone'] as String,
+      currentRideId: json['currentRideId'] as String?,
+      currentUserId: json['currentUserId'] as String?,
       ridesIgnored: json['ridesIgnored'] as int?,
       ridesFinished: json['ridesFinished'] as int?,
       ridesCancelledByDriver: json['ridesCancelledByDriver'] as int?,
@@ -24,6 +26,8 @@ Map<String, dynamic> _$$_DriverProfileToJson(_$_DriverProfile instance) =>
     <String, dynamic>{
       'username': instance.username,
       'phone': instance.phone,
+      'currentRideId': instance.currentRideId,
+      'currentUserId': instance.currentUserId,
       'ridesIgnored': instance.ridesIgnored,
       'ridesFinished': instance.ridesFinished,
       'ridesCancelledByDriver': instance.ridesCancelledByDriver,

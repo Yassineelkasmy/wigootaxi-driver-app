@@ -71,7 +71,6 @@ class BookingService {
       );
       return right(userRecord);
     } catch (e) {
-      print(e);
       return left(const BookingFailure.serverError());
     }
   }

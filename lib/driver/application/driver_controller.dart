@@ -31,12 +31,25 @@ class DriverController extends StateNotifier<DriverState> {
   void initDriverDocStream() async {
     driverDocSubscription = driverService
         .driverRecordStream(userUid: userUid)
-        .listen((driverRecord) {
+        .listen((driverRecord) async {
       if (driverRecord.booking_call != null) {
         state = state.copyWith(
           currentRide: driverRecord.booking_call!,
           userRecord: driverRecord.booking!.user,
         );
+      } else {
+        //track current ride if driver has closed the app
+        if (driverRecord.currentUserId != null) {
+          final userRecordOrFailure = await bookingService.getUserRecord(
+              userUid: driverRecord.currentUserId!);
+          userRecordOrFailure.map(
+            (userRecord) {
+              state = state.copyWith(userRecord: userRecord);
+            },
+          );
+        } else {
+          state = state.copyWith(userRecord: null);
+        }
       }
       state = state.copyWith(driverRecord: driverRecord);
     });
@@ -70,6 +83,8 @@ class DriverController extends StateNotifier<DriverState> {
         isDrivingKey,
         true,
       );
+    }, currnetRideCleaned: (event) async {
+      state = state.copyWith(currentRide: null, userRecord: null);
     });
   }
 }

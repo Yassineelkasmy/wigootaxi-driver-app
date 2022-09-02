@@ -64,6 +64,12 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
               },
             );
           }
+        } else {
+          if (next.userRecord != null) {
+            rideController.mapEventToState(
+              RideEvent.rideInitialized(next.driverRecord!.currentRideId!),
+            );
+          }
         }
       },
     );

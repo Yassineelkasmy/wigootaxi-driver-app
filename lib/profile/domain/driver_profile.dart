@@ -8,6 +8,8 @@ class DriverProfile with _$DriverProfile {
   const factory DriverProfile({
     required String username,
     required String phone,
+    String? currentRideId,
+    String? currentUserId,
     int? ridesIgnored,
     int? ridesFinished,
     int? ridesCancelledByDriver,

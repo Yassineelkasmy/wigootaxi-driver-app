@@ -4,6 +4,8 @@ import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wigootaxidriver/constants/storage_keys.dart';
+import 'package:wigootaxidriver/driver/application/driver_controller.dart';
+import 'package:wigootaxidriver/driver/application/driver_event.dart';
 import 'package:wigootaxidriver/ride/application/ride_event.dart';
 import 'package:wigootaxidriver/ride/application/ride_state.dart';
 import 'package:wigootaxidriver/ride/domain/ride.dart';
@@ -12,7 +14,8 @@ import 'package:wigootaxidriver/shared/helpers/latlng_distance.dart';
 import 'package:wigootaxidriver/shared/helpers/serialize_coordinates_path.dart';
 
 class RideController extends StateNotifier<RideState> {
-  RideController() : super(RideState.initial());
+  RideController(this.driverController) : super(RideState.initial());
+  final DriverController driverController;
   final geo = Geoflutterfire();
   Ride? currentRide;
 
@@ -57,15 +60,26 @@ class RideController extends StateNotifier<RideState> {
         final distanceTravelled = pathDistance(
           stringPathToCoordinates(ride.path),
         );
+
         state = state.copyWith(
           currentRide: ride,
           rideCancelledByUser: ride.cancelledByUser ?? false,
           rideInitialized: true,
+          rideFinished: ride.finished ?? false,
+          rideStarted: ride.started ?? false,
+          driverArrived: ride.driverArrived ?? false,
           driverDistanceFromStart: driverDistanceFromStart.toInt(),
           distanceTravelled: distanceTravelled,
           driverDistanceFromDestination: driverDistanceFromDestination.toInt(),
         );
         currentRide = ride;
+
+        if (state.rideCancelled ||
+            state.rideCancelledByUser ||
+            state.rideFinished ||
+            (ride.cancelledByDriver ?? false)) {
+          driverController.mapEventToState(DriverEvent.currnetRideCleaned());
+        }
       },
     );
   }
@@ -123,6 +137,7 @@ class RideController extends StateNotifier<RideState> {
         );
       },
       rideCancelledByDriver: (event) async {
+        driverController.mapEventToState(DriverEvent.currnetRideCleaned());
         rideSubscribtion?.cancel();
 
         state = state.copyWith(rideCancelled: true);
@@ -138,6 +153,7 @@ class RideController extends StateNotifier<RideState> {
       },
       rideCancelledByUser: (event) async {},
       rideFinished: (event) async {
+        driverController.mapEventToState(DriverEvent.currnetRideCleaned());
         rideSubscribtion?.cancel();
         state = state.copyWith(rideFinished: true);
         await _rideService.finishRide(

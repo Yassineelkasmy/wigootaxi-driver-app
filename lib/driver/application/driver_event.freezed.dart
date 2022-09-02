@@ -32,6 +32,10 @@ class _$DriverEventTearOff {
       driverLng,
     );
   }
+
+  CurrnetRideCleaned currnetRideCleaned() {
+    return const CurrnetRideCleaned();
+  }
 }
 
 /// @nodoc
@@ -44,6 +48,7 @@ mixin _$DriverEvent {
     required TResult Function() onlineActivated,
     required TResult Function() onlineDeactivated,
     required TResult Function(double driverLat, double driverLng) rideAccepted,
+    required TResult Function() currnetRideCleaned,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +56,7 @@ mixin _$DriverEvent {
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
     TResult Function(double driverLat, double driverLng)? rideAccepted,
+    TResult Function()? currnetRideCleaned,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +64,7 @@ mixin _$DriverEvent {
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
     TResult Function(double driverLat, double driverLng)? rideAccepted,
+    TResult Function()? currnetRideCleaned,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,6 +73,7 @@ mixin _$DriverEvent {
     required TResult Function(OnlineActivated value) onlineActivated,
     required TResult Function(OnlineDeactivated value) onlineDeactivated,
     required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(CurrnetRideCleaned value) currnetRideCleaned,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +81,7 @@ mixin _$DriverEvent {
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(CurrnetRideCleaned value)? currnetRideCleaned,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +89,7 @@ mixin _$DriverEvent {
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(CurrnetRideCleaned value)? currnetRideCleaned,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -145,6 +155,7 @@ class _$OnlineActivated implements OnlineActivated {
     required TResult Function() onlineActivated,
     required TResult Function() onlineDeactivated,
     required TResult Function(double driverLat, double driverLng) rideAccepted,
+    required TResult Function() currnetRideCleaned,
   }) {
     return onlineActivated();
   }
@@ -155,6 +166,7 @@ class _$OnlineActivated implements OnlineActivated {
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
     TResult Function(double driverLat, double driverLng)? rideAccepted,
+    TResult Function()? currnetRideCleaned,
   }) {
     return onlineActivated?.call();
   }
@@ -165,6 +177,7 @@ class _$OnlineActivated implements OnlineActivated {
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
     TResult Function(double driverLat, double driverLng)? rideAccepted,
+    TResult Function()? currnetRideCleaned,
     required TResult orElse(),
   }) {
     if (onlineActivated != null) {
@@ -179,6 +192,7 @@ class _$OnlineActivated implements OnlineActivated {
     required TResult Function(OnlineActivated value) onlineActivated,
     required TResult Function(OnlineDeactivated value) onlineDeactivated,
     required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(CurrnetRideCleaned value) currnetRideCleaned,
   }) {
     return onlineActivated(this);
   }
@@ -189,6 +203,7 @@ class _$OnlineActivated implements OnlineActivated {
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(CurrnetRideCleaned value)? currnetRideCleaned,
   }) {
     return onlineActivated?.call(this);
   }
@@ -199,6 +214,7 @@ class _$OnlineActivated implements OnlineActivated {
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(CurrnetRideCleaned value)? currnetRideCleaned,
     required TResult orElse(),
   }) {
     if (onlineActivated != null) {
@@ -256,6 +272,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
     required TResult Function() onlineActivated,
     required TResult Function() onlineDeactivated,
     required TResult Function(double driverLat, double driverLng) rideAccepted,
+    required TResult Function() currnetRideCleaned,
   }) {
     return onlineDeactivated();
   }
@@ -266,6 +283,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
     TResult Function(double driverLat, double driverLng)? rideAccepted,
+    TResult Function()? currnetRideCleaned,
   }) {
     return onlineDeactivated?.call();
   }
@@ -276,6 +294,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
     TResult Function(double driverLat, double driverLng)? rideAccepted,
+    TResult Function()? currnetRideCleaned,
     required TResult orElse(),
   }) {
     if (onlineDeactivated != null) {
@@ -290,6 +309,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
     required TResult Function(OnlineActivated value) onlineActivated,
     required TResult Function(OnlineDeactivated value) onlineDeactivated,
     required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(CurrnetRideCleaned value) currnetRideCleaned,
   }) {
     return onlineDeactivated(this);
   }
@@ -300,6 +320,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(CurrnetRideCleaned value)? currnetRideCleaned,
   }) {
     return onlineDeactivated?.call(this);
   }
@@ -310,6 +331,7 @@ class _$OnlineDeactivated implements OnlineDeactivated {
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(CurrnetRideCleaned value)? currnetRideCleaned,
     required TResult orElse(),
   }) {
     if (onlineDeactivated != null) {
@@ -400,6 +422,7 @@ class _$RideAccepted implements RideAccepted {
     required TResult Function() onlineActivated,
     required TResult Function() onlineDeactivated,
     required TResult Function(double driverLat, double driverLng) rideAccepted,
+    required TResult Function() currnetRideCleaned,
   }) {
     return rideAccepted(driverLat, driverLng);
   }
@@ -410,6 +433,7 @@ class _$RideAccepted implements RideAccepted {
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
     TResult Function(double driverLat, double driverLng)? rideAccepted,
+    TResult Function()? currnetRideCleaned,
   }) {
     return rideAccepted?.call(driverLat, driverLng);
   }
@@ -420,6 +444,7 @@ class _$RideAccepted implements RideAccepted {
     TResult Function()? onlineActivated,
     TResult Function()? onlineDeactivated,
     TResult Function(double driverLat, double driverLng)? rideAccepted,
+    TResult Function()? currnetRideCleaned,
     required TResult orElse(),
   }) {
     if (rideAccepted != null) {
@@ -434,6 +459,7 @@ class _$RideAccepted implements RideAccepted {
     required TResult Function(OnlineActivated value) onlineActivated,
     required TResult Function(OnlineDeactivated value) onlineDeactivated,
     required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(CurrnetRideCleaned value) currnetRideCleaned,
   }) {
     return rideAccepted(this);
   }
@@ -444,6 +470,7 @@ class _$RideAccepted implements RideAccepted {
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(CurrnetRideCleaned value)? currnetRideCleaned,
   }) {
     return rideAccepted?.call(this);
   }
@@ -454,6 +481,7 @@ class _$RideAccepted implements RideAccepted {
     TResult Function(OnlineActivated value)? onlineActivated,
     TResult Function(OnlineDeactivated value)? onlineDeactivated,
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(CurrnetRideCleaned value)? currnetRideCleaned,
     required TResult orElse(),
   }) {
     if (rideAccepted != null) {
@@ -472,4 +500,121 @@ abstract class RideAccepted implements DriverEvent {
   @JsonKey(ignore: true)
   $RideAcceptedCopyWith<RideAccepted> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CurrnetRideCleanedCopyWith<$Res> {
+  factory $CurrnetRideCleanedCopyWith(
+          CurrnetRideCleaned value, $Res Function(CurrnetRideCleaned) then) =
+      _$CurrnetRideCleanedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$CurrnetRideCleanedCopyWithImpl<$Res>
+    extends _$DriverEventCopyWithImpl<$Res>
+    implements $CurrnetRideCleanedCopyWith<$Res> {
+  _$CurrnetRideCleanedCopyWithImpl(
+      CurrnetRideCleaned _value, $Res Function(CurrnetRideCleaned) _then)
+      : super(_value, (v) => _then(v as CurrnetRideCleaned));
+
+  @override
+  CurrnetRideCleaned get _value => super._value as CurrnetRideCleaned;
+}
+
+/// @nodoc
+
+class _$CurrnetRideCleaned implements CurrnetRideCleaned {
+  const _$CurrnetRideCleaned();
+
+  @override
+  String toString() {
+    return 'DriverEvent.currnetRideCleaned()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CurrnetRideCleaned);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onlineActivated,
+    required TResult Function() onlineDeactivated,
+    required TResult Function(double driverLat, double driverLng) rideAccepted,
+    required TResult Function() currnetRideCleaned,
+  }) {
+    return currnetRideCleaned();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? onlineActivated,
+    TResult Function()? onlineDeactivated,
+    TResult Function(double driverLat, double driverLng)? rideAccepted,
+    TResult Function()? currnetRideCleaned,
+  }) {
+    return currnetRideCleaned?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onlineActivated,
+    TResult Function()? onlineDeactivated,
+    TResult Function(double driverLat, double driverLng)? rideAccepted,
+    TResult Function()? currnetRideCleaned,
+    required TResult orElse(),
+  }) {
+    if (currnetRideCleaned != null) {
+      return currnetRideCleaned();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnlineActivated value) onlineActivated,
+    required TResult Function(OnlineDeactivated value) onlineDeactivated,
+    required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(CurrnetRideCleaned value) currnetRideCleaned,
+  }) {
+    return currnetRideCleaned(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(OnlineActivated value)? onlineActivated,
+    TResult Function(OnlineDeactivated value)? onlineDeactivated,
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(CurrnetRideCleaned value)? currnetRideCleaned,
+  }) {
+    return currnetRideCleaned?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnlineActivated value)? onlineActivated,
+    TResult Function(OnlineDeactivated value)? onlineDeactivated,
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(CurrnetRideCleaned value)? currnetRideCleaned,
+    required TResult orElse(),
+  }) {
+    if (currnetRideCleaned != null) {
+      return currnetRideCleaned(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CurrnetRideCleaned implements DriverEvent {
+  const factory CurrnetRideCleaned() = _$CurrnetRideCleaned;
 }

@@ -12,6 +12,8 @@ class DriverRecord with _$DriverRecord {
     required int lastSeconds,
     required String username,
     required String phone,
+    String? currentRideId,
+    String? currentUserId,
     String? booking_call,
     String? bookingUserUid,
     BookingRecord? booking,

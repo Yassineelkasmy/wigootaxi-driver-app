@@ -29,6 +29,8 @@ class _$DriverRecordTearOff {
       required int lastSeconds,
       required String username,
       required String phone,
+      String? currentRideId,
+      String? currentUserId,
       String? booking_call,
       String? bookingUserUid,
       BookingRecord? booking}) {
@@ -39,6 +41,8 @@ class _$DriverRecordTearOff {
       lastSeconds: lastSeconds,
       username: username,
       phone: phone,
+      currentRideId: currentRideId,
+      currentUserId: currentUserId,
       booking_call: booking_call,
       bookingUserUid: bookingUserUid,
       booking: booking,
@@ -61,6 +65,8 @@ mixin _$DriverRecord {
   int get lastSeconds => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
+  String? get currentRideId => throw _privateConstructorUsedError;
+  String? get currentUserId => throw _privateConstructorUsedError;
   String? get booking_call => throw _privateConstructorUsedError;
   String? get bookingUserUid => throw _privateConstructorUsedError;
   BookingRecord? get booking => throw _privateConstructorUsedError;
@@ -83,6 +89,8 @@ abstract class $DriverRecordCopyWith<$Res> {
       int lastSeconds,
       String username,
       String phone,
+      String? currentRideId,
+      String? currentUserId,
       String? booking_call,
       String? bookingUserUid,
       BookingRecord? booking});
@@ -106,6 +114,8 @@ class _$DriverRecordCopyWithImpl<$Res> implements $DriverRecordCopyWith<$Res> {
     Object? lastSeconds = freezed,
     Object? username = freezed,
     Object? phone = freezed,
+    Object? currentRideId = freezed,
+    Object? currentUserId = freezed,
     Object? booking_call = freezed,
     Object? bookingUserUid = freezed,
     Object? booking = freezed,
@@ -135,6 +145,14 @@ class _$DriverRecordCopyWithImpl<$Res> implements $DriverRecordCopyWith<$Res> {
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      currentRideId: currentRideId == freezed
+          ? _value.currentRideId
+          : currentRideId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currentUserId: currentUserId == freezed
+          ? _value.currentUserId
+          : currentUserId // ignore: cast_nullable_to_non_nullable
+              as String?,
       booking_call: booking_call == freezed
           ? _value.booking_call
           : booking_call // ignore: cast_nullable_to_non_nullable
@@ -176,6 +194,8 @@ abstract class _$DriverRecordCopyWith<$Res>
       int lastSeconds,
       String username,
       String phone,
+      String? currentRideId,
+      String? currentUserId,
       String? booking_call,
       String? bookingUserUid,
       BookingRecord? booking});
@@ -202,6 +222,8 @@ class __$DriverRecordCopyWithImpl<$Res> extends _$DriverRecordCopyWithImpl<$Res>
     Object? lastSeconds = freezed,
     Object? username = freezed,
     Object? phone = freezed,
+    Object? currentRideId = freezed,
+    Object? currentUserId = freezed,
     Object? booking_call = freezed,
     Object? bookingUserUid = freezed,
     Object? booking = freezed,
@@ -231,6 +253,14 @@ class __$DriverRecordCopyWithImpl<$Res> extends _$DriverRecordCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      currentRideId: currentRideId == freezed
+          ? _value.currentRideId
+          : currentRideId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currentUserId: currentUserId == freezed
+          ? _value.currentUserId
+          : currentUserId // ignore: cast_nullable_to_non_nullable
+              as String?,
       booking_call: booking_call == freezed
           ? _value.booking_call
           : booking_call // ignore: cast_nullable_to_non_nullable
@@ -257,6 +287,8 @@ class _$_DriverRecord implements _DriverRecord {
       required this.lastSeconds,
       required this.username,
       required this.phone,
+      this.currentRideId,
+      this.currentUserId,
       this.booking_call,
       this.bookingUserUid,
       this.booking});
@@ -277,6 +309,10 @@ class _$_DriverRecord implements _DriverRecord {
   @override
   final String phone;
   @override
+  final String? currentRideId;
+  @override
+  final String? currentUserId;
+  @override
   final String? booking_call;
   @override
   final String? bookingUserUid;
@@ -285,7 +321,7 @@ class _$_DriverRecord implements _DriverRecord {
 
   @override
   String toString() {
-    return 'DriverRecord(lng: $lng, lat: $lat, id: $id, lastSeconds: $lastSeconds, username: $username, phone: $phone, booking_call: $booking_call, bookingUserUid: $bookingUserUid, booking: $booking)';
+    return 'DriverRecord(lng: $lng, lat: $lat, id: $id, lastSeconds: $lastSeconds, username: $username, phone: $phone, currentRideId: $currentRideId, currentUserId: $currentUserId, booking_call: $booking_call, bookingUserUid: $bookingUserUid, booking: $booking)';
   }
 
   @override
@@ -300,6 +336,10 @@ class _$_DriverRecord implements _DriverRecord {
                 .equals(other.lastSeconds, lastSeconds) &&
             const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
+            const DeepCollectionEquality()
+                .equals(other.currentRideId, currentRideId) &&
+            const DeepCollectionEquality()
+                .equals(other.currentUserId, currentUserId) &&
             const DeepCollectionEquality()
                 .equals(other.booking_call, booking_call) &&
             const DeepCollectionEquality()
@@ -316,6 +356,8 @@ class _$_DriverRecord implements _DriverRecord {
       const DeepCollectionEquality().hash(lastSeconds),
       const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(currentRideId),
+      const DeepCollectionEquality().hash(currentUserId),
       const DeepCollectionEquality().hash(booking_call),
       const DeepCollectionEquality().hash(bookingUserUid),
       const DeepCollectionEquality().hash(booking));
@@ -339,6 +381,8 @@ abstract class _DriverRecord implements DriverRecord {
       required int lastSeconds,
       required String username,
       required String phone,
+      String? currentRideId,
+      String? currentUserId,
       String? booking_call,
       String? bookingUserUid,
       BookingRecord? booking}) = _$_DriverRecord;
@@ -358,6 +402,10 @@ abstract class _DriverRecord implements DriverRecord {
   String get username;
   @override
   String get phone;
+  @override
+  String? get currentRideId;
+  @override
+  String? get currentUserId;
   @override
   String? get booking_call;
   @override
