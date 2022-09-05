@@ -54,7 +54,7 @@ class DriverTypeForm extends HookConsumerWidget {
             ),
             20.h.verticalSpace,
             Text(
-              "S'il vous plait choisir comment vous souhaitez devenir partenaire avec Ab Salam",
+              "S'il vous plait choisir comment vous souhaitez devenir partenaire avec Wigoo",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.grey,
