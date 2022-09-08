@@ -12,4 +12,6 @@ class AuthFailure with _$AuthFailure {
   const factory AuthFailure.userNotVerified() = UserNotVerified;
   const factory AuthFailure.invalidPinCode() = InvalidPinCode;
   const factory AuthFailure.phoneAlreadyInUse() = PhoneAlreadyInUse;
+  const factory AuthFailure.goolgeAccountNotRegistered() =
+      GoolgeAccountNotRegistered;
 }

@@ -4,12 +4,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:in_app_notification/in_app_notification.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:wigootaxidriver/application/auth/auth_form/auth_form_event.dart';
+import 'package:wigootaxidriver/application/auth/auth_form/auth_form_state.dart';
 import 'package:wigootaxidriver/application/auth/auth_state.dart';
 import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
 import 'package:wigootaxidriver/presentation/auth/widgets/social_media_button.dart';
 import 'package:wigootaxidriver/presentation/routes/router.gr.dart';
+import 'package:wigootaxidriver/presentation/shared/in_app_notfication.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/theme/colors.dart';
 
@@ -52,6 +55,41 @@ class LoginPage extends HookConsumerWidget {
           });
     });
 
+    ref.listen<AuthFormState>(
+      authFormProvider,
+      (previous, next) {
+        next.authFailureOrSuccessOption.map(
+          (failure) => failure.fold(
+            (failure) {
+              final message = failure.map(
+                cancelledByUser: (_) => "Annulé par l'utilisateur",
+                serverError: (_) => "Erreur du serveur",
+                emailAlreadyInUse: (_) => "Email déjà utilisé",
+                invalidCredentials: (_) =>
+                    "Les informations d'identification invalides",
+                userDisabled: (_) => "Utilisateur désactivé",
+                userNotVerified: (_) => "Utilisateur non vérifié",
+                invalidPinCode: (_) => "Code PIN invalide",
+                phoneAlreadyInUse: (_) => "Téléphone déjà utilisé",
+                goolgeAccountNotRegistered: (_) =>
+                    "Compte Google non inscrit, Créez d'abord un compte avec Google",
+              );
+
+              InAppNotification.show(
+                duration: Duration(seconds: 3),
+                child: InnerNotifications(
+                  message: message,
+                  isScuccess: false,
+                ),
+                context: context,
+              );
+            },
+            (_) => null,
+          ),
+        );
+      },
+    );
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -70,7 +108,7 @@ class LoginPage extends HookConsumerWidget {
             height: 1.sh,
             child: SafeArea(
               child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   buildLogo(white: false),
                   ReactiveForm(
@@ -158,8 +196,9 @@ class LoginPage extends HookConsumerWidget {
                           child: SubmitButton(
                             isLoading: authFormState.isSubmitting,
                             onPressed: () {
-                              final email =
-                                  loginForm.findControl('email')!.value as String;
+                              final email = loginForm
+                                  .findControl('email')!
+                                  .value as String;
                               final password = loginForm
                                   .findControl('password')!
                                   .value as String;
@@ -178,7 +217,7 @@ class LoginPage extends HookConsumerWidget {
                       ],
                     ),
                   ),
-            
+
                   // Expanded(child: SizedBox()),
                 ],
               ),

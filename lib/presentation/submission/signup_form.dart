@@ -2,9 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:in_app_notification/in_app_notification.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:wigootaxidriver/application/auth/auth_form/auth_form_event.dart';
+import 'package:wigootaxidriver/application/auth/auth_form/auth_form_state.dart';
 import 'package:wigootaxidriver/application/providers/auth/auth_providers.dart';
+import 'package:wigootaxidriver/presentation/shared/in_app_notfication.dart';
 import 'package:wigootaxidriver/presentation/shared/logo.dart';
 import 'package:wigootaxidriver/presentation/shared/submit_button.dart';
 import 'package:wigootaxidriver/presentation/submission/widgets/step_indicator.dart';
@@ -50,7 +53,40 @@ class SignUpForm extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final authFormController = ref.watch(authFormProvider.notifier);
     final authFormState = ref.watch(authFormProvider);
-    final authController = ref.watch(authtProvider.notifier);
+    ref.listen<AuthFormState>(
+      authFormProvider,
+      (previous, next) {
+        next.authFailureOrSuccessOption.map(
+          (failure) => failure.fold(
+            (failure) {
+              final message = failure.map(
+                cancelledByUser: (_) => "Annulé par l'utilisateur",
+                serverError: (_) => "Erreur du serveur",
+                emailAlreadyInUse: (_) => "Email déjà utilisé",
+                invalidCredentials: (_) =>
+                    "Les informations d'identification invalides",
+                userDisabled: (_) => "Utilisateur désactivé",
+                userNotVerified: (_) => "Utilisateur non vérifié",
+                invalidPinCode: (_) => "Code PIN invalide",
+                phoneAlreadyInUse: (_) => "Téléphone déjà utilisé",
+                goolgeAccountNotRegistered: (_) =>
+                    "Compte Google non inscrit, Créez d'abord un compte avec Google",
+              );
+
+              InAppNotification.show(
+                duration: Duration(seconds: 3),
+                child: InnerNotifications(
+                  message: message,
+                  isScuccess: false,
+                ),
+                context: context,
+              );
+            },
+            (_) => null,
+          ),
+        );
+      },
+    );
 
     return SingleChildScrollView(
       child: Column(

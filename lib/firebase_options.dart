@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -36,19 +39,9 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBcUiq4ME8Hc3N7nsoDs0YYC2e4nWwyghU',
-    appId: '1:1010420009793:web:7cda7afe785a3d61af2fc0',
-    messagingSenderId: '1010420009793',
-    projectId: 'taxi-app-user-4800a',
-    authDomain: 'taxi-app-user-4800a.firebaseapp.com',
-    storageBucket: 'taxi-app-user-4800a.appspot.com',
-    measurementId: 'G-FB7HH2MCY4',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyB7R0DmIqK5uefoFXhMG9PM0XSyUk7Z8sc',
-    appId: '1:1010420009793:android:19145049e7f96baeaf2fc0',
+    appId: '1:1010420009793:android:d076e56a75b2ba99af2fc0',
     messagingSenderId: '1010420009793',
     projectId: 'taxi-app-user-4800a',
     storageBucket: 'taxi-app-user-4800a.appspot.com',
@@ -56,14 +49,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyB0gp6JLrfczDndptY0k2g5IrtNDhDO60c',
-    appId: '1:1010420009793:ios:ff3fe66acba13742af2fc0',
+    appId: '1:1010420009793:ios:854e50d907f4b36baf2fc0',
     messagingSenderId: '1010420009793',
     projectId: 'taxi-app-user-4800a',
     storageBucket: 'taxi-app-user-4800a.appspot.com',
-    androidClientId:
-        '1010420009793-ic7djdcuk8ijujdrdcovq9hkhlqcs3r8.apps.googleusercontent.com',
-    iosClientId:
-        '1010420009793-namf81io44i8gdlqa1l1q10nu1sge2o0.apps.googleusercontent.com',
-    iosBundleId: 'com.example.wigootaxidriver',
+    androidClientId: '1010420009793-48r1tfno58cb7bf5vsd32fa1u6fn2iap.apps.googleusercontent.com',
+    iosClientId: '1010420009793-s8qenoart677p42phv1dbjgc8c8s421p.apps.googleusercontent.com',
+    iosBundleId: 'com.syloops.wigoodriver',
   );
 }

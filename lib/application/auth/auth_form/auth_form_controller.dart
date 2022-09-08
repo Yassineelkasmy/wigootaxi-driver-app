@@ -62,7 +62,10 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         checkAuthState();
       },
       registerWithEmailAndPasswordPressed: (event) async {
-        state = state.copyWith(isSubmitting: true);
+        state = state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
         final registerWithSuccessOrFailure =
             await _authFacade.registerWithEmailAndPassword(
           email: event.email,
@@ -76,15 +79,24 @@ class AuthFormController extends StateNotifier<AuthFormState> {
           },
         );
 
-        state = state.copyWith(isSubmitting: false);
+        state = state.copyWith(
+          isSubmitting: false,
+          authFailureOrSuccessOption: optionOf(registerWithSuccessOrFailure),
+        );
       },
       signInWithEmailAndPasswordPressed: (event) async {
-        state = state.copyWith(isSubmitting: true);
+        state = state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
         final successOrFailure = await _authFacade.signInWithEmailAndPassword(
           email: event.email,
           password: event.password,
         );
-        state = state.copyWith(isSubmitting: false);
+        state = state.copyWith(
+          isSubmitting: false,
+          authFailureOrSuccessOption: optionOf(successOrFailure),
+        );
 
         successOrFailure.fold((l) => null, (success) => checkAuthState());
       },

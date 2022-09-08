@@ -49,6 +49,10 @@ class _$AuthFailureTearOff {
   PhoneAlreadyInUse phoneAlreadyInUse() {
     return const PhoneAlreadyInUse();
   }
+
+  GoolgeAccountNotRegistered goolgeAccountNotRegistered() {
+    return const GoolgeAccountNotRegistered();
+  }
 }
 
 /// @nodoc
@@ -66,6 +70,7 @@ mixin _$AuthFailure {
     required TResult Function() userNotVerified,
     required TResult Function() invalidPinCode,
     required TResult Function() phoneAlreadyInUse,
+    required TResult Function() goolgeAccountNotRegistered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,6 +83,7 @@ mixin _$AuthFailure {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +96,7 @@ mixin _$AuthFailure {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -103,6 +110,8 @@ mixin _$AuthFailure {
     required TResult Function(UserNotVerified value) userNotVerified,
     required TResult Function(InvalidPinCode value) invalidPinCode,
     required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+    required TResult Function(GoolgeAccountNotRegistered value)
+        goolgeAccountNotRegistered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -115,6 +124,8 @@ mixin _$AuthFailure {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -127,6 +138,8 @@ mixin _$AuthFailure {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -197,6 +210,7 @@ class _$CancelledByUser implements CancelledByUser {
     required TResult Function() userNotVerified,
     required TResult Function() invalidPinCode,
     required TResult Function() phoneAlreadyInUse,
+    required TResult Function() goolgeAccountNotRegistered,
   }) {
     return cancelledByUser();
   }
@@ -212,6 +226,7 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
   }) {
     return cancelledByUser?.call();
   }
@@ -227,6 +242,7 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (cancelledByUser != null) {
@@ -246,6 +262,8 @@ class _$CancelledByUser implements CancelledByUser {
     required TResult Function(UserNotVerified value) userNotVerified,
     required TResult Function(InvalidPinCode value) invalidPinCode,
     required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+    required TResult Function(GoolgeAccountNotRegistered value)
+        goolgeAccountNotRegistered,
   }) {
     return cancelledByUser(this);
   }
@@ -261,6 +279,8 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
   }) {
     return cancelledByUser?.call(this);
   }
@@ -276,6 +296,8 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (cancelledByUser != null) {
@@ -337,6 +359,7 @@ class _$ServerError implements ServerError {
     required TResult Function() userNotVerified,
     required TResult Function() invalidPinCode,
     required TResult Function() phoneAlreadyInUse,
+    required TResult Function() goolgeAccountNotRegistered,
   }) {
     return serverError();
   }
@@ -352,6 +375,7 @@ class _$ServerError implements ServerError {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
   }) {
     return serverError?.call();
   }
@@ -367,6 +391,7 @@ class _$ServerError implements ServerError {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -386,6 +411,8 @@ class _$ServerError implements ServerError {
     required TResult Function(UserNotVerified value) userNotVerified,
     required TResult Function(InvalidPinCode value) invalidPinCode,
     required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+    required TResult Function(GoolgeAccountNotRegistered value)
+        goolgeAccountNotRegistered,
   }) {
     return serverError(this);
   }
@@ -401,6 +428,8 @@ class _$ServerError implements ServerError {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
   }) {
     return serverError?.call(this);
   }
@@ -416,6 +445,8 @@ class _$ServerError implements ServerError {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -478,6 +509,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     required TResult Function() userNotVerified,
     required TResult Function() invalidPinCode,
     required TResult Function() phoneAlreadyInUse,
+    required TResult Function() goolgeAccountNotRegistered,
   }) {
     return emailAlreadyInUse();
   }
@@ -493,6 +525,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
   }) {
     return emailAlreadyInUse?.call();
   }
@@ -508,6 +541,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -527,6 +561,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     required TResult Function(UserNotVerified value) userNotVerified,
     required TResult Function(InvalidPinCode value) invalidPinCode,
     required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+    required TResult Function(GoolgeAccountNotRegistered value)
+        goolgeAccountNotRegistered,
   }) {
     return emailAlreadyInUse(this);
   }
@@ -542,6 +578,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
   }) {
     return emailAlreadyInUse?.call(this);
   }
@@ -557,6 +595,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -619,6 +659,7 @@ class _$InvalidCredentials implements InvalidCredentials {
     required TResult Function() userNotVerified,
     required TResult Function() invalidPinCode,
     required TResult Function() phoneAlreadyInUse,
+    required TResult Function() goolgeAccountNotRegistered,
   }) {
     return invalidCredentials();
   }
@@ -634,6 +675,7 @@ class _$InvalidCredentials implements InvalidCredentials {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
   }) {
     return invalidCredentials?.call();
   }
@@ -649,6 +691,7 @@ class _$InvalidCredentials implements InvalidCredentials {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (invalidCredentials != null) {
@@ -668,6 +711,8 @@ class _$InvalidCredentials implements InvalidCredentials {
     required TResult Function(UserNotVerified value) userNotVerified,
     required TResult Function(InvalidPinCode value) invalidPinCode,
     required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+    required TResult Function(GoolgeAccountNotRegistered value)
+        goolgeAccountNotRegistered,
   }) {
     return invalidCredentials(this);
   }
@@ -683,6 +728,8 @@ class _$InvalidCredentials implements InvalidCredentials {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
   }) {
     return invalidCredentials?.call(this);
   }
@@ -698,6 +745,8 @@ class _$InvalidCredentials implements InvalidCredentials {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (invalidCredentials != null) {
@@ -759,6 +808,7 @@ class _$UserDisabled implements UserDisabled {
     required TResult Function() userNotVerified,
     required TResult Function() invalidPinCode,
     required TResult Function() phoneAlreadyInUse,
+    required TResult Function() goolgeAccountNotRegistered,
   }) {
     return userDisabled();
   }
@@ -774,6 +824,7 @@ class _$UserDisabled implements UserDisabled {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
   }) {
     return userDisabled?.call();
   }
@@ -789,6 +840,7 @@ class _$UserDisabled implements UserDisabled {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -808,6 +860,8 @@ class _$UserDisabled implements UserDisabled {
     required TResult Function(UserNotVerified value) userNotVerified,
     required TResult Function(InvalidPinCode value) invalidPinCode,
     required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+    required TResult Function(GoolgeAccountNotRegistered value)
+        goolgeAccountNotRegistered,
   }) {
     return userDisabled(this);
   }
@@ -823,6 +877,8 @@ class _$UserDisabled implements UserDisabled {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
   }) {
     return userDisabled?.call(this);
   }
@@ -838,6 +894,8 @@ class _$UserDisabled implements UserDisabled {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -900,6 +958,7 @@ class _$UserNotVerified implements UserNotVerified {
     required TResult Function() userNotVerified,
     required TResult Function() invalidPinCode,
     required TResult Function() phoneAlreadyInUse,
+    required TResult Function() goolgeAccountNotRegistered,
   }) {
     return userNotVerified();
   }
@@ -915,6 +974,7 @@ class _$UserNotVerified implements UserNotVerified {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
   }) {
     return userNotVerified?.call();
   }
@@ -930,6 +990,7 @@ class _$UserNotVerified implements UserNotVerified {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (userNotVerified != null) {
@@ -949,6 +1010,8 @@ class _$UserNotVerified implements UserNotVerified {
     required TResult Function(UserNotVerified value) userNotVerified,
     required TResult Function(InvalidPinCode value) invalidPinCode,
     required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+    required TResult Function(GoolgeAccountNotRegistered value)
+        goolgeAccountNotRegistered,
   }) {
     return userNotVerified(this);
   }
@@ -964,6 +1027,8 @@ class _$UserNotVerified implements UserNotVerified {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
   }) {
     return userNotVerified?.call(this);
   }
@@ -979,6 +1044,8 @@ class _$UserNotVerified implements UserNotVerified {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (userNotVerified != null) {
@@ -1040,6 +1107,7 @@ class _$InvalidPinCode implements InvalidPinCode {
     required TResult Function() userNotVerified,
     required TResult Function() invalidPinCode,
     required TResult Function() phoneAlreadyInUse,
+    required TResult Function() goolgeAccountNotRegistered,
   }) {
     return invalidPinCode();
   }
@@ -1055,6 +1123,7 @@ class _$InvalidPinCode implements InvalidPinCode {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
   }) {
     return invalidPinCode?.call();
   }
@@ -1070,6 +1139,7 @@ class _$InvalidPinCode implements InvalidPinCode {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (invalidPinCode != null) {
@@ -1089,6 +1159,8 @@ class _$InvalidPinCode implements InvalidPinCode {
     required TResult Function(UserNotVerified value) userNotVerified,
     required TResult Function(InvalidPinCode value) invalidPinCode,
     required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+    required TResult Function(GoolgeAccountNotRegistered value)
+        goolgeAccountNotRegistered,
   }) {
     return invalidPinCode(this);
   }
@@ -1104,6 +1176,8 @@ class _$InvalidPinCode implements InvalidPinCode {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
   }) {
     return invalidPinCode?.call(this);
   }
@@ -1119,6 +1193,8 @@ class _$InvalidPinCode implements InvalidPinCode {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (invalidPinCode != null) {
@@ -1181,6 +1257,7 @@ class _$PhoneAlreadyInUse implements PhoneAlreadyInUse {
     required TResult Function() userNotVerified,
     required TResult Function() invalidPinCode,
     required TResult Function() phoneAlreadyInUse,
+    required TResult Function() goolgeAccountNotRegistered,
   }) {
     return phoneAlreadyInUse();
   }
@@ -1196,6 +1273,7 @@ class _$PhoneAlreadyInUse implements PhoneAlreadyInUse {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
   }) {
     return phoneAlreadyInUse?.call();
   }
@@ -1211,6 +1289,7 @@ class _$PhoneAlreadyInUse implements PhoneAlreadyInUse {
     TResult Function()? userNotVerified,
     TResult Function()? invalidPinCode,
     TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (phoneAlreadyInUse != null) {
@@ -1230,6 +1309,8 @@ class _$PhoneAlreadyInUse implements PhoneAlreadyInUse {
     required TResult Function(UserNotVerified value) userNotVerified,
     required TResult Function(InvalidPinCode value) invalidPinCode,
     required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+    required TResult Function(GoolgeAccountNotRegistered value)
+        goolgeAccountNotRegistered,
   }) {
     return phoneAlreadyInUse(this);
   }
@@ -1245,6 +1326,8 @@ class _$PhoneAlreadyInUse implements PhoneAlreadyInUse {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
   }) {
     return phoneAlreadyInUse?.call(this);
   }
@@ -1260,6 +1343,8 @@ class _$PhoneAlreadyInUse implements PhoneAlreadyInUse {
     TResult Function(UserNotVerified value)? userNotVerified,
     TResult Function(InvalidPinCode value)? invalidPinCode,
     TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
     required TResult orElse(),
   }) {
     if (phoneAlreadyInUse != null) {
@@ -1271,4 +1356,156 @@ class _$PhoneAlreadyInUse implements PhoneAlreadyInUse {
 
 abstract class PhoneAlreadyInUse implements AuthFailure {
   const factory PhoneAlreadyInUse() = _$PhoneAlreadyInUse;
+}
+
+/// @nodoc
+abstract class $GoolgeAccountNotRegisteredCopyWith<$Res> {
+  factory $GoolgeAccountNotRegisteredCopyWith(GoolgeAccountNotRegistered value,
+          $Res Function(GoolgeAccountNotRegistered) then) =
+      _$GoolgeAccountNotRegisteredCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GoolgeAccountNotRegisteredCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements $GoolgeAccountNotRegisteredCopyWith<$Res> {
+  _$GoolgeAccountNotRegisteredCopyWithImpl(GoolgeAccountNotRegistered _value,
+      $Res Function(GoolgeAccountNotRegistered) _then)
+      : super(_value, (v) => _then(v as GoolgeAccountNotRegistered));
+
+  @override
+  GoolgeAccountNotRegistered get _value =>
+      super._value as GoolgeAccountNotRegistered;
+}
+
+/// @nodoc
+
+class _$GoolgeAccountNotRegistered implements GoolgeAccountNotRegistered {
+  const _$GoolgeAccountNotRegistered();
+
+  @override
+  String toString() {
+    return 'AuthFailure.goolgeAccountNotRegistered()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GoolgeAccountNotRegistered);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() serverError,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidCredentials,
+    required TResult Function() userDisabled,
+    required TResult Function() userNotVerified,
+    required TResult Function() invalidPinCode,
+    required TResult Function() phoneAlreadyInUse,
+    required TResult Function() goolgeAccountNotRegistered,
+  }) {
+    return goolgeAccountNotRegistered();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidCredentials,
+    TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
+  }) {
+    return goolgeAccountNotRegistered?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidCredentials,
+    TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
+    TResult Function()? goolgeAccountNotRegistered,
+    required TResult orElse(),
+  }) {
+    if (goolgeAccountNotRegistered != null) {
+      return goolgeAccountNotRegistered();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidCredentials value) invalidCredentials,
+    required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(UserNotVerified value) userNotVerified,
+    required TResult Function(InvalidPinCode value) invalidPinCode,
+    required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+    required TResult Function(GoolgeAccountNotRegistered value)
+        goolgeAccountNotRegistered,
+  }) {
+    return goolgeAccountNotRegistered(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidCredentials value)? invalidCredentials,
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
+  }) {
+    return goolgeAccountNotRegistered?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidCredentials value)? invalidCredentials,
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    TResult Function(GoolgeAccountNotRegistered value)?
+        goolgeAccountNotRegistered,
+    required TResult orElse(),
+  }) {
+    if (goolgeAccountNotRegistered != null) {
+      return goolgeAccountNotRegistered(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GoolgeAccountNotRegistered implements AuthFailure {
+  const factory GoolgeAccountNotRegistered() = _$GoolgeAccountNotRegistered;
 }
