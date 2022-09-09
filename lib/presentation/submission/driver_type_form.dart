@@ -89,7 +89,8 @@ class DriverTypeForm extends HookConsumerWidget {
                           Text(
                             "Vous êtes un chauffeur\nde petit ou grand taxi",
                             style: TextStyle(
-                                color: Colors.grey, fontWeight: FontWeight.bold),
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold),
                           ),
                         ],
                       ).paddingSymmetric(horizontal: 20.w, vertical: 20.h),
@@ -158,7 +159,8 @@ class DriverTypeForm extends HookConsumerWidget {
                           Text(
                             "Vous êtes un chauffeur\nindépendant avec voiture",
                             style: TextStyle(
-                                color: Colors.grey, fontWeight: FontWeight.bold),
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold),
                           ),
                         ],
                       ).paddingSymmetric(horizontal: 10.w, vertical: 20.h),
