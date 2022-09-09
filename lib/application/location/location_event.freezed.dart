@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$LocationEventTearOff {
   const _$LocationEventTearOff();
 
-  LocationRequested locationRequested() {
-    return const LocationRequested();
+  LocationRequested locationRequested({required bool pressed}) {
+    return LocationRequested(
+      pressed: pressed,
+    );
   }
 
   LocationDetected locationDetected() {
@@ -38,21 +40,21 @@ const $LocationEvent = _$LocationEventTearOff();
 mixin _$LocationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationRequested,
+    required TResult Function(bool pressed) locationRequested,
     required TResult Function() locationDetected,
     required TResult Function() permessionDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? locationRequested,
+    TResult Function(bool pressed)? locationRequested,
     TResult Function()? locationDetected,
     TResult Function()? permessionDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationRequested,
+    TResult Function(bool pressed)? locationRequested,
     TResult Function()? locationDetected,
     TResult Function()? permessionDenied,
     required TResult orElse(),
@@ -104,6 +106,7 @@ abstract class $LocationRequestedCopyWith<$Res> {
   factory $LocationRequestedCopyWith(
           LocationRequested value, $Res Function(LocationRequested) then) =
       _$LocationRequestedCopyWithImpl<$Res>;
+  $Res call({bool pressed});
 }
 
 /// @nodoc
@@ -116,57 +119,80 @@ class _$LocationRequestedCopyWithImpl<$Res>
 
   @override
   LocationRequested get _value => super._value as LocationRequested;
+
+  @override
+  $Res call({
+    Object? pressed = freezed,
+  }) {
+    return _then(LocationRequested(
+      pressed: pressed == freezed
+          ? _value.pressed
+          : pressed // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$LocationRequested implements LocationRequested {
-  const _$LocationRequested();
+  const _$LocationRequested({required this.pressed});
+
+  @override
+  final bool pressed;
 
   @override
   String toString() {
-    return 'LocationEvent.locationRequested()';
+    return 'LocationEvent.locationRequested(pressed: $pressed)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is LocationRequested);
+        (other.runtimeType == runtimeType &&
+            other is LocationRequested &&
+            const DeepCollectionEquality().equals(other.pressed, pressed));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(pressed));
+
+  @JsonKey(ignore: true)
+  @override
+  $LocationRequestedCopyWith<LocationRequested> get copyWith =>
+      _$LocationRequestedCopyWithImpl<LocationRequested>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationRequested,
+    required TResult Function(bool pressed) locationRequested,
     required TResult Function() locationDetected,
     required TResult Function() permessionDenied,
   }) {
-    return locationRequested();
+    return locationRequested(pressed);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? locationRequested,
+    TResult Function(bool pressed)? locationRequested,
     TResult Function()? locationDetected,
     TResult Function()? permessionDenied,
   }) {
-    return locationRequested?.call();
+    return locationRequested?.call(pressed);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationRequested,
+    TResult Function(bool pressed)? locationRequested,
     TResult Function()? locationDetected,
     TResult Function()? permessionDenied,
     required TResult orElse(),
   }) {
     if (locationRequested != null) {
-      return locationRequested();
+      return locationRequested(pressed);
     }
     return orElse();
   }
@@ -207,7 +233,13 @@ class _$LocationRequested implements LocationRequested {
 }
 
 abstract class LocationRequested implements LocationEvent {
-  const factory LocationRequested() = _$LocationRequested;
+  const factory LocationRequested({required bool pressed}) =
+      _$LocationRequested;
+
+  bool get pressed;
+  @JsonKey(ignore: true)
+  $LocationRequestedCopyWith<LocationRequested> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -251,7 +283,7 @@ class _$LocationDetected implements LocationDetected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationRequested,
+    required TResult Function(bool pressed) locationRequested,
     required TResult Function() locationDetected,
     required TResult Function() permessionDenied,
   }) {
@@ -261,7 +293,7 @@ class _$LocationDetected implements LocationDetected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? locationRequested,
+    TResult Function(bool pressed)? locationRequested,
     TResult Function()? locationDetected,
     TResult Function()? permessionDenied,
   }) {
@@ -271,7 +303,7 @@ class _$LocationDetected implements LocationDetected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationRequested,
+    TResult Function(bool pressed)? locationRequested,
     TResult Function()? locationDetected,
     TResult Function()? permessionDenied,
     required TResult orElse(),
@@ -362,7 +394,7 @@ class _$PermessionDenied implements PermessionDenied {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationRequested,
+    required TResult Function(bool pressed) locationRequested,
     required TResult Function() locationDetected,
     required TResult Function() permessionDenied,
   }) {
@@ -372,7 +404,7 @@ class _$PermessionDenied implements PermessionDenied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? locationRequested,
+    TResult Function(bool pressed)? locationRequested,
     TResult Function()? locationDetected,
     TResult Function()? permessionDenied,
   }) {
@@ -382,7 +414,7 @@ class _$PermessionDenied implements PermessionDenied {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationRequested,
+    TResult Function(bool pressed)? locationRequested,
     TResult Function()? locationDetected,
     TResult Function()? permessionDenied,
     required TResult orElse(),

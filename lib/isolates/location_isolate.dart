@@ -17,7 +17,9 @@ void locationIsolate(String message) async {
   final driverService = DriverService();
 
   final locationController = LocationController(isSpawned: true);
-  await locationController.mapEventToState(LocationEvent.locationRequested());
+  await locationController.mapEventToState(LocationEvent.locationRequested(
+    pressed: false,
+  ));
 
   Timer.periodic(
     Duration(seconds: 5),
@@ -28,7 +30,9 @@ void locationIsolate(String message) async {
       bool isDriving = prefs.getBool(isDrivingKey) ?? false;
       final currentRide = prefs.getString(currentRideKey);
       if (newIsOnline) {
-        locationController.mapEventToState(LocationEvent.locationRequested());
+        locationController.mapEventToState(LocationEvent.locationRequested(
+          pressed: false,
+        ));
         driverService.updateLocation(
           lat: locationController.state.position?.latitude ?? 0,
           lng: locationController.state.position?.longitude ?? 0,

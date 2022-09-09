@@ -94,7 +94,9 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
                         child: SubmitButton(
                           onPressed: () {
                             locationController.mapEventToState(
-                              LocationEvent.locationRequested(),
+                              LocationEvent.locationRequested(
+                                pressed: true,
+                              ),
                             );
                           },
                           text: "Autoriser l'accès au GPS",
