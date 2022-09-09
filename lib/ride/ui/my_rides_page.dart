@@ -73,204 +73,216 @@ ListView buildFinishedRides(List<Ride> rides) {
     itemBuilder: (context, index) {
       final ride = rides[index];
 
-      return ExpansionTile(
-        title: Text(ride.dest_name!),
-        subtitle: Row(
-          children: [
-            Text(ride.disttext),
-            5.w.horizontalSpace,
-            Text(ride.durtext),
-          ],
-        ),
-        children: [
-          ListTile(
-            title: Text(
-              'Départ: ${ride.start_name!}',
-            ),
-            leading: Image.asset(
-              'assets/icons/flag.png',
-              height: 24.h,
-              width: 24.w,
-            ),
-          ),
-          ListTile(
-            title: Text(
-              'Distance: ${(ride.totalDistance! / 1000).toStringAsFixed(2)} km',
-            ),
-            leading: Image.asset(
-              'assets/icons/distance.png',
-              height: 24.h,
-              width: 24.w,
-            ),
-          ),
-          ListTile(
-            title: Text(
-              'Durée : ${Duration(seconds: ride.totalDuration!).inMinutes} min',
-            ),
-            leading: Image.asset(
-              'assets/icons/duration.png',
-              height: 24.h,
-              width: 24.w,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Column(
+      return Padding(
+        padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
+        child: Material(
+          elevation: 5,
+          borderRadius: BorderRadius.circular(12.r),
+          child: Container(
+            decoration:
+                BoxDecoration(borderRadius: BorderRadius.circular(12.r)),
+            child: ExpansionTile(
+              title: Text(ride.dest_name!),
+              subtitle: Row(
+                children: [
+                  Text(ride.disttext),
+                  5.w.horizontalSpace,
+                  Text(ride.durtext),
+                ],
+              ),
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Total',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      '${ride.totalPrice} MAD',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
+                ListTile(
+                  title: Text(
+                    'Départ: ${ride.start_name!}',
+                  ),
+                  leading: Image.asset(
+                    'assets/icons/flag.png',
+                    height: 24.h,
+                    width: 24.w,
+                  ),
                 ),
-                10.h.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Gains',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      '${ride.driverRevenue?.toStringAsFixed(2)} MAD',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
+                ListTile(
+                  title: Text(
+                    'Distance: ${(ride.totalDistance! / 1000).toStringAsFixed(2)} km',
+                  ),
+                  leading: Image.asset(
+                    'assets/icons/distance.png',
+                    height: 24.h,
+                    width: 24.w,
+                  ),
                 ),
-                10.h.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Tva',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      '-${ride.tva?.toStringAsFixed(2)} MAD',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
+                ListTile(
+                  title: Text(
+                    'Durée : ${Duration(seconds: ride.totalDuration!).inMinutes} min',
+                  ),
+                  leading: Image.asset(
+                    'assets/icons/duration.png',
+                    height: 24.h,
+                    width: 24.w,
+                  ),
                 ),
-                10.h.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Wigootaxi reçoit',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Total',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '${ride.totalPrice} MAD',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-                    Text(
-                      '-${ride.revenue?.toStringAsFixed(2)} MAD',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                      10.h.verticalSpace,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Gains',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '${ride.driverRevenue?.toStringAsFixed(2)} MAD',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
                       ),
-                    )
-                  ],
-                ),
-                10.h.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Réservé à ',
-                        ),
-                        Text(
-                          DateFormat('HH:mm').format(ride.ts),
+                      10.h.verticalSpace,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Tva',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '-${ride.tva?.toStringAsFixed(2)} MAD',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
+                      ),
+                      10.h.verticalSpace,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Wigootaxi reçoit',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '-${ride.revenue?.toStringAsFixed(2)} MAD',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
+                      ),
+                      10.h.verticalSpace,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'Réservé à ',
+                              ),
+                              Text(
+                                DateFormat('HH:mm').format(ride.ts),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Chauffeur est arrivé à ',
+                              ),
+                              Text(
+                                DateFormat('HH:mm')
+                                    .format(ride.driverArrivedAt!),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      10.h.verticalSpace,
+                      Row(
+                        children: [
+                          Text(
+                            'Terminé à ',
+                          ),
+                          Text(
+                            DateFormat('HH:mm').format(ride.finishedAt!),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
+                      ),
+                      10.h.verticalSpace,
+                      Row(
+                        children: [
+                          Text(
+                            'Le ',
+                          ),
+                          Text(
+                            DateFormat('yyyy/MM/dd').format(ride.ts),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
+                      ),
+                      10.h.verticalSpace,
+                      TextButton.icon(
+                        onPressed: () {
+                          AutoRouter.of(context).push(MyRidePageRoute(
+                            ride: ride,
+                          ));
+                        },
+                        icon: Icon(Icons.route),
+                        label: Text(
+                          "Voir le trajet",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Chauffeur est arrivé à ',
                         ),
-                        Text(
-                          DateFormat('HH:mm').format(ride.driverArrivedAt!),
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-                10.h.verticalSpace,
-                Row(
-                  children: [
-                    Text(
-                      'Terminé à ',
-                    ),
-                    Text(
-                      DateFormat('HH:mm').format(ride.finishedAt!),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
-                ),
-                10.h.verticalSpace,
-                Row(
-                  children: [
-                    Text(
-                      'Le ',
-                    ),
-                    Text(
-                      DateFormat('yyyy/MM/dd').format(ride.ts),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
-                ),
-                10.h.verticalSpace,
-                TextButton.icon(
-                  onPressed: () {
-                    AutoRouter.of(context).push(MyRidePageRoute(
-                      ride: ride,
-                    ));
-                  },
-                  icon: Icon(Icons.route),
-                  label: Text(
-                    "Voir le trajet",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                      )
+                    ],
                   ),
                 )
               ],
+              iconColor: kPrimaryColor,
+              leading: Icon(
+                Icons.drive_eta,
+                color: kPrimaryColor,
+              ),
             ),
-          )
-        ],
-        iconColor: kPrimaryColor,
-        leading: Icon(
-          Icons.drive_eta,
-          color: kPrimaryColor,
+          ),
         ),
       );
     },
@@ -283,127 +295,140 @@ ListView buildDriverCancelledRides(List<Ride> rides) {
     itemBuilder: (context, index) {
       final ride = rides[index];
 
-      return ExpansionTile(
-        title: Text(ride.dest_name!),
-        subtitle: Row(
-          children: [
-            Text(ride.disttext),
-            5.w.horizontalSpace,
-            Text(ride.durtext),
-          ],
-        ),
-        children: [
-          ListTile(
-            title: Text(
-              'Départ: ${ride.start_name!}',
-            ),
-            leading: Image.asset(
-              'assets/icons/flag.png',
-              height: 24.h,
-              width: 24.w,
-            ),
-          ),
-          ListTile(
-            title: Text(
-              'Distance estimée: ${ride.disttext}',
-            ),
-            leading: Image.asset(
-              'assets/icons/distance.png',
-              height: 24.h,
-              width: 24.w,
-            ),
-          ),
-          ListTile(
-            title: Text(
-              'Durée estimée: ${ride.durtext}',
-            ),
-            leading: Image.asset(
-              'assets/icons/duration.png',
-              height: 24.h,
-              width: 24.w,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Column(
+      return Padding(
+        padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
+        child: Material(
+          elevation: 5,
+          borderRadius: BorderRadius.circular(12.r),
+          child: Container(
+            decoration:
+                BoxDecoration(borderRadius: BorderRadius.circular(12.r)),
+            child: ExpansionTile(
+              title: Text(ride.dest_name!),
+              subtitle: Row(
+                children: [
+                  Text(ride.disttext),
+                  5.w.horizontalSpace,
+                  Text(ride.durtext),
+                ],
+              ),
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Total estimé',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      '${(ride.price_per_km * ride.distance / 1000).toStringAsFixed(2)} MAD',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
+                ListTile(
+                  title: Text(
+                    'Départ: ${ride.start_name!}',
+                  ),
+                  leading: Image.asset(
+                    'assets/icons/flag.png',
+                    height: 24.h,
+                    width: 24.w,
+                  ),
                 ),
-                10.h.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Gains estimés',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      '${((ride.price_per_km * ride.distance / 1000) - (ride.price_per_km * ride.distance / 1000) * 0.02).toStringAsFixed(2)} MAD',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
+                ListTile(
+                  title: Text(
+                    'Distance estimée: ${ride.disttext}',
+                  ),
+                  leading: Image.asset(
+                    'assets/icons/distance.png',
+                    height: 24.h,
+                    width: 24.w,
+                  ),
                 ),
-                10.h.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Annulé par',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      (ride.cancelledByDriver ?? false) ? 'Vous' : 'Client',
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
+                ListTile(
+                  title: Text(
+                    'Durée estimée: ${ride.durtext}',
+                  ),
+                  leading: Image.asset(
+                    'assets/icons/duration.png',
+                    height: 24.h,
+                    width: 24.w,
+                  ),
                 ),
-                10.h.verticalSpace,
-                Row(
-                  children: [
-                    Text(
-                      'Le ',
-                    ),
-                    Text(
-                      DateFormat('yyyy/MM/dd').format(ride.ts),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Total estimé',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '${(ride.price_per_km * ride.distance / 1000).toStringAsFixed(2)} MAD',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
                       ),
-                    )
-                  ],
-                ),
-                10.h.verticalSpace,
+                      10.h.verticalSpace,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Gains estimés',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '${((ride.price_per_km * ride.distance / 1000) - (ride.price_per_km * ride.distance / 1000) * 0.02).toStringAsFixed(2)} MAD',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
+                      ),
+                      10.h.verticalSpace,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Annulé par',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            (ride.cancelledByDriver ?? false)
+                                ? 'Vous'
+                                : 'Client',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
+                      ),
+                      10.h.verticalSpace,
+                      Row(
+                        children: [
+                          Text(
+                            'Le ',
+                          ),
+                          Text(
+                            DateFormat('yyyy/MM/dd').format(ride.ts),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
+                      ),
+                      10.h.verticalSpace,
+                    ],
+                  ),
+                )
               ],
+              iconColor: kPrimaryColor,
+              leading: Icon(
+                Icons.warning,
+                color: kPrimaryColor,
+              ),
             ),
-          )
-        ],
-        iconColor: kPrimaryColor,
-        leading: Icon(
-          Icons.warning,
-          color: kPrimaryColor,
+          ),
         ),
       );
     },
