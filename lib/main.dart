@@ -70,7 +70,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
         'nameCaller': username,
         'appName': 'WigooTaxi',
         'avatar':
-            'https://firebasestorage.googleapis.com/v0/b/taxi-app-user-4800a.appspot.com/o/logo_white.png?alt=media&token=85d66b37-fe3d-4dfa-9b34-c8a1228e879d',
+            'https://firebasestorage.googleapis.com/v0/b/taxi-app-user-4800a.appspot.com/o/LOGO%201.png?alt=media&token=2ce9b93a-62fb-49bc-b298-d8611a2c4430',
         'handle':
             'Localisation:\n$start\nDestination:\n$destination\nDistance:\n$distance km\nDurée de trajet:\n$duration',
         'type': 0,
