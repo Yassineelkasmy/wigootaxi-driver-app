@@ -339,7 +339,8 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                   children: [
                     40.h.verticalSpace,
                     Text(
-                      "Pour une meilleure expérience, donnez-nous accès à votre position actuelle via votre GPS mobile",
+                      """Donnez-nous accès à votre localisation actuelle lorsque l'application est fermée via votre GPS mobile 
+                      pour que les clients Wigoo peuvent vous traquer""",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16.sp,
