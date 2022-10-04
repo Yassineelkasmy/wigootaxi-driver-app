@@ -339,8 +339,7 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                   children: [
                     40.h.verticalSpace,
                     Text(
-                      """Donnez-nous accès à votre localisation actuelle lorsque l'application est fermée via votre GPS mobile 
-                      pour que les clients Wigoo peuvent vous traquer""",
+                      """Wigoo Captain collecte des données de localisation pour permettre la diffusion de votre position actuelle avec les clients Wigoo même lorsque l'application est fermée ou non utilisée""",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16.sp,
