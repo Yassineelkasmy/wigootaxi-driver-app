@@ -70,7 +70,6 @@ dependencies:
   firebase_messaging: ^11.4.0
   http: ^0.13.4
   geoflutterfire: ^3.0.3
-  audioplayers: ^1.0.1
   flutter_callkit_incoming:
     git: https://github.com/Yassineelkasmy/flutter_callkit_incoming.git
   url_launcher: ^6.0.20

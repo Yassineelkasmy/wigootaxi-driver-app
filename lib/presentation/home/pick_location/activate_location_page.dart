@@ -1,5 +1,4 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,8 +26,6 @@ import 'package:wigootaxidriver/ride/application/ride_state.dart';
 
 class ActivateLocationOrMapPage extends HookConsumerWidget {
   ActivateLocationOrMapPage({Key? key}) : super(key: key);
-  final audioPlayer = AudioPlayer();
-  final player = AudioCache(prefix: 'assets/sounds/');
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
