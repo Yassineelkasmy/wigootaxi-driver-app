@@ -8,6 +8,7 @@ import 'package:wigootaxidriver/constants/storage_keys.dart';
 import 'package:wigootaxidriver/driver/services/driver_service.dart';
 import 'package:wigootaxidriver/firebase_options.dart';
 
+@pragma('vm:entry-point')
 void locationIsolate(String message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
