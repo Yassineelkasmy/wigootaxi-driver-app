@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:wigootaxidriver/domain/auth/auth_failure.dart';
@@ -20,6 +21,14 @@ class FireBaseAuthFacade {
   Future<Option<User>> getSignedUser() async {
     // await signOut();
     final user = _firebaseAuth.currentUser;
+    if (user != null) {
+      await FirebaseMessaging.instance.subscribeToTopic(user.uid);
+      FirebaseMessaging.instance.requestPermission(
+        alert: true,
+        badge: true,
+        sound: true,
+      );
+    }
     if (user == null) {
       return none();
     } else {
@@ -74,6 +83,15 @@ class FireBaseAuthFacade {
       );
 
       await _firebaseAuth.signInWithCredential(authCredential);
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        await FirebaseMessaging.instance.subscribeToTopic(user.uid);
+        FirebaseMessaging.instance.requestPermission(
+          alert: true,
+          badge: true,
+          sound: true,
+        );
+      }
       return right(unit);
     } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
@@ -114,6 +132,16 @@ class FireBaseAuthFacade {
           },
         );
       }
+
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        await FirebaseMessaging.instance.subscribeToTopic(user.uid);
+        FirebaseMessaging.instance.requestPermission(
+          alert: true,
+          badge: true,
+          sound: true,
+        );
+      }
       return right(unit);
     } on FirebaseAuthException catch (e) {
       print(e);
@@ -132,7 +160,19 @@ class FireBaseAuthFacade {
   }) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
+
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        await FirebaseMessaging.instance.subscribeToTopic(user.uid);
+        FirebaseMessaging.instance.requestPermission(
+          alert: true,
+          badge: true,
+          sound: true,
+        );
+      }
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -163,6 +203,15 @@ class FireBaseAuthFacade {
       );
 
       await _firebaseAuth.signInWithCredential(authCredential);
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        await FirebaseMessaging.instance.subscribeToTopic(user.uid);
+        FirebaseMessaging.instance.requestPermission(
+          alert: true,
+          badge: true,
+          sound: true,
+        );
+      }
       return right(unit);
     } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
