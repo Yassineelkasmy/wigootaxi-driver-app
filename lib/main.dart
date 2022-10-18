@@ -44,6 +44,7 @@ Future<void> main() async {
 }
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print('ddddd');
   final data = message.data;
   final geo = Geoflutterfire();
   final type = (data['type'] as String?);
