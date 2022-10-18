@@ -98,8 +98,11 @@ class FireBaseAuthFacade {
     }
   }
 
-  @override
   Future<void> signOut() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      await FirebaseMessaging.instance.unsubscribeFromTopic(user.uid);
+    }
     Future.wait([
       _firebaseAuth.signOut(),
       _googleSignIn.signOut(),
